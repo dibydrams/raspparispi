@@ -27,7 +27,11 @@ https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&face
 ##Fréquence de mise à jour
 ...
 
-
+***
+***
+***
+***
+***
 
 
 #API Que faire à Paris
