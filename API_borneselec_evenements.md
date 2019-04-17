@@ -1,7 +1,7 @@
-##DETAIL DES API.
+# DETAIL DES API.
 
 
-###Bornes de recharge pour véhicules électriques
+## Bornes de recharge pour véhicules électriques
 
 **URL**
 https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques
@@ -17,7 +17,7 @@ API contenant plus de 1000 bornes pour recharger un véhicule électrique en com
 
 ---------------------------------------------------------------------------------------
 
-###Liste des événements
+## Liste des événements
 
 **URL**
 https://api.predicthq.com/v1/events/
