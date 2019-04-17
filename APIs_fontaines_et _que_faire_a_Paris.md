@@ -5,53 +5,50 @@ API's: que faire à Paris / fontaines|
 
 
 
-API fontaines
--------------
+#API fontaines
 
-résumé
-......
+
+##résumé
+
 Fontaines sur l'espace public
 
-url:
-.....
+##url:
+
 https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&facet=arro&facet=modele&facet=a_boire
 
-gratuit
-.......
+##gratuit
+...
 
+##Dernier traitement
 
-Dernier traitement
-..................
 19 juin 2017
 
 
-Fréquence de mise à jour ->
-........................
+##Fréquence de mise à jour
+...
 
 
 
 
+#API Que faire à Paris
 
 
-API Que faire à Paris ?
------------------------
+##résumé
 
-résumé
-......
 Le site Que faire à Paris est un agenda participatif, les lieux parisiens tels que les Bibliothèques et Musées de la Ville, les parcs et jardins, les centres d'animations, les piscines, les théâtres, les grands lieux comme la Gaîté Lyrique, le CENTQUATRE, le Carreau du Temple, les salles de concert, les associations et même les parisiens sont invités à insérer leurs événements dans le site.
 
 L'équipe éditoriale s'occupe ensuite de les mettre en avant aux travers de sélections, d'interviews ou sur les réseaux sociaux.
 
 
 
-url: 
-.....
+##url 
+
 https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&facet=category&facet=tags&facet=address_zipcode&facet=address_city&facet=pmr&facet=blind&facet=deaf&facet=access_type&facet=price_type
 
 
 
-gratuit 
-.......
+##gratuit 
+
 
 	vous mentionnez la paternité : Vous devez mentionner la source de la base de données pour toute utilisation publique de la base de données, ou pour toute création produite à partir de la base de données, de la manière indiquée dans l'ODbL. Pour toute utilisation ou redistribution de la base de données, ou création produite à partir de cette base de données, vous devez clairement mentionner aux tiers la licence de la base de données et garder intacte toute mention légale sur la base de données originaire. La source devra être mentionnée de la façon suivante : “ [Nom de la base de donnée], [Producteur de la base de donnée], [date], sous licence ODbL.” (par exemple, “Eclairage public - Mairie de Paris, 23/02/2018, sous license ODbL”).
 
@@ -62,7 +59,8 @@ gratuit
 
 
 
-Dernier traitement 17 avril 2019
-................... 
-Fréquence de mise à jour -> Quotidienne
-........................
+##Dernier traitement 
+17 avril 2019
+
+##Fréquence de mise à jour 
+Quotidienne
