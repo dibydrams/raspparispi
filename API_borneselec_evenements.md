@@ -1,4 +1,4 @@
-# DETAIL DES API.
+# APIs BORNES ELECTRIQUES & EVENEMENTS.
 
 
 ## Bornes de recharge pour véhicules électriques
@@ -16,7 +16,7 @@ Non communiqué
 API contenant plus de 1000 bornes pour recharger un véhicule électrique en complément du service Belib', à Paris. L'API donne l'emplacement des 270 bornes de recharge du réseau Belib' et des 1127 bornes Autolib réactivées, à compter du 1er Décembre 2018 (dernier traitement le 4 décembre 2018).
 
 **EXEMPLE**
-Toutes les bornes dont l'adress_ville (la ville) est égale à "Paris" :
+Toutes les bornes dont l'adresse_ville (= la ville) est égale à "Paris" :
 https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&refine.adresse_ville=Paris
 
 Résultat renvoyé (1 seule borne pour l'exemple) : 
