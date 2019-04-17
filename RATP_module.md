@@ -6,6 +6,8 @@ Requêtes Unitaires : https://api-lab-trone-stif.opendata.stif.info/pages/api-te
 
 Requête Globale : https://api-lab-trall-stif.opendata.stif.info/explore/dataset/tr-globale-stif/information/
 
+Périmètre des données : https://opendata.stif.info/explore/dataset/perimetre-tr-plateforme-stif/table/
+
 ## Nombre de Requetes Free / Jour
 
 Unitaires : 200 000.
