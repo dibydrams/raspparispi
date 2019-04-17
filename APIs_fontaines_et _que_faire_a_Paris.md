@@ -5,7 +5,7 @@ API's: que faire à Paris / fontaines|
 
 
 
-# API fontaines
+# **API fontaines**
 
 
 ## résumé
@@ -34,7 +34,7 @@ https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&face
 ***
 
 
-# API Que faire à Paris
+# **API Que faire à Paris**
 
 
 ## résumé
