@@ -6,7 +6,9 @@
 #include <QtNetwork/QNetworkReply>
 #include <QJsonDocument>
 #include <QAuthenticator>
-
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QFile>
 
 namespace Ui {
 class MainWindow;
@@ -19,17 +21,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QString username = "francoisflorian4@gmail.com";
-    QString password = "floflo123";
-    QString keyapi = "40cd855f9c40cffde532f9409f94b9f3e36648cf6bec24d347e963d5";
+    QString keyapi = "Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz";
     QNetworkAccessManager *manager;
-    QNetworkRequest *request;
-    QNetworkReply *reply;
-    QByteArray *userdata;
+    QNetworkRequest *requestGlobal;
+    QNetworkRequest *requestUni;
+    QNetworkReply *replyGlobal;
+    QNetworkReply *replyUni;
+    QByteArray *replydata;
+    QJsonArray resultArray;
+    QJsonObject rootObject;
 
+    void ReadLocalJson();
+//    void NetworkCleanup();
 public slots:
-    void replyFinished(QNetworkReply *_rep);
-    void onAuthenticationRequestSlot(QNetworkReply *reply, QAuthenticator *authenticator);
+    void replyFinishedGlobal();
+    void replyFinishedUni();
 private:
     Ui::MainWindow *ui;
 };

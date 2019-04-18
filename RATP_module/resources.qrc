@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Data/Databases">
+        <file>perimetre-tr-plateforme-stif.json</file>
+        <file>referentiel-des-lignes-stif.json</file>
+    </qresource>
+</RCC>
