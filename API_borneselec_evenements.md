@@ -102,6 +102,44 @@ Résultat renvoyé (1 seule borne pour l'exemple) :
         },
 ```
 
+**COMMENT CONSTRUIRE SA REQUETE SOUS QT**
+
+L'appel à l'API se fait sans authentification, via un `QUrl` ainsi qu'un `QNetworkRequest` :
+
+```
+	apicalls = new QNetworkAccessManager(this);
+
+	QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques");
+
+	QNetworkRequest request;
+	request.setUrl(url);
+
+	currentReply = apicalls->get(request);
+```
+
+Le retour de l'API est construit de manière simple, commençant par des tableaux `records [ ]` et en contenient d'autres à l'intérieur de chaque `record` (les `coordinates` par exemple). Pour accéder à la data, il faut transformer les `records` en `QJsonArray` après avoir correctement lu (`readAll`) le JSON renvoyé par la requête :
+
+```
+ 	doc = QJsonDocument::fromJson(reply->readAll());
+ 	obj = doc.object();
+ 	arr = obj["records"].toArray();
+```
+`
+Parcourez ensuite les data via une boucle `for` en transformant les valeurs lues en `QJsonObject` et en les affichant comme vous le souhaitez (dans l'exemple via un `qDebug`). 
+
+```
+        QJsonObject objn = val.toObject();
+
+        qDebug() << objn["recordid"].toString();
+        qDebug() << objn["fields"].toObject()["id_station"].toString();
+```
+
+Attention, certaines data sont des tableaux au sein de certains champs, il faudra alors les re-transformer en `QJsonArray` pour les lire : 
+
+```
+        qDebug() << objn["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[0].toDouble();
+```
+
 ---------------------------------------------------------------------------------------
 
 ## Liste des événements
@@ -186,3 +224,42 @@ Résultat renvoyé (1 seul événement pour l'exemple) :
             "state": "active"
         }
 ```
+
+**COMMENT CONSTRUIRE SA REQUETE SOUS QT**
+
+Les requêtes requièrent une authentification fournie par PredictHQ (`$Client_ID`:`$Client_Secret`). Il s'agit d'un `Bearer Token` à passer en `Header` de la requète. Pour cela, il faut utiliser la fonction `setRawHeader(QByteArray("Votre mode d'authentification"), QByteArray("Votre type de token et le token"))`, accompagnée d'un `QUrl` contenant votre requête et ses paramètres : 
+
+```
+	apicalls = new QNetworkAccessManager(this);
+
+	QUrl url("https://api.predicthq.com/v1/events/?country=FR&active.gte=2019-04-16&within=10km@48.85341,2.3488");
+
+	QNetworkRequest request;
+	request.setUrl(url);
+	request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer wH3fafHllNhQBCFfhFkQbNTUToSpql"));
+
+	currentReply = apicalls->get(request);
+```
+
+Le retour de l'API est construit de manière simple, commençant par des tableaux `results [ ]` et en contenient d'autres à l'intérieur de chaque `result` (les `labels` ou `location` par exemple). Pour accéder à la data, il faut transformer les `results` en `QJsonArray` après avoir correctement lu (`readAll`) le JSON renvoyé par la requête :
+
+```
+ 	doc = QJsonDocument::fromJson(reply->readAll());
+ 	obj = doc.object();
+ 	arr = obj["results"].toArray();
+```
+`
+Parcourez ensuite les data via une boucle `for` en transformant les valeurs lues en `QJsonObject` et en les affichant comme vous le souhaitez (dans l'exemple via un `qDebug`). 
+
+```
+        QJsonObject objn = val.toObject();
+
+        qDebug() << objn["title"].toString();
+```
+
+Attention, certaines data sont des tableaux au sein de certains champs, il faudra alors les re-transformer en `QJsonArray` pour les lire : 
+
+```
+        qDebug() << objn["labels"].toArray()[0].toString();
+```
+
