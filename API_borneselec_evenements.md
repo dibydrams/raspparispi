@@ -227,7 +227,7 @@ Résultat renvoyé (1 seul événement pour l'exemple) :
 
 **COMMENT CONSTRUIRE SA REQUETE SOUS QT**
 
-Les requêtes requièrent une authentification fournie par PredictHQ (`$Client_ID`:`$Client_Secret`). Il s'agit d'un `Bearer Token` à passer en `Header` de la requète. Pour cela, il faut utiliser la fonction `setRawHeader(QByteArray("Votre mode d'authentification"), QByteArray("Votre type de token et le token"))`, accompagnée d'un `QUrl` contenant votre requête et ses paramètres : 
+Les requêtes requièrent une authentification fournie par PredictHQ (`$Client_ID`:`$Client_Secret`). Il s'agit d'un `Bearer Token` à passer en `Header` de la requète. Pour cela, il faut utiliser la fonction `setRawHeader(QByteArray("VOTRE MODE D'AUTH"), QByteArray("VOTRE TYPE DE TOKEN ET LE TOKEN"))`, accompagnée d'un `QUrl` contenant votre requête et ses paramètres : 
 
 ```
 	apicalls = new QNetworkAccessManager(this);
@@ -236,7 +236,7 @@ Les requêtes requièrent une authentification fournie par PredictHQ (`$Client_I
 
 	QNetworkRequest request;
 	request.setUrl(url);
-	request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer wH3fafHllNhQBCFfhFkQbNTUToSpql"));
+	request.setRawHeader(QByteArray("Authorization"), QByteArray("VOTRE BEARER TOKEN"));
 
 	currentReply = apicalls->get(request);
 ```
