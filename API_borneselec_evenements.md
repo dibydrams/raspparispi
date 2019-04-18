@@ -248,7 +248,7 @@ Le retour de l'API est construit de manière simple, commençant par des tableau
  	obj = doc.object();
  	arr = obj["results"].toArray();
 ```
-`
+
 Parcourez ensuite les data via une boucle `for` en transformant les valeurs lues en `QJsonObject` et en les affichant comme vous le souhaitez (dans l'exemple via un `qDebug`). 
 
 ```
