@@ -30,9 +30,11 @@ public:
     QByteArray *replydata;
     QJsonArray resultArray;
     QJsonObject rootObject;
+    QList<QPointF> pointList;
 
     void ReadLocalJson();
-//    void NetworkCleanup();
+    QJsonDocument LoadJson(QString fileName);
+    //    void NetworkCleanup();
 public slots:
     void replyFinishedGlobal();
     void replyFinishedUni();

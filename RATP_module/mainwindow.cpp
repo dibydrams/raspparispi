@@ -86,7 +86,8 @@ void MainWindow::replyFinishedUni()
 
     QJsonArray arrayDoc = doc.array();
 
-    for (int i = 0; i < arrayDoc.count(); i++) {
+    for (int i = 0; i < arrayDoc.count(); i++)
+    {
         qDebug() << "Code" << arrayDoc[i].toObject().value("code").toString();
         qDebug() << "Line Direction" << arrayDoc[i].toObject().value("lineDirection").toString();
         qDebug() << "Sens" << arrayDoc[i].toObject().value("sens").toString();
@@ -105,10 +106,23 @@ void MainWindow::replyFinishedUni()
 
 void MainWindow::ReadLocalJson()
 {
-    qDebug() << "start ReadJson";
-    QFile doc(":/Data/Databases/perimetre-tr-plateforme-stif.json");
-    qDebug() << doc.fileName();
+    QJsonDocument myJson = LoadJson(":/Data/Databases/perimetre-tr-plateforme-stif.json");
 
+    for (int i = 0; i < myJson.array().count(); ++i)
+    {
+        double docX = myJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(0).toDouble();
+        double docY = myJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(1).toDouble();
+
+        QPointF newpoint(docX,docY);
+        pointList.append(newpoint);
+    }
+}
+
+QJsonDocument MainWindow::LoadJson(QString fileName)
+{
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::ReadOnly);
+    return QJsonDocument().fromJson(jsonFile.readAll());
 }
 
 //void MainWindow::NetworkCleanup()
