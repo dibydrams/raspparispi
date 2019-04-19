@@ -26,13 +26,20 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    tools.cpp \
+    stoppoint.cpp \
+    unirequest.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    tools.h \
+    stoppoint.h \
+    unirequest.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    unirequest.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

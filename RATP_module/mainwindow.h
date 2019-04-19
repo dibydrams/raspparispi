@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "tools.h"
+#include "stoppoint.h"
+#include "unirequest.h"
 #include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
@@ -21,6 +24,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    UniRequest *uniReqWindow;
+
     QString keyapi = "Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz";
     QNetworkAccessManager *manager;
     QNetworkRequest *requestGlobal;
@@ -30,14 +36,20 @@ public:
     QByteArray *replydata;
     QJsonArray resultArray;
     QJsonObject rootObject;
+    QJsonDocument perimetreStifJson;
     QList<QPointF> pointList;
+    QList<StopPoint> stopPointList;
+    static QList<QPointF> StaticpointList;
+    static QList<StopPoint> StaticstopPointList;
 
-    void ReadLocalJson();
-    QJsonDocument LoadJson(QString fileName);
+    void DoGlobalRequest();
+    void DoUniRequest(int _index);
+    void ReadSaveStifJson();
     //    void NetworkCleanup();
 public slots:
     void replyFinishedGlobal();
     void replyFinishedUni();
+    void ShowUni(bool);
 private:
     Ui::MainWindow *ui;
 };
