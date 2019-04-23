@@ -5,9 +5,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    MainWindow ratp;
     UniRequest u;
-    w.show();
+    ratp.show();
 
     return a.exec();
 }

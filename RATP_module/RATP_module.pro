@@ -29,17 +29,20 @@ SOURCES += \
         mainwindow.cpp \
     tools.cpp \
     stoppoint.cpp \
-    unirequest.cpp
+    unirequest.cpp \
+    main_ratp_window.cpp
 
 HEADERS += \
         mainwindow.h \
     tools.h \
     stoppoint.h \
-    unirequest.h
+    unirequest.h \
+    main_ratp_window.h
 
 FORMS += \
         mainwindow.ui \
-    unirequest.ui
+    unirequest.ui \
+    main_ratp_window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

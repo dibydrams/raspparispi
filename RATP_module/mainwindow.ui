@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
-    <height>360</height>
+    <width>483</width>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,18 +19,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>780</width>
+     <width>483</width>
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_Request">
-    <property name="title">
-     <string>&amp;Request</string>
-    </property>
-    <addaction name="action_Global"/>
-    <addaction name="action_Unitaire"/>
-   </widget>
-   <addaction name="menu_Request"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

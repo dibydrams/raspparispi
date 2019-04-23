@@ -19,8 +19,12 @@ public:
     ~UniRequest();
 
     QList<StopPoint> UniStopPointList;
+    int SavedIndex;
+    QList<int> IndexTab;
 public slots:
+    void InitStopPointList();
     void SendRequest();
+    void InitLastList(int);
 private:
     Ui::UniRequest *ui;
 };

@@ -1,10 +1,11 @@
 #include "stoppoint.h"
 
-StopPoint::StopPoint(QString sp_codeline, QString sp_nomzde, QString sp_monorefzde, QString sp_idzde, QPointF sp_coordszde)
+StopPoint::StopPoint(QString sp_codeline, QString sp_nomzde, QString sp_monorefzde, QString sp_idzde, QPointF sp_coordszde, int sp_myindex)
 {
-    codeLine = sp_codeline;
+    externalcodeLine = sp_codeline;
     nomZDE = sp_nomzde;
     monoRefZDE = sp_monorefzde;
     idZDE = sp_idzde;
     coordsZDE = sp_coordszde;
+    myIndex = sp_myindex;
 }

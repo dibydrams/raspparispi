@@ -25,31 +25,32 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    UniRequest *uniReqWindow;
+//    UniRequest *uniReqWindow;
 
-    QString keyapi = "Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz";
-    QNetworkAccessManager *manager;
-    QNetworkRequest *requestGlobal;
-    QNetworkRequest *requestUni;
-    QNetworkReply *replyGlobal;
-    QNetworkReply *replyUni;
-    QByteArray *replydata;
-    QJsonArray resultArray;
-    QJsonObject rootObject;
-    QJsonDocument perimetreStifJson;
-    QList<QPointF> pointList;
-    QList<StopPoint> stopPointList;
-    static QList<QPointF> StaticpointList;
-    static QList<StopPoint> StaticstopPointList;
+//    QString keyapi = "Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz";
+//    QNetworkAccessManager *manager;
+//    QNetworkRequest *requestGlobal;
+//    QNetworkRequest *requestUni;
+//    QNetworkReply *replyGlobal;
+//    QNetworkReply *replyUni;
+//    QByteArray *replydata;
+//    QJsonArray resultArray;
+//    QJsonObject rootObject;
+//    QJsonDocument perimetreStifJson;
+//    QList<QPointF> pointList;
+//    QList<StopPoint> stopPointList;
+//    static QList<QPointF> StaticpointList;
+//    static QList<StopPoint> StaticstopPointList;
 
-    void DoGlobalRequest();
-    void DoUniRequest(int _index);
-    void ReadSaveStifJson();
-    //    void NetworkCleanup();
-public slots:
-    void replyFinishedGlobal();
-    void replyFinishedUni();
-    void ShowUni(bool);
+//    void DoGlobalRequest();
+//    void DoUniRequest(int _index);
+//    void ReadSaveStifJson();
+//    //    void NetworkCleanup();
+//public slots:
+//    void replyFinishedGlobal();
+//    void replyFinishedUni();
+//    void ShowUni();
+//    void GetUniReqIndex(int);
 private:
     Ui::MainWindow *ui;
 };
