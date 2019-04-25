@@ -1,3 +1,4 @@
+
 #include "main_ratp_window.h"
 #include "ui_main_ratp_window.h"
 
@@ -33,10 +34,7 @@ Main_RATP_Window::Main_RATP_Window(QWidget *parent) :
 
 
     // TEST
-
-
-
-
+    connect(ui->ToNextPage_2, SIGNAL(clicked()), this, SLOT(ChangePage()));
 
     // End TEST
 
@@ -49,9 +47,18 @@ Main_RATP_Window::Main_RATP_Window(QWidget *parent) :
     connect(ui->radioMetro, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->radioRer, SIGNAL(clicked()), this, SLOT(ShowTransports()));
 
+    connect(ui->pushUniReq, SIGNAL(clicked()), this, SLOT(CleanUniRequestView()));
+
     manager = new QNetworkAccessManager(this);
     DoStationOnlyRequest();
-//    ShowUni();
+}
+
+void Main_RATP_Window::ChangePage()
+{
+    int newIndex = ui->stackedWidget->currentIndex() + 1;
+    if (newIndex >= ui->stackedWidget->count())
+        newIndex = 0;
+    ui->stackedWidget->setCurrentIndex(newIndex);
 }
 
 Main_RATP_Window::~Main_RATP_Window()
@@ -62,7 +69,9 @@ Main_RATP_Window::~Main_RATP_Window()
 
 void Main_RATP_Window::ShowTransports()
 {
+    ui->pushUniReq->setEnabled(false);
     disconnect(ui->comboTransport, SIGNAL(currentIndexChanged(int)), this, SLOT(ShowTransportStopPoints(int)));
+    disconnect(ui->comboTransport, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniTransportIndex(int)));
 
     ui->comboTransport->clear();
     ui->comboStation->clear();
@@ -94,47 +103,56 @@ void Main_RATP_Window::ShowTransports()
     }
 
     connect(ui->comboTransport, SIGNAL(currentIndexChanged(int)), this, SLOT(ShowTransportStopPoints(int)));
+    connect(ui->comboTransport, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniTransportIndex(int)));
 }
 
 void Main_RATP_Window::ShowTransportStopPoints(int _code)
 {
+    disconnect(ui->comboStation, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
+    disconnect(ui->pushUniReq, SIGNAL(clicked()), this, SLOT(DoUniRequest()));
+
     ui->comboStation->clear();
     _code -= 1;
 
     if (ui->radioBus->isChecked())
     {
-        for (int i = 0; i < stopPointList.count(); ++i)
+        for (int i = 0; i < busList[_code].mySPList.count(); ++i)
         {
-            if (stopPointList[i].externalcodeLine == busList[_code].codeLine)
-            {
-                ui->comboStation->addItem(stopPointList[i].nomZDE);
-            }
+            ui->comboStation->addItem(busList[_code].mySPList[i].nomZDE);
         }
     }
 
     if (ui->radioMetro->isChecked())
     {
-        for (int i = 0; i < stopPointList.count(); ++i)
+        for (int i = 0; i < metroList[_code].mySPList.count(); ++i)
         {
-            if (stopPointList[i].externalcodeLine == metroList[_code].codeLine)
-            {
-                ui->comboStation->addItem(stopPointList[i].nomZDE);
-            }
+            ui->comboStation->addItem(metroList[_code].mySPList[i].nomZDE);
         }
     }
 
     if (ui->radioRer->isChecked())
     {
-        for (int i = 0; i < stopPointList.count(); ++i)
+        for (int i = 0; i < rerList[_code].mySPList.count(); ++i)
         {
-            if (stopPointList[i].externalcodeLine == rerList[_code].codeLine)
-            {
-                ui->comboStation->addItem(stopPointList[i].nomZDE);
-            }
+            ui->comboStation->addItem(rerList[_code].mySPList[i].nomZDE);
         }
     }
 
+    ui->pushUniReq->setEnabled(true);
+    connect(ui->comboStation, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
+    connect(ui->pushUniReq, SIGNAL(clicked()), this, SLOT(DoUniRequest()));
+}
 
+void Main_RATP_Window::SetUniTransportIndex(int _codeT)
+{
+    if (_codeT != -1)
+        indexTranspForUniReq = _codeT - 1;
+}
+
+void Main_RATP_Window::SetUniStationIndex(int _codeS)
+{
+    if(_codeS != -1)
+        indexStationForUniReq = _codeS;
 }
 
 
@@ -149,17 +167,34 @@ void Main_RATP_Window::DoGlobalRequest()
     connect(replyGlobal, &QNetworkReply::finished, this, &Main_RATP_Window::replyFinishedGlobal);
 }
 
-void Main_RATP_Window::DoUniRequest(int _index)
+void Main_RATP_Window::DoUniRequest()
 {
     requestUni = new QNetworkRequest () ;
     requestUni->setRawHeader(QByteArray("Authorization"), QByteArray("Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz"));
 
-    QByteArray encodedCodeline = QUrl::toPercentEncoding(stopPointList[_index].externalcodeLine);
-    QByteArray encodedID = QUrl::toPercentEncoding(stopPointList[_index].idZDE.replace(0,1,"s"));
+    QByteArray encodedCodeline;
+    QByteArray encodedIdZde;
+//    qDebug() << "code Transport" << indexTranspForUniReq << "code Station" << indexStationForUniReq;
 
-    qDebug() << encodedID << encodedCodeline;
+    if (ui->radioBus->isChecked())
+    {
+        encodedCodeline = QUrl::toPercentEncoding(busList[indexTranspForUniReq].codeLine);
+        encodedIdZde = QUrl::toPercentEncoding(busList[indexTranspForUniReq].mySPList[indexStationForUniReq].idZDE.replace(0,1,"s"));
+    }
+    else if (ui->radioMetro->isChecked())
+    {
+        encodedCodeline = QUrl::toPercentEncoding(metroList[indexTranspForUniReq].codeLine);
+        encodedIdZde = QUrl::toPercentEncoding(metroList[indexTranspForUniReq].mySPList[indexStationForUniReq].idZDE.replace(0,1,"s"));
+    }
+    else
+    {
+        encodedCodeline = QUrl::toPercentEncoding(rerList[indexTranspForUniReq].codeLine);
+        encodedIdZde = QUrl::toPercentEncoding(rerList[indexTranspForUniReq].mySPList[indexStationForUniReq].idZDE.replace(0,1,"s"));
+    }
 
-    requestUni->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-vianavigo/departures?line_id="+encodedCodeline+"&stop_point_id="+encodedID));
+    qDebug() << encodedIdZde << encodedCodeline;
+
+    requestUni->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-vianavigo/departures?line_id="+encodedCodeline+"&stop_point_id="+encodedIdZde));
 
     replyUni = manager->get(*requestUni);
 
@@ -174,15 +209,17 @@ void Main_RATP_Window::DoStationOnlyRequest()
     QStringList monoRefList;
     for (int i = 0; i < stopPointList.count(); ++i) //2.34575 48.8711687
     {
-        if (stopPointList[i].coordsZDE.rx() > 2.34505 && stopPointList[i].coordsZDE.rx() < 2.34605)
+        if (stopPointList[i].coordsZDE.rx() > 2.34405 && stopPointList[i].coordsZDE.rx() < 2.34605)
         {
+//            qDebug() << stopPointList[i].monoRefZDE;
             monoRefList.append(stopPointList[i].monoRefZDE);
         }
     }
 
 //    foreach (QString code, monoRefList) {
-        QByteArray encodedCode = "";//QUrl::toPercentEncoding(monoRefList[0]);
-        requestStation->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-unitaire-stif/stop-monitoring?MonitoringRef="+encodedCode+"STIF%3AStopPoint%3AQ%3A22102%3A"));
+        QByteArray encodedCode = "";//QUrl::toPercentEncoding(code);
+        requestStation->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-unitaire-stif/stop-monitoring?MonitoringRef="+encodedCode+"STIF%3AStopPoint%3AQ%3A411414%3A"));
+//        requestStation->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-unitaire-stif/stop-monitoring?MonitoringRef="+encodedCode));
 
         replyStation = manager->get(*requestStation);
 
@@ -243,8 +280,24 @@ void Main_RATP_Window::replyFinishedUni()
 
     QJsonArray arrayDoc = doc.array();
 
+    int span = 20;
+
     for (int i = 0; i < arrayDoc.count(); i++)
     {
+        ui->widgetTimeView->hide();
+        // Create Text Slot
+        QLabel *labelForDest = new QLabel("Destination : ", ui->widgetTimeView);
+        QLabel *labelForTime = new QLabel("Next train : ", ui->widgetTimeView);
+        QLabel *labelDest = new QLabel(ui->widgetTimeView);
+        QLabel *labelTime = new QLabel(ui->widgetTimeView);
+
+        labelForDest->move(ui->widgetTimeView->geometry().left() + labelDest->geometry().size().width(), ui->widgetTimeView->geometry().center().ry() - (span * i));
+        labelForTime->move(ui->widgetTimeView->geometry().center().rx() - labelTime->geometry().size().width(), ui->widgetTimeView->geometry().center().ry());
+        labelDest->move(ui->widgetTimeView->geometry().center().rx(), ui->widgetTimeView->geometry().center().ry() - (span * i));
+        labelTime->move(ui->widgetTimeView->geometry().center().rx(), ui->widgetTimeView->geometry().center().ry());
+
+        labelDest->setText(arrayDoc[i].toObject().value("lineDirection").toString());
+
         qDebug() << "Code" << arrayDoc[i].toObject().value("code").toString();
         qDebug() << "Line Direction" << arrayDoc[i].toObject().value("lineDirection").toString();
         qDebug() << "Sens" << arrayDoc[i].toObject().value("sens").toString();
@@ -253,29 +306,96 @@ void Main_RATP_Window::replyFinishedUni()
         if (arrayDoc[i].toObject().value("time").toString() == "")
         {
             qDebug() << "Schedule" << arrayDoc[i].toObject().value("schedule").toString() << endl;
+            labelTime->setText(arrayDoc[i].toObject().value("schedule").toString());
         }
         else
         {
             qDebug() << "Time" << arrayDoc[i].toObject().value("time").toString() << endl;
+            labelTime->setText(arrayDoc[i].toObject().value("time").toString());
         }
+
+        ui->widgetTimeView->show();
     }
 }
 
 void Main_RATP_Window::replyFinishedStation()
 {
-    qDebug() << replyStation->error();
+//    qDebug() << replyStation->error();
     QJsonDocument doc = QJsonDocument::fromJson(replyStation->readAll());
     rootObject = doc.object();
-
     QJsonValue Siri = rootObject.value("Siri");
+
 
     // Object from Service Delivery
     QJsonArray SDObj = Siri.toObject()["ServiceDelivery"].toObject()["StopMonitoringDelivery"].toArray();
     QJsonArray truc = SDObj[0].toObject()["MonitoredStopVisit"].toArray();
 
-    for (int i = 0; i < truc.count(); ++i) {
-        qDebug() << "arrayDoc" << truc[i].toObject();
+    for (int i = 0; i < truc.count(); ++i)
+    {
+        /*
+         * foreach widget in stackedwidget
+         *  if widget.name.contains( truc.trainID)
+         *      add labels
+         *      at good pos (center + (span * nbOfDuoLabels)
+         *  else
+         *      create newWidget
+         *      newWidget.name = page_ + truc.trainID
+         *      add labels
+         *      at good pos
+         */
+
+
+
+
+
+        // Create new Widget in StackedWidget
+        QWidget *newWidget = new QWidget(ui->stackedWidget);
+        newWidget->setObjectName("page_" + QString::number(i));
+        ui->stackedWidget->addWidget(newWidget);
+        newWidget->hide();
+
+        // Create Page Follower
+        QLabel *pagination = new QLabel(newWidget);
+        pagination->setText(QString::number(i + 1) + " / " + QString::number(truc.count()));
+        pagination->move(ui->stackedWidget->currentWidget()->geometry().right() - 50, ui->stackedWidget->currentWidget()->geometry().bottom() - 50);
+
+        // Create Text Slot
+        QLabel *labelForDest = new QLabel("Destination : ", newWidget);
+        QLabel *labelForTime = new QLabel("Next train : ", newWidget);
+        QLabel *labelDest = new QLabel(newWidget);
+        QLabel *labelTime = new QLabel(newWidget);
+
+        labelForDest->move(ui->stackedWidget->currentWidget()->geometry().center().rx() - labelDest->geometry().size().width(), ui->stackedWidget->currentWidget()->geometry().center().ry() - 25);
+        labelForTime->move(ui->stackedWidget->currentWidget()->geometry().center().rx() - labelTime->geometry().size().width(), ui->stackedWidget->currentWidget()->geometry().center().ry());
+        labelDest->move(ui->stackedWidget->currentWidget()->geometry().center().rx(), ui->stackedWidget->currentWidget()->geometry().center().ry() - 25);
+        labelTime->move(ui->stackedWidget->currentWidget()->geometry().center().rx(), ui->stackedWidget->currentWidget()->geometry().center().ry());
+
+        labelDest->setText(truc[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationName"].toArray().at(0).toObject().value("value").toString());
+
+        // Calcul prochain train
+        QString str_arrivalTimeUTC = truc[i].toObject()["MonitoredVehicleJourney"].toObject()["MonitoredCall"].toObject()["ExpectedDepartureTime"].toString();
+        QString str_nowUTC = truc[i].toObject()["RecordedAtTime"].toString();
+
+        QDateTime arrivalTimeUTC = QDateTime::fromString(str_arrivalTimeUTC, "yyyy-MM-ddTHH:mm:ss.zzzZ");
+        QDateTime nowUTC = QDateTime::fromString(str_nowUTC, "yyyy-MM-ddTHH:mm:ss.zzzZ");
+        arrivalTimeUTC.setTimeSpec(Qt::UTC);
+        nowUTC.setTimeSpec(Qt::UTC);
+        qint64 remainingTime = nowUTC.secsTo(arrivalTimeUTC);
+
+        labelTime->setText(QDateTime::fromTime_t(remainingTime).toUTC().toString("mm") + " min");
+        newWidget->show();
+
+//        qDebug() << "PRINCIPAL " << truc[i].toObject() << endl;
+
+//        qDebug() << "111" << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationName"].toArray().at(0).toObject().value("value").toString() << endl;
+//        qDebug() << "222 " << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationRef"] << endl;
+//        qDebug() << "333 " << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["LineRef"] << endl;
+//        qDebug() << "444 " << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["MonitoredCall"] << endl;
+//        qDebug() << "444 " << truc[i].toObject()["RecordedAtTime"].toString() << endl
     }
+
+    qDebug() << "Fini !" << endl;
+
 }
 
 void Main_RATP_Window::PeriJson()
@@ -325,7 +445,13 @@ void Main_RATP_Window::RefJson()
         QString transportmode = referentielStifJson.array().at(i).toObject()["fields"].toObject()["transportmode"].toString();
         int accessibility = referentielStifJson.array().at(i).toObject()["fields"].toObject()["accessibility"].toInt();
 
-        Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i);
+        QList<StopPoint> mySPList;
+        foreach (StopPoint sp, stopPointList) {
+            if (sp.externalcodeLine == codeLine)
+                mySPList.append(sp);
+        }
+
+        Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
 
         if(newTransport.transportMode == Transport::Modes::bus)
         {
@@ -351,5 +477,10 @@ void Main_RATP_Window::RefJson()
     std::sort(busList.begin(), busList.end(), Transport::compareTransports);
     std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
     std::sort(rerList.begin(), rerList.end(), Transport::compareTransports);
+}
+
+void Main_RATP_Window::CleanUniRequestView()
+{
+    qDeleteAll(ui->widgetTimeView->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));
 }
 

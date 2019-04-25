@@ -1,6 +1,6 @@
 #include "transport.h"
 
-Transport::Transport(QString t_externalcode_line, QString t_shortNameLine, QString t_shortGroupOfLines, QString t_networkName, QString t_transportMode, int t_accessibility, int t_myIndex)
+Transport::Transport(QString t_externalcode_line, QString t_shortNameLine, QString t_shortGroupOfLines, QString t_networkName, QString t_transportMode, int t_accessibility, int t_myIndex, QList<StopPoint> t_mySPList)
 {
     codeLine = t_externalcode_line;
     shortNameLine = t_shortNameLine;
@@ -9,6 +9,7 @@ Transport::Transport(QString t_externalcode_line, QString t_shortNameLine, QStri
     transportMode = StringToEnum(t_transportMode);
     accessibility = t_accessibility;
     myIndex = t_myIndex;
+    mySPList = t_mySPList;
 
     if(networkName != "")
     {

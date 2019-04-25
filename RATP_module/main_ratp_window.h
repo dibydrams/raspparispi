@@ -10,6 +10,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QLineEdit>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
@@ -46,12 +47,13 @@ public:
     QList<Transport> metroList;
     QList<Transport> rerList;
 
+    int indexTranspForUniReq;
+    int indexStationForUniReq;
+
     void DoGlobalRequest();
-    void DoUniRequest();
     void PeriJson();
     void RefJson();
     //    void NetworkCleanup();
-    void DoUniRequest(int);
     void DoStationOnlyRequest();
 public slots:
     void replyFinishedGlobal();
@@ -59,6 +61,13 @@ public slots:
     void replyFinishedStation();
     void ShowTransports();
     void ShowTransportStopPoints(int);
+
+    void DoUniRequest();
+
+    void ChangePage();
+    void SetUniTransportIndex(int _codeT);
+    void SetUniStationIndex(int _codeS);
+    void CleanUniRequestView();
 
 private:
     Ui::Main_RATP_Window *ui;
