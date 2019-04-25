@@ -41,7 +41,7 @@ L'exemple permet de d'affiner la recherche avec le nom du **reseau Belib'** sous
 -  **refine.** : Il permet d'affiner la recherche avec une clé et une valeur. *( Voir exemple plus haut )*
 -  **exclude** : Le contraire de *refine*. Vous pouvez exclure des données. 
 -  **sort** : Trier les données par ordre croissant ou décroissant avec un champ.
--  **facet** : Permet d'inclure des résultats dans la recherche. Ex : reseau va afficher un facet_groups avec tous les résultats du réseau ( Bornes de recharge et Belib');
+-  **facet** : Permet d'inclure une recherche supplémentaire avec notre requête. Ex : *reseau* va afficher un facet_groups avec tous les résultats de reseau ( Bornes de recharge et Belib'). Voir plus bas.
 -  **geo.distance** : 
 -  **timezone** : La zone permet d'afficher la date et l'heure dans le bon format. Ex : Europe/Paris
 
