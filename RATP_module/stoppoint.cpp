@@ -9,3 +9,12 @@ StopPoint::StopPoint(QString sp_codeline, QString sp_nomzde, QString sp_monorefz
     coordsZDE = sp_coordszde;
     myIndex = sp_myindex;
 }
+
+bool StopPoint::compareStopPoint(const StopPoint &sp1, const StopPoint &sp2)
+{
+    if(sp1.nomZDE != sp2.nomZDE)
+    {
+        return sp1.nomZDE < sp2.nomZDE;
+    }
+    return 0;
+}

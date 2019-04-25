@@ -4,6 +4,7 @@
 #include "tools.h"
 #include "stoppoint.h"
 #include "unirequest.h"
+#include "main_ratp_window.h"
 #include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
@@ -25,6 +26,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    Main_RATP_Window ratpWindow;
 //    UniRequest *uniReqWindow;
 
 //    QString keyapi = "Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz";

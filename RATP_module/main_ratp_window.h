@@ -3,6 +3,7 @@
 
 #include "stoppoint.h"
 #include "tools.h"
+#include "transport.h"
 #include "unirequest.h"
 
 #include <QDialog>
@@ -30,26 +31,34 @@ public:
     QNetworkAccessManager *manager;
     QNetworkRequest *requestGlobal;
     QNetworkRequest *requestUni;
+    QNetworkRequest *requestStation;
     QNetworkReply *replyGlobal;
     QNetworkReply *replyUni;
+    QNetworkReply *replyStation;
     QByteArray *replydata;
     QJsonArray resultArray;
     QJsonObject rootObject;
     QJsonDocument perimetreStifJson;
+    QJsonDocument referentielStifJson;
     QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
-    static QList<QPointF> StaticpointList;
-    static QList<StopPoint> StaticstopPointList;
+    QList<Transport> busList;
+    QList<Transport> metroList;
+    QList<Transport> rerList;
 
     void DoGlobalRequest();
-    void DoUniRequest(int _index);
-    void ReadSaveStifJson();
+    void DoUniRequest();
+    void PeriJson();
+    void RefJson();
     //    void NetworkCleanup();
+    void DoUniRequest(int);
+    void DoStationOnlyRequest();
 public slots:
     void replyFinishedGlobal();
     void replyFinishedUni();
-    void ShowUni();
-    void GetUniReqIndex(int);
+    void replyFinishedStation();
+    void ShowTransports();
+    void ShowTransportStopPoints(int);
 
 private:
     Ui::Main_RATP_Window *ui;

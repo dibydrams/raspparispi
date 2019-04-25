@@ -30,14 +30,16 @@ SOURCES += \
     tools.cpp \
     stoppoint.cpp \
     unirequest.cpp \
-    main_ratp_window.cpp
+    main_ratp_window.cpp \
+    transport.cpp
 
 HEADERS += \
         mainwindow.h \
     tools.h \
     stoppoint.h \
     unirequest.h \
-    main_ratp_window.h
+    main_ratp_window.h \
+    transport.h
 
 FORMS += \
         mainwindow.ui \

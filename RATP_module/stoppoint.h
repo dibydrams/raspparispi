@@ -17,6 +17,8 @@ public:
     QString idZDE;
     QPointF coordsZDE;
     int myIndex;
+
+    static bool compareStopPoint(const StopPoint &sp1, const StopPoint &sp2);
 };
 
 #endif // STOPPOINT_H

@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ratpWindow.show();
+
 //    Q_INIT_RESOURCE(resources);
 
 

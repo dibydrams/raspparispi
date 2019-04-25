@@ -7,6 +7,8 @@ UniRequest::UniRequest(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->comboFirstChoice->setInsertPolicy(QComboBox::InsertAlphabetically);
+
     ui->radioSortStation->setChecked(true);
 
     connect(ui->pushOK, SIGNAL(clicked()), this, SLOT(SendRequest()));
@@ -60,7 +62,7 @@ void UniRequest::InitLastList(int _index)
             {
                 if (UniStopPointList[_index].nomZDE == point.nomZDE)
                 {
-                    ui->comboLastChoice->addItem(point.externalcodeLine);
+                    ui->comboLastChoice->addItem(point.externalcodeLine.section(":",1,1));
                     IndexTab.append(point.myIndex);
                 }
             }
