@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);  
-    initMap();
     initButtons();
 }
 
@@ -17,18 +16,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-// ##   FONCTION COMMUNE : initMap()  ##
-// Fonction permettant de dessiner la map à l'écran
-// Ne pas effacer - S'assurer que le PATH vers la map concernée est correct.
-
-void MainWindow::initMap()
-{
-    QString fileName = ":/Tmp_Map/maprougemont.png";
-    QPixmap image(fileName);
-    ui->label->setPixmap(image);
-    ui->label->show();
-}
 
 
 // ##   FONCTION COMMUNE : initButtons()  ##

@@ -30,13 +30,15 @@ SOURCES += \
         apievenementsmv.cpp \
         custombutton.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    widgetmap.cpp
 
 HEADERS += \
         Abstract_API.h \
         apievenementsmv.h \
         custombutton.h \
-        mainwindow.h
+        mainwindow.h \
+    widgetmap.h
 
 FORMS += \
         mainwindow.ui

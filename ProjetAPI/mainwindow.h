@@ -19,7 +19,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void initMap();
     void initButtons();
 
 private slots:
