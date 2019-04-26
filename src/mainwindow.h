@@ -5,6 +5,7 @@
 
 #include "custombutton.h"
 #include "apievenementsmv.h"
+#include "pharmapi.h"
 
 
 namespace Ui {
