@@ -52,6 +52,12 @@ void MainWindow::initButtons()
     connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
 
+    ptr = new ApiBornes_Elec;
+    CustomButton *bornesElecBtn = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(bornesElecBtn);
+    connect(bornesElecBtn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
     // TEST DIALOG
     // connect(buttonEv, SIGNAL(clicked)), , SLOT()));
 
