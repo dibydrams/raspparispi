@@ -44,7 +44,6 @@ void MainWindow::initButtons()
     CustomButton *buttonEv = new CustomButton(ptr, this); // 2
     ui->horizontalLayout->addWidget(buttonEv); // 3
     connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
-    ButtonList << buttonEv; // 5
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
 
     // TEST DIALOG

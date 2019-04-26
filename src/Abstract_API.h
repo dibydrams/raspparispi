@@ -34,6 +34,7 @@
 #include <QPixmap>
 #include <QDebug>
 
+class CustomButton;
 
 class Abstract_API : public QObject
 {
@@ -42,20 +43,10 @@ class Abstract_API : public QObject
 public:
     explicit Abstract_API(QObject *parent = nullptr );
 
-    /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
-     * Les longitudes et latitudes doivent IMPERATIVEMENT être exprimées en type Double
-     * L'ID correspond à un numéro associé aux catégories de l'énumération (EVENEMENTS = 0, RATP = 1, TERRASSES = 2, etc.) */
-    struct  GeoObj {
-        double longitude;
-        double latitude;
-        QPixmap pixmap;
-        int id;
-    };
-
     /* Enumération servant d'identification
      * Vous pouvez modifier et/ou rajouter des identifiants si nécessaires, en majuscules
      * Ne pas supprimer d'identifiants utilisés */
-    enum API {
+    enum API_index {
         EVENEMENTS ,
         RATP ,
         TERRASSES ,
@@ -71,7 +62,17 @@ public:
         CRUES,
     };
 
-    // Méthodes virtuelles pures
+    /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
+     * Les longitudes et latitudes doivent IMPERATIVEMENT être exprimées en type Double
+     * L'ID correspond à un numéro associé aux catégories de l'énumération (EVENEMENTS = 0, RATP = 1, TERRASSES = 2, etc.) */
+    struct  GeoObj {
+        double longitude;
+        double latitude;
+        QPixmap pixmap;
+        int id;
+    };
+
+    // Méthodes virtuelles pures + explications
     virtual QPixmap getPixmap() = 0;
     virtual int getId() = 0;
 
@@ -82,6 +83,7 @@ private slots:
     // Aide au déboggage
 public:
     void debug(QList<GeoObj> list);
+    QList <CustomButton *> ButtonList;
 
     // Signal de fin de process des data
 signals:

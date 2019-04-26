@@ -11,4 +11,7 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     setIconSize(QSize(80,80));
     resize(80,80);
 
+
+    // Ajout dynamique des boutons à la liste de boutons
+    ptr->ButtonList << this;
 }

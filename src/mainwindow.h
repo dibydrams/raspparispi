@@ -26,7 +26,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QList <CustomButton *> ButtonList;
 };
 
 #endif // MAINWINDOW_H
