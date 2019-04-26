@@ -17,11 +17,11 @@ public:
 //    static QIcon showIcon3(const QString img, int nb);
 //    static QPixmap showIcon4(const QString img, int nb);
 //    static QPixmap showIcon5(const QString img, int nb);
-    static QPixmap iconNormalState(const QString img);
-    static QPixmap iconPushState(const QString img);
-    static QPixmap iconActiveState(const QString img);
-    static QPixmap iconActiveState2(const QString img);
-    static QPixmap iconPushState2(const QString img);
+    static QPixmap iconNormalState(QPixmap img);
+    static QPixmap iconPushState(QString img);
+    static QPixmap iconActiveState(QString img);
+    static QPixmap iconActiveState2(QString img);
+    static QPixmap iconPushState2(QString img);
 private:
 };
 

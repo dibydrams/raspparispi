@@ -10,7 +10,7 @@ Icon::Icon()
 /// \param nb
 /// \return
 ///
-QPixmap Icon::iconNormalState(const QString img)
+QPixmap Icon::iconNormalState(QPixmap img)
 {
     QColor color(195, 196, 194);
     QColor color2(56, 84, 5);
@@ -38,7 +38,7 @@ QPixmap Icon::iconNormalState(const QString img)
 }
 
 
-QPixmap Icon::iconActiveState(const QString img)
+QPixmap Icon::iconActiveState(QString img)
 {
     QColor color(195, 196, 194);
     QColor color2(56, 84, 5);
@@ -66,7 +66,7 @@ QPixmap Icon::iconActiveState(const QString img)
 }
 
 
-QPixmap Icon::iconActiveState2(const QString img)
+QPixmap Icon::iconActiveState2(QString img)
 {
     QColor color(255, 255, 255);
     QColor color2(56, 84, 5);
@@ -98,7 +98,7 @@ QPixmap Icon::iconActiveState2(const QString img)
 
 
 
-QPixmap Icon::iconPushState(const QString img)
+QPixmap Icon::iconPushState(QString img)
 {
     QColor color(89, 132, 9);
     QColor color2(56, 84, 5);
@@ -129,7 +129,7 @@ QPixmap Icon::iconPushState(const QString img)
 }
 
 
-QPixmap Icon::iconPushState2(const QString img)
+QPixmap Icon::iconPushState2(QString img)
 {
     QColor color(89, 132, 9);
     QColor color2(56, 84, 5);
