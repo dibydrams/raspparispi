@@ -5,6 +5,7 @@
 #include <QPixmap>
 
 #include "apievenementsmv.h"
+#include "icon.h"
 
 class CustomButton : public QPushButton
 {
