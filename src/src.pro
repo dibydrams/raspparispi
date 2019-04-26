@@ -27,6 +27,7 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
+    apibornes_elec.cpp \
         apievenementsmv.cpp \
         custombutton.cpp \
         icon.cpp \
@@ -42,6 +43,7 @@ SOURCES += \
 
 HEADERS += \
         Abstract_API.h \
+    apibornes_elec.h \
         apievenementsmv.h \
         custombutton.h \
         icon.h \
