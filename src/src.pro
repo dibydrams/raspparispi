@@ -29,18 +29,21 @@ SOURCES += \
         Abstract_API.cpp \
         apievenementsmv.cpp \
         custombutton.cpp \
+        icon.cpp \
         main.cpp \
         mainwindow.cpp \
-    pharmapi.cpp \
-    widgetmap.cpp
+        pharmapi.cpp \
+        widgetmap.cpp
+
 
 HEADERS += \
         Abstract_API.h \
         apievenementsmv.h \
         custombutton.h \
+        icon.h \
         mainwindow.h \
-    pharmapi.h \
-    widgetmap.h
+        pharmapi.h \
+        widgetmap.h
 
 FORMS += \
         mainwindow.ui
