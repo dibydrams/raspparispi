@@ -26,21 +26,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    APIBornesElec.cpp \
         Abstract_API.cpp \
+    api_bornes_elec.cpp \
         apievenementsmv.cpp \
+    bornes_dialog.cpp \
+    borneselec.cpp \
         custombutton.cpp \
+    icon.cpp \
         main.cpp \
         mainwindow.cpp \
-    widgetmap.cpp
+        widgetmap.cpp \
+
 
 HEADERS += \
         Abstract_API.h \
+        api_bornes_elec.h \
+        apiborneselec.h \
         apievenementsmv.h \
+        bornes_dialog.h \
+        borneselec.h \
         custombutton.h \
+        icon.h \
         mainwindow.h \
-    widgetmap.h
+        widgetmap.h
 
 FORMS += \
+        dialog.ui \
         mainwindow.ui
 
 # Default rules for deployment.
