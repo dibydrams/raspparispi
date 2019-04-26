@@ -26,22 +26,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        Abstract_API.cpp \
-        apievenementsmv.cpp \
-        custombutton.cpp \
-        main.cpp \
-        mainwindow.cpp \
-    widgetmap.cpp
+	Abstract_API.cpp \
+	apievenementsmv.cpp \
+	custombutton.cpp \
+	main.cpp \
+	mainwindow.cpp \
+    widgetmap.cpp \
+    stoppoint.cpp \
+    transport.cpp \
+    apiratp_station.cpp \
+    uiratp.cpp
 
 HEADERS += \
-        Abstract_API.h \
-        apievenementsmv.h \
-        custombutton.h \
-        mainwindow.h \
-    widgetmap.h
+	Abstract_API.h \
+	apievenementsmv.h \
+	custombutton.h \
+	mainwindow.h \
+    widgetmap.h \
+    stoppoint.h \
+    transport.h \
+    apiratp_station.h \
+    uiratp.h
 
 FORMS += \
-        mainwindow.ui
+	mainwindow.ui \
+    uiratp.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
