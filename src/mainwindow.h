@@ -5,6 +5,7 @@
 
 #include "custombutton.h"
 #include "apievenementsmv.h"
+#include "pharmapi.h"
 
 
 namespace Ui {
@@ -26,7 +27,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QList <CustomButton *> ButtonList;
 };
 
 #endif // MAINWINDOW_H

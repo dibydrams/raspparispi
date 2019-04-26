@@ -4,5 +4,6 @@
         <file>Tmp_Map/maprougemont.png</file>
         <file>Datas/perimetre-tr-plateforme-stif.json</file>
         <file>Datas/referentiel-des-lignes-stif.json</file>
+        <file>Icons/pharmicon.png</file>
     </qresource>
 </RCC>

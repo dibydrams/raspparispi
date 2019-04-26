@@ -26,27 +26,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-	Abstract_API.cpp \
-	apievenementsmv.cpp \
-	custombutton.cpp \
-	main.cpp \
-	mainwindow.cpp \
-    widgetmap.cpp \
-    stoppoint.cpp \
-    transport.cpp \
-    apiratp_station.cpp \
-    uiratp.cpp
+        Abstract_API.cpp \
+        apievenementsmv.cpp \
+        custombutton.cpp \
+        icon.cpp \
+        main.cpp \
+        mainwindow.cpp \
+        pharmapi.cpp \
+        widgetmap.cpp \
+    	stoppoint.cpp \
+    	transport.cpp \
+    	apiratp_station.cpp \
+    	uiratp.cpp
+
 
 HEADERS += \
-	Abstract_API.h \
-	apievenementsmv.h \
-	custombutton.h \
-	mainwindow.h \
-    widgetmap.h \
-    stoppoint.h \
-    transport.h \
-    apiratp_station.h \
-    uiratp.h
+        Abstract_API.h \
+        apievenementsmv.h \
+        custombutton.h \
+        icon.h \
+        mainwindow.h \
+        pharmapi.h \
+        widgetmap.h \
+    	stoppoint.h \
+    	transport.h \
+    	apiratp_station.h \
+    	uiratp.h
 
 FORMS += \
 	mainwindow.ui \
