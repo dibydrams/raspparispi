@@ -4,7 +4,6 @@
 #include "stoppoint.h"
 #include "tools.h"
 #include "transport.h"
-#include "unirequest.h"
 
 #include <QDialog>
 #include <QJsonArray>
@@ -25,8 +24,6 @@ class Main_RATP_Window : public QDialog
 public:
     explicit Main_RATP_Window(QWidget *parent = nullptr);
     ~Main_RATP_Window();
-
-    UniRequest *uniReqWindow;
 
     QString keyapi = "Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz";
     QNetworkAccessManager *manager;

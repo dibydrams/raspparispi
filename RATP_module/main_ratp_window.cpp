@@ -14,16 +14,11 @@ Main_RATP_Window::Main_RATP_Window(QWidget *parent) :
     /*
      * A faire
      *
-     * 1) Créer une classe Transport qui faire des objets avec RefJSON
-     * Utiliser les noms communs pour l'affichage (plus de CODE !!!!!)
-     *
      *
      * Faire une recherche des gares proches GPS, faire la requete JustGare
-     * pour avoir un affichage simple sur une premiere page
+     * Afficher une page par transport pour la gare concernée
      *
      *
-     * En fonction de la check box, afficher les transports
-     * En fonction du transport choisi, afficher les gares
      * En fonction de la gare, faire la requete et afficher les prochains trains
      *
      *
@@ -192,7 +187,7 @@ void Main_RATP_Window::DoUniRequest()
         encodedIdZde = QUrl::toPercentEncoding(rerList[indexTranspForUniReq].mySPList[indexStationForUniReq].idZDE.replace(0,1,"s"));
     }
 
-    qDebug() << encodedIdZde << encodedCodeline;
+//    qDebug() << encodedIdZde << encodedCodeline;
 
     requestUni->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-vianavigo/departures?line_id="+encodedCodeline+"&stop_point_id="+encodedIdZde));
 
@@ -280,28 +275,37 @@ void Main_RATP_Window::replyFinishedUni()
 
     QJsonArray arrayDoc = doc.array();
 
-    int span = 20;
+    int span = 40;
 
+    ui->widgetTimeView->hide();
     for (int i = 0; i < arrayDoc.count(); i++)
     {
-        ui->widgetTimeView->hide();
+
+        /*
+         * TODO
+         *
+         * Faire une view Scrollable
+         *
+         */
+
+
         // Create Text Slot
         QLabel *labelForDest = new QLabel("Destination : ", ui->widgetTimeView);
         QLabel *labelForTime = new QLabel("Next train : ", ui->widgetTimeView);
         QLabel *labelDest = new QLabel(ui->widgetTimeView);
         QLabel *labelTime = new QLabel(ui->widgetTimeView);
 
-        labelForDest->move(ui->widgetTimeView->geometry().left() + labelDest->geometry().size().width(), ui->widgetTimeView->geometry().center().ry() - (span * i));
-        labelForTime->move(ui->widgetTimeView->geometry().center().rx() - labelTime->geometry().size().width(), ui->widgetTimeView->geometry().center().ry());
-        labelDest->move(ui->widgetTimeView->geometry().center().rx(), ui->widgetTimeView->geometry().center().ry() - (span * i));
-        labelTime->move(ui->widgetTimeView->geometry().center().rx(), ui->widgetTimeView->geometry().center().ry());
+        labelForDest->move(ui->widgetTimeView->geometry().left() + span, 0 + (span * i));
+        labelForTime->move(ui->widgetTimeView->geometry().left() + span, 15 + (span * i));
+        labelDest->move(ui->widgetTimeView->geometry().left() + labelForDest->geometry().width() + span, 0 + (span * i));
+        labelTime->move(ui->widgetTimeView->geometry().left() + labelForTime->geometry().width() + span, 15 + (span * i));
 
         labelDest->setText(arrayDoc[i].toObject().value("lineDirection").toString());
 
-        qDebug() << "Code" << arrayDoc[i].toObject().value("code").toString();
-        qDebug() << "Line Direction" << arrayDoc[i].toObject().value("lineDirection").toString();
-        qDebug() << "Sens" << arrayDoc[i].toObject().value("sens").toString();
-        qDebug() << "Short Name" << arrayDoc[i].toObject().value("shortName").toString();
+//        qDebug() << "Code" << arrayDoc[i].toObject().value("code").toString();
+//        qDebug() << "Line Direction" << arrayDoc[i].toObject().value("lineDirection").toString();
+//        qDebug() << "Sens" << arrayDoc[i].toObject().value("sens").toString();
+//        qDebug() << "Short Name" << arrayDoc[i].toObject().value("shortName").toString();
 
         if (arrayDoc[i].toObject().value("time").toString() == "")
         {
@@ -314,8 +318,8 @@ void Main_RATP_Window::replyFinishedUni()
             labelTime->setText(arrayDoc[i].toObject().value("time").toString());
         }
 
-        ui->widgetTimeView->show();
     }
+    ui->widgetTimeView->show();
 }
 
 void Main_RATP_Window::replyFinishedStation()
@@ -326,11 +330,12 @@ void Main_RATP_Window::replyFinishedStation()
     QJsonValue Siri = rootObject.value("Siri");
 
 
-    // Object from Service Delivery
-    QJsonArray SDObj = Siri.toObject()["ServiceDelivery"].toObject()["StopMonitoringDelivery"].toArray();
-    QJsonArray truc = SDObj[0].toObject()["MonitoredStopVisit"].toArray();
+    // Object from Stop Monitoring Delivery
+    QJsonArray SMDarray = Siri.toObject()["ServiceDelivery"].toObject()["StopMonitoringDelivery"].toArray();
+    // Object from Monitored Stop Visit
+    QJsonArray MSVarray = SMDarray[0].toObject()["MonitoredStopVisit"].toArray();
 
-    for (int i = 0; i < truc.count(); ++i)
+    for (int i = 0; i < MSVarray.count(); ++i)
     {
         /*
          * foreach widget in stackedwidget
@@ -344,37 +349,58 @@ void Main_RATP_Window::replyFinishedStation()
          *      at good pos
          */
 
+        bool isWidgetCreated = false;
+        int widgetIndex = i;
+        int span = 40;
+        QString lineName = MSVarray[i].toObject()["MonitoredVehicleJourney"].toObject()["LineRef"].toObject().value("value").toString();
 
+        for (int id = 0; id < ui->stackedWidget->count(); ++id) {
+            if (ui->stackedWidget->children().at(id)->objectName().contains(lineName))
+            {
+                isWidgetCreated = true;
+                widgetIndex = id;
+                qDebug() << "Count " << ui->stackedWidget->count() << "Index of Widg" << widgetIndex << "is Created ?" << isWidgetCreated;
+                break;
+            }
+        }
 
+        if (!isWidgetCreated)
+        {
+            // Create new Widget in StackedWidget
+            QWidget *newWidget = new QWidget(ui->stackedWidget);
+            newWidget->setObjectName("page_" + lineName);
+            qDebug() << "Widget Name" << newWidget->objectName() << endl;
+            ui->stackedWidget->addWidget(newWidget);
 
+            widgetIndex = ui->stackedWidget->indexOf(newWidget);
 
-        // Create new Widget in StackedWidget
-        QWidget *newWidget = new QWidget(ui->stackedWidget);
-        newWidget->setObjectName("page_" + QString::number(i));
-        ui->stackedWidget->addWidget(newWidget);
-        newWidget->hide();
+            // Create Page Follower
+            QLabel *pagination = new QLabel(ui->stackedWidget->widget(widgetIndex));
+            pagination->setText(QString::number(widgetIndex));
+            pagination->move(ui->stackedWidget->geometry().right() - 50, ui->stackedWidget->geometry().bottom() - 50);
 
-        // Create Page Follower
-        QLabel *pagination = new QLabel(newWidget);
-        pagination->setText(QString::number(i + 1) + " / " + QString::number(truc.count()));
-        pagination->move(ui->stackedWidget->currentWidget()->geometry().right() - 50, ui->stackedWidget->currentWidget()->geometry().bottom() - 50);
+            QLabel *title = new QLabel (lineName, ui->stackedWidget->widget(widgetIndex));
+            title->move(ui->stackedWidget->widget(widgetIndex)->geometry().center().x(), 0);
+        }
+
+        ui->stackedWidget->widget(widgetIndex)->hide();
 
         // Create Text Slot
-        QLabel *labelForDest = new QLabel("Destination : ", newWidget);
-        QLabel *labelForTime = new QLabel("Next train : ", newWidget);
-        QLabel *labelDest = new QLabel(newWidget);
-        QLabel *labelTime = new QLabel(newWidget);
+        QLabel *labelForDest = new QLabel("Destination : ", ui->stackedWidget->widget(widgetIndex));
+        QLabel *labelForTime = new QLabel("Next train : ", ui->stackedWidget->widget(widgetIndex));
+        QLabel *labelDest = new QLabel(ui->stackedWidget->widget(widgetIndex));
+        QLabel *labelTime = new QLabel(ui->stackedWidget->widget(widgetIndex));
 
-        labelForDest->move(ui->stackedWidget->currentWidget()->geometry().center().rx() - labelDest->geometry().size().width(), ui->stackedWidget->currentWidget()->geometry().center().ry() - 25);
-        labelForTime->move(ui->stackedWidget->currentWidget()->geometry().center().rx() - labelTime->geometry().size().width(), ui->stackedWidget->currentWidget()->geometry().center().ry());
-        labelDest->move(ui->stackedWidget->currentWidget()->geometry().center().rx(), ui->stackedWidget->currentWidget()->geometry().center().ry() - 25);
-        labelTime->move(ui->stackedWidget->currentWidget()->geometry().center().rx(), ui->stackedWidget->currentWidget()->geometry().center().ry());
+        labelForDest->move(ui->stackedWidget->geometry().left() + span, 20 + (span * (ui->stackedWidget->widget(widgetIndex)->children().count() / 4)));
+        labelForTime->move(ui->stackedWidget->geometry().left() + span,  35 + (span * (ui->stackedWidget->widget(widgetIndex)->children().count() / 4)));
+        labelDest->move(ui->stackedWidget->geometry().left() + labelForDest->geometry().width() + span, 20 + (span * (ui->stackedWidget->widget(widgetIndex)->children().count() / 4)));
+        labelTime->move(ui->stackedWidget->geometry().left() + labelForTime->geometry().width() + span, 35 + (span * (ui->stackedWidget->widget(widgetIndex)->children().count() / 4)));
 
-        labelDest->setText(truc[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationName"].toArray().at(0).toObject().value("value").toString());
+        labelDest->setText(MSVarray[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationName"].toArray().at(0).toObject().value("value").toString());
 
         // Calcul prochain train
-        QString str_arrivalTimeUTC = truc[i].toObject()["MonitoredVehicleJourney"].toObject()["MonitoredCall"].toObject()["ExpectedDepartureTime"].toString();
-        QString str_nowUTC = truc[i].toObject()["RecordedAtTime"].toString();
+        QString str_arrivalTimeUTC = MSVarray[i].toObject()["MonitoredVehicleJourney"].toObject()["MonitoredCall"].toObject()["ExpectedDepartureTime"].toString();
+        QString str_nowUTC = MSVarray[i].toObject()["RecordedAtTime"].toString();
 
         QDateTime arrivalTimeUTC = QDateTime::fromString(str_arrivalTimeUTC, "yyyy-MM-ddTHH:mm:ss.zzzZ");
         QDateTime nowUTC = QDateTime::fromString(str_nowUTC, "yyyy-MM-ddTHH:mm:ss.zzzZ");
@@ -383,17 +409,17 @@ void Main_RATP_Window::replyFinishedStation()
         qint64 remainingTime = nowUTC.secsTo(arrivalTimeUTC);
 
         labelTime->setText(QDateTime::fromTime_t(remainingTime).toUTC().toString("mm") + " min");
-        newWidget->show();
+
+        ui->stackedWidget->widget(widgetIndex)->show();
 
 //        qDebug() << "PRINCIPAL " << truc[i].toObject() << endl;
 
 //        qDebug() << "111" << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationName"].toArray().at(0).toObject().value("value").toString() << endl;
 //        qDebug() << "222 " << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationRef"] << endl;
-//        qDebug() << "333 " << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["LineRef"] << endl;
-//        qDebug() << "444 " << truc[i].toObject()["MonitoredVehicleJourney"].toObject()["MonitoredCall"] << endl;
+//        qDebug() << "333 " << MSVarray[i].toObject()["MonitoredVehicleJourney"].toObject()["LineRef"].toObject().value("value").toString() << endl;
+//        qDebug() << "444 " << MSVarray[i].toObject()["MonitoredVehicleJourney"] << endl;
 //        qDebug() << "444 " << truc[i].toObject()["RecordedAtTime"].toString() << endl
     }
-
     qDebug() << "Fini !" << endl;
 
 }
@@ -438,13 +464,20 @@ void Main_RATP_Window::RefJson()
 {
     for (int i = 0; i < referentielStifJson.array().count(); ++i)
     {
+        // externalcode_line = ID du Bus/Train/RER
         QString codeLine = referentielStifJson.array().at(i).toObject()["fields"].toObject()["externalcode_line"].toString();
+        // shortname_line = Nom commun
         QString shortnameLine = referentielStifJson.array().at(i).toObject()["fields"].toObject()["shortname_line"].toString();
+        // shortname_groupoflines = Nom des principales destinations
         QString shortnameGroupoflines = referentielStifJson.array().at(i).toObject()["fields"].toObject()["shortname_groupoflines"].toString();
+        // networkname = Nom du Réseau référent
         QString networkname = referentielStifJson.array().at(i).toObject()["fields"].toObject()["networkname"].toString();
+        // transportmode = Catégorie du transport
         QString transportmode = referentielStifJson.array().at(i).toObject()["fields"].toObject()["transportmode"].toString();
+        // accessibility = Accessible aux personnes en situation d'handicap ?
         int accessibility = referentielStifJson.array().at(i).toObject()["fields"].toObject()["accessibility"].toInt();
 
+        // Liste des Arrêts du transport
         QList<StopPoint> mySPList;
         foreach (StopPoint sp, stopPointList) {
             if (sp.externalcodeLine == codeLine)
@@ -481,6 +514,9 @@ void Main_RATP_Window::RefJson()
 
 void Main_RATP_Window::CleanUniRequestView()
 {
-    qDeleteAll(ui->widgetTimeView->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));
+    if (ui->widgetTimeView->findChildren<QWidget *>("", Qt::FindDirectChildrenOnly).count() > 0)
+    {
+        qDeleteAll(ui->widgetTimeView->findChildren<QWidget *>("", Qt::FindDirectChildrenOnly));
+    }
 }
 

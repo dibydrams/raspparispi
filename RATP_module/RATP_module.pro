@@ -29,7 +29,6 @@ SOURCES += \
         mainwindow.cpp \
     tools.cpp \
     stoppoint.cpp \
-    unirequest.cpp \
     main_ratp_window.cpp \
     transport.cpp
 
@@ -37,13 +36,11 @@ HEADERS += \
         mainwindow.h \
     tools.h \
     stoppoint.h \
-    unirequest.h \
     main_ratp_window.h \
     transport.h
 
 FORMS += \
         mainwindow.ui \
-    unirequest.ui \
     main_ratp_window.ui
 
 # Default rules for deployment.
