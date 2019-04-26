@@ -1,5 +1,5 @@
 # RaspParisPi
-<center><img title="Logo RaspParisPi" alt="Logo RaspParisPi" src="https://github.com/dibydrams/raspparispi/blob/master/RaspParisPi_logo.svg" width="300px"></center>
+<img title="Logo RaspParisPi" alt="Logo RaspParisPi" src="https://github.com/dibydrams/raspparispi/blob/master/RaspParisPi_logo.svg" width="300px">
 
 ## Introduction
 RaspParisPi est un projet initié par les stagiaires de la formation C/C++ Linux embarqué d'AJC. Le but du projet est de crée un logiciel QT qui équipe des Raspberry pour affiché sur des bornes toutes les informations utiles pour un quartier défini.
