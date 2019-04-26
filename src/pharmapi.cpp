@@ -59,5 +59,5 @@ void pharmapi::getInfo()
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
 QPixmap pharmapi::getPixmap()
 {
-    return QPixmap(":/Icons/iconevents.png"); // icône PNG préférable
+    return QPixmap(":/Icons/pharmicon.png"); // icône PNG préférable
 }
