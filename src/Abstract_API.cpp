@@ -7,7 +7,7 @@ Abstract_API::Abstract_API(QObject *parent) : QObject(parent)
 }
 
 
-// Aide au Debug, si nécessaire. Cette fonction peut être customisée à souhait si besoin
+// Aide au Debug, si nécessaire. Cette fonction peut être customisée
 void Abstract_API::debug(QList <GeoObj> list)
 {
     for (auto i : list) {
