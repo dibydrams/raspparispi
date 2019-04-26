@@ -46,6 +46,12 @@ void MainWindow::initButtons()
     connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
 
+    ptr = new pharmapi; // 1
+    CustomButton *pharmButton = new CustomButton(ptr, this); // 2
+    ui->horizontalLayout->addWidget(pharmButton); // 3
+    connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
+
     // TEST DIALOG
     // connect(buttonEv, SIGNAL(clicked)), , SLOT()));
 

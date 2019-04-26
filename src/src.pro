@@ -32,7 +32,8 @@ SOURCES += \
         icon.cpp \
         main.cpp \
         mainwindow.cpp \
-        widgetmap.cpp \
+        pharmapi.cpp \
+        widgetmap.cpp
 
 
 HEADERS += \
@@ -41,6 +42,7 @@ HEADERS += \
         custombutton.h \
         icon.h \
         mainwindow.h \
+        pharmapi.h \
         widgetmap.h
 
 FORMS += \
