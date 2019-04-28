@@ -15,10 +15,8 @@ public:
     explicit CustomButton(Abstract_API *ptr,QWidget *parent = nullptr);
     Abstract_API *ptrAPI;
     int buttonID;
-
 private:
     QPixmap icon;
-
 };
 
 #endif // CUSTOMBUTTON_H

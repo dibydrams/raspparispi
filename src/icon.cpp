@@ -5,45 +5,65 @@ Icon::Icon()
 }
 
 ///
+/// Button Normal in Off State
 /// \brief Icon::iconNormalState
-/// \param img
-/// \param nb
-/// \return
+/// \param QPixmap img
+/// \return Pixmap
 ///
-QPixmap Icon::iconNormalState(QPixmap img)
+QPixmap Icon::iconNormalOff(QPixmap img)
 {
-    QColor color(195, 196, 194);
-    QColor color2(56, 84, 5);
-    // QSize 64
+
+    ///
+    /// \brief bgcolor shcolor
+    /// Background color Gray
+    /// Outline color Gray
+    ///
+    QColor outcolor(188, 188, 188);
+
     QSize pixSize(ICON_SIZE, ICON_SIZE);
+
+    // QPixmap background with transparant background and Pen around
 
     QPixmap img2(img);
 
     QPixmap bigPixmap = img2.scaled(pixSize, Qt::KeepAspectRatio, Qt::FastTransformation);
+    bigPixmap.fill(Qt::transparent);
 
     QPainter painter(&bigPixmap);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setCompositionMode(QPainter::CompositionMode_Source);
-    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
-    QPen pen(QColor(188, 188, 188), 8, Qt::SolidLine);
+    QPen pen(QColor(outcolor), 8, Qt::SolidLine);
     painter.setPen(pen);
     painter.drawRoundedRect(QRectF(0,0,ICON_SIZE, ICON_SIZE), 5, 5);
 
+    // Icon in the center resized to be smaller
+
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    painter.setBrush(QBrush(color2));
-    painter.setPen(color2);
     painter.drawPixmap(QPointF(ICON_SIZE / 6, ICON_SIZE / 6), img2.scaled(pixSize * 0.7, Qt::KeepAspectRatio, Qt::FastTransformation));
 
     return bigPixmap;
 }
 
 
-QPixmap Icon::iconActiveState(QString img)
+/// Button Normal in On State
+/// \brief Icon::iconActiveState2
+/// \param Qpixmap img
+/// \return Qpixmap
+///
+QPixmap Icon::iconNormalOn(QPixmap img)
 {
-    QColor color(195, 196, 194);
-    QColor color2(56, 84, 5);
-    // QSize 64
+
+    ///
+    /// \brief bgcolor shcolor
+    /// Background color White
+    /// Outline color Green
+    ///
+    QColor bgcolor(255, 255, 255);
+    QColor outcolor(126, 170, 44);
+
     QSize pixSize(ICON_SIZE, ICON_SIZE);
+
+    // QPixmap background with brush and Pen around
 
     QPixmap img2(img);
 
@@ -52,45 +72,14 @@ QPixmap Icon::iconActiveState(QString img)
     QPainter painter(&bigPixmap);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setCompositionMode(QPainter::CompositionMode_Source);
-    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
-    QPen pen(QColor(126, 170, 44), 8, Qt::SolidLine);
+    painter.setBrush(QBrush(QColor(bgcolor), Qt::SolidPattern));
+    QPen pen(QColor(outcolor), 16, Qt::SolidLine);
     painter.setPen(pen);
     painter.drawRoundedRect(QRectF(0,0,ICON_SIZE, ICON_SIZE), 5, 5);
 
-    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    painter.setBrush(QBrush(color2));
-    painter.setPen(color2);
-    painter.drawPixmap(QPointF(ICON_SIZE / 6, ICON_SIZE / 6), img2.scaled(pixSize * 0.7, Qt::KeepAspectRatio, Qt::FastTransformation));
-
-    return bigPixmap;
-}
-
-
-QPixmap Icon::iconActiveState2(QString img)
-{
-    QColor color(255, 255, 255);
-    QColor color2(56, 84, 5);
-    // QSize 64
-    QSize pixSize(ICON_SIZE, ICON_SIZE);
-
-    // QSize 32
-//    QSize pixSize2(ICON_SIZE_2, ICON_SIZE_2);
-
-    QPixmap img2(img);
-
-    QPixmap bigPixmap = img2.scaled(pixSize, Qt::KeepAspectRatio, Qt::FastTransformation);
-
-    QPainter painter(&bigPixmap);
-    painter.setRenderHint(QPainter::Antialiasing);
-    painter.setCompositionMode(QPainter::CompositionMode_Source);
-    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
-    QPen pen(QColor(126, 170, 44), 16, Qt::SolidLine);
-    painter.setPen(pen);
-    painter.drawRoundedRect(QRectF(0,0,ICON_SIZE, ICON_SIZE), 5, 5);
+    // Icon in the center resized to be smaller
 
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    painter.setBrush(QBrush(color2));
-    painter.setPen(color2);
     painter.drawPixmap(QPointF(ICON_SIZE / 4, ICON_SIZE / 4), img2.scaled(pixSize * 0.5, Qt::KeepAspectRatio, Qt::FastTransformation));
 
     return bigPixmap;
@@ -98,15 +87,54 @@ QPixmap Icon::iconActiveState2(QString img)
 
 
 
-QPixmap Icon::iconPushState(QString img)
+///
+///  Original iconNormalOff with background
+/// \brief Icon::test
+/// \param img
+/// \return QPixmap
+///
+QPixmap Icon::iconNormalOff2(QPixmap img)
 {
-    QColor color(89, 132, 9);
-    QColor color2(56, 84, 5);
-    // QSize 64
+
+    ///
+    /// \brief bgcolor shcolor
+    /// Background color Gray
+    /// Outline color Gray
+    ///
+    QColor bgcolor(195, 196, 194);
+    QColor outcolor(188, 188, 188);
+
     QSize pixSize(ICON_SIZE, ICON_SIZE);
 
-    // QSize 32
-//    QSize pixSize2(ICON_SIZE_2, ICON_SIZE_2);
+    // QPixmap background with brush and Pen around
+
+    QPixmap img2(img);
+
+    QPixmap bigPixmap = img2.scaled(pixSize, Qt::KeepAspectRatio, Qt::FastTransformation);
+    QPainter painter(&bigPixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.setBrush(QBrush(QColor(bgcolor), Qt::SolidPattern));
+    QPen pen(QColor(outcolor), 8, Qt::SolidLine);
+    painter.setPen(pen);
+    painter.drawRoundedRect(QRectF(0,0,ICON_SIZE, ICON_SIZE), 5, 5);
+
+    // Icon in the center resized to be smaller
+
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.drawPixmap(QPointF(ICON_SIZE / 6, ICON_SIZE / 6), img2.scaled(pixSize * 0.7, Qt::KeepAspectRatio, Qt::FastTransformation));
+
+    return bigPixmap;
+}
+
+
+
+QPixmap Icon::iconNormalState2(QPixmap img)
+{
+    QColor color(195, 196, 194);
+    QColor color2(56, 84, 5);
+
+    QSize pixSize(ICON_SIZE, ICON_SIZE);
 
     QPixmap img2(img);
 
@@ -129,7 +157,36 @@ QPixmap Icon::iconPushState(QString img)
 }
 
 
-QPixmap Icon::iconPushState2(QString img)
+
+QPixmap Icon::iconPushState(QPixmap img)
+{
+    QColor color(89, 132, 9);
+    QColor color2(56, 84, 5);
+
+    QSize pixSize(ICON_SIZE, ICON_SIZE);
+
+    QPixmap img2(img);
+
+    QPixmap bigPixmap = img2.scaled(pixSize, Qt::KeepAspectRatio, Qt::FastTransformation);
+
+    QPainter painter(&bigPixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
+    QPen pen(QColor(126, 170, 44), 8, Qt::SolidLine);
+    painter.setPen(pen);
+    painter.drawRoundedRect(QRectF(0,0,ICON_SIZE, ICON_SIZE), 5, 5);
+
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.setBrush(QBrush(color2));
+    painter.setPen(color2);
+    painter.drawPixmap(QPointF(ICON_SIZE / 6, ICON_SIZE / 6), img2.scaled(pixSize * 0.7, Qt::KeepAspectRatio, Qt::FastTransformation));
+
+    return bigPixmap;
+}
+
+
+QPixmap Icon::iconPushState2(QPixmap img)
 {
     QColor color(89, 132, 9);
     QColor color2(56, 84, 5);

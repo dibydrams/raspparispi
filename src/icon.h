@@ -12,16 +12,13 @@ class Icon : public QIcon
 {
 public:
     Icon();
-//    static QIcon showIcon(const QString img, int nb);
-//    static QPixmap showIcon2(const QString img, int nb);
-//    static QIcon showIcon3(const QString img, int nb);
-//    static QPixmap showIcon4(const QString img, int nb);
-//    static QPixmap showIcon5(const QString img, int nb);
-    static QPixmap iconNormalState(QPixmap img);
-    static QPixmap iconPushState(QString img);
-    static QPixmap iconActiveState(QString img);
-    static QPixmap iconActiveState2(QString img);
-    static QPixmap iconPushState2(QString img);
+    static QPixmap iconNormalOff(QPixmap img);
+    static QPixmap iconNormalOn(QPixmap img);
+    static QPixmap iconNormalOff2(QPixmap img);
+    // Test functions under
+    static QPixmap iconPushState(QPixmap img);
+    static QPixmap iconNormalState2(QPixmap img);
+    static QPixmap iconPushState2(QPixmap img);
 private:
 };
 
