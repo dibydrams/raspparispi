@@ -58,6 +58,12 @@ void MainWindow::initButtons()
     connect(bornesElecBtn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+    ptr = new ApiQueFaire;
+    CustomButton *QueFaire_btn = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(QueFaire_btn);
+    connect(QueFaire_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
     // TEST DIALOG
     // connect(buttonEv, SIGNAL(clicked)), , SLOT()));
 

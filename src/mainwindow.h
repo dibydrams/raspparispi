@@ -7,6 +7,7 @@
 #include "apievenementsmv.h"
 #include "pharmapi.h"
 #include "apibornes_elec.h"
+#include "apiquefaire.h"
 
 
 namespace Ui {
