@@ -14,8 +14,7 @@ QPixmap Icon::iconNormalOff(QPixmap img)
 {
 
     ///
-    /// \brief bgcolor shcolor
-    /// Background color Gray
+    /// \brief Outline
     /// Outline color Gray
     ///
     QColor outcolor(188, 188, 188);

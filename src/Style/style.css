@@ -1,0 +1,30 @@
+QPushButton:hover
+{
+        background-color:rgb(237, 237, 237);
+        border:none;
+}
+
+/**
+
+Delete the gradiant default style on QPushButton with background-color and border properties set
+
+QPushButton:hover
+{
+        background-color:rgb(237, 237, 237);
+        border:red;
+}
+
+QPushButton
+{
+        background-color:rgb(255, 255, 255);
+        border:none;
+}
+
+
+QPushButton:hover
+{
+        background:rgb(237, 237, 237);
+        border: 5px solid rgb(126, 170, 44);
+}
+
+**/

@@ -6,5 +6,7 @@
         <file>Datas/referentiel-des-lignes-stif.json</file>
         <file>Icons/pharmicon.png</file>
         <file>Icons/iconeleccar.png</file>
+        <file>Icons/icongroup.png</file>
+        <file>Style/style.css</file>
     </qresource>
 </RCC>
