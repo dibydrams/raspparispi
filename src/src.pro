@@ -29,6 +29,7 @@ SOURCES += \
         Abstract_API.cpp \
     apibornes_elec.cpp \
         apievenementsmv.cpp \
+    apiquefaire.cpp \
         custombutton.cpp \
         icon.cpp \
         main.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
         Abstract_API.h \
     apibornes_elec.h \
         apievenementsmv.h \
+    apiquefaire.h \
         custombutton.h \
         icon.h \
         mainwindow.h \
