@@ -12,5 +12,6 @@
         <file>Icons/point_interet.png</file>
         <file>Icons/iconStation.png</file>
 	<file>Icons/iconSearch.png</file>
+	<file>Icons/toilettes.png</file>
     </qresource>
 </RCC>
