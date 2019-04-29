@@ -34,7 +34,7 @@ private:
     QString adresse;
 
     signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_Index);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index index);
 
 
 

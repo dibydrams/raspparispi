@@ -39,6 +39,7 @@ SOURCES += \
     pollution.cpp \
     prevision.cpp \
     apiquefaire.cpp \
+    apikiosques.cpp\
         custombutton.cpp \
         icon.cpp \
         main.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     apiquefaire.h \
     apiratp_station.h \
         custombutton.h \
+    apikiosques.h \
     dialogmeteo.h \
     icon.h \
     indiceuv.h \
