@@ -201,9 +201,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
             qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
 
-           // if( m_listePI.at(i).pixmap.isNull() )
-                p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
-           // else p.drawPixmap(resultatPixelPointX,resultatPixelPointY,m_listePI.at(i).pixmap);
+            if( m_listePI.at(i).pixmap.isNull() ) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+            else p.drawPixmap(resultatPixelPointX,resultatPixelPointY,m_listePI.at(i).pixmap);
 
 //            QString affCoord;
 //            affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
