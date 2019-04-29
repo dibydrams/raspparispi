@@ -3,39 +3,51 @@
 
 #include "Abstract_API.h"
 #include "stoppoint.h"
+#include "transport.h"
 #include "uiratp.h"
+#include "widgetmap.h"
 
 #include <QFile>
 #include <QJsonDocument>
+#include <QList>
+#include <QObject>
 
 
 
 class ApiRatp_Global : public Abstract_API
 {
+    Q_OBJECT
+
 public:
     ApiRatp_Global();
     int getId() override;
     QPixmap getPixmap() override;
 
     Uiratp *uiratp;
+    WidgetMap widgetmap;
 
     QJsonDocument perimetreStifJson;
-
-    QList<QPointF> pointList;
-    QList<StopPoint> stopPointList;
-
-    void replyFinishedGlobal();
+    QJsonDocument referentielStifJson;
 
     QList<GeoObj> geoList;
+    QList<QPointF> pointList;
+    QList<StopPoint> stopPointList;
+    QList<Transport> busList;
+    QList<Transport> metroList;
+    QList<Transport> rerList;
 
-    void GeoPoints();
+    int indexTranspForUniReq;
+    int indexStationForUniReq;
+
+
+
 private:
-    void DoStationRequest();
+    void GeoPoints();
     void PeriStifJson();
+    void RefStifJson();
 
 private slots:
     void getInfo() override;
-    void replyFinishedStation();
     QJsonDocument LoadJson(QString fileName);
 };
 
