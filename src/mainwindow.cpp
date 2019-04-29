@@ -7,6 +7,7 @@
 #include "apimeteo.h"
 #include "apiterrasses.h"
 #include "apiratp_station.h"
+#include "apiespacesverts.h"
 
 #include <QHBoxLayout>
 
@@ -99,6 +100,14 @@ void MainWindow::initButtons()
     ui->horizontalLayout->addWidget(buttonRatpGlobal);
     connect(buttonRatpGlobal, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+    ptr = new ApiEspacesVerts;
+    CustomButton *buttonEspacesVerts = new CustomButton (ptr, this);
+    ui->horizontalLayout->addWidget(buttonEspacesVerts);
+    connect(buttonEspacesVerts, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+
 }
 
 
