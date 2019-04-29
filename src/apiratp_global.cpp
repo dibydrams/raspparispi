@@ -97,7 +97,7 @@ void ApiRatp_Global::GeoPoints()
           GeoObj geo;
           geo.longitude = point.x();
           geo.latitude = point.y();
-          geo.pixmap = QPixmap(":/icons/iconRatpStationSpot.png");
+          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
           geoList << geo;
         }
     }
