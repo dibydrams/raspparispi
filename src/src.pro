@@ -39,7 +39,8 @@ SOURCES += \
     	stoppoint.cpp \
     	transport.cpp \
     	apiratp_station.cpp \
-    	uiratp.cpp
+    	uiratp.cpp \
+    apiratp_global.cpp
 
 
 HEADERS += \
@@ -55,7 +56,8 @@ HEADERS += \
     	stoppoint.h \
     	transport.h \
     	apiratp_station.h \
-    	uiratp.h
+    	uiratp.h \
+    apiratp_global.h
 
 FORMS += \
 	mainwindow.ui \

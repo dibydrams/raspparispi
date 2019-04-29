@@ -2,8 +2,7 @@
 
 ApiRatp_Station::ApiRatp_Station()
 {
-    perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
-    PeriStifJson();
+
 }
 
 void ApiRatp_Station::DoStationRequest()
@@ -12,7 +11,7 @@ void ApiRatp_Station::DoStationRequest()
     requestStation->setRawHeader(QByteArray("Authorization"), QByteArray("Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz"));
 
     /*
-     *  Get ID (STIF:StopPoint:...) by clicked
+     *  Get ID (STIF:StopPoint:...) by clicked (parameters or for in ratpGlobal.stopPointList);
      */
 
 //    QByteArray encodedCode = QUrl::toPercentEncoding(Get ID);
@@ -28,6 +27,7 @@ void ApiRatp_Station::DoStationRequest()
 void ApiRatp_Station::replyFinishedStation()
 {
 //    qDebug() << replyStation->error();
+
     QJsonDocument doc = QJsonDocument::fromJson(replyStation->readAll());
 
     QJsonValue Siri = doc.object().value("Siri");
@@ -46,34 +46,6 @@ QJsonDocument ApiRatp_Station::LoadJson(QString fileName)
     jsonFile.open(QFile::ReadOnly);
     return QJsonDocument().fromJson(jsonFile.readAll());
 }
-
-void ApiRatp_Station::PeriStifJson()
-{
-    for (int i = 0; i < perimetreStifJson.array().count(); ++i)
-    {
-        // codifligne_line_externalcode = ID du Bus/Train/RER
-        QString externalcodeLine = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["codifligne_line_externalcode"].toString();
-        // reflex_zde_nom = Nom de l'arret,
-        QString nomZDE = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["reflex_zde_nom"].toString();
-        // monitoringref_zde = Stif ID de l'arret,
-        QString monoRefZDE = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["monitoringref_zde"].toString();
-        // gtfs_stop_id = ID de l'arret,
-        QString idZDE = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["gtfs_stop_id"].toString();
-
-
-        // xy = Coordonnées GPS de l'arret
-        double coordX = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(0).toDouble();
-        double coordY = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(1).toDouble();
-        QPointF coordsZDE(coordX,coordY);
-
-        pointList.append(coordsZDE);
-        StopPoint newStopPoint(externalcodeLine, nomZDE, monoRefZDE, idZDE, coordsZDE, i);
-        stopPointList.append(newStopPoint);
-    }
-
-    std::sort(stopPointList.begin(), stopPointList.end(), StopPoint::compareStopPoint);
-}
-
 
 // Mon identifiant au sein de l'enumération (classe mère)
 int ApiRatp_Station::getId()
