@@ -119,15 +119,15 @@ int ApiRatp_Global::getId()
 
 void ApiRatp_Global::getInfo()
 {
-    if (stopPointList.isEmpty())
-    {
-        if (perimetreStifJson.isEmpty())
-        {
-            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
-        }
-        PeriStifJson();
-    }
-    GeoPoints();
+//    if (stopPointList.isEmpty())
+//    {
+//        if (perimetreStifJson.isEmpty())
+//        {
+//            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
+//        }
+//        PeriStifJson();
+//    }
+//    GeoPoints();
 //    if(busList.isEmpty())
 //    {
 //        if (referentielStifJson.isEmpty())
