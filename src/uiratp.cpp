@@ -16,6 +16,8 @@ Uiratp::~Uiratp()
 
 void Uiratp::showFinishedStation(QJsonArray resultArray)
 {
+    show();
+
     for (int i = 0; i < resultArray.count(); ++i)
     {
         /*
