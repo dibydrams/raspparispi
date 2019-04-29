@@ -75,17 +75,19 @@ void ApiRatp_Global::RefStifJson()
         }
         else
         {
-            rerList.append(newTransport);
+            railList.append(newTransport);
         }
     }
 
     std::sort(busList.begin(), busList.end(), Transport::compareTransports);
     std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
-    std::sort(rerList.begin(), rerList.end(), Transport::compareTransports);
+    std::sort(railList.begin(), railList.end(), Transport::compareTransports);
 }
 
 void ApiRatp_Global::GeoPoints()
 {
+    geoList.clear();
+
     foreach(QPointF point, pointList)
     {
 //      compare Point with Map Coordonnates
@@ -95,7 +97,7 @@ void ApiRatp_Global::GeoPoints()
           GeoObj geo;
           geo.longitude = point.x();
           geo.latitude = point.y();
-          geo.pixmap = QPixmap();
+          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
           geoList << geo;
         }
     }
@@ -117,15 +119,15 @@ int ApiRatp_Global::getId()
 
 void ApiRatp_Global::getInfo()
 {
-    if (stopPointList.isEmpty())
-    {
-        if (perimetreStifJson.isEmpty())
-        {
-            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
-        }
-        PeriStifJson();
-    }
-    GeoPoints();
+//    if (stopPointList.isEmpty())
+//    {
+//        if (perimetreStifJson.isEmpty())
+//        {
+//            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
+//        }
+//        PeriStifJson();
+//    }
+//    GeoPoints();
 //    if(busList.isEmpty())
 //    {
 //        if (referentielStifJson.isEmpty())

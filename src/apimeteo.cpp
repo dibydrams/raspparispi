@@ -61,7 +61,6 @@ void ApiMeteo::API_Results(QNetworkReply *)
 void ApiMeteo::getInfo()
 {
     API_Call();
-
 }
 
 

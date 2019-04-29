@@ -67,12 +67,12 @@ void Dialog::setvignette()
 
     QPixmap v1 ,v2,v3,v4,v5,v6;
 
-    v1.load("/home/haissam/Images/vignette/vignette1.png");
-    v2.load("/home/haissam/Images/vignette/vignette2.png");
-    v3.load("/home/haissam/Images/vignette/vignette3.png");
-    v4.load("/home/haissam/Images/vignette/vignette4.png");
-    v5.load("/home/haissam/Images/vignette/vignette5.png");
-    v6.load("/home/haissam/Images/vignette/vignette6.png");
+    v1.load(":/Icons_meteo/vignette1.png");
+    v2.load(":/Icons_meteo/vignette2.png");
+    v3.load(":/Icons_meteo/vignette3.png");
+    v4.load(":/Icons_meteo/vignette4.png");
+    v5.load(":/Icons_meteo/vignette5.png");
+    v6.load(":/Icons_meteo/vignette6.png");
 
 
     if (jours != "sam" | jours != "dim")

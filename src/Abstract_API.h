@@ -61,6 +61,7 @@ public:
         BORNES_WIFI,
         CRUES,
         ANIMATIONS,
+        THEATRE,
     };
 
     /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
@@ -70,6 +71,7 @@ public:
         double longitude;
         double latitude;
         QPixmap pixmap;
+        int id;
     };
 
     // Méthodes virtuelles pures + explications
@@ -82,13 +84,12 @@ private slots:
 
     // Aide au déboggage
 public:
-    void debug(QList<GeoObj> list, API_index id);
+    void debug(QList<GeoObj> list);
     QList <CustomButton *> ButtonList;
-    API_index *id;
 
     // Signal de fin de process des data
 signals:
-    void callFinished(QList<GeoObj> list, API_index id);
+    void callFinished(QList<GeoObj> list);
 };
 
 #endif // ABSTRACT_API_H

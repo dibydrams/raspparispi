@@ -1,6 +1,7 @@
-#ifndef SANISETTE_H
-#define SANISETTE_H
+#ifndef THEATRE_H
+#define THEATRE_H
 
+#include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QDebug>
@@ -12,21 +13,19 @@
 #include <QJsonObject>
 #include "Abstract_API.h"
 
-class sanisette : public Abstract_API
+class theatre : public Abstract_API
 {
     Q_OBJECT
 
 public:
-
-    sanisette();
+    theatre();
     int getId() override;
     QPixmap getPixmap() override;
 
-
 public slots:
-    void sanisetteAPI_Call();
-    void readJsonSani();
     void getInfo() override;
+    void theatreAPI_Call();
+    void readJsonTheatre();
 
 private:
     QNetworkAccessManager * manager;
@@ -38,6 +37,7 @@ private:
 
 signals:
     void callFinished(QList<Abstract_API::GeoObj>, API_index);
+
 };
 
-#endif // SANISETTE_H
+#endif // THEATRE_H

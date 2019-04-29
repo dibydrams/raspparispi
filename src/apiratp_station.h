@@ -17,11 +17,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
-
-namespace Ui {
-class Uiratp;
-}
-
 class ApiRatp_Station : public Abstract_API
 {
 public:
@@ -30,7 +25,6 @@ public:
     QPixmap getPixmap() override;
 
     Uiratp *uiratp;
-    ApiRatp_Global *ratpGlobal;
 
     QNetworkAccessManager *managerStation;
     QNetworkRequest *requestStation;
