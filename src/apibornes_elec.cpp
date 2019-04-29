@@ -12,7 +12,7 @@ void ApiBornes_Elec::API_Call()
 {
    API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques");
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&rows=2000&geofilter.distance=48.8716,2.34599,1000");
     QNetworkRequest request;
     request.setUrl(url);
 
