@@ -56,7 +56,7 @@ void MainWindow::initButtons()
     buttonMeteo->setCheckable(false);
     connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog()));
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+    // connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
     ptr = new ApiEvenementsMV;
     CustomButton *buttonEv = new CustomButton(ptr, this);
