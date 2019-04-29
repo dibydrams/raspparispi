@@ -24,6 +24,7 @@
 #include <QBarSet>
 #include <QtCharts>
 #include <QtCharts/QBarSet>
+#include <QStandardItem>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -46,6 +47,7 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(pollutionChart()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(AQI()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
+    setvignette();
 
 }
 
@@ -53,6 +55,56 @@ Dialog::~Dialog()
 {
 
     delete ui;
+
+}
+
+void Dialog::setvignette()
+{
+
+    QString jours = (QDate::currentDate().toString("ddd"));
+    QString heures = (QTime::currentTime().toString("hh"));
+
+
+    QPixmap v1 ,v2,v3,v4,v5,v6;
+
+    v1.load("/home/haissam/Images/vignette/vignette1.png");
+    v2.load("/home/haissam/Images/vignette/vignette2.png");
+    v3.load("/home/haissam/Images/vignette/vignette3.png");
+    v4.load("/home/haissam/Images/vignette/vignette4.png");
+    v5.load("/home/haissam/Images/vignette/vignette5.png");
+    v6.load("/home/haissam/Images/vignette/vignette6.png");
+
+
+    if (jours != "sam" | jours != "dim")
+    {
+        if (heures >="08" && heures <="20")
+
+    {
+
+        ui->label_vignette1->setPixmap(v1);
+        ui->label_vignette2->setPixmap(v2);
+        ui->label_vignette3->setPixmap(v3);
+        ui->label_vignette4->setPixmap(v4);
+        ui->label_vignette5->setPixmap(v5);
+
+    }
+    }
+
+
+
+
+    else
+    {
+
+        ui->label_vignette1->setPixmap(v1);
+        ui->label_vignette2->setPixmap(v2);
+        ui->label_vignette3->setPixmap(v3);
+        ui->label_vignette4->setPixmap(v4);
+        ui->label_vignette5->setPixmap(v5);
+        ui->label_vignette6->setPixmap(v6);
+
+
+    }
 
 }
 
@@ -234,11 +286,11 @@ void Dialog::printHashmeteo()                              //création et rempli
     for (i=0;i<=6;i++)
     {
 
+
         table = new QTableWidgetItem;
         ui->tableWidget->setItem(i,0,table);
         QString m =hash_meteo.value(QString ("%1").arg(i)).toString();
         table->setText(m);
-
 
 
     }
