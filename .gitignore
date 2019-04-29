@@ -1,5 +1,5 @@
 *.user
 build-*
 RATP*
-ProjetAPI/*.pro.user
+*.pro.user
 .DS_Store
