@@ -55,9 +55,6 @@ HEADERS += \
         Abstract_API.h \
     apibornes_elec.h \
         apievenementsmv.h \
-
-
-<<<<<<< HEAD
     apimeteo.h \
         custombutton.h \
     dialogmeteo.h \
