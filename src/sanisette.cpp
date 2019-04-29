@@ -44,10 +44,9 @@ void sanisette::readJsonSaniAPI(){
             geo.longitude = longitude;
             geo.latitude = latitude;
             geo.pixmap = QPixmap();
-            geo.id = getId();
             m_list << geo;
         }
-        emit callFinished(m_list);
+        emit callFinished(m_list, TOILETTES);
 }
 
 void sanisette::getInfo(){

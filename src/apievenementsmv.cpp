@@ -36,12 +36,11 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = QPixmap();
-        geo.id = getId();
 
        m_list << geo;
     }
 
-    emit callFinished(m_list);  // Signal de fin de traitement de l'API
+    emit callFinished(m_list, EVENEMENTS);  // Signal de fin de traitement de l'API
     reply->deleteLater();
 }
 
