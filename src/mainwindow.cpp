@@ -2,6 +2,12 @@
 #include "ui_mainwindow.h"
 
 #include "Abstract_API.h"
+#include "dialogmeteo.h"
+#include "ui_dialogmeteo.h"
+#include "apimeteo.h"
+
+#include <QHBoxLayout>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);  
     initButtons();
+
 }
 
 MainWindow::~MainWindow()
@@ -38,7 +45,9 @@ void MainWindow::initButtons()
 {
     Abstract_API *ptr ; // Pointeur sur classe mère, ne pas changer.
 
-    // ##   INITIATION DU BOUTON NUMERO 1 : EVENEMENTS (Ne pas changer ce code)   ##
+    // ##   INITIATION DE CHAQUE BOUTON CI-DESSOUS  ##
+    /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
+     *  Ne pas changer le code du premier bouton */
 
     ptr = new ApiEvenementsMV; // 1
     CustomButton *buttonEv = new CustomButton(ptr, this); // 2
@@ -64,19 +73,14 @@ void MainWindow::initButtons()
     connect(QueFaire_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
-    // TEST DIALOG
-    // connect(buttonEv, SIGNAL(clicked)), , SLOT()));
+    ptr = new ApiMeteo; // 1
+    CustomButton *buttonMeteo = new CustomButton(ptr, this); // 2
+    ui->horizontalLayout->addWidget(buttonMeteo); // 3
+    buttonMeteo->setCheckable(false);
+    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
+    connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog())); // 4
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
 
-    /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
-     *  Ne pas changer le code du premier bouton
-     *
-     * ##   INITIATION DU BOUTON NUMERO 2 : $VOTRE_DATASET   ##
-     *
-     * -----> Votre code de création de bouton ici.
-     *
-     * ##   INITIATION DU BOUTON NUMERO 3 : $VOTRE_DATASET   ##
-     *
-     * -----> Votre code de création de bouton ici. */
 }
 
 
@@ -94,4 +98,10 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
         qDebug() << i.pixmap;
         qDebug() << i.id;
     }
+}
+
+void MainWindow::dialog()
+{
+    Dialog fenetre;
+    fenetre.exec();
 }

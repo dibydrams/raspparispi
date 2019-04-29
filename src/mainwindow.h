@@ -10,6 +10,7 @@
 #include "apiquefaire.h"
 
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -26,6 +27,7 @@ public:
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
+    void dialog();
 
 private:
     Ui::MainWindow *ui;

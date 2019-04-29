@@ -6,6 +6,9 @@
 
 QT       += core gui
 QT       += network
+QT       += charts
+
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,6 +32,12 @@ SOURCES += \
         Abstract_API.cpp \
     apibornes_elec.cpp \
         apievenementsmv.cpp \
+    apimeteo.cpp \
+    dialogmeteo.cpp \
+    indiceuv.cpp \
+    meteo.cpp \
+    pollution.cpp \
+    prevision.cpp \
     apiquefaire.cpp \
         custombutton.cpp \
         icon.cpp \
@@ -47,21 +56,30 @@ HEADERS += \
         Abstract_API.h \
     apibornes_elec.h \
         apievenementsmv.h \
+    apimeteo.h \
     apiquefaire.h \
+    apiratp_station.h \
         custombutton.h \
-        icon.h \
+    dialogmeteo.h \
+    icon.h \
+    indiceuv.h \
         mainwindow.h \
-        pharmapi.h \
-        widgetmap.h \
-    	stoppoint.h \
-    	transport.h \
-    	apiratp_station.h \
-    	uiratp.h \
+    meteo.h \
+    pharmapi.h \
+    pollution.h \
+    prevision.h \
+    stoppoint.h \
+    transport.h \
+    uiratp.h \
+    widgetmap.h \
     apiratp_global.h
+
 
 FORMS += \
 	mainwindow.ui \
-    uiratp.ui
+    uiratp.ui \
+    dialogmeteo.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -69,4 +87,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    iconmétéo.qrc \
     sources.qrc

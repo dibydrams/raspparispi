@@ -1,5 +1,6 @@
-#ifndef APIEVENEMENTSMV_H
-#define APIEVENEMENTSMV_H
+#ifndef APIMETEO_H
+#define APIMETEO_H
+
 
 #include <QObject>
 #include <QNetworkAccessManager>
@@ -10,14 +11,19 @@
 #include <QList>
 
 #include "Abstract_API.h"
+#include "meteo.h"
+#include "pollution.h"
+#include "prevision.h"
+#include "indiceuv.h"
 
 
-class ApiEvenementsMV : public Abstract_API
+
+class ApiMeteo : public Abstract_API
 {
     Q_OBJECT
 
 public:
-    ApiEvenementsMV();
+    ApiMeteo();
     int getId() override;
     QPixmap getPixmap() override;
 
@@ -33,6 +39,10 @@ private:
     QJsonObject obj;
     QJsonArray arr;
     QList<GeoObj> m_list;
+    meteo *m_meteo;
+    Pollution *p_pollution;
+    IndiceUV *i_indice;
+    Prevision *pm_prevision;
 
     double longitude;
     double latitude;
@@ -41,4 +51,5 @@ private:
 
 };
 
-#endif // APIEVENEMENTSMV_H
+
+#endif // APIMETEO_H
