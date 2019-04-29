@@ -8,6 +8,14 @@
         <file>Icons/iconeleccar.png</file>
         <file>Icons/icongroup.png</file>
         <file>Style/style.css</file>
+<<<<<<< HEAD
         <file>Icons/iconeKiosques.png</file>
+=======
+        <file>Icons/iconeterrace.png</file>
+        <file>Icons/point_interet.png</file>
+        <file>Icons/iconStation.png</file>
+	<file>Icons/iconSearch.png</file>
+	<file>Icons/toilettes.png</file>
+>>>>>>> e4e9603c62e6e73f3420dd3fc7980d6197348d8a
     </qresource>
 </RCC>

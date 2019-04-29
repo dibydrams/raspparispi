@@ -41,11 +41,11 @@ void apikiosques::API_results(QNetworkReply *reply)
         geo.latitude=latitude;
         geo.longitude=longitude;
         geo.pixmap=QPixmap();
-        geo.id=getId();
+
 
         m_list<<geo;
     }
-    emit callFinished(m_list);
+    emit callFinished(m_list, KIOSQUES);
     reply->deleteLater();
 }
 

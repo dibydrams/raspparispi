@@ -29,8 +29,8 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     if( !QFile::exists(m_settings->fileName()))
     {
-        m_centreLongitude = 2.3345019;
-        m_centreLatitude = 48.859114;
+        m_centreLongitude = 2.34599;//6 rue rougemont
+        m_centreLatitude = 48.8716;
         m_rayonCentre = 0.008;
         m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
     }
@@ -146,68 +146,71 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 void WidgetMap::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
-    QSettings s;
-    s.fileName();
 
     QPixmap carte(m_fichierCarte);
     p.drawPixmap(0,0,carte);
 
-    QString fileName = ":/Icons/bonhomme.png";
-    QPixmap pixmap(fileName);
-    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
+//    // icone au centre de la carte
 
-    QList<Abstract_API::GeoObj> listePI;
+//    QString fileName = ":/Icons/bonhomme.png";
+//    QPixmap pixmap(fileName);
+//    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
 
-    Abstract_API::GeoObj geo1, geo2, geo3;
+//        // tests 3 coord gps
 
-    geo1.longitude = 2.33;
-    geo1.latitude = 48.86;
-    geo1.pixmap = QPixmap();
-    geo1.id = 0;
+//        Abstract_API::GeoObj geo1, geo2, geo3;
 
-    geo2.longitude = 2.335;
-    geo2.latitude = 48.865;
-    geo2.pixmap = QPixmap();
-    geo2.id = 1;
+//        geo1.longitude = 2.33;
+//        geo1.latitude = 48.86;
+//        geo1.pixmap = QPixmap();
+//        geo1.id = 0;
 
-    geo3.longitude = 2.32;
-    geo3.latitude = 48.862;
-    geo3.pixmap = QPixmap();
-    geo3.id = 3;
+//        geo2.longitude = 2.335;
+//        geo2.latitude = 48.865;
+//        geo2.pixmap = QPixmap();
+//        geo2.id = 1;
 
-    listePI << geo1 << geo2 << geo3;
+//        geo3.longitude = 2.32;
+//        geo3.latitude = 48.862;
+//        geo3.pixmap = QPixmap();
+//        geo3.id = 3;
 
-    int resultatPixelPointX;
-    int resultatPixelPointY;
+//        m_listePI << geo1 << geo2 << geo3;
 
-    double distanceLongitude = abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
-    double distanceLatitude = abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+        int resultatPixelPointX;
+        int resultatPixelPointY;
 
-    double coefficient_X = carte.width() / distanceLongitude;
-    double coefficient_Y = carte.height() / distanceLatitude;
+        double distanceLongitude = abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+        double distanceLatitude = abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
 
-    QPixmap pix_PI(":/Icons/point_interet.png");
+        double coefficient_X = carte.width() / distanceLongitude;
+        double coefficient_Y = carte.height() / distanceLatitude;
 
-    for (int i = 0; i < listePI.size(); i++)
-    {
-        qDebug() << "longitude " << listePI.at(i).longitude;
-        qDebug() << "latitude " << listePI.at(i).latitude;
+        QPixmap pix_PI(":/Icons/point_interet.png");
 
-        resultatPixelPointX = static_cast<int> ((listePI.at(i).longitude - m_BBOXminLongitude) * coefficient_X);
-        resultatPixelPointY = static_cast<int> ((listePI.at(i).latitude - m_BBOXminLatitude) * coefficient_Y);
+        for (int i = 0; i < m_listePI.size(); i++)
+        {
+            qDebug() << "longitude " << m_listePI.at(i).longitude;
+            qDebug() << "latitude " << m_listePI.at(i).latitude;
 
-        // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
-        resultatPixelPointY = carte.height() - resultatPixelPointY;
+            resultatPixelPointX = static_cast<int> ((m_listePI.at(i).longitude - m_BBOXminLongitude) * coefficient_X);
+            resultatPixelPointY = static_cast<int> ((m_listePI.at(i).latitude - m_BBOXminLatitude) * coefficient_Y);
 
-        qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
+            // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
+            resultatPixelPointY = carte.height() - resultatPixelPointY;
 
-        p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+            qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
 
-        QString affCoord;
-        affCoord = QString::number(listePI.at(i).longitude, 'f', 13) + "  " + QString::number(listePI.at(i).latitude, 'f', 13);
+            if( m_listePI.at(i).pixmap.isNull())  p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+            else p.drawPixmap(resultatPixelPointX,resultatPixelPointY,m_listePI.at(i).pixmap);
 
-        p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
-    }
+//            QString affCoord;
+//            affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
+
+//            p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
+
+
+        }
 }
 
 void WidgetMap::dataReceived(QList<Abstract_API::GeoObj> list)

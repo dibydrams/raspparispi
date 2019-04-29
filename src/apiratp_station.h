@@ -2,6 +2,7 @@
 #define APIRATP_STATION_H
 
 #include "Abstract_API.h"
+#include "apiratp_global.h"
 #include "stoppoint.h"
 #include "transport.h"
 #include "uiratp.h"
@@ -29,18 +30,14 @@ public:
     QPixmap getPixmap() override;
 
     Uiratp *uiratp;
+    ApiRatp_Global *ratpGlobal;
 
     QNetworkAccessManager *managerStation;
     QNetworkRequest *requestStation;
     QNetworkReply *replyStation;
 
-    QJsonDocument perimetreStifJson;
-
-    QList<QPointF> pointList;
-    QList<StopPoint> stopPointList;
-
-private:
     void DoStationRequest();
+private:
     void PeriStifJson();
 
 private slots:

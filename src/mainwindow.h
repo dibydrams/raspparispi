@@ -8,7 +8,12 @@
 #include "pharmapi.h"
 #include "apibornes_elec.h"
 #include "apiquefaire.h"
+<<<<<<< HEAD
 #include "apikiosques.h"
+=======
+#include "sanisette.h"
+
+>>>>>>> e4e9603c62e6e73f3420dd3fc7980d6197348d8a
 
 
 namespace Ui {
@@ -27,6 +32,7 @@ public:
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
+    void dialog();
 
 private:
     Ui::MainWindow *ui;
