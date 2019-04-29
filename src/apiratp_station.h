@@ -36,8 +36,8 @@ public:
     QNetworkRequest *requestStation;
     QNetworkReply *replyStation;
 
-private:
     void DoStationRequest();
+private:
     void PeriStifJson();
 
 private slots:

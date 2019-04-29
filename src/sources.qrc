@@ -7,7 +7,10 @@
         <file>Icons/pharmicon.png</file>
         <file>Icons/iconeleccar.png</file>
         <file>Icons/icongroup.png</file>
-        <file>Style/style.css</file>
-        <file>Icons/toilettes.png</file>
+	<file>Style/style.css</file>
+	<file>Icons/point_interet.png</file>
+        <file>Icons/iconStation.png</file>
+	<file>Icons/iconSearch.png</file>
+	<file>Icons/toilettes.png</file>
     </qresource>
 </RCC>
