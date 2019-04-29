@@ -21,7 +21,7 @@
 #include <QDialog>
 #include <QtCharts>
 
-#include "ui_dialog.h"
+#include "ui_dialogmeteo.h"
 
 namespace Ui {
 class Dialog;

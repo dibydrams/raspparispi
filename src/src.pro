@@ -55,25 +55,26 @@ HEADERS += \
         Abstract_API.h \
     apibornes_elec.h \
         apievenementsmv.h \
-
-
-<<<<<<< HEAD
     apimeteo.h \
+    apiquefaire.h \
+    apiratp_station.h \
         custombutton.h \
     dialogmeteo.h \
+    icon.h \
     indiceuv.h \
         mainwindow.h \
     meteo.h \
+    pharmapi.h \
     pollution.h \
     prevision.h \
+    stoppoint.h \
+    transport.h \
+    uiratp.h \
     widgetmap.h
-    apiquefaire.h \
-        icon.h \
-        pharmapi.h \
-    	stoppoint.h \
-    	transport.h \
-    	apiratp_station.h \
-    	uiratp.h
+
+
+
+
 
 FORMS += \
 	mainwindow.ui \

@@ -3,7 +3,7 @@
 
 #include "Abstract_API.h"
 #include "dialogmeteo.h"
-#include "ui_dialog.h"
+#include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 
 #include <QHBoxLayout>
