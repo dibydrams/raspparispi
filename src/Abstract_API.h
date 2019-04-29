@@ -60,6 +60,7 @@ public:
         PHARMACIES,
         BORNES_WIFI,
         CRUES,
+        ANIMATIONS,
     };
 
     /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)

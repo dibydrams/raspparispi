@@ -30,21 +30,34 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
+    apibornes_elec.cpp \
         apievenementsmv.cpp \
     apimeteo.cpp \
-        custombutton.cpp \
     dialogmeteo.cpp \
     indiceuv.cpp \
-        main.cpp \
-        mainwindow.cpp \
     meteo.cpp \
     pollution.cpp \
     prevision.cpp \
-    widgetmap.cpp
+    apiquefaire.cpp \
+        custombutton.cpp \
+        icon.cpp \
+        main.cpp \
+        mainwindow.cpp \
+        pharmapi.cpp \
+        widgetmap.cpp \
+    	stoppoint.cpp \
+    	transport.cpp \
+    	apiratp_station.cpp \
+    	uiratp.cpp
+
 
 HEADERS += \
         Abstract_API.h \
+    apibornes_elec.h \
         apievenementsmv.h \
+
+
+<<<<<<< HEAD
     apimeteo.h \
         custombutton.h \
     dialogmeteo.h \
@@ -54,10 +67,19 @@ HEADERS += \
     pollution.h \
     prevision.h \
     widgetmap.h
+    apiquefaire.h \
+        icon.h \
+        pharmapi.h \
+    	stoppoint.h \
+    	transport.h \
+    	apiratp_station.h \
+    	uiratp.h
 
 FORMS += \
-        dialogmeteo.ui \
-        mainwindow.ui
+	mainwindow.ui \
+    uiratp.ui \
+    dialogmeteo.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -5,12 +5,14 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
 {
     ptrAPI = ptr;
     icon = ptrAPI->getPixmap();
-    setIcon(QIcon(icon));
+    QIcon iconpix;
+    iconpix.addPixmap(Icon::iconNormalOff(icon), QIcon::Normal, QIcon::Off);
+    iconpix.addPixmap(Icon::iconNormalOn(icon), QIcon::Normal, QIcon::On);
+    setIcon(iconpix);
+    setCheckable(true);
     buttonID = ptr->getId();
-    setFlat(true);
-    setIconSize(QSize(80,80));
-    resize(80,80);
-
+    setIconSize(QSize(128,128));
+    setFixedSize(128,128);
 
     // Ajout dynamique des boutons à la liste de boutons
     ptr->ButtonList << this;

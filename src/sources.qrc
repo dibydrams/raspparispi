@@ -2,5 +2,11 @@
     <qresource prefix="/">
         <file>Icons/iconevents.png</file>
         <file>Tmp_Map/maprougemont.png</file>
+        <file>Datas/perimetre-tr-plateforme-stif.json</file>
+        <file>Datas/referentiel-des-lignes-stif.json</file>
+        <file>Icons/pharmicon.png</file>
+        <file>Icons/iconeleccar.png</file>
+        <file>Icons/icongroup.png</file>
+        <file>Style/style.css</file>
     </qresource>
 </RCC>
