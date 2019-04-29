@@ -5,6 +5,8 @@
 #include "dialogmeteo.h"
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
+#include "apiterrasses.h"
+
 
 #include <QHBoxLayout>
 
@@ -15,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);  
     initButtons();
-
 }
 
 MainWindow::~MainWindow()
@@ -79,6 +80,17 @@ void MainWindow::initButtons()
     buttonMeteo->setCheckable(false);
     connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
     connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog())); // 4
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
+
+    ptr = new ApiTerrasses; //1
+    CustomButton *terrassesBtn = new CustomButton(ptr, this); //2
+    ui->horizontalLayout->addWidget(terrassesBtn); //3
+    connect(terrassesBtn, SIGNAL(clicked()), ptr, SLOT(getInfo())); //4
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); //6
+    ptr = new sanisette;
+    CustomButton *buttonToilette = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonToilette);
+    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
 
 }
