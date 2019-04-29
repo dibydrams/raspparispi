@@ -37,7 +37,7 @@ private:
     QList<GeoObj> m_list;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
 };
 
 #endif // SANISETTE_H
