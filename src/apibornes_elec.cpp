@@ -46,12 +46,11 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = QPixmap();
-        geo.id = getId();
 
        m_list << geo;
     }
 
-    emit callFinished(m_list);  // Signal de fin de traitement de l'API
+    emit callFinished(m_list, BORNES_ELEC);  // Signal de fin de traitement de l'API
     reply->deleteLater();
 }
 

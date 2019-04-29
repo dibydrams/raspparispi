@@ -44,12 +44,11 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = QPixmap();
-        geo.id = getId();
 
        m_list << geo;
     }
 
-    emit callFinished(m_list);
+    emit callFinished(m_list, ANIMATIONS);
     reply->deleteLater();
 }
 
