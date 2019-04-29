@@ -92,12 +92,16 @@ void MainWindow::initButtons()
 
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
 {
+    ui->widget->m_listePI = list;
+
     for (auto i : list) {
         qDebug() << i.longitude;
         qDebug() << i.latitude;
         qDebug() << i.pixmap;
         qDebug() << i.id;
     }
+
+    this->update();
 }
 
 void MainWindow::dialog()
