@@ -4,7 +4,6 @@
 #include "Abstract_API.h"
 #include "stoppoint.h"
 #include "transport.h"
-#include "uiratp.h"
 #include "widgetmap.h"
 
 #include <QFile>
@@ -23,23 +22,20 @@ public:
     int getId() override;
     QPixmap getPixmap() override;
 
-    Uiratp *uiratp;
     WidgetMap widgetmap;
 
     QJsonDocument perimetreStifJson;
     QJsonDocument referentielStifJson;
 
-    QList<GeoObj> geoList;
+    QList<Abstract_API::GeoObj> geoList;
     QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
     QList<Transport> busList;
     QList<Transport> metroList;
-    QList<Transport> rerList;
+    QList<Transport> railList;
 
     int indexTranspForUniReq;
     int indexStationForUniReq;
-
-
 
 private:
     void GeoPoints();
@@ -49,6 +45,9 @@ private:
 private slots:
     void getInfo() override;
     QJsonDocument LoadJson(QString fileName);
+
+signals:
+    void callFinished(QList<Abstract_API::GeoObj> list);
 };
 
 #endif // APIRATP_GLOBAL_H

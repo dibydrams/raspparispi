@@ -9,6 +9,9 @@
 #include "apibornes_elec.h"
 #include "apiquefaire.h"
 #include "sanisette.h"
+#include "apiratp_station.h"
+#include "apiratp_global.h"
+#include "uiratp.h"
 
 
 
