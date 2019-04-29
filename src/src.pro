@@ -51,7 +51,8 @@ SOURCES += \
     	uiratp.cpp \
     apiratp_global.cpp \
     apiterrasses.cpp \
-    sanisette.cpp
+    sanisette.cpp \
+    theatre.cpp
 
 
 HEADERS += \
@@ -76,7 +77,8 @@ HEADERS += \
     widgetmap.h \
     apiratp_global.h \
     apiterrasses.h \
-    sanisette.h
+    sanisette.h \
+    theatre.h
 
 
 FORMS += \

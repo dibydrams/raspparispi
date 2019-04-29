@@ -17,5 +17,3 @@ Abstract_API::Abstract_API(QObject *parent) : QObject(parent)
 //    }
 //    id = EVENEMENTS;
 //}
-
-

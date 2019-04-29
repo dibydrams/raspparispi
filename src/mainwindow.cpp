@@ -91,9 +91,8 @@ void MainWindow::initButtons()
     ptr = new sanisette;
     CustomButton *buttonToilette = new CustomButton(ptr, this);
     ui->horizontalLayout->addWidget(buttonToilette);
-    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(buttonToilette, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
-
 }
 
 
