@@ -29,8 +29,8 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     if( !QFile::exists(m_settings->fileName()))
     {
-        m_centreLongitude = 2.341139;//2.3345019;
-        m_centreLatitude = 48.865689;//48.859114;
+        m_centreLongitude = 2.34599;//6 rue rougemont
+        m_centreLatitude = 48.8716;
         m_rayonCentre = 0.008;
         m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
     }
@@ -201,7 +201,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
             qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
 
-            if( m_listePI.at(i).pixmap.isNull() ) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+            if( m_listePI.at(i).pixmap.isNull())  p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
             else p.drawPixmap(resultatPixelPointX,resultatPixelPointY,m_listePI.at(i).pixmap);
 
 //            QString affCoord;

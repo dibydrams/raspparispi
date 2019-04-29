@@ -1,42 +1,43 @@
-#ifndef APIQUEFAIRE_H
-#define APIQUEFAIRE_H
+#ifndef SANISETTE_H
+#define SANISETTE_H
 
 #include <QObject>
 #include <QNetworkAccessManager>
+#include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
-#include <Abstract_API.h>
 
-class ApiQueFaire : public Abstract_API
+#include "Abstract_API.h"
+
+class sanisette : public Abstract_API
 {
     Q_OBJECT
 
 public:
-    ApiQueFaire();
+
+    sanisette();
     int getId() override;
     QPixmap getPixmap() override;
 
-private slots:
-    void API_Call();
-    void API_Results(QNetworkReply *reply);
+    void readJsonSaniAPI();
+
+public slots:
+    void sanisetteAPI_Call();
     void getInfo() override;
 
 private:
-    QNetworkAccessManager *API_Access;
-    QNetworkReply *currentReply;
-    QJsonDocument doc;
-    QJsonObject obj;
-    QJsonArray arr;
-    QList<GeoObj> m_list;
-
+    QNetworkAccessManager * manager;
+    QNetworkRequest request;
+    QNetworkReply * reply;
     double longitude;
     double latitude;
+    QList<GeoObj> m_list;
+
 signals:
     void callFinished(QList<Abstract_API::GeoObj>, API_index);
-
 };
 
-#endif // APIQUEFAIRE_H
+#endif // SANISETTE_H

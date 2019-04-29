@@ -50,7 +50,6 @@ void ApiMeteo::API_Results(QNetworkReply *)
         geo.longitude = 2.35;
         geo.latitude = 48.86;
         geo.pixmap = QPixmap();
-        geo.id = getId();
 
         m_list << geo;
 
