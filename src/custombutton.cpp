@@ -17,3 +17,5 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     // Ajout dynamique des boutons à la liste de boutons
     ptr->ButtonList << this;
 }
+
+
