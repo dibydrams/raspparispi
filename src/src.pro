@@ -6,6 +6,9 @@
 
 QT       += core gui
 QT       += network
+QT       += charts
+
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,19 +31,32 @@ CONFIG += c++11
 SOURCES += \
         Abstract_API.cpp \
         apievenementsmv.cpp \
+    apimeteo.cpp \
         custombutton.cpp \
+    dialogmeteo.cpp \
+    indiceuv.cpp \
         main.cpp \
         mainwindow.cpp \
+    meteo.cpp \
+    pollution.cpp \
+    prevision.cpp \
     widgetmap.cpp
 
 HEADERS += \
         Abstract_API.h \
         apievenementsmv.h \
+    apimeteo.h \
         custombutton.h \
+    dialogmeteo.h \
+    indiceuv.h \
         mainwindow.h \
+    meteo.h \
+    pollution.h \
+    prevision.h \
     widgetmap.h
 
 FORMS += \
+        dialogmeteo.ui \
         mainwindow.ui
 
 # Default rules for deployment.
@@ -49,4 +65,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    iconmétéo.qrc \
     sources.qrc

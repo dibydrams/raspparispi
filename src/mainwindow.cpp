@@ -2,6 +2,12 @@
 #include "ui_mainwindow.h"
 
 #include "Abstract_API.h"
+#include "dialogmeteo.h"
+#include "ui_dialog.h"
+#include "apimeteo.h"
+
+#include <QHBoxLayout>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);  
     initButtons();
+
 }
 
 MainWindow::~MainWindow()
@@ -52,13 +59,16 @@ void MainWindow::initButtons()
     /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
      *  Ne pas changer le code du premier bouton
      *
-     * ##   INITIATION DU BOUTON NUMERO 2 : $VOTRE_DATASET   ##
-     *
-     * -----> Votre code de création de bouton ici.
-     *
-     * ##   INITIATION DU BOUTON NUMERO 3 : $VOTRE_DATASET   ##
-     *
-     * -----> Votre code de création de bouton ici. */
+     * ##   INITIATION DU BOUTON NUMERO 2 : $VOTRE_DATASET   ##*/
+
+    ptr = new ApiMeteo; // 1
+    CustomButton *buttonMeteo = new CustomButton(ptr, this); // 2
+    ui->horizontalLayout->addWidget(buttonMeteo); // 3
+    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
+    connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog())); // 4
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
+
+
 }
 
 
@@ -76,4 +86,10 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
         qDebug() << i.pixmap;
         qDebug() << i.id;
     }
+}
+
+void MainWindow::dialog()
+{
+    Dialog fenetre;
+    fenetre.exec();
 }
