@@ -1,0 +1,5 @@
+*.user
+build-*
+RATP*
+*.pro.user
+.DS_Store
