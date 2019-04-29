@@ -12,6 +12,7 @@
 #include "apiratp_station.h"
 #include "apiratp_global.h"
 #include "uiratp.h"
+#include "theatre.h"
 
 
 

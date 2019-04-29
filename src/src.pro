@@ -52,11 +52,10 @@ SOURCES += \
     apiratp_global.cpp \
     apiterrasses.cpp \
     sanisette.cpp \
-<<<<<<< HEAD
+    apiratp_search.cpp \
+    apiespacesverts.cpp \
     theatre.cpp
-=======
-    apiratp_search.cpp
->>>>>>> ac7c288aecd3442b5de25c83e9a8a69dc480e4ca
+
 
 
 HEADERS += \
@@ -82,11 +81,9 @@ HEADERS += \
     apiratp_global.h \
     apiterrasses.h \
     sanisette.h \
-<<<<<<< HEAD
-    theatre.h
-=======
-    apiratp_search.h
->>>>>>> ac7c288aecd3442b5de25c83e9a8a69dc480e4ca
+    theatre.h \
+    apiratp_search.h \
+    apiespacesverts.h \
 
 
 FORMS += \
