@@ -6,6 +6,7 @@
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 
+
 #include <QHBoxLayout>
 
 
@@ -15,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);  
     initButtons();
-
 }
 
 MainWindow::~MainWindow()
@@ -79,6 +79,12 @@ void MainWindow::initButtons()
     buttonMeteo->setCheckable(false);
     connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
     connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog())); // 4
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
+
+    ptr = new sanisette;
+    CustomButton *buttonToilette = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonToilette);
+    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
 
 }

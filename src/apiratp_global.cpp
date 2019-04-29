@@ -2,8 +2,7 @@
 
 ApiRatp_Global::ApiRatp_Global()
 {
-    perimetreStifJson = LoadJson(":/Data/Databases/perimetre-tr-plateforme-stif.json");
-    PeriStifJson();
+
 }
 
 void ApiRatp_Global::PeriStifJson()
@@ -33,22 +32,75 @@ void ApiRatp_Global::PeriStifJson()
     std::sort(stopPointList.begin(), stopPointList.end(), StopPoint::compareStopPoint);
 }
 
+void ApiRatp_Global::RefStifJson()
+{
+    for (int i = 0; i < referentielStifJson.array().count(); ++i)
+    {
+        // externalcode_line = ID du Bus/Train/RER
+        QString codeLine = referentielStifJson.array().at(i).toObject()["fields"].toObject()["externalcode_line"].toString();
+        // shortname_line = Nom commun
+        QString shortnameLine = referentielStifJson.array().at(i).toObject()["fields"].toObject()["shortname_line"].toString();
+        // shortname_groupoflines = Nom des principales destinations
+        QString shortnameGroupoflines = referentielStifJson.array().at(i).toObject()["fields"].toObject()["shortname_groupoflines"].toString();
+        // networkname = Nom du Réseau référent
+        QString networkname = referentielStifJson.array().at(i).toObject()["fields"].toObject()["networkname"].toString();
+        // transportmode = Catégorie du transport
+        QString transportmode = referentielStifJson.array().at(i).toObject()["fields"].toObject()["transportmode"].toString();
+        // accessibility = Accessible aux personnes en situation d'handicap ?
+        int accessibility = referentielStifJson.array().at(i).toObject()["fields"].toObject()["accessibility"].toInt();
+
+        // Liste des Arrêts du transport
+        QList<StopPoint> mySPList;
+        foreach (StopPoint sp, stopPointList) {
+            if (sp.externalcodeLine == codeLine)
+                mySPList.append(sp);
+        }
+
+        Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
+
+        if(newTransport.transportMode == Transport::Modes::bus)
+        {
+            for (int j = 0; j < stopPointList.count(); ++j)
+            {
+                if(stopPointList[j].externalcodeLine == newTransport.codeLine)
+                {
+                    busList.append(newTransport);
+                    break;
+                }
+            }
+        }
+        else if(newTransport.transportMode == Transport::Modes::metro)
+        {
+            metroList.append(newTransport);
+        }
+        else
+        {
+            rerList.append(newTransport);
+        }
+    }
+
+    std::sort(busList.begin(), busList.end(), Transport::compareTransports);
+    std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
+    std::sort(rerList.begin(), rerList.end(), Transport::compareTransports);
+}
+
 void ApiRatp_Global::GeoPoints()
 {
-//    foreach(QPointF point, pointList)
-//    {
-//      compare Point is in coordonates
-//        if ()
-//        {
-//          GeoObj geo;
-//          geo.longitude = coordX;
-//          geo.latitude = coordY;
-//          geo.pixmap = QPixmap();
-//          geo.id = getId();
-//          geoList << geo;
-//        }
-//    }
-//    emit callFinished(geoList);
+    foreach(QPointF point, pointList)
+    {
+//      compare Point with Map Coordonnates
+        if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
+             (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
+        {
+          GeoObj geo;
+          geo.longitude = point.x();
+          geo.latitude = point.y();
+          geo.pixmap = QPixmap();
+          geo.id = getId();
+          geoList << geo;
+        }
+    }
+    emit callFinished(geoList);
 }
 
 QJsonDocument ApiRatp_Global::LoadJson(QString fileName)
@@ -70,15 +122,23 @@ void ApiRatp_Global::getInfo()
     {
         if (perimetreStifJson.isEmpty())
         {
-            perimetreStifJson = LoadJson(":/Data/Databases/perimetre-tr-plateforme-stif.json");
+            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
         }
         PeriStifJson();
     }
     GeoPoints();
+//    if(busList.isEmpty())
+//    {
+//        if (referentielStifJson.isEmpty())
+//        {
+//            referentielStifJson = LoadJson(":/Datas/referentiel-des-lignes-stif.json");
+//        }
+//        RefStifJson();
+//    }
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
 QPixmap ApiRatp_Global::getPixmap()
 {
-    return QPixmap(":/Icons/iconevents.png"); // icône PNG préférable
+    return QPixmap(":/Icons/iconStation.png"); // icône PNG préférable
 }
