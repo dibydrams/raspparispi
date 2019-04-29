@@ -49,7 +49,8 @@ SOURCES += \
     	transport.cpp \
     	apiratp_station.cpp \
     	uiratp.cpp \
-    apiratp_global.cpp
+    apiratp_global.cpp \
+    sanisette.cpp
 
 
 HEADERS += \
@@ -72,7 +73,8 @@ HEADERS += \
     transport.h \
     uiratp.h \
     widgetmap.h \
-    apiratp_global.h
+    apiratp_global.h \
+    sanisette.h
 
 
 FORMS += \
