@@ -96,11 +96,10 @@ void ApiRatp_Global::GeoPoints()
           geo.longitude = point.x();
           geo.latitude = point.y();
           geo.pixmap = QPixmap();
-          geo.id = getId();
           geoList << geo;
         }
     }
-    emit callFinished(geoList);
+    emit callFinished(geoList, RATP);
 }
 
 QJsonDocument ApiRatp_Global::LoadJson(QString fileName)

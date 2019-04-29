@@ -98,7 +98,6 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
         qDebug() << i.longitude;
         qDebug() << i.latitude;
         qDebug() << i.pixmap;
-        qDebug() << i.id;
     }
 
     this->update();

@@ -47,7 +47,7 @@ private:
     double longitude;
     double latitude;
   signals:
-    void callFinished(QList<Abstract_API::GeoObj>);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
 
 };
 
