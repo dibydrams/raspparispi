@@ -52,7 +52,8 @@ SOURCES += \
     apiratp_global.cpp \
     apiterrasses.cpp \
     sanisette.cpp \
-    apiratp_search.cpp
+    apiratp_search.cpp \
+    apiespacesverts.cpp
 
 
 HEADERS += \
@@ -78,7 +79,8 @@ HEADERS += \
     apiratp_global.h \
     apiterrasses.h \
     sanisette.h \
-    apiratp_search.h
+    apiratp_search.h \
+    apiespacesverts.h
 
 
 FORMS += \
