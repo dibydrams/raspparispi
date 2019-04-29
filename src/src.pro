@@ -50,11 +50,8 @@ SOURCES += \
     	apiratp_station.cpp \
     	uiratp.cpp \
     apiratp_global.cpp \
-<<<<<<< HEAD
-    apiterrasses.cpp
-=======
+    apiterrasses.cpp \
     sanisette.cpp
->>>>>>> b78f459b295cc6df033112564e478bbf3a062c5e
 
 
 HEADERS += \
@@ -78,11 +75,8 @@ HEADERS += \
     uiratp.h \
     widgetmap.h \
     apiratp_global.h \
-<<<<<<< HEAD
-    apiterrasses.h
-=======
+    apiterrasses.h \
     sanisette.h
->>>>>>> b78f459b295cc6df033112564e478bbf3a062c5e
 
 
 FORMS += \
