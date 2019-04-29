@@ -6,7 +6,7 @@
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 #include "apiterrasses.h"
-
+#include "apiratp_station.h"
 
 #include <QHBoxLayout>
 
@@ -50,17 +50,25 @@ void MainWindow::initButtons()
     /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
      *  Ne pas changer le code du premier bouton */
 
-    ptr = new ApiEvenementsMV; // 1
-    CustomButton *buttonEv = new CustomButton(ptr, this); // 2
-    ui->horizontalLayout->addWidget(buttonEv); // 3
-    connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, API_index))); // 6
+    ptr = new ApiMeteo;
+    CustomButton *buttonMeteo = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonMeteo);
+    buttonMeteo->setCheckable(false);
+    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
-    ptr = new pharmapi; // 1
-    CustomButton *pharmButton = new CustomButton(ptr, this); // 2
-    ui->horizontalLayout->addWidget(pharmButton); // 3
-    connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
+    ptr = new ApiEvenementsMV;
+    CustomButton *buttonEv = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonEv);
+    connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+    ptr = new pharmapi;
+    CustomButton *pharmButton = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(pharmButton);
+    connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
     ptr = new ApiBornes_Elec;
     CustomButton *bornesElecBtn = new CustomButton(ptr, this);
@@ -74,25 +82,23 @@ void MainWindow::initButtons()
     connect(QueFaire_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
-    ptr = new ApiMeteo; // 1
-    CustomButton *buttonMeteo = new CustomButton(ptr, this); // 2
-    ui->horizontalLayout->addWidget(buttonMeteo); // 3
-    buttonMeteo->setCheckable(false);
-    connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo())); // 4
-    connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog())); // 4
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
-
-    ptr = new ApiTerrasses; //1
-    CustomButton *terrassesBtn = new CustomButton(ptr, this); //2
-    ui->horizontalLayout->addWidget(terrassesBtn); //3
-    connect(terrassesBtn, SIGNAL(clicked()), ptr, SLOT(getInfo())); //4
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); //6
+    ptr = new ApiTerrasses;
+    CustomButton *terrassesBtn = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(terrassesBtn);
+    connect(terrassesBtn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
     ptr = new sanisette;
     CustomButton *buttonToilette = new CustomButton(ptr, this);
     ui->horizontalLayout->addWidget(buttonToilette);
     connect(buttonToilette, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>))); // 6
+
+    ptr = new ApiRatp_Global;
+    CustomButton *buttonRatpGlobal = new CustomButton (ptr, this);
+    ui->horizontalLayout->addWidget(buttonRatpGlobal);
+    connect(buttonRatpGlobal, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 }
 
 
