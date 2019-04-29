@@ -47,7 +47,7 @@ private slots:
     QJsonDocument LoadJson(QString fileName);
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj> list);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
 };
 
 #endif // APIRATP_GLOBAL_H
