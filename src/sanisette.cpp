@@ -49,9 +49,10 @@ void sanisette::readJsonSaniAPI(){
         }
         emit callFinished(m_list);
 }
-void sanisette::getInfo(){
-    sanisetteAPI_Call();
 
+void sanisette::getInfo(){
+    qDebug()<<"getInfo()";
+    sanisetteAPI_Call();
 }
 
 

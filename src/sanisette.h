@@ -1,14 +1,15 @@
 #ifndef SANISETTE_H
 #define SANISETTE_H
 
-#include <QObject>
 #include <QNetworkAccessManager>
-#include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
-#include <QList>
+#include <QJsonValue>
+#include <QVariantHash>
+#include <QJsonObject>
 
 #include "Abstract_API.h"
 

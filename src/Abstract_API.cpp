@@ -11,6 +11,7 @@ Abstract_API::Abstract_API(QObject *parent) : QObject(parent)
 void Abstract_API::debug(QList <GeoObj> list)
 {
     for (auto i : list) {
+        qDebug() << "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
         qDebug() << i.longitude;
         qDebug() << i.latitude;
         qDebug() << i.pixmap;
