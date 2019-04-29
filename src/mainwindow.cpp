@@ -64,6 +64,13 @@ void MainWindow::initButtons()
     connect(QueFaire_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+    ptr = new apikiosques; //bouton Kiosques
+    CustomButton *Kiosques_btn=new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(Kiosques_btn);
+    connect(Kiosques_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+
     // TEST DIALOG
     // connect(buttonEv, SIGNAL(clicked)), , SLOT()));
 

@@ -8,6 +8,7 @@
 #include "pharmapi.h"
 #include "apibornes_elec.h"
 #include "apiquefaire.h"
+#include "apikiosques.h"
 
 
 namespace Ui {

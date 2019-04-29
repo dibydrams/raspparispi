@@ -8,5 +8,6 @@
         <file>Icons/iconeleccar.png</file>
         <file>Icons/icongroup.png</file>
         <file>Style/style.css</file>
+        <file>Icons/iconeKiosques.png</file>
     </qresource>
 </RCC>
