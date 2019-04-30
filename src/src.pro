@@ -29,8 +29,8 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
-        apibornes_elec.cpp \
         apiborneswifi.cpp \
+        apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
         apivelib.cpp \
@@ -63,8 +63,8 @@ SOURCES += \
 
 HEADERS += \
         Abstract_API.h \
-        apibornes_elec.h \
         apiborneswifi.h \
+        apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
         apiquefaire.h \
