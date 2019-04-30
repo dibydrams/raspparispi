@@ -14,6 +14,7 @@
 #include "apiratp_global.h"
 #include "uiratp.h"
 #include "theatre.h"
+#include "apifontaines.h"
 
 namespace Ui {
 class MainWindow;

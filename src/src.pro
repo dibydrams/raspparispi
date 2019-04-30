@@ -55,7 +55,8 @@ SOURCES += \
     sanisette.cpp \
     apiratp_search.cpp \
     apiespacesverts.cpp \
-    theatre.cpp
+    theatre.cpp \
+    apifontaines.cpp
 
 
 
@@ -86,6 +87,7 @@ HEADERS += \
     theatre.h \
     apiratp_search.h \
     apiespacesverts.h \
+    apifontaines.h
 
 
 FORMS += \

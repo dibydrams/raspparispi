@@ -89,6 +89,12 @@ void MainWindow::initButtons()
     connect(Kiosques_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+    ptr = new apifontaines;
+    CustomButton *fontaines_btn=new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(fontaines_btn);
+    connect(fontaines_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
     ptr = new ApiTerrasses;
     CustomButton *terrassesBtn = new CustomButton(ptr, this);
     ui->horizontalLayout->addWidget(terrassesBtn);
