@@ -29,6 +29,7 @@ public:
     QList<GeoObj> geoList;
     QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
+    QList<Transport> transportList;
     QList<Transport> busList;
     QList<Transport> metroList;
     QList<Transport> railList;

@@ -19,7 +19,6 @@ public:
         rail,
         tram
     };
-    Modes mode;
     QString codeLine;
     QString shortNameLine;
     QString shortGroupOfLines;
@@ -32,6 +31,9 @@ public:
 
     static bool compareTransports(const Transport &t1, const Transport &t2);
     Transport::Modes StringToEnum(QString _strMode);
+
+private:
+    Modes mode;
 };
 
 #endif // TRANSPORT_H
