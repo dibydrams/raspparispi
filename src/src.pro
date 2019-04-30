@@ -7,8 +7,7 @@
 QT       += core gui
 QT       += network
 QT       += charts
-
-
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,68 +29,74 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
-    apibornes_elec.cpp \
+        apibornes_elec.cpp \
+        apiborneswifi.cpp \
         apievenementsmv.cpp \
-    apimeteo.cpp \
-    dialogmeteo.cpp \
-    indiceuv.cpp \
-    meteo.cpp \
-    pollution.cpp \
-    prevision.cpp \
-    apiquefaire.cpp \
-    apikiosques.cpp\
+        apimeteo.cpp \
+        apivelib.cpp \
+        dialogmeteo.cpp \
+        indiceuv.cpp \
+        meteo.cpp \
+        pollution.cpp \
+        prevision.cpp \
+        apiquefaire.cpp \
+        apikiosques.cpp\
         custombutton.cpp \
         icon.cpp \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+        utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
     	apiratp_station.cpp \
     	uiratp.cpp \
-    apiratp_global.cpp \
-    apiterrasses.cpp \
-    sanisette.cpp \
-    apiratp_search.cpp \
-    apiespacesverts.cpp \
-    theatre.cpp
+        apiratp_global.cpp \
+        apiterrasses.cpp \
+        sanisette.cpp \
+        apiratp_search.cpp \
+        apiespacesverts.cpp \
+        theatre.cpp
 
 
 
 HEADERS += \
         Abstract_API.h \
-    apibornes_elec.h \
+        apibornes_elec.h \
+        apiborneswifi.h \
         apievenementsmv.h \
-    apimeteo.h \
-    apiquefaire.h \
-    apiratp_station.h \
+        apimeteo.h \
+        apiquefaire.h \
+        apiratp_station.h \
+        apivelib.h \
         custombutton.h \
-    apikiosques.h \
-    dialogmeteo.h \
-    icon.h \
-    indiceuv.h \
+        apikiosques.h \
+        dialogmeteo.h \
+        icon.h \
+        indiceuv.h \
         mainwindow.h \
-    meteo.h \
-    pharmapi.h \
-    pollution.h \
-    prevision.h \
-    stoppoint.h \
-    transport.h \
-    uiratp.h \
-    widgetmap.h \
-    apiratp_global.h \
-    apiterrasses.h \
-    sanisette.h \
-    theatre.h \
-    apiratp_search.h \
-    apiespacesverts.h \
+        meteo.h \
+        pharmapi.h \
+        pollution.h \
+        prevision.h \
+        stoppoint.h \
+        transport.h \
+        uiratp.h \
+        utilitaire.h \
+        widgetmap.h \
+        apiratp_global.h \
+        apiterrasses.h \
+        sanisette.h \
+        theatre.h \
+        apiratp_search.h \
+        apiespacesverts.h \
 
 
 FORMS += \
 	mainwindow.ui \
-    uiratp.ui \
-    dialogmeteo.ui
+        uiratp.ui \
+        dialogmeteo.ui
 
 
 # Default rules for deployment.
@@ -100,5 +105,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    iconmeteo.qrc \
-    sources.qrc
+        iconmeteo.qrc \
+        sources.qrc

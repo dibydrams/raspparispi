@@ -8,6 +8,8 @@
 #include "apiterrasses.h"
 #include "apiratp_station.h"
 #include "apiespacesverts.h"
+#include "apiratp_search.h"
+#include "apivelib.h"
 
 #include <QHBoxLayout>
 
@@ -116,6 +118,12 @@ void MainWindow::initButtons()
     connect(buttonRatpGlobal, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+//    ptr = new ApiRatp_Search;
+//    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
+//    ui->horizontalLayout->addWidget(buttonRatpSearch);
+//    buttonRatpSearch->setCheckable(false);
+//    connect(buttonRatpSearch, SIGNAL(clicked()), this, SLOT(ratpDialog()));
+
     ptr = new ApiEspacesVerts;
     CustomButton *buttonEspacesVerts = new CustomButton (ptr, this);
     ButtonList << buttonEspacesVerts;
@@ -123,11 +131,24 @@ void MainWindow::initButtons()
     connect(buttonEspacesVerts, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+    ptr = new ApiBornesWifi;
+    CustomButton *buttonWiFi = new CustomButton(ptr, this);
+    ButtonList << buttonWiFi;
+    ui->horizontalLayout->addWidget(buttonWiFi);
+    connect(buttonWiFi, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
     ptr = new theatre;
     CustomButton *buttonTheatre = new CustomButton (ptr, this);
     ButtonList << buttonTheatre;
     ui->horizontalLayout->addWidget(buttonTheatre);
     connect(buttonTheatre, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+	ptr = new apiVelib;
+    CustomButton *buttonVelib = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonVelib);
+    connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 }
 
@@ -165,4 +186,8 @@ void MainWindow::enableButtons()
     }
 }
 
-
+//void MainWindow::ratpDialog()
+//{
+//    Uiratp window;
+//    window.exec();
+//}

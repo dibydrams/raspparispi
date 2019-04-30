@@ -13,7 +13,9 @@
 #include "apiratp_station.h"
 #include "apiratp_global.h"
 #include "uiratp.h"
+#include "apiborneswifi.h"
 #include "theatre.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +37,7 @@ private slots:
     void dialog();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
+//  void ratpDialog();
 
 private:
     Ui::MainWindow *ui;
