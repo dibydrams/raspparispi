@@ -59,14 +59,7 @@ SOURCES += \
         apiratp_search.cpp \
         apiespacesverts.cpp \
         theatre.cpp \
-        apifontaines.cpp\
-      	uiratp.cpp \
-        apiratp_global.cpp \
-        sanisette.cpp \
-        apiratp_search.cpp \
-        apiespacesverts.cpp \
-        theatre.cpp
-    
+        apifontaines.cpp
 
 
 
@@ -100,23 +93,9 @@ HEADERS += \
     theatre.h \
     apiratp_search.h \
     apiespacesverts.h \
-    apifontaines.h \
+    apifontaines.h \  
+        utilitaire.h
 
-        meteo.h \
-        pharmapi.h \
-        pollution.h \
-        prevision.h \
-        stoppoint.h \
-        transport.h \
-        uiratp.h \
-        utilitaire.h \
-        widgetmap.h \
-        apiratp_global.h \
-        apiterrasses.h \
-        sanisette.h \
-        theatre.h \
-        apiratp_search.h \
-        apiespacesverts.h 
 
 
 
