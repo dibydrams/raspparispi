@@ -8,8 +8,13 @@
 #include "pharmapi.h"
 #include "apibornes_elec.h"
 #include "apiquefaire.h"
+#include "apikiosques.h"
 #include "sanisette.h"
-
+#include "apiratp_station.h"
+#include "apiratp_global.h"
+#include "uiratp.h"
+#include "apiborneswifi.h"
+#include "theatre.h"
 
 
 namespace Ui {
@@ -25,10 +30,14 @@ public:
     ~MainWindow();
 
     void initButtons();
+    QList <CustomButton *> ButtonList;
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
     void dialog();
+    void GetInfo(Abstract_API *ptr);
+    void enableButtons();
+//  void ratpDialog();
 
 private:
     Ui::MainWindow *ui;

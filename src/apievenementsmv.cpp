@@ -19,7 +19,7 @@ void ApiEvenementsMV::API_Call() // Gestion du call à l'API
 }
 
 void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultats au format JSON
-{
+{  
     m_list.clear(); // Reset de la liste de GeoObj à chaque passage dans la fonction
 
     doc = QJsonDocument::fromJson(reply->readAll());
@@ -36,12 +36,11 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = QPixmap();
-        geo.id = getId();
 
        m_list << geo;
     }
 
-    emit callFinished(m_list);  // Signal de fin de traitement de l'API
+    emit callFinished(m_list, EVENEMENTS);  // Signal de fin de traitement de l'API
     reply->deleteLater();
 }
 

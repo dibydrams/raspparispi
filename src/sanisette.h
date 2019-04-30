@@ -1,15 +1,15 @@
 #ifndef SANISETTE_H
 #define SANISETTE_H
 
-#include <QObject>
 #include <QNetworkAccessManager>
-#include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
-#include <QList>
-
+#include <QJsonValue>
+#include <QVariantHash>
+#include <QJsonObject>
 #include "Abstract_API.h"
 
 class sanisette : public Abstract_API
@@ -22,10 +22,10 @@ public:
     int getId() override;
     QPixmap getPixmap() override;
 
-    void readJsonSaniAPI();
 
 public slots:
     void sanisetteAPI_Call();
+    void readJsonSani();
     void getInfo() override;
 
 private:
@@ -37,7 +37,7 @@ private:
     QList<GeoObj> m_list;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
 };
 
 #endif // SANISETTE_H

@@ -32,15 +32,18 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
          QJsonObject objn = val.toObject();
          QJsonValue val2 = objn.value(QString("fields"));
          QJsonObject item = val2.toObject();
-        longitude = item["geo_point_2d"].toArray()[0].toDouble();
-        latitude = item["geo_point_2d"].toArray()[1].toDouble();
+        longitude = item["geo_point_2d"].toArray()[1].toDouble();
+        latitude = item["geo_point_2d"].toArray()[0].toDouble();
 
         GeoObj geo;
 
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = QPixmap();
+
         //geo.id = getId();
+
+
 
        m_list << geo;
     }

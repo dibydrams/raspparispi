@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
+#include "icon.h"
 
 class ApiBornes_Elec : public Abstract_API
 {
@@ -21,6 +22,8 @@ public:
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
+
+public slots:
     void getInfo() override;
 
 private:
@@ -34,7 +37,7 @@ private:
     double longitude;
     double latitude;
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
 
 };
 

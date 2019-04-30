@@ -40,13 +40,6 @@ void ApiRatp_Station::replyFinishedStation()
     uiratp->showFinishedStation(MSVarray);
 }
 
-QJsonDocument ApiRatp_Station::LoadJson(QString fileName)
-{
-    QFile jsonFile(fileName);
-    jsonFile.open(QFile::ReadOnly);
-    return QJsonDocument().fromJson(jsonFile.readAll());
-}
-
 // Mon identifiant au sein de l'enumération (classe mère)
 int ApiRatp_Station::getId()
 {
