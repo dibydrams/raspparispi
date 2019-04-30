@@ -27,8 +27,8 @@ void ApiBornesWifi::API_Results(QNetworkReply *reply)
     for (auto val : arr)
     {
         QJsonObject objn = val.toObject();
-        latitude = objn["fields"].toObject()["geo_point_2d"].toArray()[1].toDouble();
-        longitude = objn["fields"].toObject()["geo_point_2d"].toArray()[0].toDouble();
+        latitude = objn["fields"].toObject()["geo_point_2d"].toArray()[0].toDouble();
+        longitude = objn["fields"].toObject()["geo_point_2d"].toArray()[1].toDouble();
 
         GeoObj geo;
 
