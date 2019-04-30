@@ -52,14 +52,13 @@ SOURCES += \
     	stoppoint.cpp \
     	transport.cpp \
     	apiratp_station.cpp \
-    	uiratp.cpp \
+	uiratp.cpp \
         apiratp_global.cpp \
         apiterrasses.cpp \
         sanisette.cpp \
         apiratp_search.cpp \
         apiespacesverts.cpp \
-        theatre.cpp
-
+	theatre.cpp
 
 
 HEADERS += \
@@ -77,7 +76,7 @@ HEADERS += \
         dialogmeteo.h \
         icon.h \
         indiceuv.h \
-        mainwindow.h \
+	mainwindow.h \
         meteo.h \
         pharmapi.h \
         pollution.h \
@@ -92,7 +91,7 @@ HEADERS += \
         sanisette.h \
         theatre.h \
         apiratp_search.h \
-        apiespacesverts.h \
+	apiespacesverts.h \
 
 
 FORMS += \

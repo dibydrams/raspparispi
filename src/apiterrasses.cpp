@@ -41,6 +41,10 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
         geo.latitude = latitude;
         geo.pixmap = QPixmap();
 
+        //geo.id = getId();
+
+
+
        m_list << geo;
     }
 

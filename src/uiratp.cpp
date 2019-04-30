@@ -1,5 +1,6 @@
 #include "uiratp.h"
 #include "ui_uiratp.h"
+#include "apiratp_search.h"
 
 Uiratp::Uiratp(QWidget *parent) :
     QDialog(parent),
@@ -9,7 +10,10 @@ Uiratp::Uiratp(QWidget *parent) :
 
     ui->MainStackedWidget->setCurrentWidget(ui->SearchPage);
 
-    ratpGlobal.FilledTransportLists();
+    if (ratpGlobal.transportList.count() <= 0)
+    {
+        ratpGlobal.FilledTransportLists();
+    }
 
     connect(ui->BusRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->MetroRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
@@ -20,8 +24,6 @@ Uiratp::~Uiratp()
 {
     delete ui;
 }
-
-
 
 void Uiratp::ShowTransports()
 {
@@ -34,7 +36,55 @@ void Uiratp::ShowTransports()
 
     ui->TransportCombo->addItem("");
 
-    qDebug() << ratpGlobal.busList.count() << endl;
+    //    if(newTransport.transportMode == Transport::Modes::bus)
+    //    {
+    //        busList << newTransport;
+    //    }
+    //    else if(newTransport.transportMode == Transport::Modes::metro)
+    //    {
+    //        metroList << newTransport;
+    //    }
+    //    else
+    //    {
+    //        railList << newTransport;
+    //    }
+
+    if (ratpGlobal.busList.count() <= 0)
+    {
+        foreach (Transport objTran, ratpGlobal.transportList)
+        {
+            if (objTran.transportMode == Transport::Modes::bus)
+            {
+                ratpGlobal.busList << objTran;
+            }
+        }
+
+        std::sort(ratpGlobal.busList.begin(), ratpGlobal.busList.end(), Transport::compareTransports);
+    }
+
+    if (ratpGlobal.metroList.count() <= 0)
+    {
+        foreach (Transport objTran, ratpGlobal.transportList) {
+            if (objTran.transportMode == Transport::Modes::metro)
+            {
+                ratpGlobal.metroList << objTran;
+            }
+        }
+
+        std::sort(ratpGlobal.metroList.begin(), ratpGlobal.metroList.end(), Transport::compareTransports);
+    }
+
+    if (ratpGlobal.railList.count() <= 0)
+    {
+        foreach (Transport objTran, ratpGlobal.transportList) {
+            if (objTran.transportMode != Transport::Modes::bus && objTran.transportMode != Transport::Modes::metro)
+            {
+                ratpGlobal.railList << objTran;
+            }
+        }
+
+        std::sort(ratpGlobal.railList.begin(), ratpGlobal.railList.end(), Transport::compareTransports);
+    }
 
     if (ui->BusRadio->isChecked())
     {
@@ -67,38 +117,50 @@ void Uiratp::ShowTransports()
 void Uiratp::ShowTransportStopPoints(int _code)
 {
     disconnect(ui->StationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
-    disconnect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ratpGlobal.DoUniRequest()));
+    disconnect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ApiRatp_Search.DoUniRequest()));
 
     ui->StationCombo->clear();
     _code -= 1;
 
     if (ui->BusRadio->isChecked())
     {
-        for (int i = 0; i < ratpGlobal.busList[_code].mySPList.count(); ++i)
+        foreach (StopPoint sp, ratpGlobal.stopPointList)
         {
-            ui->StationCombo->addItem(ratpGlobal.busList[_code].mySPList[i].nomZDE);
+            if (sp.externalcodeLine == ratpGlobal.busList[_code].codeLine)
+            {
+                ratpGlobal.busList[_code].mySPList << sp;
+                ui->StationCombo->addItem(sp.nomZDE);
+            }
         }
     }
 
     if (ui->MetroRadio->isChecked())
     {
-        for (int i = 0; i < ratpGlobal.metroList[_code].mySPList.count(); ++i)
+        foreach (StopPoint sp, ratpGlobal.stopPointList)
         {
-            ui->StationCombo->addItem(ratpGlobal.metroList[_code].mySPList[i].nomZDE);
+            if (sp.externalcodeLine == ratpGlobal.metroList[_code].codeLine)
+            {
+                ratpGlobal.metroList[_code].mySPList << sp;
+                ui->StationCombo->addItem(sp.nomZDE);
+            }
         }
     }
 
     if (ui->RailRadio->isChecked())
     {
-        for (int i = 0; i < ratpGlobal.railList[_code].mySPList.count(); ++i)
+        foreach (StopPoint sp, ratpGlobal.stopPointList)
         {
-            ui->StationCombo->addItem(ratpGlobal.railList[_code].mySPList[i].nomZDE);
+            if (sp.externalcodeLine == ratpGlobal.railList[_code].codeLine)
+            {
+                ratpGlobal.railList[_code].mySPList << sp;
+                ui->StationCombo->addItem(sp.nomZDE);
+            }
         }
     }
 
     ui->RequestButton->setEnabled(true);
     connect(ui->StationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
-    connect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ratpGlobal.DoUniRequest()));
+    connect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ApiRatp_Search.DoUniRequest()));
 }
 
 void Uiratp::SetUniTransportIndex(int _codeT)
@@ -129,7 +191,6 @@ void Uiratp::showFinishedUni(QJsonArray resultArray)
          * Faire une view Scrollable
          *
          */
-
 
         // Create Text Slot
         QLabel *labelForDest = new QLabel("Destination : ", ui->ScrollAreaContents);
