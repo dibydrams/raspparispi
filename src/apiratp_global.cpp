@@ -3,6 +3,8 @@
 ApiRatp_Global::ApiRatp_Global()
 {
 
+    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+
 }
 
 void ApiRatp_Global::PeriStifJson()
@@ -75,17 +77,21 @@ void ApiRatp_Global::RefStifJson()
         }
         else
         {
-            rerList.append(newTransport);
+            railList.append(newTransport);
         }
     }
 
     std::sort(busList.begin(), busList.end(), Transport::compareTransports);
     std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
-    std::sort(rerList.begin(), rerList.end(), Transport::compareTransports);
+    std::sort(railList.begin(), railList.end(), Transport::compareTransports);
+
+    qDebug() << "RefStif Done !";
 }
 
 void ApiRatp_Global::GeoPoints()
 {
+    geoList.clear();
+
     foreach(QPointF point, pointList)
     {
 //      compare Point with Map Coordonnates
@@ -95,11 +101,29 @@ void ApiRatp_Global::GeoPoints()
           GeoObj geo;
           geo.longitude = point.x();
           geo.latitude = point.y();
-          geo.pixmap = QPixmap();
+          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
           geoList << geo;
         }
     }
     emit callFinished(geoList, RATP);
+}
+
+void ApiRatp_Global::FilledTransportLists()
+{
+    qDebug() << "is Empty ?" << referentielStifJson.isEmpty() << "et null ?" << referentielStifJson.isNull() << endl;
+    if (referentielStifJson.isEmpty())
+    {
+        if (m_settings->value("Datas/Referentiel").isNull())
+        {
+            m_settings->setValue("Datas/Referentiel", "Datas/referentiel-des-lignes-stif.json");
+        }
+        QString filename = "/" + m_settings->value("Datas/Referentiel").toString();
+        qDebug() << "now ref Json ?" << filename << endl;
+
+        referentielStifJson =  LoadJson(filename);
+        qDebug() << "now ref Json ?" << referentielStifJson.isEmpty() << endl;
+    }
+    RefStifJson();
 }
 
 QJsonDocument ApiRatp_Global::LoadJson(QString fileName)
@@ -121,19 +145,15 @@ void ApiRatp_Global::getInfo()
     {
         if (perimetreStifJson.isEmpty())
         {
-            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
+            if (m_settings->value("Datas/Perimetre").isNull())
+            {
+                m_settings->setValue("Datas/Perimetre", "Datas/perimetre-tr-plateforme-stif.json");
+            }
+            perimetreStifJson =  LoadJson(m_settings->value("Datas/Perimetre").toString().split("/").takeAt(1));
         }
         PeriStifJson();
     }
     GeoPoints();
-//    if(busList.isEmpty())
-//    {
-//        if (referentielStifJson.isEmpty())
-//        {
-//            referentielStifJson = LoadJson(":/Datas/referentiel-des-lignes-stif.json");
-//        }
-//        RefStifJson();
-//    }
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
