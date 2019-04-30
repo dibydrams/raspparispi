@@ -22,13 +22,14 @@ public:
     ~Uiratp();
 
     ApiRatp_Global ratpGlobal;
+    class ApiRatp_Search;
 
     void showFinishedStation(QJsonArray);
     void showFinishedUni(QJsonArray);
 
 private slots:
-    void SetUniStationIndex(int _codeS);
     void SetUniTransportIndex(int _codeT);
+    void SetUniStationIndex(int _codeS);
     void ShowTransports();
     void ShowTransportStopPoints(int _code);
 

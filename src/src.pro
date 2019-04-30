@@ -29,7 +29,7 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
-    addrtocoord.cpp \
+        addrtocoord.cpp \
         apiborneswifi.cpp \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
@@ -53,27 +53,21 @@ SOURCES += \
     	transport.cpp \
     	apiratp_station.cpp \
     	uiratp.cpp \
-<<<<<<< HEAD
-    apiratp_global.cpp \
-    apiterrasses.cpp \
-<<<<<<< HEAD
-    sanisette.cpp \
-    apiratp_search.cpp \
-    apiespacesverts.cpp \
-    theatre.cpp \
-    apifontaines.cpp
-=======
-    sanisette.cpp
-=======
         apiratp_global.cpp \
         apiterrasses.cpp \
         sanisette.cpp \
         apiratp_search.cpp \
         apiespacesverts.cpp \
-        theatre.cpp
->>>>>>> d3eb20713c20e90cd752c21fbbec26c10544dce4
+        theatre.cpp \
+        apifontaines.cpp\
+      	uiratp.cpp \
+        apiratp_global.cpp \
+        sanisette.cpp \
+        apiratp_search.cpp \
+        apiespacesverts.cpp \
+        theatre.cpp\
+    
 
->>>>>>> f5d99c3f6ed1d569977d1ac9aadd003bb5f0bce4
 
 
 HEADERS += \
@@ -92,27 +86,22 @@ HEADERS += \
         icon.h \
         indiceuv.h \
         mainwindow.h \
-<<<<<<< HEAD
-    meteo.h \
-    pharmapi.h \
-    pollution.h \
-    prevision.h \
-    stoppoint.h \
-    transport.h \
-    uiratp.h \
-    widgetmap.h \
-    apiratp_global.h \
-    apiterrasses.h \
-<<<<<<< HEAD
+        meteo.h \
+        pharmapi.h \
+        pollution.h \
+        prevision.h \
+        stoppoint.h \
+        transport.h \
+        uiratp.h \
+        widgetmap.h \
+        apiratp_global.h \
+        apiterrasses.h \
     sanisette.h \
     theatre.h \
     apiratp_search.h \
     apiespacesverts.h \
     apifontaines.h
-=======
-    sanisette.h
 
-=======
         meteo.h \
         pharmapi.h \
         pollution.h \
@@ -128,8 +117,7 @@ HEADERS += \
         theatre.h \
         apiratp_search.h \
         apiespacesverts.h \
->>>>>>> f5d99c3f6ed1d569977d1ac9aadd003bb5f0bce4
->>>>>>> d3eb20713c20e90cd752c21fbbec26c10544dce4
+
 
 
 FORMS += \

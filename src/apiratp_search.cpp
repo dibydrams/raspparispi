@@ -58,12 +58,7 @@ int ApiRatp_Search::getId()
 
 void ApiRatp_Search::getInfo()
 {
-//    if(ratpGlobal->busList.count())
-//    {
-//        ratpGlobal->FilledTransportLists();
-//    }
-    qDebug() << "GetInfo end";
-//    DoUniRequest();
+
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
