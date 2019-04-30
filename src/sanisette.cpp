@@ -12,13 +12,13 @@ int sanisette::getId()
 
 QPixmap sanisette::getPixmap()
 {
-    return QPixmap(":/Icons/toilettes.png");
+    return QPixmap(":/Icons/toilette.png");
 }
 
 void sanisette::sanisetteAPI_Call(){
     manager=new QNetworkAccessManager();
     QNetworkRequest request;
-    request.setUrl(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&facet=arrondissement&facet=horaires_ouverture"));
+    request.setUrl(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&rows=500&facet=arrondissement&facet=horaires_ouverture"));
     reply = manager->get(request);
     connect(reply,SIGNAL(finished()),this,SLOT(readJsonSani()));
 }
