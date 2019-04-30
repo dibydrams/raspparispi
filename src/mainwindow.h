@@ -13,13 +13,12 @@
 #include "apiratp_station.h"
 #include "apiratp_global.h"
 #include "uiratp.h"
-<<<<<<< HEAD
 #include "apiborneswifi.h"
 
 
-=======
+
 #include "theatre.h"
->>>>>>> 4b73b71ce409c496e20896f6043de95349b7ed7a
+
 
 namespace Ui {
 class MainWindow;
