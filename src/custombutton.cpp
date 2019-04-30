@@ -13,8 +13,11 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     buttonID = ptr->getId();
     setIconSize(QSize(128,128));
     setFixedSize(128,128);
-    connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
+
+    if (!this->isChecked()) {
+        connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
+        connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
+    }
 }
 
 void CustomButton::ClickedManage()
