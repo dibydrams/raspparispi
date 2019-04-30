@@ -12,26 +12,25 @@ int sanisette::getId()
 
 QPixmap sanisette::getPixmap()
 {
-    return QPixmap(":/Icons/toilettes.png");
+    return QPixmap(":/Icons/toilette.png");
 }
 
 void sanisette::sanisetteAPI_Call(){
     manager=new QNetworkAccessManager();
     QNetworkRequest request;
-    request.setUrl(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&facet=arrondissement&facet=horaires_ouverture"));
+    request.setUrl(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&rows=500&facet=arrondissement&facet=horaires_ouverture"));
     reply = manager->get(request);
+    connect(reply,SIGNAL(finished()),this,SLOT(readJsonSani()));
 }
 
-void sanisette::readJsonSaniAPI(){
+void sanisette::readJsonSani(){
         m_list.clear();
-        // qDebug()<< " readjson";
         QByteArray responseBit=reply->readAll();
         QJsonDocument document = QJsonDocument::fromJson(responseBit);
         QJsonObject replyObj = document.object();
         QJsonArray recordsJsonArray = replyObj["records"].toArray();
 
         foreach (const QJsonValue & value, recordsJsonArray) {
-            //sanisette sani;
             QJsonObject obj = value.toObject();
             QJsonObject objectFields = obj["fields"].toObject();
             QVariantHash objHasdh = obj.toVariantHash();
@@ -48,9 +47,9 @@ void sanisette::readJsonSaniAPI(){
         }
         emit callFinished(m_list, TOILETTES);
 }
+
 void sanisette::getInfo(){
     sanisetteAPI_Call();
-
 }
 
 

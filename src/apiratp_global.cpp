@@ -3,6 +3,31 @@
 ApiRatp_Global::ApiRatp_Global()
 {
 
+    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+    if (referentielStifJson.isEmpty())
+    {
+        if (m_settings->value("Datas/Referentiel").isNull())
+        {
+            m_settings->setValue("Datas/Referentiel", m_settings->fileName().leftRef(m_settings->fileName().lastIndexOf('/',-2)).toString() + "/referentiel-des-lignes-stif.json");
+        }
+        QString filename = m_settings->value("Datas/Referentiel").toString();
+        referentielStifJson =  LoadJson(filename);
+    }
+
+    if (stopPointList.isEmpty())
+    {
+        if (perimetreStifJson.isEmpty())
+        {
+            if (m_settings->value("Datas/Perimetre").isNull())
+            {
+                m_settings->setValue("Datas/Perimetre", m_settings->fileName().leftRef(m_settings->fileName().lastIndexOf('/',-2)).toString() + "/perimetre-tr-plateforme-stif.json");
+            }
+            QString filename = m_settings->value("Datas/Perimetre").toString();
+            perimetreStifJson =  LoadJson(filename);
+        }
+        PeriStifJson();
+    }
+
 }
 
 void ApiRatp_Global::PeriStifJson()
@@ -51,41 +76,37 @@ void ApiRatp_Global::RefStifJson()
 
         // Liste des Arrêts du transport
         QList<StopPoint> mySPList;
-        foreach (StopPoint sp, stopPointList) {
-            if (sp.externalcodeLine == codeLine)
-                mySPList.append(sp);
-        }
+
 
         Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
-
-        if(newTransport.transportMode == Transport::Modes::bus)
-        {
-            for (int j = 0; j < stopPointList.count(); ++j)
-            {
-                if(stopPointList[j].externalcodeLine == newTransport.codeLine)
-                {
-                    busList.append(newTransport);
-                    break;
-                }
-            }
-        }
-        else if(newTransport.transportMode == Transport::Modes::metro)
-        {
-            metroList.append(newTransport);
-        }
-        else
-        {
-            rerList.append(newTransport);
-        }
+        transportList << newTransport;
     }
 
-    std::sort(busList.begin(), busList.end(), Transport::compareTransports);
-    std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
-    std::sort(rerList.begin(), rerList.end(), Transport::compareTransports);
+//    foreach (StopPoint sp, stopPointList) {
+//        if (sp.externalcodeLine == codeLine)
+//            mySPList.append(sp);
+//    }
+
+//    if(newTransport.transportMode == Transport::Modes::bus)
+//    {
+//        busList << newTransport;
+//    }
+//    else if(newTransport.transportMode == Transport::Modes::metro)
+//    {
+//        metroList << newTransport;
+//    }
+//    else
+//    {
+//        railList << newTransport;
+//    }
+
+
 }
 
 void ApiRatp_Global::GeoPoints()
 {
+    geoList.clear();
+
     foreach(QPointF point, pointList)
     {
 //      compare Point with Map Coordonnates
@@ -95,11 +116,16 @@ void ApiRatp_Global::GeoPoints()
           GeoObj geo;
           geo.longitude = point.x();
           geo.latitude = point.y();
-          geo.pixmap = QPixmap();
+          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
           geoList << geo;
         }
     }
     emit callFinished(geoList, RATP);
+}
+
+void ApiRatp_Global::FilledTransportLists()
+{
+    RefStifJson();
 }
 
 QJsonDocument ApiRatp_Global::LoadJson(QString fileName)
@@ -117,23 +143,7 @@ int ApiRatp_Global::getId()
 
 void ApiRatp_Global::getInfo()
 {
-    if (stopPointList.isEmpty())
-    {
-        if (perimetreStifJson.isEmpty())
-        {
-            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
-        }
-        PeriStifJson();
-    }
     GeoPoints();
-//    if(busList.isEmpty())
-//    {
-//        if (referentielStifJson.isEmpty())
-//        {
-//            referentielStifJson = LoadJson(":/Datas/referentiel-des-lignes-stif.json");
-//        }
-//        RefStifJson();
-//    }
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

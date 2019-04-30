@@ -2,4 +2,6 @@
 build-*
 RATP*
 *.pro.user
+*.pro.user*
+*moc_*
 .DS_Store

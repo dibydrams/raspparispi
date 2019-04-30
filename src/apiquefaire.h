@@ -22,6 +22,8 @@ public:
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
+
+public slots:
     void getInfo() override;
 
 private:

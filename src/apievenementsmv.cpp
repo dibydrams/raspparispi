@@ -19,7 +19,7 @@ void ApiEvenementsMV::API_Call() // Gestion du call à l'API
 }
 
 void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultats au format JSON
-{
+{  
     m_list.clear(); // Reset de la liste de GeoObj à chaque passage dans la fonction
 
     doc = QJsonDocument::fromJson(reply->readAll());
