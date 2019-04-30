@@ -37,6 +37,8 @@ private:
 
 private slots:
     void API_Results(QNetworkReply *reply);
+
+public slots:
     void getInfo() override;
 
 signals:

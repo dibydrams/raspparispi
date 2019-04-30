@@ -36,6 +36,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
     for ( auto val :  arr) {
         terrasse terra;
 
+
         QJsonObject objn = val.toObject();
         QJsonValue val2 = objn.value(QString("fields"));
         QJsonObject item = val2.toObject();
@@ -43,6 +44,8 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
         terra.type = item["libelle_type"].toString();
         terra.latitude = item["geo_point_2d"].toArray()[0].toDouble();
         terra.longitude = item["geo_point_2d"].toArray()[1].toDouble();
+
+        
 
         GeoObj geo;
         if(utilitaire::inMap(terra.latitude, terra.longitude))
@@ -52,8 +55,11 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
             geo.longitude = terra.longitude;
             geo.pixmap = QPixmap();
 
+
             m_list << geo;
         }
+
+       
     }
 
     emit callFinished(m_list, TERRASSES);  // Signal de fin de traitement de l'API

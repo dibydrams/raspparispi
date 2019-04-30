@@ -1,5 +1,5 @@
-#ifndef APIKIOSQUES_H
-#define APIKIOSQUES_H
+#ifndef APIFONTAINES_H
+#define APIFONTAINES_H
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -9,21 +9,17 @@
 #include <QList>
 #include"Abstract_API.h"
 
-
-class apikiosques : public Abstract_API
+class apifontaines : public Abstract_API
 {
     Q_OBJECT
 public:
-    apikiosques();
+    apifontaines();
     int getId()override;
     QPixmap getPixmap()override;
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
-
-public slots:
-    void getInfo() override;
-
+    void getInfo()override;
 private:
     QNetworkAccessManager *API_access;
     QNetworkReply *currentReply;
@@ -33,14 +29,16 @@ private:
     QList<GeoObj>m_list;
     double latitude;
     double longitude;
-    QString statut;
+    QString modele;
     QString adresse;
+    QString ouv_hiver;
+    QString sdf;
+    QString en_service;
+    int drink;
 
     signals:
     void callFinished(QList<Abstract_API::GeoObj>, API_index index);
 
-
-
 };
 
-#endif // APIKIOSQUES_H
+#endif // APIFONTAINES_H

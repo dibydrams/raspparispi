@@ -29,6 +29,8 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
+        addrtocoord.cpp \
+        apiborneswifi.cpp \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
@@ -56,12 +58,22 @@ SOURCES += \
         sanisette.cpp \
         apiratp_search.cpp \
         apiespacesverts.cpp \
+        theatre.cpp \
+        apifontaines.cpp\
+      	uiratp.cpp \
+        apiratp_global.cpp \
+        sanisette.cpp \
+        apiratp_search.cpp \
+        apiespacesverts.cpp \
         theatre.cpp
+    
 
 
 
 HEADERS += \
         Abstract_API.h \
+    addrtocoord.h \
+        apiborneswifi.h \
         apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
@@ -81,6 +93,22 @@ HEADERS += \
         stoppoint.h \
         transport.h \
         uiratp.h \
+        widgetmap.h \
+        apiratp_global.h \
+        apiterrasses.h \
+    sanisette.h \
+    theatre.h \
+    apiratp_search.h \
+    apiespacesverts.h \
+    apifontaines.h \
+
+        meteo.h \
+        pharmapi.h \
+        pollution.h \
+        prevision.h \
+        stoppoint.h \
+        transport.h \
+        uiratp.h \
         utilitaire.h \
         widgetmap.h \
         apiratp_global.h \
@@ -88,7 +116,8 @@ HEADERS += \
         sanisette.h \
         theatre.h \
         apiratp_search.h \
-        apiespacesverts.h \
+        apiespacesverts.h 
+
 
 
 FORMS += \
