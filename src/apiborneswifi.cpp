@@ -34,7 +34,7 @@ void ApiBornesWifi::API_Results(QNetworkReply *reply)
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = QPixmap();
+        geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(126, 170, 44));
 
         m_list << geo;
     }
