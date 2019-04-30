@@ -24,10 +24,9 @@ public:
 
     WidgetMap widgetmap;
 
-    QJsonDocument perimetreStifJson;
-    QJsonDocument referentielStifJson;
+    QSettings *m_settings;
 
-    QList<Abstract_API::GeoObj> geoList;
+    QList<GeoObj> geoList;
     QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
     QList<Transport> busList;
@@ -37,13 +36,20 @@ public:
     int indexTranspForUniReq;
     int indexStationForUniReq;
 
+    void FilledTransportLists();
+
 private:
+    QJsonDocument perimetreStifJson;
+    QJsonDocument referentielStifJson;
+
     void GeoPoints();
     void PeriStifJson();
     void RefStifJson();
 
-private slots:
+public slots:
     void getInfo() override;
+
+private slots:
     QJsonDocument LoadJson(QString fileName);
 
 signals:
