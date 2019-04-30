@@ -58,11 +58,16 @@ int ApiRatp_Search::getId()
 
 void ApiRatp_Search::getInfo()
 {
-    DoUniRequest();
+//    if(ratpGlobal->busList.count())
+//    {
+//        ratpGlobal->FilledTransportLists();
+//    }
+    qDebug() << "GetInfo end";
+//    DoUniRequest();
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
 QPixmap ApiRatp_Search::getPixmap()
 {
-    return QPixmap(":/Icons/iconStation.png"); // icône PNG préférable
+    return QPixmap(":/Icons/iconSearch.png"); // icône PNG préférable
 }
