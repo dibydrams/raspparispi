@@ -1,29 +1,29 @@
-#include "sanisette.h"
+#include "theatre.h"
 
-sanisette::sanisette()
+theatre::theatre()
 {
 
 }
 
-int sanisette::getId()
+int theatre::getId()
 {
-    return TOILETTES;
+    return THEATRE;
 }
 
-QPixmap sanisette::getPixmap()
+QPixmap theatre::getPixmap()
 {
-    return QPixmap(":/Icons/toilettes.png");
+    return QPixmap(":/Icons/theatre.png");
 }
 
-void sanisette::sanisetteAPI_Call(){
+void theatre::theatreAPI_Call(){
     manager=new QNetworkAccessManager();
     QNetworkRequest request;
     request.setUrl(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&facet=arrondissement&facet=horaires_ouverture"));
     reply = manager->get(request);
-    connect(reply,SIGNAL(finished()),this,SLOT(readJsonSani()));
+    connect(reply,SIGNAL(finished()),this,SLOT(readJsonTheatre()));
 }
 
-void sanisette::readJsonSani(){
+void theatre::readJsonTheatre(){
         m_list.clear();
         QByteArray responseBit=reply->readAll();
         QJsonDocument document = QJsonDocument::fromJson(responseBit);
@@ -48,8 +48,8 @@ void sanisette::readJsonSani(){
         emit callFinished(m_list, TOILETTES);
 }
 
-void sanisette::getInfo(){
-    sanisetteAPI_Call();
+void theatre::getInfo(){
+    theatreAPI_Call();
 }
 
 

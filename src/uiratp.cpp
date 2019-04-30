@@ -16,6 +16,7 @@ Uiratp::~Uiratp()
 
 void Uiratp::showFinishedStation(QJsonArray resultArray)
 {
+    ui->MainStackedWidget->setCurrentWidget(ui->StationPage);
     show();
 
     for (int i = 0; i < resultArray.count(); ++i)
@@ -95,5 +96,145 @@ void Uiratp::showFinishedStation(QJsonArray resultArray)
 
         ui->StationWidget->widget(widgetIndex)->show();
     }
+}
+
+
+void Uiratp::ShowTransports()
+{
+    ui->RequestButton->setEnabled(false);
+    disconnect(ui->TransportCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(ShowTransportStopPoints(int)));
+    disconnect(ui->TransportCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniTransportIndex(int)));
+
+    ui->TransportCombo->clear();
+    ui->StationCombo->clear();
+
+    ui->TransportCombo->addItem("");
+
+    if (ui->BusRadio->isChecked())
+    {
+        for (int i = 0; i < ratpGlobal.busList.count(); ++i)
+        {
+            ui->TransportCombo->addItem(ratpGlobal.busList[i].nameShowed);
+        }
+    }
+
+    if (ui->MetroRadio->isChecked())
+    {
+        for (int i = 0; i < ratpGlobal.metroList.count(); ++i)
+        {
+            ui->TransportCombo->addItem(ratpGlobal.metroList[i].nameShowed);
+        }
+    }
+
+    if (ui->RailRadio->isChecked())
+    {
+        for (int i = 0; i < ratpGlobal.railList.count(); ++i)
+        {
+            ui->TransportCombo->addItem(ratpGlobal.railList[i].nameShowed);
+        }
+    }
+
+    connect(ui->TransportCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(ShowTransportStopPoints(int)));
+    connect(ui->TransportCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniTransportIndex(int)));
+}
+
+void Uiratp::ShowTransportStopPoints(int _code)
+{
+    disconnect(ui->StationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
+    disconnect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ratpGlobal.DoUniRequest()));
+
+    ui->StationCombo->clear();
+    _code -= 1;
+
+    if (ui->BusRadio->isChecked())
+    {
+        for (int i = 0; i < ratpGlobal.busList[_code].mySPList.count(); ++i)
+        {
+            ui->StationCombo->addItem(ratpGlobal.busList[_code].mySPList[i].nomZDE);
+        }
+    }
+
+    if (ui->MetroRadio->isChecked())
+    {
+        for (int i = 0; i < ratpGlobal.metroList[_code].mySPList.count(); ++i)
+        {
+            ui->StationCombo->addItem(ratpGlobal.metroList[_code].mySPList[i].nomZDE);
+        }
+    }
+
+    if (ui->RailRadio->isChecked())
+    {
+        for (int i = 0; i < ratpGlobal.railList[_code].mySPList.count(); ++i)
+        {
+            ui->StationCombo->addItem(ratpGlobal.railList[_code].mySPList[i].nomZDE);
+        }
+    }
+
+    ui->RequestButton->setEnabled(true);
+    connect(ui->StationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
+    connect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ratpGlobal.DoUniRequest()));
+}
+
+void Uiratp::SetUniTransportIndex(int _codeT)
+{
+    if (_codeT != -1)
+        ratpGlobal.indexTranspForUniReq = _codeT - 1;
+}
+
+void Uiratp::SetUniStationIndex(int _codeS)
+{
+    if(_codeS != -1)
+        ratpGlobal.indexStationForUniReq = _codeS;
+}
+
+void Uiratp::showFinishedUni(QJsonArray resultArray)
+{
+    ui->MainStackedWidget->setCurrentWidget(ui->UniPage);
+
+    int span = 40;
+
+    ui->UniPage->hide();
+    for (int i = 0; i < resultArray.count(); i++)
+    {
+
+        /*
+         * TODO
+         *
+         * Faire une view Scrollable
+         *
+         */
+
+
+        // Create Text Slot
+        QLabel *labelForDest = new QLabel("Destination : ", ui->ScrollAreaContents);
+        QLabel *labelForTime = new QLabel("Next train : ", ui->ScrollAreaContents);
+        QLabel *labelDest = new QLabel(ui->ScrollAreaContents);
+        QLabel *labelTime = new QLabel(ui->ScrollAreaContents);
+
+        labelForDest->move(ui->ScrollAreaContents->geometry().left() + span, 0 + (span * i));
+        labelForTime->move(ui->ScrollAreaContents->geometry().left() + span, 15 + (span * i));
+        labelDest->move(ui->ScrollAreaContents->geometry().left() + labelForDest->geometry().width() + span, 0 + (span * i));
+        labelTime->move(ui->ScrollAreaContents->geometry().left() + labelForTime->geometry().width() + span, 15 + (span * i));
+
+        labelDest->setText(resultArray[i].toObject().value("lineDirection").toString());
+
+//        qDebug() << "Code" << arrayDoc[i].toObject().value("code").toString();
+//        qDebug() << "Line Direction" << arrayDoc[i].toObject().value("lineDirection").toString();
+//        qDebug() << "Sens" << arrayDoc[i].toObject().value("sens").toString();
+//        qDebug() << "Short Name" << arrayDoc[i].toObject().value("shortName").toString();
+
+        if (resultArray[i].toObject().value("time").toString() == "")
+        {
+            qDebug() << "Schedule" << resultArray[i].toObject().value("schedule").toString() << endl;
+            labelTime->setText(resultArray[i].toObject().value("schedule").toString());
+        }
+        else
+        {
+            qDebug() << "Time" << resultArray[i].toObject().value("time").toString() << endl;
+            labelTime->setText(resultArray[i].toObject().value("time").toString());
+        }
+
+    }
+    ui->UniPage->show();
 }
 

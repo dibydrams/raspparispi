@@ -39,6 +39,7 @@ SOURCES += \
     pollution.cpp \
     prevision.cpp \
     apiquefaire.cpp \
+    apikiosques.cpp\
         custombutton.cpp \
         icon.cpp \
         main.cpp \
@@ -51,7 +52,11 @@ SOURCES += \
     	uiratp.cpp \
     apiratp_global.cpp \
     apiterrasses.cpp \
-    sanisette.cpp
+    sanisette.cpp \
+    apiratp_search.cpp \
+    apiespacesverts.cpp \
+    theatre.cpp
+
 
 
 HEADERS += \
@@ -62,6 +67,7 @@ HEADERS += \
     apiquefaire.h \
     apiratp_station.h \
         custombutton.h \
+    apikiosques.h \
     dialogmeteo.h \
     icon.h \
     indiceuv.h \
@@ -76,7 +82,10 @@ HEADERS += \
     widgetmap.h \
     apiratp_global.h \
     apiterrasses.h \
-    sanisette.h
+    sanisette.h \
+    theatre.h \
+    apiratp_search.h \
+    apiespacesverts.h \
 
 
 FORMS += \

@@ -8,9 +8,12 @@
 #include "pharmapi.h"
 #include "apibornes_elec.h"
 #include "apiquefaire.h"
+#include "apikiosques.h"
 #include "sanisette.h"
-
-
+#include "apiratp_station.h"
+#include "apiratp_global.h"
+#include "uiratp.h"
+#include "theatre.h"
 
 namespace Ui {
 class MainWindow;
