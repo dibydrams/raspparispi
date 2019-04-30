@@ -51,7 +51,7 @@ Dialog::Dialog(QWidget *parent) :
     setvignette();
 
     QPixmap uvprotection;
-    uvprotection.load("/home/haissam/Images/UV/protectionUV.png");
+    uvprotection.load(":/Icons_meteo/protectionUV.png");
     ui->label_UVprotection->setPixmap(uvprotection);
 
 }
