@@ -70,7 +70,7 @@ void MainWindow::initButtons()
     ptr = new pharmapi;
     CustomButton *pharmButton = new CustomButton(ptr, this);
     ui->horizontalLayout->addWidget(pharmButton);
-    connect(buttonEv, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(pharmButton, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
     ptr = new ApiBornes_Elec;
@@ -144,6 +144,7 @@ void MainWindow::initButtons()
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
 {
     ui->widget->m_listePI = list;
+   qDebug()<<"ok recu";
     this->update();
 }
 

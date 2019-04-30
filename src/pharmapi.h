@@ -22,8 +22,6 @@ public:
     QPixmap getPixmap() override;
 
 private slots:
-    void API_Call();
-    void API_Results(QNetworkReply *reply);
     void getInfo() override;
 
 private:
