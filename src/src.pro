@@ -34,17 +34,20 @@ SOURCES += \
     apiborneswifi.cpp \
         apievenementsmv.cpp \
     apimeteo.cpp \
+    apivelib.cpp \
     dialogmeteo.cpp \
     indiceuv.cpp \
     meteo.cpp \
     pollution.cpp \
     prevision.cpp \
     apiquefaire.cpp \
+    apikiosques.cpp\
         custombutton.cpp \
         icon.cpp \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+    utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
@@ -54,7 +57,9 @@ SOURCES += \
     apiterrasses.cpp \
     sanisette.cpp \
     apiratp_search.cpp \
-    apiespacesverts.cpp
+    apiespacesverts.cpp \
+    theatre.cpp
+
 
 
 HEADERS += \
@@ -65,7 +70,9 @@ HEADERS += \
     apimeteo.h \
     apiquefaire.h \
     apiratp_station.h \
+    apivelib.h \
         custombutton.h \
+    apikiosques.h \
     dialogmeteo.h \
     icon.h \
     indiceuv.h \
@@ -77,12 +84,14 @@ HEADERS += \
     stoppoint.h \
     transport.h \
     uiratp.h \
+    utilitaire.h \
     widgetmap.h \
     apiratp_global.h \
     apiterrasses.h \
     sanisette.h \
+    theatre.h \
     apiratp_search.h \
-    apiespacesverts.h
+    apiespacesverts.h \
 
 
 FORMS += \

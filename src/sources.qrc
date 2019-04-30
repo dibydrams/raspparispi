@@ -6,6 +6,7 @@
         <file>Icons/iconeleccar.png</file>
         <file>Icons/icongroup.png</file>
         <file>Style/style.css</file>
+        <file>Icons/iconeKiosques.png</file>
         <file>Icons/iconeterrace.png</file>
         <file>Icons/point_interet.png</file>
         <file>Icons/iconStation.png</file>
@@ -13,6 +14,11 @@
         <file>Icons/toilettes.png</file>
         <file>Icons/iconRatpStationSpot.png</file>
         <file>Icons/iconespacesverts.png</file>
+<<<<<<< HEAD
         <file>Icons/iconwifi.png</file>
+=======
+        <file>Icons/theatre.png</file>
+        <file>Icons/iconvelib.png</file>
+>>>>>>> 4b73b71ce409c496e20896f6043de95349b7ed7a
     </qresource>
 </RCC>

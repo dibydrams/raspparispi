@@ -75,7 +75,7 @@ void Dialog::setvignette()
     v6.load(":/Icons_meteo/vignette6.png");
 
 
-    if (jours != "sam" | jours != "dim")
+    if (jours != "sam" || jours != "dim")
     {
         if (heures >="08" && heures <="20")
 
