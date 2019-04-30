@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>Icons/iconevents.png</file>
-	<file>Tmp_Map/maprougemont.png</file>
-<!--        <file>Datas/perimetre-tr-plateforme-stif.json</file>
-	<file>Datas/referentiel-des-lignes-stif.json</file>-->
+        <file>Tmp_Map/maprougemont.png</file>
         <file>Icons/pharmicon.png</file>
         <file>Icons/iconeleccar.png</file>
         <file>Icons/icongroup.png</file>
@@ -15,5 +13,6 @@
         <file>Icons/toilettes.png</file>
         <file>Icons/iconRatpStationSpot.png</file>
         <file>Icons/iconespacesverts.png</file>
+        <file>Icons/iconwifi.png</file>
     </qresource>
 </RCC>
