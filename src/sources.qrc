@@ -14,11 +14,9 @@
         <file>Icons/toilettes.png</file>
         <file>Icons/iconRatpStationSpot.png</file>
         <file>Icons/iconespacesverts.png</file>
-<<<<<<< HEAD
         <file>Icons/iconwifi.png</file>
-=======
         <file>Icons/theatre.png</file>
         <file>Icons/iconvelib.png</file>
->>>>>>> 4b73b71ce409c496e20896f6043de95349b7ed7a
+        <file>Icons/iconvelibmap.png</file>
     </qresource>
 </RCC>
