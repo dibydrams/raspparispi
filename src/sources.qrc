@@ -16,5 +16,6 @@
         <file>Icons/iconespacesverts.png</file>
         <file>Icons/theatre.png</file>
         <file>Icons/iconvelib.png</file>
+        <file>Icons/iconvelibmap.png</file>
     </qresource>
 </RCC>
