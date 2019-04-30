@@ -4,6 +4,29 @@ ApiRatp_Global::ApiRatp_Global()
 {
 
     m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+    if (referentielStifJson.isEmpty())
+    {
+        if (m_settings->value("Datas/Referentiel").isNull())
+        {
+            m_settings->setValue("Datas/Referentiel", m_settings->fileName().leftRef(m_settings->fileName().lastIndexOf('/',-2)).toString() + "/referentiel-des-lignes-stif.json");
+        }
+        QString filename = m_settings->value("Datas/Referentiel").toString();
+        referentielStifJson =  LoadJson(filename);
+    }
+
+    if (stopPointList.isEmpty())
+    {
+        if (perimetreStifJson.isEmpty())
+        {
+            if (m_settings->value("Datas/Perimetre").isNull())
+            {
+                m_settings->setValue("Datas/Perimetre", m_settings->fileName().leftRef(m_settings->fileName().lastIndexOf('/',-2)).toString() + "/perimetre-tr-plateforme-stif.json");
+            }
+            QString filename = m_settings->value("Datas/Perimetre").toString();
+            perimetreStifJson =  LoadJson(filename);
+        }
+        PeriStifJson();
+    }
 
 }
 
@@ -53,39 +76,31 @@ void ApiRatp_Global::RefStifJson()
 
         // Liste des Arrêts du transport
         QList<StopPoint> mySPList;
-        foreach (StopPoint sp, stopPointList) {
-            if (sp.externalcodeLine == codeLine)
-                mySPList.append(sp);
-        }
+
 
         Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
-
-        if(newTransport.transportMode == Transport::Modes::bus)
-        {
-            for (int j = 0; j < stopPointList.count(); ++j)
-            {
-                if(stopPointList[j].externalcodeLine == newTransport.codeLine)
-                {
-                    busList.append(newTransport);
-                    break;
-                }
-            }
-        }
-        else if(newTransport.transportMode == Transport::Modes::metro)
-        {
-            metroList.append(newTransport);
-        }
-        else
-        {
-            railList.append(newTransport);
-        }
+        transportList << newTransport;
     }
 
-    std::sort(busList.begin(), busList.end(), Transport::compareTransports);
-    std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
-    std::sort(railList.begin(), railList.end(), Transport::compareTransports);
+//    foreach (StopPoint sp, stopPointList) {
+//        if (sp.externalcodeLine == codeLine)
+//            mySPList.append(sp);
+//    }
 
-    qDebug() << "RefStif Done !";
+//    if(newTransport.transportMode == Transport::Modes::bus)
+//    {
+//        busList << newTransport;
+//    }
+//    else if(newTransport.transportMode == Transport::Modes::metro)
+//    {
+//        metroList << newTransport;
+//    }
+//    else
+//    {
+//        railList << newTransport;
+//    }
+
+
 }
 
 void ApiRatp_Global::GeoPoints()
@@ -110,19 +125,6 @@ void ApiRatp_Global::GeoPoints()
 
 void ApiRatp_Global::FilledTransportLists()
 {
-    qDebug() << "is Empty ?" << referentielStifJson.isEmpty() << "et null ?" << referentielStifJson.isNull() << endl;
-    if (referentielStifJson.isEmpty())
-    {
-        if (m_settings->value("Datas/Referentiel").isNull())
-        {
-            m_settings->setValue("Datas/Referentiel", "Datas/referentiel-des-lignes-stif.json");
-        }
-        QString filename = "/" + m_settings->value("Datas/Referentiel").toString();
-        qDebug() << "now ref Json ?" << filename << endl;
-
-        referentielStifJson =  LoadJson(filename);
-        qDebug() << "now ref Json ?" << referentielStifJson.isEmpty() << endl;
-    }
     RefStifJson();
 }
 
@@ -141,18 +143,6 @@ int ApiRatp_Global::getId()
 
 void ApiRatp_Global::getInfo()
 {
-    if (stopPointList.isEmpty())
-    {
-        if (perimetreStifJson.isEmpty())
-        {
-            if (m_settings->value("Datas/Perimetre").isNull())
-            {
-                m_settings->setValue("Datas/Perimetre", "Datas/perimetre-tr-plateforme-stif.json");
-            }
-            perimetreStifJson =  LoadJson(m_settings->value("Datas/Perimetre").toString().split("/").takeAt(1));
-        }
-        PeriStifJson();
-    }
     GeoPoints();
 }
 

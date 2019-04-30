@@ -18,7 +18,7 @@ QPixmap theatre::getPixmap()
 void theatre::theatreAPI_Call(){
     manager=new QNetworkAccessManager();
     QNetworkRequest request;
-    request.setUrl(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&facet=arrondissement&facet=horaires_ouverture"));
+    request.setUrl(QUrl("https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&q=theatre&rows=60&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Paris&refine.date_start=2019&refine.tags=th%C3%A9%C3%A2tre&timezone=Europe%2FParis"));
     reply = manager->get(request);
     connect(reply,SIGNAL(finished()),this,SLOT(readJsonTheatre()));
 }

@@ -21,7 +21,7 @@ public:
     int getId() override;
     QPixmap getPixmap() override;
 
-private slots:
+public slots:
     void getInfo() override;
 
 private:

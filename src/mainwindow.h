@@ -13,7 +13,10 @@
 #include "apiratp_station.h"
 #include "apiratp_global.h"
 #include "uiratp.h"
+#include "apiborneswifi.h"
 #include "theatre.h"
+#include "apifontaines.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -28,11 +31,14 @@ public:
     ~MainWindow();
 
     void initButtons();
+    QList <CustomButton *> ButtonList;
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
     void dialog();
-//    void ratpDialog();
+    void GetInfo(Abstract_API *ptr);
+    void enableButtons();
+//  void ratpDialog();
 
 private:
     Ui::MainWindow *ui;

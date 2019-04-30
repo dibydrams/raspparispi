@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QList>
+#include "icon.h"
 
 #include "Abstract_API.h"
 
@@ -24,6 +25,8 @@ public:
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
+
+public slots:
     void getInfo() override;
 
 private:

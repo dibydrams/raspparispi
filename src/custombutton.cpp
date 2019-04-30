@@ -14,8 +14,20 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     setIconSize(QSize(128,128));
     setFixedSize(128,128);
 
-    // Ajout dynamique des boutons à la liste de boutons
-    ptr->ButtonList << this;
+    if (!this->isChecked()) {
+        connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
+        connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
+    }
+}
+
+void CustomButton::ClickedManage()
+{
+    emit Clicked(ptrAPI);
+}
+
+void CustomButton::FinishedReceived()
+{
+    emit Finished();
 }
 
 
