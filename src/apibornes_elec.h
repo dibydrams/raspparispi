@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
+#include "icon.h"
 
 class ApiBornes_Elec : public Abstract_API
 {
