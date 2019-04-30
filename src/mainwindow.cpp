@@ -9,6 +9,7 @@
 #include "apiratp_station.h"
 #include "apiespacesverts.h"
 #include "apiratp_search.h"
+#include "apivelib.h"
 
 #include <QHBoxLayout>
 

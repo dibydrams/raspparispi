@@ -33,6 +33,7 @@ SOURCES += \
     apibornes_elec.cpp \
         apievenementsmv.cpp \
     apimeteo.cpp \
+    apivelib.cpp \
     dialogmeteo.cpp \
     indiceuv.cpp \
     meteo.cpp \
@@ -45,6 +46,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+    utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
@@ -66,6 +68,7 @@ HEADERS += \
     apimeteo.h \
     apiquefaire.h \
     apiratp_station.h \
+    apivelib.h \
         custombutton.h \
     apikiosques.h \
     dialogmeteo.h \
@@ -79,6 +82,7 @@ HEADERS += \
     stoppoint.h \
     transport.h \
     uiratp.h \
+    utilitaire.h \
     widgetmap.h \
     apiratp_global.h \
     apiterrasses.h \
