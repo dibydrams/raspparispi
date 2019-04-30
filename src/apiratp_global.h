@@ -42,8 +42,10 @@ private:
     void PeriStifJson();
     void RefStifJson();
 
-private slots:
+public slots:
     void getInfo() override;
+
+private slots:
     QJsonDocument LoadJson(QString fileName);
 
 signals:

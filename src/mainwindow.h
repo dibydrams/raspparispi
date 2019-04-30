@@ -28,10 +28,13 @@ public:
     ~MainWindow();
 
     void initButtons();
+    QList <CustomButton *> ButtonList;
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
     void dialog();
+    void GetInfo(Abstract_API *ptr);
+    void enableButtons();
 
 private:
     Ui::MainWindow *ui;
