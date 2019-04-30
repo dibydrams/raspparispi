@@ -8,6 +8,8 @@
 #include "apiterrasses.h"
 #include "apiratp_station.h"
 #include "apiespacesverts.h"
+#include "apiratp_search.h"
+#include "apivelib.h"
 
 #include <QHBoxLayout>
 
@@ -107,6 +109,12 @@ void MainWindow::initButtons()
     connect(buttonRatpGlobal, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+//    ptr = new ApiRatp_Search;
+//    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
+//    ui->horizontalLayout->addWidget(buttonRatpSearch);
+//    buttonRatpSearch->setCheckable(false);
+//    connect(buttonRatpSearch, SIGNAL(clicked()), this, SLOT(ratpDialog()));
+
     ptr = new ApiEspacesVerts;
     CustomButton *buttonEspacesVerts = new CustomButton (ptr, this);
     ui->horizontalLayout->addWidget(buttonEspacesVerts);
@@ -119,6 +127,11 @@ void MainWindow::initButtons()
     connect(buttonTheatre, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+	ptr = new apiVelib;
+    CustomButton *buttonVelib = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonVelib);
+    connect(buttonVelib, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 }
 
 
@@ -139,3 +152,9 @@ void MainWindow::dialog()
     Dialog fenetre;
     fenetre.exec();
 }
+
+//void MainWindow::ratpDialog()
+//{
+//    Uiratp window;
+//    window.exec();
+//}

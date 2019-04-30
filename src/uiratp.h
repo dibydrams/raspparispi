@@ -29,11 +29,12 @@ public:
 private slots:
     void SetUniStationIndex(int _codeS);
     void SetUniTransportIndex(int _codeT);
+    void ShowTransports();
+    void ShowTransportStopPoints(int _code);
+
 private:
     Ui::Uiratp *ui;
 
-    void ShowTransports();
-    void ShowTransportStopPoints(int _code);
 };
 
 #endif // UIRATP_H

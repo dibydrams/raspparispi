@@ -1,0 +1,46 @@
+#ifndef APIVELIB_H
+#define APIVELIB_H
+
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include "utilitaire.h"
+
+#include "Abstract_API.h"
+
+typedef struct{
+    QString name;
+    QString status;
+    int emplacementsVides;
+    int velosDisponibles;
+    double latitude;
+    double longitude;
+}velib;
+
+class apiVelib : public Abstract_API
+{
+    Q_OBJECT
+
+public:
+    apiVelib();
+    ~apiVelib() override;
+    int getId() override;
+    QPixmap getPixmap() override;
+
+private:
+    QNetworkReply* currentReply;
+    QNetworkAccessManager *networkManager;
+    QList<velib> *listVelib = new QList<velib>();
+    QList<GeoObj> listGeoObj;
+
+private slots:
+    void API_Results(QNetworkReply *reply);
+    void getInfo() override;
+
+signals:
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+};
+
+#endif // APIVELIB_H
