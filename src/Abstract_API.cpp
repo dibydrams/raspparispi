@@ -14,7 +14,7 @@ void Abstract_API::debug(QList <GeoObj> list)
         qDebug() << i.longitude;
         qDebug() << i.latitude;
         qDebug() << i.pixmap;
-        qDebug() << i.id;
+        //qDebug() << i.id;
     }
 }
 

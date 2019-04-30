@@ -70,7 +70,7 @@ public:
         double longitude;
         double latitude;
         QPixmap pixmap;
-        int id;
+        //int id;
     };
 
     // Méthodes virtuelles pures + explications
@@ -88,7 +88,7 @@ public:
 
     // Signal de fin de process des data
 signals:
-    void callFinished(QList<GeoObj> list);
+    void callFinished(QList<GeoObj> list, API_index id);
 };
 
 #endif // ABSTRACT_API_H
