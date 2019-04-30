@@ -53,7 +53,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
             listTerrasse->append(terra);
             geo.latitude = terra.latitude;
             geo.longitude = terra.longitude;
-            geo.pixmap = QPixmap();
+            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(125, 115, 45));
 
 
             m_list << geo;
