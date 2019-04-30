@@ -29,6 +29,7 @@ CONFIG += c++11
 
 SOURCES += \
         Abstract_API.cpp \
+    addrtocoord.cpp \
         apiborneswifi.cpp \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
@@ -63,6 +64,7 @@ SOURCES += \
 
 HEADERS += \
         Abstract_API.h \
+    addrtocoord.h \
         apiborneswifi.h \
         apibornes_elec.h \
         apievenementsmv.h \

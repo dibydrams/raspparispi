@@ -147,6 +147,7 @@ void MainWindow::initButtons()
 
 	ptr = new apiVelib;
     CustomButton *buttonVelib = new CustomButton(ptr, this);
+    ButtonList << buttonVelib;
     ui->horizontalLayout->addWidget(buttonVelib);
     connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
