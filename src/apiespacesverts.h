@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QList>
+#include "icon.h"
 
 #include "Abstract_API.h"
 
