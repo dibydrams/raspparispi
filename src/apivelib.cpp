@@ -35,21 +35,20 @@ void apiVelib::API_Results(QNetworkReply *reply)
         QString status = jsob["fields"].toObject()["station_state"].toString();
         velo.emplacementsVides = jsob["fields"].toObject()["nbfreeedock"].toInt();
         velo.velosDisponibles = jsob["fields"].toObject()["nbebike"].toInt();
-        velo.latitude = jsob["fields"].toObject()["geo"].toArray()[1].toDouble();
-        velo.longitude = jsob["fields"].toObject()["geo"].toArray()[0].toDouble();
+        velo.latitude = jsob["fields"].toObject()["geo"].toArray()[0].toDouble();
+        velo.longitude = jsob["fields"].toObject()["geo"].toArray()[1].toDouble();
 
         if(status == "Operative") status = "Opérationnelle";
         else if(status == "Close") status = "Fermée";
         else status = "En travaux";
 
         velo.status = status;
-
         if(utilitaire::inMap(velo.latitude, velo.longitude)){
             listVelib->append(velo);
 
             gObj.latitude = velo.latitude;
             gObj.longitude =velo.longitude;
-            gObj.pixmap = QPixmap();
+            gObj.pixmap = QPixmap(":/Icons/iconvelibmap.png");
 
             listGeoObj << gObj;
         }

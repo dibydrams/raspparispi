@@ -1,23 +1,27 @@
-#ifndef APITERRASSES_H
-#define APITERRASSES_H
+#ifndef APIBORNESWIFI_H
+#define APIBORNESWIFI_H
 
 #include <QObject>
-#include <QString>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QJsonDocument>
-#include <QJsonObject>
 #include <QJsonArray>
+#include <QJsonObject>
 #include <QList>
+#include "icon.h"
+
 #include "Abstract_API.h"
 
-class ApiTerrasses :public Abstract_API
+class ApiBornesWifi : public Abstract_API
 {
+
     Q_OBJECT
+
 public:
-    ApiTerrasses();
+    ApiBornesWifi();
     int getId() override;
     QPixmap getPixmap() override;
+
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
@@ -26,18 +30,18 @@ public slots:
     void getInfo() override;
 
 private:
-
-    QNetworkAccessManager *API_Access;
+    QNetworkAccessManager *API_AccessWifi;
     QNetworkReply *currentReply;
     QJsonDocument doc;
     QJsonObject obj;
     QJsonArray arr;
     QList<GeoObj> m_list;
 
-    double longitude;
     double latitude;
+    double longitude;
+
 signals:
-  void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, API_index);
 };
 
-#endif // APITERRASSES_H
+#endif // APIBORNESWIFI_H

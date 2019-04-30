@@ -71,25 +71,24 @@ public:
         double longitude;
         double latitude;
         QPixmap pixmap;
-        int id;
+        //int id;
     };
 
     // Méthodes virtuelles pures + explications
     virtual QPixmap getPixmap() = 0;
     virtual int getId() = 0;
 
-    // Private slot sous forme de méthode virtuelle pure
-private slots:
+    // Public slot sous forme de méthode virtuelle pure
+public slots:
     virtual void getInfo() = 0;
 
     // Aide au déboggage
 public:
     void debug(QList<GeoObj> list);
-    QList <CustomButton *> ButtonList;
 
     // Signal de fin de process des data
 signals:
-    void callFinished(QList<GeoObj> list);
+    void callFinished(QList<GeoObj> list, API_index id);
 };
 
 #endif // ABSTRACT_API_H

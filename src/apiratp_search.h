@@ -27,7 +27,7 @@ public:
 public slots:
     void DoUniRequest();
 
-private slots:
+public slots:
     void getInfo() override;
 
 private:
