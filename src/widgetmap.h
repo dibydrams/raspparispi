@@ -87,7 +87,6 @@ private:
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
-
 };
 
 #endif // WIDGETMAP_H

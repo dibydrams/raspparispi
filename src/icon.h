@@ -7,6 +7,7 @@
 #include <QGraphicsScene>
 
 #define ICON_SIZE 128
+#define ICON_SIZE_MAP 96
 
 class Icon : public QIcon
 {
@@ -14,6 +15,15 @@ public:
     Icon();
     static QPixmap iconNormalOff(QPixmap img);
     static QPixmap iconNormalOn(QPixmap img);
+
+    // Icon pour la map Version 1
+    static QPixmap iconMapOffV1(QPixmap img, int i);
+    static QPixmap iconMapOnV1(QPixmap img, int i);
+
+    // Icon pour la map Version 1
+    static QPixmap iconMapOffV2(QPixmap img, int i, QColor color);
+    static QPixmap iconMapOnV2(QPixmap img, int i);
+
     static QPixmap iconNormalOff2(QPixmap img);
     // Test functions under
     static QPixmap iconPushState(QPixmap img);

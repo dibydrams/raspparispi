@@ -46,10 +46,11 @@ private:
     void PeriStifJson();
     void RefStifJson();
 
+public slots:
+    void getInfo() override;
+
 private slots:
     QJsonDocument LoadJson(QString fileName);
-
-    void getInfo() override;
 
 signals:
     void callFinished(QList<Abstract_API::GeoObj>, API_index);
