@@ -126,6 +126,11 @@ void MainWindow::initButtons()
     connect(buttonTheatre, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+	ptr = new apiVelib;
+    CustomButton *buttonVelib = new CustomButton(ptr, this);
+    ui->horizontalLayout->addWidget(buttonVelib);
+    connect(buttonVelib, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 }
 
 
