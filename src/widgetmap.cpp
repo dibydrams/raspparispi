@@ -166,8 +166,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
         int resultatPixelPointX;
         int resultatPixelPointY;
 
-        double distanceLongitude = abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
-        double distanceLatitude = abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+        double distanceLongitude = std::abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+        double distanceLatitude = std::abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
 
         double coefficient_X = carte.width() / distanceLongitude;
         double coefficient_Y = carte.height() / distanceLatitude;
