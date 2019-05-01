@@ -4,7 +4,7 @@
 #include <QDebug>
 
 // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
-// et les renvoient si elle existent
+// et les renvoient si elles existent
 
 int WidgetMap::InitSetting( QSettings *settings, const QString key, const QString value, QVariant &var )
 {
@@ -151,31 +151,9 @@ void WidgetMap::paintEvent(QPaintEvent *)
     p.drawPixmap(0,0,carte);
 
 //    // icone au centre de la carte
-
 //    QString fileName = ":/Icons/bonhomme.png";
 //    QPixmap pixmap(fileName);
 //    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
-
-//        // tests 3 coord gps
-
-//        Abstract_API::GeoObj geo1, geo2, geo3;
-
-//        geo1.longitude = 2.33;
-//        geo1.latitude = 48.86;
-//        geo1.pixmap = QPixmap();
-//        geo1.id = 0;
-
-//        geo2.longitude = 2.335;
-//        geo2.latitude = 48.865;
-//        geo2.pixmap = QPixmap();
-//        geo2.id = 1;
-
-//        geo3.longitude = 2.32;
-//        geo3.latitude = 48.862;
-//        geo3.pixmap = QPixmap();
-//        geo3.id = 3;
-
-//        m_listePI << geo1 << geo2 << geo3;
 
         int resultatPixelPointX;
         int resultatPixelPointY;
@@ -187,6 +165,19 @@ void WidgetMap::paintEvent(QPaintEvent *)
         double coefficient_Y = carte.height() / distanceLatitude;
 
         QPixmap pix_PI(":/Icons/point_interet.png");
+
+        // calcul du hotspot du pixmap -> au milieu en bas du pixmap
+        // (le hotspot du pointeur peut être donné en tant que position relative au coin supérieur gauche du pixmap)
+
+        int decalagePixmapX, decalagePixmapY;
+
+        if( (m_listePI.size() != 0) && m_listePI.first().pixmap.isNull() == false)
+        {
+            decalagePixmapX = m_listePI.first().pixmap.width()/2;
+            decalagePixmapY = m_listePI.first().pixmap.height();
+        }
+
+        // convertion coords gps en pixels des points d'intérêts
 
         for (int i = 0; i < m_listePI.size(); i++)
         {
@@ -201,21 +192,16 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
             qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
 
-            if( m_listePI.at(i).pixmap.isNull())  p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
-            else p.drawPixmap(resultatPixelPointX,resultatPixelPointY,m_listePI.at(i).pixmap);
+            if( m_listePI.at(i).pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+            else p.drawPixmap(
+                        resultatPixelPointX - decalagePixmapX,
+                        resultatPixelPointY - decalagePixmapY,
+                        m_listePI.at(i).pixmap);
 
 //            QString affCoord;
 //            affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
-
 //            p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
-
-
         }
-}
-
-void WidgetMap::dataReceived(QList<Abstract_API::GeoObj> list)
-{
-    //this->update();
 }
 
 WidgetMap::~WidgetMap()
