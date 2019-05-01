@@ -169,7 +169,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
         // calcul du hotspot du pixmap -> au milieu en bas du pixmap
         // (le hotspot du pointeur peut être donné en tant que position relative au coin supérieur gauche du pixmap)
 
-        int decalagePixmapX, decalagePixmapY;
+        int decalagePixmapX = 0, decalagePixmapY = 0;
+        int pixelPointPixmapX, pixelPointPixmapY;
 
         if( (m_listePI.size() != 0) && m_listePI.first().pixmap.isNull() == false)
         {
@@ -190,17 +191,23 @@ void WidgetMap::paintEvent(QPaintEvent *)
             // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
             resultatPixelPointY = carte.height() - resultatPixelPointY;
 
+            // prise en compte du hotspot du pixmap
+            pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
+            pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
+
             qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
 
-            if( m_listePI.at(i).pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
-            else p.drawPixmap(
-                        resultatPixelPointX - decalagePixmapX,
-                        resultatPixelPointY - decalagePixmapY,
-                        m_listePI.at(i).pixmap);
+            // affiche les points d'intérets uniquement à l'intérieur de la carte
 
-//            QString affCoord;
-//            affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
-//            p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
+            if(resultatPixelPointX>=0 && resultatPixelPointY>=0)
+            {
+                if( m_listePI.at(i).pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+                else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,m_listePI.at(i).pixmap);
+
+//                QString affCoord;
+//                affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
+//                p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
+            }
         }
 }
 
