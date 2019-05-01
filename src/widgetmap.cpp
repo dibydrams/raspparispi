@@ -27,20 +27,28 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     // valeurs de départ par defaut au centre de Paris
 
+    int flagConfigVide = 0;
+
     if( !QFile::exists(m_settings->fileName()))
     {
         m_centreLongitude = 2.34599;//6 rue rougemont
         m_centreLatitude = 48.8716;
         m_rayonCentre = 0.007129412;//0.006;
         m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
-    }
-    m_compensationLargeurRayon = 2.040087046;//2;
+        m_compensationLargeurRayon = 2.040087046;//2;
+        flagConfigVide = 1;
+    }   
 
     QVariant tmp;
 
-    if(InitSetting(m_settings,"Coordonnees/centreLongitude", QString::number(m_centreLongitude,'f',13), tmp)) m_centreLongitude = tmp.toDouble();
-    if(InitSetting(m_settings,"Coordonnees/centreLatitude", QString::number(m_centreLatitude,'f',13), tmp)) m_centreLatitude = tmp.toDouble();
-    if(InitSetting(m_settings,"Coordonnees/rayonCentre", QString::number(m_rayonCentre,'f',13), tmp)) m_rayonCentre = tmp.toDouble();
+    if(InitSetting(m_settings,"Coordonnees/centreLongitude", QString::number(m_centreLongitude,'f',13), tmp))
+        if(!flagConfigVide) m_centreLongitude = tmp.toDouble();
+    if(InitSetting(m_settings,"Coordonnees/centreLatitude", QString::number(m_centreLatitude,'f',13), tmp))
+        if(!flagConfigVide) m_centreLatitude = tmp.toDouble();
+    if(InitSetting(m_settings,"Coordonnees/rayonCentre", QString::number(m_rayonCentre,'f',13), tmp))
+        if(!flagConfigVide) m_rayonCentre = tmp.toDouble();
+    if(InitSetting(m_settings,"Coordonnees/compensationLargeurRayon", QString::number(m_compensationLargeurRayon,'f',13), tmp))
+        if(!flagConfigVide) m_compensationLargeurRayon = tmp.toDouble();
     if(InitSetting(m_settings,"Image/largeur", "", tmp)) m_largeurImage = tmp.toInt();
     if(InitSetting(m_settings,"Image/hauteur", "", tmp)) m_hauteurImage = tmp.toInt();
     if(InitSetting(m_settings,"Image/zoom", QString::number(m_zoom), tmp) ) {
@@ -63,7 +71,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     m_fichierCarte = m_fichierCarte.leftRef(m_fichierCarte.lastIndexOf('/',-2)).toString();
     m_fichierCarte.append("/carte.png");
 
-    if( !QFile::exists(m_fichierCarte))
+    if( 1/*!QFile::exists(m_fichierCarte)*/)
     {
         // calcul du boundingBox de l'api tomtom
         // selon le gps du centre de la carte et d'un rayon (en dégré)
