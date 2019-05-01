@@ -123,8 +123,8 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
             if( !image.save(m_fichierCarte)) qDebug() << "erreur de sauvegarde: " << m_fichierCarte;
             else {
 
-                m_largeurImage = pixmap->height();
-                m_hauteurImage = pixmap->width();
+                m_largeurImage = pixmap->width();
+                m_hauteurImage = pixmap->height();
 
                 // mise à jour du fichier de config
 
@@ -199,7 +199,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
             // affiche les points d'intérets uniquement à l'intérieur de la carte
 
-            if(resultatPixelPointX>=0 && resultatPixelPointY>=0)
+            if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
+                    && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
             {
                 if( m_listePI.at(i).pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
                 else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,m_listePI.at(i).pixmap);
