@@ -67,10 +67,10 @@ public:
     double m_BBOXminLatitude;
     double m_BBOXmaxLongitude;
     double m_BBOXmaxLatitude;
+    double m_compensationLargeurRayon;
     int m_largeurImage;
     int m_hauteurImage;
     int m_zoom;
-    int m_compensationLargeurRayon;
 
     QString m_fichierCarte;
 
