@@ -31,7 +31,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     {
         m_centreLongitude = 2.34599;//6 rue rougemont
         m_centreLatitude = 48.8716;
-        m_rayonCentre = 0.008;
+        m_rayonCentre = 0.006;
         m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
     }
     m_compensationLargeurRayon = 2;
