@@ -95,11 +95,11 @@ void ApiRatp_Global::GeoPoints()
         if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
              (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
         {
-          GeoObj geo;
-          geo.longitude = point.x();
-          geo.latitude = point.y();
-          geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(25, 75, 210));
-          geoList << geo;
+            GeoObj geo;
+            geo.longitude = point.x();
+            geo.latitude = point.y();
+            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(25, 75, 210));
+            geoList << geo;
         }
     }
     emit callFinished(geoList, RATP);
