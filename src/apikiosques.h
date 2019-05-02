@@ -7,7 +7,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
-#include"Abstract_API.h"
+#include "Abstract_API.h"
+#include "icon.h"
+#include "widgetmap.h"
 
 
 class apikiosques : public Abstract_API
@@ -35,6 +37,8 @@ private:
     double longitude;
     QString statut;
     QString adresse;
+    QString latCentre;
+    QString lonCentre;
 
     signals:
     void callFinished(QList<Abstract_API::GeoObj>, API_index index);

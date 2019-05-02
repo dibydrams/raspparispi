@@ -19,7 +19,12 @@ QPixmap apikiosques::getPixmap()
 void apikiosques::API_call()
 {
     API_access=new QNetworkAccessManager(this);
-    currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=liste_des_kiosques_presse_a_paris&facet=code_postal&facet=statut&geofilter.distance=48.8716%2C2.34599%2C600&timezone=Europe%2FParis&rows=-1")));
+    WidgetMap map;
+    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
+    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+    QString rayon = "1000";
+    qDebug() << "latCentre: " << latCentre;
+    currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=liste_des_kiosques_presse_a_paris&rows=-1&facet=code_postal&facet=statut&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));
     connect(API_access, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_results(QNetworkReply*)));
 
 }
@@ -40,7 +45,9 @@ void apikiosques::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=QPixmap(":/Icons/iconekiosquesmap.png");
+        //geo.pixmap=Icon::iconMapOffV2(getPixmap(), QColor(126, 170, 44));
+
+
 
 
         m_list<<geo;
