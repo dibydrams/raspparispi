@@ -192,7 +192,8 @@ QPixmap Icon::iconMapOffV2(QPixmap img, int i, QColor color)
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
     painter.setBrush(QBrush(QColor(0, 0, 0), Qt::SolidPattern));
     painter.setPen(Qt::NoPen);
-    painter.drawRoundedRect(QRectF(25, 40, 14, 14), 10, 10);
+    QRect rWhite(25, 40, 14, 14);
+    painter.drawRoundedRect(rWhite, 10, 10);
 
     // Show number in bottom
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
@@ -203,7 +204,13 @@ QPixmap Icon::iconMapOffV2(QPixmap img, int i, QColor color)
     font.setWeight(QFont::SemiCondensed);
     painter.setFont(font);
     QString nb = QString::number(i);
-    painter.drawText(QPointF(29,51), nb);
+    if(i<9)
+    {
+        painter.drawText(QPointF(29,51), nb);
+    } else {
+        painter.drawText(QPointF(26,51), nb);
+    }
+//    painter.drawText(QRect(25, 40, 14, 14), 1, nb);
 
     return bigPixmap;
 }

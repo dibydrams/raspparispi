@@ -20,5 +20,6 @@
         <file>Icons/iconefontaines.png</file>
         <file>Icons/iconvelib.png</file>
         <file>Icons/iconvelibmap.png</file>
+        <file>Icons/eventarene.png</file>
     </qresource>
 </RCC>
