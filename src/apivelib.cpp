@@ -60,6 +60,10 @@ void apiVelib::API_Results(QNetworkReply *reply)
 void apiVelib::getInfo()
 {
     networkManager = new QNetworkAccessManager(this);
+    WidgetMap map;
+    latCentre = map.m_centreLatitude;
+    lonCentre = map.m_centreLongitude;
+    qDebug() << "latCentre: " << latCentre;
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=-1&facet=overflowactivation&facet=creditcard&facet=kioskstate&facet=station_state");
     QNetworkRequest request;
     request.setUrl(url);

@@ -7,6 +7,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include "utilitaire.h"
+#include "widgetmap.h"
 
 #include "Abstract_API.h"
 
@@ -34,6 +35,8 @@ private:
     QNetworkAccessManager *networkManager;
     QList<velib> *listVelib = new QList<velib>();
     QList<GeoObj> listGeoObj;
+    double latCentre;
+    double lonCentre;
 
 private slots:
     void API_Results(QNetworkReply *reply);
