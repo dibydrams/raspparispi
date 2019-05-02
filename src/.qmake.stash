@@ -1,0 +1,22 @@
+QMAKE_CXX.INCDIRS = \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward \
+    /home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include \
+    /home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include
+QMAKE_CXX.LIBDIRS = \
+    /home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0 \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/lib \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/lib \
+    /home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/lib
+QMAKE_CXX.QT_COMPILER_STDCXX = 201402L
+QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 7
+QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 4
+QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 0
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_GCC_MAJOR_VERSION \
+    QMAKE_GCC_MINOR_VERSION \
+    QMAKE_GCC_PATCH_VERSION
