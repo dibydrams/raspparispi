@@ -11,6 +11,7 @@
 #include <QList>
 #include "Abstract_API.h"
 #include "utilitaire.h"
+#include "icon.h"
 
 typedef struct{
     QString profession;
