@@ -35,8 +35,8 @@ private:
     QNetworkAccessManager *networkManager;
     QList<velib> *listVelib = new QList<velib>();
     QList<GeoObj> listGeoObj;
-    double latCentre;
-    double lonCentre;
+    QString latCentre;
+    QString lonCentre;
 
 private slots:
     void API_Results(QNetworkReply *reply);
