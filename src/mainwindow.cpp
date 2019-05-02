@@ -158,6 +158,20 @@ void MainWindow::initButtons()
     ui->horizontalLayout->addWidget(buttonVelib);
     connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+    ptr = new apiParkingPublic;
+    CustomButton *buttonParkingPublic = new CustomButton(ptr, this);
+    ButtonList << buttonParkingPublic;
+    ui->horizontalLayout->addWidget(buttonParkingPublic);
+    connect(buttonParkingPublic, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
+    ptr = new apiParkingPrive;
+    CustomButton *buttonParkingPrive = new CustomButton(ptr, this);
+    ButtonList << buttonParkingPrive;
+    ui->horizontalLayout->addWidget(buttonParkingPrive);
+    connect(buttonParkingPrive, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 }
 
 
