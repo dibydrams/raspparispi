@@ -1,58 +1,55 @@
 #include "pharmapi.h"
+#include <QSqlQueryModel>
+#include <QSqlQuery>
+#include <QSqlRecord>
+#include <QDebug>
 
 pharmapi::pharmapi()
 {
 
 }
 
-void pharmapi::API_Call() // Gestion du call à l'API
-{
-   API_Access = new QNetworkAccessManager(this);
-
-    QUrl url("https://api.predicthq.com/v1/events/?country=FR&active.gte=2019-05-10&active.lte=2019-05-10&within=1km@48.871602,2.345994&category=expos, sports, community, concerts, conferences, festivals");
-    QNetworkRequest request;
-    request.setUrl(url);
-    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer wH3fafHllNhQBCFfhFkQbNTUToSpql"));
-
-    currentReply = API_Access->get(request);
-    connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
-}
-
-void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au format JSON
-{
-    m_list.clear(); // Reset de la liste de GeoObj à chaque passage dans la fonction
-
-    doc = QJsonDocument::fromJson(reply->readAll());
-    obj = doc.object();
-    arr = obj["results"].toArray();
-    for ( auto val :  arr) {
-
-        QJsonObject objn = val.toObject();
-        longitude = objn["location"].toArray()[0].toDouble();
-        latitude = objn["location"].toArray()[1].toDouble();
-
-        GeoObj geo;
-
-        geo.longitude = longitude;
-        geo.latitude = latitude;
-        geo.pixmap = QPixmap();
-
-       m_list << geo;
-    }
-
-    emit callFinished(m_list, PHARMACIES);  // Signal de fin de traitement de l'API
-    reply->deleteLater();
-}
-
 // Mon identifiant au sein de l'enumération (classe mère)
 int pharmapi::getId()
 {
-    return EVENEMENTS;
+    return PHARMACIES;
 }
 
 void pharmapi::getInfo()
 {
-    API_Call();
+     qDebug() << "coucou";
+     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+     db.setDatabaseName("/home/dibydrams/pharmloc.db");
+     db.open();
+
+     if(db.open())
+     {
+         qDebug() << "Vous êtes maintenant connecté";
+         QSqlQuery query;
+         if(query.exec("SELECT * FROM pharmloc"))
+         {
+             while(query.next())
+             {
+                 qDebug() << "Nouvelle pharmacie";
+                     // Récupère les valeurs dans des variables.
+                     latitude = query.value(1).toDouble();
+                     longitude = query.value(2).toDouble();
+                     qDebug() << "Pharmlat : " << latitude;
+                     qDebug() << "Pharmlong : "<< longitude;
+
+                     GeoObj geo;
+
+                     geo.longitude = longitude;
+                     geo.latitude = latitude;
+                     geo.pixmap = QPixmap();
+
+                     m_list << geo;
+             }
+         }
+     }
+    qDebug()<<"emit"<<PHARMACIES;
+    emit callFinished(m_list, PHARMACIES);  // Signal de fin de traitement de l'API
+
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

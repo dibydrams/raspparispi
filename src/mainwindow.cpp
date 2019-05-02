@@ -99,6 +99,7 @@ void MainWindow::initButtons()
 
     ptr = new apifontaines;
     CustomButton *fontaines_btn=new CustomButton(ptr, this);
+    ButtonList << fontaines_btn;
     ui->horizontalLayout->addWidget(fontaines_btn);
     connect(fontaines_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
@@ -168,6 +169,7 @@ void MainWindow::initButtons()
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
 {
     ui->widget->m_listePI = list;
+   qDebug()<<"ok recu";
     this->update();
 }
 
