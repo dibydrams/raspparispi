@@ -20,8 +20,6 @@ void ApiTerrasses::API_Call() // Gestion du call à l'API
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=etalages-et-terrasses&rows=-1&facet=libelle_type&facet=red_profession&facet=type_lieu1&facet=type_lieu2&facet=lateralite&facet=longueur&facet=largeurmin&facet=largeurmax&facet=date_periode");
     QNetworkRequest request;
     request.setUrl(url);
-
-
     currentReply = API_Access->get(request);
     connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
 }

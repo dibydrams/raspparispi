@@ -65,7 +65,7 @@ SOURCES += \
 
 HEADERS += \
         Abstract_API.h \
-    addrtocoord.h \
+        addrtocoord.h \
         apiborneswifi.h \
         apibornes_elec.h \
         apievenementsmv.h \
@@ -89,15 +89,12 @@ HEADERS += \
         widgetmap.h \
         apiratp_global.h \
         apiterrasses.h \
-    sanisette.h \
-    theatre.h \
-    apiratp_search.h \
-    apiespacesverts.h \
-    apifontaines.h \  
+        sanisette.h \
+        theatre.h \
+        apiratp_search.h \
+        apiespacesverts.h \
+        apifontaines.h \
         utilitaire.h
-
-
-
 
 FORMS += \
 	mainwindow.ui \

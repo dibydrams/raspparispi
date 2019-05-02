@@ -12,6 +12,7 @@
 #include <QVariantHash>
 #include <QJsonObject>
 #include "Abstract_API.h"
+#include "addrtocoord.h"
 
 class theatre : public Abstract_API
 {
@@ -31,6 +32,7 @@ private:
     QNetworkAccessManager * manager;
     QNetworkRequest request;
     QNetworkReply * reply;
+    addrToCoord *coordHelper;
     double longitude;
     double latitude;
     QList<GeoObj> m_list;
