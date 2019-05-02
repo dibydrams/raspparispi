@@ -1,6 +1,5 @@
 #include "uiratp.h"
 #include "ui_uiratp.h"
-#include "apiratp_search.h"
 
 Uiratp::Uiratp(QWidget *parent) :
     QDialog(parent),
@@ -14,6 +13,8 @@ Uiratp::Uiratp(QWidget *parent) :
     {
         ratpGlobal.FilledTransportLists();
     }
+
+//    ratpSearch = ApiRatp_Search();
 
     connect(ui->BusRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->MetroRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
@@ -35,19 +36,6 @@ void Uiratp::ShowTransports()
     ui->StationCombo->clear();
 
     ui->TransportCombo->addItem("");
-
-    //    if(newTransport.transportMode == Transport::Modes::bus)
-    //    {
-    //        busList << newTransport;
-    //    }
-    //    else if(newTransport.transportMode == Transport::Modes::metro)
-    //    {
-    //        metroList << newTransport;
-    //    }
-    //    else
-    //    {
-    //        railList << newTransport;
-    //    }
 
     if (ratpGlobal.busList.count() <= 0)
     {
@@ -117,7 +105,7 @@ void Uiratp::ShowTransports()
 void Uiratp::ShowTransportStopPoints(int _code)
 {
     disconnect(ui->StationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
-    disconnect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ApiRatp_Search.DoUniRequest()));
+//    disconnect(ui->RequestButton, SIGNAL(clicked()), ratpSearch, SLOT(DoUniRequest()));
 
     ui->StationCombo->clear();
     _code -= 1;
@@ -160,7 +148,7 @@ void Uiratp::ShowTransportStopPoints(int _code)
 
     ui->RequestButton->setEnabled(true);
     connect(ui->StationCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(SetUniStationIndex(int)));
-    connect(ui->RequestButton, SIGNAL(clicked()), this, SLOT(ApiRatp_Search.DoUniRequest()));
+//    connect(ui->RequestButton, SIGNAL(clicked()), ratpSearch, SLOT(DoUniRequest()));
 }
 
 void Uiratp::SetUniTransportIndex(int _codeT)
