@@ -22,7 +22,9 @@ public:
     ~Uiratp();
 
     ApiRatp_Global ratpGlobal;
-    class ApiRatp_Search *ratpSearch;
+
+//    class ApiRatp_Search;
+//    ApiRatp_Search *ratpSearch;
 
     void showFinishedStation(QJsonArray);
     void showFinishedUni(QJsonArray);

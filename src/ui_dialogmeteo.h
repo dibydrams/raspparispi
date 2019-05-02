@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogmeteo.ui'
 **
-** Created by: Qt User Interface Compiler version 5.11.3
+** Created by: Qt User Interface Compiler version 5.12.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -28,10 +28,12 @@ QT_BEGIN_NAMESPACE
 class Ui_Dialog
 {
 public:
-    QVBoxLayout *verticalLayout_15;
-    QTabWidget *tabWidget;
-    QWidget *tab;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_14;
     QVBoxLayout *verticalLayout_14;
+    QTabWidget *tabWidget;
+    QWidget *meteo;
+    QVBoxLayout *verticalLayout_13;
     QHBoxLayout *horizontalLayout_10;
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout;
@@ -54,15 +56,18 @@ public:
     QSpacerItem *horizontalSpacer_8;
     QSpacerItem *verticalSpacer_10;
     QTableView *tableView;
-    QVBoxLayout *verticalLayout_13;
     QVBoxLayout *verticalLayout_7;
     QVBoxLayout *verticalLayout_5;
-    QLabel *label_3;
+    QSpacerItem *verticalSpacer_13;
+    QLabel *label_TUV;
+    QSpacerItem *verticalSpacer_2;
     QLabel *label_indUV;
+    QSpacerItem *verticalSpacer_5;
     QLabel *label_DUV;
+    QSpacerItem *verticalSpacer;
     QFrame *line_2;
     QLabel *label_UVprotection;
-    QWidget *tab_2;
+    QWidget *prevision;
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_3;
     QWidget *widgetPrevision;
@@ -112,11 +117,12 @@ public:
     QLabel *label_value8;
     QSpacerItem *verticalSpacer_4;
     QSpacerItem *horizontalSpacer_36;
-    QWidget *tab_4;
+    QWidget *pollution;
     QVBoxLayout *verticalLayout_12;
-    QHBoxLayout *horizontalLayout_13;
+    QHBoxLayout *horizontalLayout_12;
     QWidget *widgetPollution;
     QVBoxLayout *verticalLayout_11;
+    QSpacerItem *verticalSpacer_12;
     QHBoxLayout *horizontalLayout_11;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_7;
@@ -143,33 +149,43 @@ public:
     QSpacerItem *horizontalSpacer_9;
     QLabel *label_vignette6;
     QSpacerItem *horizontalSpacer_20;
+    QSpacerItem *verticalSpacer_6;
     QFrame *line;
+    QSpacerItem *verticalSpacer_11;
     QTextBrowser *textBrowser;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(1103, 502);
-        verticalLayout_15 = new QVBoxLayout(Dialog);
-        verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
+            Dialog->setObjectName(QString::fromUtf8("Dialog"));
+        Dialog->resize(1170, 503);
+        layoutWidget = new QWidget(Dialog);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 0, 2, 2));
+        horizontalLayout_14 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
+        horizontalLayout_14->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_14 = new QVBoxLayout(Dialog);
+        verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
         tabWidget = new QTabWidget(Dialog);
-        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setTabPosition(QTabWidget::East);
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        verticalLayout_14 = new QVBoxLayout(tab);
-        verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        tabWidget->setTabShape(QTabWidget::Triangular);
+        tabWidget->setIconSize(QSize(25, 16));
+        meteo = new QWidget();
+        meteo->setObjectName(QString::fromUtf8("meteo"));
+        verticalLayout_13 = new QVBoxLayout(meteo);
+        verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
         horizontalLayout_10 = new QHBoxLayout();
-        horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
+        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        labeltitre = new QLabel(tab);
-        labeltitre->setObjectName(QStringLiteral("labeltitre"));
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        labeltitre = new QLabel(meteo);
+        labeltitre->setObjectName(QString::fromUtf8("labeltitre"));
         QFont font;
-        font.setFamily(QStringLiteral("Droid Sans Fallback"));
+        font.setFamily(QString::fromUtf8("Droid Sans Fallback"));
         font.setPointSize(25);
         font.setBold(true);
         font.setWeight(75);
@@ -182,20 +198,20 @@ public:
         verticalLayout->addItem(verticalSpacer_7);
 
         horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalSpacer_3 = new QSpacerItem(68, 17, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
-        labelIcon = new QLabel(tab);
-        labelIcon->setObjectName(QStringLiteral("labelIcon"));
+        labelIcon = new QLabel(meteo);
+        labelIcon->setObjectName(QString::fromUtf8("labelIcon"));
 
         horizontalLayout_2->addWidget(labelIcon);
 
-        labelTemp = new QLabel(tab);
-        labelTemp->setObjectName(QStringLiteral("labelTemp"));
+        labelTemp = new QLabel(meteo);
+        labelTemp->setObjectName(QString::fromUtf8("labelTemp"));
         QFont font1;
-        font1.setFamily(QStringLiteral("Droid Sans Fallback"));
+        font1.setFamily(QString::fromUtf8("Droid Sans Fallback"));
         font1.setPointSize(24);
         font1.setBold(true);
         font1.setWeight(75);
@@ -215,15 +231,15 @@ public:
         verticalLayout->addItem(verticalSpacer_8);
 
         horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_5);
 
-        labelCiel = new QLabel(tab);
-        labelCiel->setObjectName(QStringLiteral("labelCiel"));
+        labelCiel = new QLabel(meteo);
+        labelCiel->setObjectName(QString::fromUtf8("labelCiel"));
         QFont font2;
-        font2.setFamily(QStringLiteral("Droid Sans Fallback"));
+        font2.setFamily(QString::fromUtf8("Droid Sans Fallback"));
         font2.setPointSize(16);
         font2.setBold(true);
         font2.setWeight(75);
@@ -243,15 +259,15 @@ public:
         verticalLayout->addItem(verticalSpacer_9);
 
         horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_7);
 
-        labelDate = new QLabel(tab);
-        labelDate->setObjectName(QStringLiteral("labelDate"));
+        labelDate = new QLabel(meteo);
+        labelDate->setObjectName(QString::fromUtf8("labelDate"));
         QFont font3;
-        font3.setFamily(QStringLiteral("Droid Sans Fallback"));
+        font3.setFamily(QString::fromUtf8("Droid Sans Fallback"));
         font3.setPointSize(12);
         font3.setBold(true);
         font3.setWeight(75);
@@ -273,8 +289,8 @@ public:
 
         verticalLayout_6->addLayout(verticalLayout);
 
-        tableView = new QTableView(tab);
-        tableView->setObjectName(QStringLiteral("tableView"));
+        tableView = new QTableView(meteo);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setMinimumSize(QSize(602, 212));
         tableView->setMaximumSize(QSize(602, 212));
 
@@ -283,25 +299,31 @@ public:
 
         horizontalLayout_10->addLayout(verticalLayout_6);
 
-        verticalLayout_13 = new QVBoxLayout();
-        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
         verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        label_3 = new QLabel(tab);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalSpacer_13 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_5->addItem(verticalSpacer_13);
+
+        label_TUV = new QLabel(meteo);
+        label_TUV->setObjectName(QString::fromUtf8("label_TUV"));
         QFont font4;
-        font4.setFamily(QStringLiteral("Droid Sans Fallback"));
+        font4.setFamily(QString::fromUtf8("Droid Sans Fallback"));
         font4.setPointSize(17);
         font4.setBold(true);
         font4.setWeight(75);
-        label_3->setFont(font4);
+        label_TUV->setFont(font4);
 
-        verticalLayout_5->addWidget(label_3, 0, Qt::AlignHCenter);
+        verticalLayout_5->addWidget(label_TUV, 0, Qt::AlignHCenter);
 
-        label_indUV = new QLabel(tab);
-        label_indUV->setObjectName(QStringLiteral("label_indUV"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_5->addItem(verticalSpacer_2);
+
+        label_indUV = new QLabel(meteo);
+        label_indUV->setObjectName(QString::fromUtf8("label_indUV"));
         QFont font5;
         font5.setPointSize(50);
         font5.setBold(true);
@@ -310,10 +332,14 @@ public:
 
         verticalLayout_5->addWidget(label_indUV, 0, Qt::AlignHCenter);
 
-        label_DUV = new QLabel(tab);
-        label_DUV->setObjectName(QStringLiteral("label_DUV"));
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_5->addItem(verticalSpacer_5);
+
+        label_DUV = new QLabel(meteo);
+        label_DUV->setObjectName(QString::fromUtf8("label_DUV"));
         QFont font6;
-        font6.setPointSize(13);
+        font6.setPointSize(18);
         font6.setBold(true);
         font6.setWeight(75);
         label_DUV->setFont(font6);
@@ -321,74 +347,78 @@ public:
 
         verticalLayout_5->addWidget(label_DUV);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_5->addItem(verticalSpacer);
+
 
         verticalLayout_7->addLayout(verticalLayout_5);
 
-        line_2 = new QFrame(tab);
-        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2 = new QFrame(meteo);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_7->addWidget(line_2);
 
+        label_UVprotection = new QLabel(meteo);
+        label_UVprotection->setObjectName(QString::fromUtf8("label_UVprotection"));
+        label_UVprotection->setMinimumSize(QSize(461, 201));
+        label_UVprotection->setMaximumSize(QSize(461, 201));
 
-        verticalLayout_13->addLayout(verticalLayout_7);
-
-        label_UVprotection = new QLabel(tab);
-        label_UVprotection->setObjectName(QStringLiteral("label_UVprotection"));
-        label_UVprotection->setMinimumSize(QSize(379, 212));
-
-        verticalLayout_13->addWidget(label_UVprotection);
+        verticalLayout_7->addWidget(label_UVprotection, 0, Qt::AlignHCenter);
 
 
-        horizontalLayout_10->addLayout(verticalLayout_13);
+        horizontalLayout_10->addLayout(verticalLayout_7);
 
 
-        verticalLayout_14->addLayout(horizontalLayout_10);
+        verticalLayout_13->addLayout(horizontalLayout_10);
 
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
-        verticalLayout_4 = new QVBoxLayout(tab_2);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/Icons_meteo/s2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tabWidget->addTab(meteo, icon, QString());
+        prevision = new QWidget();
+        prevision->setObjectName(QString::fromUtf8("prevision"));
+        verticalLayout_4 = new QVBoxLayout(prevision);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        widgetPrevision = new QWidget(tab_2);
-        widgetPrevision->setObjectName(QStringLiteral("widgetPrevision"));
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        widgetPrevision = new QWidget(prevision);
+        widgetPrevision->setObjectName(QString::fromUtf8("widgetPrevision"));
         widgetPrevision->setMinimumSize(QSize(1034, 331));
         widgetPrevision->setMaximumSize(QSize(1034, 331));
 
         verticalLayout_3->addWidget(widgetPrevision);
 
         horizontalLayout_19 = new QHBoxLayout();
-        horizontalLayout_19->setObjectName(QStringLiteral("horizontalLayout_19"));
+        horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
         horizontalSpacer_35 = new QSpacerItem(115, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_19->addItem(horizontalSpacer_35);
 
         verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalSpacer_3 = new QSpacerItem(20, 18, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_2->addItem(verticalSpacer_3);
 
         horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         horizontalLayout_8->setSizeConstraint(QLayout::SetFixedSize);
         verticalLayout_32 = new QVBoxLayout();
-        verticalLayout_32->setObjectName(QStringLiteral("verticalLayout_32"));
-        label_date1 = new QLabel(tab_2);
-        label_date1->setObjectName(QStringLiteral("label_date1"));
+        verticalLayout_32->setObjectName(QString::fromUtf8("verticalLayout_32"));
+        label_date1 = new QLabel(prevision);
+        label_date1->setObjectName(QString::fromUtf8("label_date1"));
 
         verticalLayout_32->addWidget(label_date1, 0, Qt::AlignHCenter|Qt::AlignVCenter);
 
-        label_icon1 = new QLabel(tab_2);
-        label_icon1->setObjectName(QStringLiteral("label_icon1"));
+        label_icon1 = new QLabel(prevision);
+        label_icon1->setObjectName(QString::fromUtf8("label_icon1"));
 
         verticalLayout_32->addWidget(label_icon1, 0, Qt::AlignHCenter);
 
-        label_value1 = new QLabel(tab_2);
-        label_value1->setObjectName(QStringLiteral("label_value1"));
+        label_value1 = new QLabel(prevision);
+        label_value1->setObjectName(QString::fromUtf8("label_value1"));
 
         verticalLayout_32->addWidget(label_value1, 0, Qt::AlignHCenter);
 
@@ -400,19 +430,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_12);
 
         verticalLayout_33 = new QVBoxLayout();
-        verticalLayout_33->setObjectName(QStringLiteral("verticalLayout_33"));
-        label_date2 = new QLabel(tab_2);
-        label_date2->setObjectName(QStringLiteral("label_date2"));
+        verticalLayout_33->setObjectName(QString::fromUtf8("verticalLayout_33"));
+        label_date2 = new QLabel(prevision);
+        label_date2->setObjectName(QString::fromUtf8("label_date2"));
 
         verticalLayout_33->addWidget(label_date2, 0, Qt::AlignHCenter);
 
-        label_icon2 = new QLabel(tab_2);
-        label_icon2->setObjectName(QStringLiteral("label_icon2"));
+        label_icon2 = new QLabel(prevision);
+        label_icon2->setObjectName(QString::fromUtf8("label_icon2"));
 
         verticalLayout_33->addWidget(label_icon2, 0, Qt::AlignHCenter);
 
-        label_value2 = new QLabel(tab_2);
-        label_value2->setObjectName(QStringLiteral("label_value2"));
+        label_value2 = new QLabel(prevision);
+        label_value2->setObjectName(QString::fromUtf8("label_value2"));
 
         verticalLayout_33->addWidget(label_value2, 0, Qt::AlignHCenter|Qt::AlignVCenter);
 
@@ -424,19 +454,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
         verticalLayout_34 = new QVBoxLayout();
-        verticalLayout_34->setObjectName(QStringLiteral("verticalLayout_34"));
-        label_date3 = new QLabel(tab_2);
-        label_date3->setObjectName(QStringLiteral("label_date3"));
+        verticalLayout_34->setObjectName(QString::fromUtf8("verticalLayout_34"));
+        label_date3 = new QLabel(prevision);
+        label_date3->setObjectName(QString::fromUtf8("label_date3"));
 
         verticalLayout_34->addWidget(label_date3, 0, Qt::AlignHCenter);
 
-        label_icon3 = new QLabel(tab_2);
-        label_icon3->setObjectName(QStringLiteral("label_icon3"));
+        label_icon3 = new QLabel(prevision);
+        label_icon3->setObjectName(QString::fromUtf8("label_icon3"));
 
         verticalLayout_34->addWidget(label_icon3, 0, Qt::AlignHCenter);
 
-        label_value3 = new QLabel(tab_2);
-        label_value3->setObjectName(QStringLiteral("label_value3"));
+        label_value3 = new QLabel(prevision);
+        label_value3->setObjectName(QString::fromUtf8("label_value3"));
 
         verticalLayout_34->addWidget(label_value3, 0, Qt::AlignHCenter|Qt::AlignVCenter);
 
@@ -448,19 +478,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_14);
 
         verticalLayout_35 = new QVBoxLayout();
-        verticalLayout_35->setObjectName(QStringLiteral("verticalLayout_35"));
-        label_date4 = new QLabel(tab_2);
-        label_date4->setObjectName(QStringLiteral("label_date4"));
+        verticalLayout_35->setObjectName(QString::fromUtf8("verticalLayout_35"));
+        label_date4 = new QLabel(prevision);
+        label_date4->setObjectName(QString::fromUtf8("label_date4"));
 
         verticalLayout_35->addWidget(label_date4, 0, Qt::AlignHCenter);
 
-        label_icon4 = new QLabel(tab_2);
-        label_icon4->setObjectName(QStringLiteral("label_icon4"));
+        label_icon4 = new QLabel(prevision);
+        label_icon4->setObjectName(QString::fromUtf8("label_icon4"));
 
         verticalLayout_35->addWidget(label_icon4, 0, Qt::AlignHCenter);
 
-        label_value4 = new QLabel(tab_2);
-        label_value4->setObjectName(QStringLiteral("label_value4"));
+        label_value4 = new QLabel(prevision);
+        label_value4->setObjectName(QString::fromUtf8("label_value4"));
 
         verticalLayout_35->addWidget(label_value4, 0, Qt::AlignHCenter|Qt::AlignVCenter);
 
@@ -472,19 +502,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_15);
 
         verticalLayout_36 = new QVBoxLayout();
-        verticalLayout_36->setObjectName(QStringLiteral("verticalLayout_36"));
-        label_date5 = new QLabel(tab_2);
-        label_date5->setObjectName(QStringLiteral("label_date5"));
+        verticalLayout_36->setObjectName(QString::fromUtf8("verticalLayout_36"));
+        label_date5 = new QLabel(prevision);
+        label_date5->setObjectName(QString::fromUtf8("label_date5"));
 
         verticalLayout_36->addWidget(label_date5, 0, Qt::AlignHCenter);
 
-        label_icon5 = new QLabel(tab_2);
-        label_icon5->setObjectName(QStringLiteral("label_icon5"));
+        label_icon5 = new QLabel(prevision);
+        label_icon5->setObjectName(QString::fromUtf8("label_icon5"));
 
         verticalLayout_36->addWidget(label_icon5, 0, Qt::AlignHCenter);
 
-        label_value5 = new QLabel(tab_2);
-        label_value5->setObjectName(QStringLiteral("label_value5"));
+        label_value5 = new QLabel(prevision);
+        label_value5->setObjectName(QString::fromUtf8("label_value5"));
 
         verticalLayout_36->addWidget(label_value5, 0, Qt::AlignHCenter);
 
@@ -496,19 +526,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_16);
 
         verticalLayout_37 = new QVBoxLayout();
-        verticalLayout_37->setObjectName(QStringLiteral("verticalLayout_37"));
-        label_date6 = new QLabel(tab_2);
-        label_date6->setObjectName(QStringLiteral("label_date6"));
+        verticalLayout_37->setObjectName(QString::fromUtf8("verticalLayout_37"));
+        label_date6 = new QLabel(prevision);
+        label_date6->setObjectName(QString::fromUtf8("label_date6"));
 
         verticalLayout_37->addWidget(label_date6, 0, Qt::AlignHCenter);
 
-        label_icon6 = new QLabel(tab_2);
-        label_icon6->setObjectName(QStringLiteral("label_icon6"));
+        label_icon6 = new QLabel(prevision);
+        label_icon6->setObjectName(QString::fromUtf8("label_icon6"));
 
         verticalLayout_37->addWidget(label_icon6, 0, Qt::AlignHCenter);
 
-        label_value6 = new QLabel(tab_2);
-        label_value6->setObjectName(QStringLiteral("label_value6"));
+        label_value6 = new QLabel(prevision);
+        label_value6->setObjectName(QString::fromUtf8("label_value6"));
 
         verticalLayout_37->addWidget(label_value6, 0, Qt::AlignHCenter);
 
@@ -520,19 +550,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_17);
 
         verticalLayout_38 = new QVBoxLayout();
-        verticalLayout_38->setObjectName(QStringLiteral("verticalLayout_38"));
-        label_date7 = new QLabel(tab_2);
-        label_date7->setObjectName(QStringLiteral("label_date7"));
+        verticalLayout_38->setObjectName(QString::fromUtf8("verticalLayout_38"));
+        label_date7 = new QLabel(prevision);
+        label_date7->setObjectName(QString::fromUtf8("label_date7"));
 
         verticalLayout_38->addWidget(label_date7, 0, Qt::AlignHCenter);
 
-        label_icon7 = new QLabel(tab_2);
-        label_icon7->setObjectName(QStringLiteral("label_icon7"));
+        label_icon7 = new QLabel(prevision);
+        label_icon7->setObjectName(QString::fromUtf8("label_icon7"));
 
         verticalLayout_38->addWidget(label_icon7, 0, Qt::AlignHCenter);
 
-        label_value7 = new QLabel(tab_2);
-        label_value7->setObjectName(QStringLiteral("label_value7"));
+        label_value7 = new QLabel(prevision);
+        label_value7->setObjectName(QString::fromUtf8("label_value7"));
 
         verticalLayout_38->addWidget(label_value7, 0, Qt::AlignHCenter|Qt::AlignVCenter);
 
@@ -544,19 +574,19 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_18);
 
         verticalLayout_39 = new QVBoxLayout();
-        verticalLayout_39->setObjectName(QStringLiteral("verticalLayout_39"));
-        label_date8 = new QLabel(tab_2);
-        label_date8->setObjectName(QStringLiteral("label_date8"));
+        verticalLayout_39->setObjectName(QString::fromUtf8("verticalLayout_39"));
+        label_date8 = new QLabel(prevision);
+        label_date8->setObjectName(QString::fromUtf8("label_date8"));
 
         verticalLayout_39->addWidget(label_date8, 0, Qt::AlignHCenter);
 
-        label_icon8 = new QLabel(tab_2);
-        label_icon8->setObjectName(QStringLiteral("label_icon8"));
+        label_icon8 = new QLabel(prevision);
+        label_icon8->setObjectName(QString::fromUtf8("label_icon8"));
 
         verticalLayout_39->addWidget(label_icon8, 0, Qt::AlignHCenter);
 
-        label_value8 = new QLabel(tab_2);
-        label_value8->setObjectName(QStringLiteral("label_value8"));
+        label_value8 = new QLabel(prevision);
+        label_value8->setObjectName(QString::fromUtf8("label_value8"));
 
         verticalLayout_39->addWidget(label_value8, 0, Qt::AlignHCenter);
 
@@ -583,38 +613,42 @@ public:
 
         verticalLayout_4->addLayout(verticalLayout_3);
 
-        tabWidget->addTab(tab_2, QString());
-        tab_4 = new QWidget();
-        tab_4->setObjectName(QStringLiteral("tab_4"));
-        verticalLayout_12 = new QVBoxLayout(tab_4);
-        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
-        horizontalLayout_13 = new QHBoxLayout();
-        horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
-        widgetPollution = new QWidget(tab_4);
-        widgetPollution->setObjectName(QStringLiteral("widgetPollution"));
+        tabWidget->addTab(prevision, QString());
+        pollution = new QWidget();
+        pollution->setObjectName(QString::fromUtf8("pollution"));
+        verticalLayout_12 = new QVBoxLayout(pollution);
+        verticalLayout_12->setObjectName(QString::fromUtf8("verticalLayout_12"));
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        widgetPollution = new QWidget(pollution);
+        widgetPollution->setObjectName(QString::fromUtf8("widgetPollution"));
         widgetPollution->setMinimumSize(QSize(550, 461));
         widgetPollution->setMaximumSize(QSize(550, 461));
 
-        horizontalLayout_13->addWidget(widgetPollution);
+        horizontalLayout_12->addWidget(widgetPollution);
 
         verticalLayout_11 = new QVBoxLayout();
-        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
+        verticalSpacer_12 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_12);
+
         horizontalLayout_11 = new QHBoxLayout();
-        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
+        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
         verticalLayout_9 = new QVBoxLayout();
-        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
         horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         horizontalSpacer_11 = new QSpacerItem(32, 17, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_11);
 
-        label = new QLabel(tab_4);
-        label->setObjectName(QStringLiteral("label"));
+        label = new QLabel(pollution);
+        label->setObjectName(QString::fromUtf8("label"));
         label->setMinimumSize(QSize(214, 0));
         label->setMaximumSize(QSize(214, 31));
         QFont font7;
-        font7.setFamily(QStringLiteral("Droid Sans Fallback"));
+        font7.setFamily(QString::fromUtf8("Droid Sans Fallback"));
         font7.setPointSize(13);
         font7.setBold(true);
         font7.setWeight(75);
@@ -630,14 +664,18 @@ public:
 
         verticalLayout_9->addLayout(horizontalLayout_7);
 
-        label_IAQI = new QLabel(tab_4);
-        label_IAQI->setObjectName(QStringLiteral("label_IAQI"));
+        label_IAQI = new QLabel(pollution);
+        label_IAQI->setObjectName(QString::fromUtf8("label_IAQI"));
 
         verticalLayout_9->addWidget(label_IAQI, 0, Qt::AlignHCenter);
 
-        label_DAQI = new QLabel(tab_4);
-        label_DAQI->setObjectName(QStringLiteral("label_DAQI"));
-        label_DAQI->setFont(font6);
+        label_DAQI = new QLabel(pollution);
+        label_DAQI->setObjectName(QString::fromUtf8("label_DAQI"));
+        QFont font8;
+        font8.setPointSize(13);
+        font8.setBold(true);
+        font8.setWeight(75);
+        label_DAQI->setFont(font8);
         label_DAQI->setFrameShape(QFrame::NoFrame);
         label_DAQI->setAlignment(Qt::AlignCenter);
 
@@ -647,30 +685,30 @@ public:
         horizontalLayout_11->addLayout(verticalLayout_9);
 
         horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         horizontalSpacer_10 = new QSpacerItem(13, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_10);
 
         verticalLayout_10 = new QVBoxLayout();
-        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
-        label_2 = new QLabel(tab_4);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        QFont font8;
-        font8.setFamily(QStringLiteral("Droid Sans Fallback"));
-        font8.setPointSize(15);
-        font8.setBold(true);
-        font8.setWeight(75);
-        label_2->setFont(font8);
+        verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
+        label_2 = new QLabel(pollution);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font9;
+        font9.setFamily(QString::fromUtf8("Droid Sans Fallback"));
+        font9.setPointSize(15);
+        font9.setBold(true);
+        font9.setWeight(75);
+        label_2->setFont(font9);
 
         verticalLayout_10->addWidget(label_2, 0, Qt::AlignHCenter);
 
         verticalLayout_8 = new QVBoxLayout();
-        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label_vignette1 = new QLabel(tab_4);
-        label_vignette1->setObjectName(QStringLiteral("label_vignette1"));
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_vignette1 = new QLabel(pollution);
+        label_vignette1->setObjectName(QString::fromUtf8("label_vignette1"));
         label_vignette1->setMinimumSize(QSize(51, 51));
         label_vignette1->setMaximumSize(QSize(51, 51));
 
@@ -680,8 +718,8 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        label_vignette2 = new QLabel(tab_4);
-        label_vignette2->setObjectName(QStringLiteral("label_vignette2"));
+        label_vignette2 = new QLabel(pollution);
+        label_vignette2->setObjectName(QString::fromUtf8("label_vignette2"));
         label_vignette2->setMinimumSize(QSize(51, 51));
         label_vignette2->setMaximumSize(QSize(51, 51));
 
@@ -691,9 +729,9 @@ public:
         verticalLayout_8->addLayout(horizontalLayout);
 
         horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        label_vignette3 = new QLabel(tab_4);
-        label_vignette3->setObjectName(QStringLiteral("label_vignette3"));
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        label_vignette3 = new QLabel(pollution);
+        label_vignette3->setObjectName(QString::fromUtf8("label_vignette3"));
         label_vignette3->setMinimumSize(QSize(51, 51));
         label_vignette3->setMaximumSize(QSize(51, 51));
 
@@ -703,8 +741,8 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_2);
 
-        label_vignette4 = new QLabel(tab_4);
-        label_vignette4->setObjectName(QStringLiteral("label_vignette4"));
+        label_vignette4 = new QLabel(pollution);
+        label_vignette4->setObjectName(QString::fromUtf8("label_vignette4"));
         label_vignette4->setMinimumSize(QSize(51, 51));
         label_vignette4->setMaximumSize(QSize(51, 51));
 
@@ -714,9 +752,9 @@ public:
         verticalLayout_8->addLayout(horizontalLayout_5);
 
         horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_vignette5 = new QLabel(tab_4);
-        label_vignette5->setObjectName(QStringLiteral("label_vignette5"));
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        label_vignette5 = new QLabel(pollution);
+        label_vignette5->setObjectName(QString::fromUtf8("label_vignette5"));
         label_vignette5->setMinimumSize(QSize(51, 51));
         label_vignette5->setMaximumSize(QSize(51, 51));
 
@@ -726,8 +764,8 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_9);
 
-        label_vignette6 = new QLabel(tab_4);
-        label_vignette6->setObjectName(QStringLiteral("label_vignette6"));
+        label_vignette6 = new QLabel(pollution);
+        label_vignette6->setObjectName(QString::fromUtf8("label_vignette6"));
         label_vignette6->setMinimumSize(QSize(51, 51));
         label_vignette6->setMaximumSize(QSize(51, 51));
 
@@ -752,18 +790,26 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_11);
 
-        line = new QFrame(tab_4);
-        line->setObjectName(QStringLiteral("line"));
+        verticalSpacer_6 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_6);
+
+        line = new QFrame(pollution);
+        line->setObjectName(QString::fromUtf8("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_11->addWidget(line);
 
-        textBrowser = new QTextBrowser(tab_4);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        QFont font9;
-        font9.setPointSize(9);
-        textBrowser->setFont(font9);
+        verticalSpacer_11 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_11);
+
+        textBrowser = new QTextBrowser(pollution);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        QFont font10;
+        font10.setPointSize(9);
+        textBrowser->setFont(font10);
         textBrowser->setContextMenuPolicy(Qt::DefaultContextMenu);
         textBrowser->setAutoFillBackground(false);
         textBrowser->setFrameShape(QFrame::NoFrame);
@@ -773,14 +819,16 @@ public:
         verticalLayout_11->addWidget(textBrowser);
 
 
-        horizontalLayout_13->addLayout(verticalLayout_11);
+        horizontalLayout_12->addLayout(verticalLayout_11);
 
 
-        verticalLayout_12->addLayout(horizontalLayout_13);
+        verticalLayout_12->addLayout(horizontalLayout_12);
 
-        tabWidget->addTab(tab_4, QString());
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/Icons_meteo/pollution.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tabWidget->addTab(pollution, icon1, QString());
 
-        verticalLayout_15->addWidget(tabWidget);
+        verticalLayout_14->addWidget(tabWidget);
 
 
         retranslateUi(Dialog);
@@ -799,11 +847,11 @@ public:
         labelTemp->setText(QApplication::translate("Dialog", "Temp\303\251rature", nullptr));
         labelCiel->setText(QApplication::translate("Dialog", "Ciel", nullptr));
         labelDate->setText(QApplication::translate("Dialog", "DATE et heure", nullptr));
-        label_3->setText(QApplication::translate("Dialog", "Indice UV", nullptr));
+        label_TUV->setText(QApplication::translate("Dialog", "Indice UV", nullptr));
         label_indUV->setText(QApplication::translate("Dialog", "UV", nullptr));
         label_DUV->setText(QApplication::translate("Dialog", "Indice Uv", nullptr));
         label_UVprotection->setText(QApplication::translate("Dialog", "ProtectionUV", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Dialog", "M\303\251t\303\251o", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(meteo), QApplication::translate("Dialog", "M\303\251t\303\251o", nullptr));
         label_date1->setText(QApplication::translate("Dialog", "Date1", nullptr));
         label_icon1->setText(QApplication::translate("Dialog", "Icon1", nullptr));
         label_value1->setText(QApplication::translate("Dialog", "Temp1", nullptr));
@@ -828,7 +876,10 @@ public:
         label_date8->setText(QApplication::translate("Dialog", "Date8", nullptr));
         label_icon8->setText(QApplication::translate("Dialog", "Icon8", nullptr));
         label_value8->setText(QApplication::translate("Dialog", "Temp8", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Dialog", "Pr\303\251vision", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(prevision), QApplication::translate("Dialog", "Pr\303\251vision", nullptr));
+#ifndef QT_NO_TOOLTIP
+        pollution->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         label->setText(QApplication::translate("Dialog", "Indice Qualit\303\251 de l'air", nullptr));
         label_IAQI->setText(QApplication::translate("Dialog", "Image AQI", nullptr));
         label_DAQI->setText(QApplication::translate("Dialog", "LABEL", nullptr));
@@ -859,7 +910,7 @@ public:
                         ";\">NO2 (Oxydes d'azote) : </span><span style=\" font-size:8pt;\">gaz irritant pour les bronches (\303\251mis principalement par le trafic routier).</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">CO (Monoxyde de carbone) : </span><span style=\" font-size:8pt;\">gaz provennant majoritairement des gaz d'\303\251chappement des v\303\251hicules. Peut provoquer des intoxications.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">SO2 (Dioxyde de soufre) : </span><span style=\" font-size:8pt;\">gaz qui irrite les muqueuses de la peau et des voies respiratoires sup\303\251rieures.</span><span style=\" font-size:8pt; font-weight:600;\"><br /></span></p></body></html>", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("Dialog", "Pollution", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(pollution), QApplication::translate("Dialog", "Pollution", nullptr));
     } // retranslateUi
 
 };
