@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../Qt/5.12.2/gcc_64/include -I../../Qt/5.12.2/gcc_64/include/QtCharts -I../../Qt/5.12.2/gcc_64/include/QtWidgets -I../../Qt/5.12.2/gcc_64/include/QtGui -I../../Qt/5.12.2/gcc_64/include/QtNetwork -I../../Qt/5.12.2/gcc_64/include/QtSql -I../../Qt/5.12.2/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I. -I../../Qt/5.12.2/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../../Qt/5.12.2/gcc_64/include -I../../Qt/5.12.2/gcc_64/include/QtCharts -I../../Qt/5.12.2/gcc_64/include/QtWidgets -I../../Qt/5.12.2/gcc_64/include/QtGui -I../../Qt/5.12.2/gcc_64/include/QtNetwork -I../../Qt/5.12.2/gcc_64/include/QtSql -I../../Qt/5.12.2/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../Qt/5.12.2/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/haissam/Qt/5.12.2/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -339,7 +339,6 @@ DIST          = ../../Qt/5.12.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -604,7 +603,6 @@ Makefile: src.pro ../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf ../../Qt/5
 		../../Qt/5.12.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../Qt/5.12.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -806,7 +804,6 @@ Makefile: src.pro ../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf ../../Qt/5
 ../../Qt/5.12.2/gcc_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../Qt/5.12.2/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../Qt/5.12.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.12.2/gcc_64/mkspecs/features/toolchain.prf:
 ../../Qt/5.12.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -928,6 +925,7 @@ qrc_iconmeteo.cpp: iconmeteo.qrc \
 qrc_sources.cpp: sources.qrc \
 		../../Qt/5.12.2/gcc_64/bin/rcc \
 		Icons/eventarene.png \
+		Icons/iconekiosquesmap.png \
 		Icons/iconespacesverts.png \
 		Icons/theatre.png \
 		Icons/icongroup.png \
@@ -944,7 +942,9 @@ qrc_sources.cpp: sources.qrc \
 		Icons/iconeleccar.png \
 		Icons/iconSearch.png \
 		Icons/iconwifi.png \
+		Icons/pharmloc-pointer.svg \
 		Icons/pharmicon.png \
+		Icons/iconefontainesmap.png \
 		Icons/point_interet.png \
 		Style/style.css \
 		Tmp_Map/maprougemont.png
@@ -1049,7 +1049,7 @@ moc_Abstract_API.cpp: Abstract_API.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcontiguouscache.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include Abstract_API.h -o moc_Abstract_API.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Abstract_API.h -o moc_Abstract_API.cpp
 
 moc_addrtocoord.cpp: addrtocoord.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
@@ -1157,9 +1157,10 @@ moc_addrtocoord.cpp: addrtocoord.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonArray \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonarray.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include addrtocoord.h -o moc_addrtocoord.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include addrtocoord.h -o moc_addrtocoord.cpp
 
 moc_apiborneswifi.cpp: apiborneswifi.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -1311,7 +1312,7 @@ moc_apiborneswifi.cpp: apiborneswifi.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apiborneswifi.h -o moc_apiborneswifi.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiborneswifi.h -o moc_apiborneswifi.cpp
 
 moc_apibornes_elec.cpp: apibornes_elec.h \
 		Abstract_API.h \
@@ -1496,7 +1497,7 @@ moc_apibornes_elec.cpp: apibornes_elec.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apibornes_elec.h -o moc_apibornes_elec.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apibornes_elec.h -o moc_apibornes_elec.cpp
 
 moc_apievenementsmv.cpp: apievenementsmv.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -1678,7 +1679,7 @@ moc_apievenementsmv.cpp: apievenementsmv.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apievenementsmv.h -o moc_apievenementsmv.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apievenementsmv.h -o moc_apievenementsmv.cpp
 
 moc_apimeteo.cpp: apimeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -1833,7 +1834,7 @@ moc_apimeteo.cpp: apimeteo.h \
 		indiceuv.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apimeteo.h -o moc_apimeteo.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apimeteo.h -o moc_apimeteo.cpp
 
 moc_apiquefaire.cpp: apiquefaire.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -1970,7 +1971,7 @@ moc_apiquefaire.cpp: apiquefaire.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apiquefaire.h -o moc_apiquefaire.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiquefaire.h -o moc_apiquefaire.cpp
 
 moc_apivelib.cpp: apivelib.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
@@ -2152,7 +2153,7 @@ moc_apivelib.cpp: apivelib.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apivelib.h -o moc_apivelib.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apivelib.h -o moc_apivelib.cpp
 
 moc_custombutton.cpp: custombutton.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QPushButton \
@@ -2341,7 +2342,7 @@ moc_custombutton.cpp: custombutton.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include custombutton.h -o moc_custombutton.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include custombutton.h -o moc_custombutton.cpp
 
 moc_apikiosques.cpp: apikiosques.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -2478,7 +2479,7 @@ moc_apikiosques.cpp: apikiosques.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apikiosques.h -o moc_apikiosques.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apikiosques.h -o moc_apikiosques.cpp
 
 moc_dialogmeteo.cpp: dialogmeteo.h \
 		mainwindow.h \
@@ -2693,6 +2694,9 @@ moc_dialogmeteo.cpp: dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qtextformat.h \
 		apiborneswifi.h \
 		theatre.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
 		meteo.h \
 		pollution.h \
@@ -2768,7 +2772,6 @@ moc_dialogmeteo.cpp: dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcollator.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcommandlineparser.h \
-		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qdiriterator.h \
@@ -3114,7 +3117,7 @@ moc_dialogmeteo.cpp: dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QVBoxLayout \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include dialogmeteo.h -o moc_dialogmeteo.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialogmeteo.h -o moc_dialogmeteo.cpp
 
 moc_indiceuv.cpp: indiceuv.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -3254,7 +3257,7 @@ moc_indiceuv.cpp: indiceuv.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include indiceuv.h -o moc_indiceuv.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include indiceuv.h -o moc_indiceuv.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -3468,10 +3471,13 @@ moc_mainwindow.cpp: mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qtextformat.h \
 		apiborneswifi.h \
 		theatre.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_meteo.cpp: meteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -3611,7 +3617,7 @@ moc_meteo.cpp: meteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include meteo.h -o moc_meteo.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include meteo.h -o moc_meteo.cpp
 
 moc_pharmapi.cpp: pharmapi.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -3748,7 +3754,7 @@ moc_pharmapi.cpp: pharmapi.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include pharmapi.h -o moc_pharmapi.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include pharmapi.h -o moc_pharmapi.cpp
 
 moc_pollution.cpp: pollution.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -3888,7 +3894,7 @@ moc_pollution.cpp: pollution.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include pollution.h -o moc_pollution.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include pollution.h -o moc_pollution.cpp
 
 moc_prevision.cpp: prevision.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -4028,7 +4034,7 @@ moc_prevision.cpp: prevision.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include prevision.h -o moc_prevision.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include prevision.h -o moc_prevision.cpp
 
 moc_uiratp.cpp: uiratp.h \
 		apiratp_global.h \
@@ -4219,7 +4225,7 @@ moc_uiratp.cpp: uiratp.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qdialog.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include uiratp.h -o moc_uiratp.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include uiratp.h -o moc_uiratp.cpp
 
 moc_apiratp_global.cpp: apiratp_global.h \
 		Abstract_API.h \
@@ -4406,7 +4412,7 @@ moc_apiratp_global.cpp: apiratp_global.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apiratp_global.h -o moc_apiratp_global.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiratp_global.h -o moc_apiratp_global.cpp
 
 moc_apiterrasses.cpp: apiterrasses.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -4559,7 +4565,7 @@ moc_apiterrasses.cpp: apiterrasses.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apiterrasses.h -o moc_apiterrasses.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiterrasses.h -o moc_apiterrasses.cpp
 
 moc_sanisette.cpp: sanisette.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
@@ -4691,7 +4697,7 @@ moc_sanisette.cpp: sanisette.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include sanisette.h -o moc_sanisette.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sanisette.h -o moc_sanisette.cpp
 
 moc_theatre.cpp: theatre.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -4821,9 +4827,14 @@ moc_theatre.cpp: theatre.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qdatastream.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include theatre.h -o moc_theatre.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include theatre.h -o moc_theatre.cpp
 
 moc_apiespacesverts.cpp: apiespacesverts.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -4976,7 +4987,7 @@ moc_apiespacesverts.cpp: apiespacesverts.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apiespacesverts.h -o moc_apiespacesverts.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiespacesverts.h -o moc_apiespacesverts.cpp
 
 moc_apifontaines.cpp: apifontaines.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
@@ -5113,7 +5124,7 @@ moc_apifontaines.cpp: apifontaines.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
-	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0 -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/arm-buildroot-linux-gnueabihf -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include/c++/7.4.0/backward -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include -I/home/haissam/buildroot-2019.02.1/output/host/lib/gcc/arm-buildroot-linux-gnueabihf/7.4.0/include-fixed -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/include -I/home/haissam/buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include apifontaines.h -o moc_apifontaines.cpp
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apifontaines.h -o moc_apifontaines.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -5515,7 +5526,8 @@ addrtocoord.o: addrtocoord.cpp addrtocoord.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonArray \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonarray.h \
-		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addrtocoord.o addrtocoord.cpp
 
 apiborneswifi.o: apiborneswifi.cpp apiborneswifi.h \
@@ -6580,6 +6592,9 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qtextformat.h \
 		apiborneswifi.h \
 		theatre.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
 		meteo.h \
 		pollution.h \
@@ -6655,7 +6670,6 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcollator.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcommandlineparser.h \
-		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qdiriterator.h \
@@ -8051,7 +8065,38 @@ custombutton.o: custombutton.cpp custombutton.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qfileinfo.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
 		icon.h \
-		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		mainwindow.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		pharmapi.h \
+		apibornes_elec.h \
+		apiquefaire.h \
+		apikiosques.h \
+		sanisette.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonValue \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVariantHash \
+		apiratp_station.h \
+		apiratp_global.h \
+		stoppoint.h \
+		transport.h \
+		uiratp.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDateTime \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QDialog \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextformat.h \
+		apiborneswifi.h \
+		theatre.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
+		apifontaines.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o custombutton.o custombutton.cpp
 
 icon.o: icon.cpp icon.h \
@@ -8370,10 +8415,12 @@ main.o: main.cpp mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qtextformat.h \
 		apiborneswifi.h \
 		theatre.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qinputmethod.h
@@ -8591,11 +8638,13 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qtextformat.h \
 		apiborneswifi.h \
 		theatre.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
 		ui_mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qinputmethod.h \
@@ -10831,7 +10880,12 @@ theatre.o: theatre.cpp theatre.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qregion.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qdatastream.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
-		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
+		addrtocoord.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o theatre.o theatre.cpp
 
 apifontaines.o: apifontaines.cpp apifontaines.h \

@@ -28,6 +28,8 @@ QT_BEGIN_NAMESPACE
 class Ui_Dialog
 {
 public:
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_14;
     QVBoxLayout *verticalLayout_14;
     QTabWidget *tabWidget;
     QWidget *meteo;
@@ -157,6 +159,12 @@ public:
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
         Dialog->resize(1170, 503);
+        layoutWidget = new QWidget(Dialog);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 0, 2, 2));
+        horizontalLayout_14 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
+        horizontalLayout_14->setContentsMargins(0, 0, 0, 0);
         verticalLayout_14 = new QVBoxLayout(Dialog);
         verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
         tabWidget = new QTabWidget(Dialog);
