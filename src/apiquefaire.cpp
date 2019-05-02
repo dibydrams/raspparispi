@@ -67,6 +67,7 @@ int ApiQueFaire::getId()
 void ApiQueFaire::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///

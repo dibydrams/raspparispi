@@ -126,6 +126,7 @@ int ApiRatp_Global::getId()
 void ApiRatp_Global::getInfo()
 {
     GeoPoints();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

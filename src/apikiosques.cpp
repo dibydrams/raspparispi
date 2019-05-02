@@ -52,4 +52,5 @@ void apikiosques::API_results(QNetworkReply *reply)
 void apikiosques::getInfo()
 {
    API_call();
+   QApplication::setOverrideCursor(Qt::WaitCursor);
 }

@@ -50,6 +50,7 @@ int ApiBornesWifi::getId()
 void ApiBornesWifi::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 QPixmap ApiBornesWifi::getPixmap()

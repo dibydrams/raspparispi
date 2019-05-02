@@ -61,6 +61,7 @@ int ApiEvenementsMV::getId()
 void ApiEvenementsMV::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

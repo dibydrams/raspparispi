@@ -194,13 +194,11 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex)
 {
-//    ui->widget->m_listePI = list;
-
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
-
     //qDebug()<<"ok recu";
     this->update();
+    QApplication::restoreOverrideCursor();
 }
 
 void MainWindow::dialog()

@@ -60,6 +60,7 @@ void theatre::readJsonTheatre(){
 
 void theatre::getInfo(){
     theatreAPI_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 
