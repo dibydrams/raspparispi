@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
+#include "widgetmap.h"
 #include "icon.h"
 
 class ApiBornes_Elec : public Abstract_API
@@ -36,6 +37,7 @@ private:
 
     double longitude;
     double latitude;
+    bool isGeoBool(double geo);
 signals:
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 

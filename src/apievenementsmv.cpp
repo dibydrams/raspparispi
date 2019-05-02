@@ -1,4 +1,5 @@
 #include "apievenementsmv.h"
+#include "icon.h"
 
 ApiEvenementsMV::ApiEvenementsMV()
 {
@@ -7,9 +8,16 @@ ApiEvenementsMV::ApiEvenementsMV()
 
 void ApiEvenementsMV::API_Call() // Gestion du call à l'API
 {
-   API_Access = new QNetworkAccessManager(this);
+    API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://api.predicthq.com/v1/events/?country=FR&active.gte=2019-05-10&active.lte=2019-05-10&within=1km@48.871602,2.345994&category=expos, sports, community, concerts, conferences, festivals");
+    // Accès aux settings de widgetmap.h
+    double conf_longitude  = settingsAccess.m_centreLongitude;
+    double conf_latitude = settingsAccess.m_centreLatitude;
+
+    QString lat = QString::number(conf_latitude);
+    QString lon = QString::number(conf_longitude);
+
+    QUrl url("https://api.predicthq.com/v1/events/?country=FR&active.gte=2019-05-10&active.lte=2019-05-10&within=1km@" + lat + "," + lon +"&category=expos, sports, community, concerts, conferences, festivals");
     QNetworkRequest request;
     request.setUrl(url);
     request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer wH3fafHllNhQBCFfhFkQbNTUToSpql"));
@@ -35,7 +43,7 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = QPixmap();
+        geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(252, 181, 75));
 
        m_list << geo;
     }
@@ -58,5 +66,5 @@ void ApiEvenementsMV::getInfo()
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
 QPixmap ApiEvenementsMV::getPixmap()
 {
-    return QPixmap(":/Icons/iconevents.png"); // icône PNG préférable
+    return QPixmap(":/Icons/eventarene.png"); // icône PNG préférable
 }

@@ -99,6 +99,7 @@ void MainWindow::initButtons()
 
     ptr = new apifontaines;
     CustomButton *fontaines_btn=new CustomButton(ptr, this);
+    ButtonList << fontaines_btn;
     ui->horizontalLayout->addWidget(fontaines_btn);
     connect(fontaines_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
@@ -159,6 +160,18 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
 }
 
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+   QMainWindow::resizeEvent(event);
+
+   int btnNb = ButtonList.count();
+   int sizebtn = this->width() / btnNb - 10;
+
+   for ( auto val : ButtonList ) {
+       val->setIconSize(QSize(sizebtn,sizebtn));
+       val->setFixedSize(sizebtn,sizebtn);
+   }
+}
 
 /* ##   FONCTION D'APPEL DE LA MAP : dataReceived(QList)  ##
  *
