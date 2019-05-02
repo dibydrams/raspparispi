@@ -98,7 +98,7 @@ void ApiRatp_Global::GeoPoints()
             GeoObj geo;
             geo.longitude = point.x();
             geo.latitude = point.y();
-            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(25, 75, 210));
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(25, 75, 210));
             geoList << geo;
         }
     }
