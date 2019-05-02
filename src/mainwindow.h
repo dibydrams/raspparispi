@@ -35,7 +35,7 @@ public:
 
     void resizeEvent(QResizeEvent *event);
 private slots:
-    void dataReceived(QList<Abstract_API::GeoObj> list);
+    void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();

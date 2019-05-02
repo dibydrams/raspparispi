@@ -17,7 +17,7 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
 
     if (!this->isChecked()) {
         connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
-        connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
+        connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(FinishedReceived()));
     }
 }
 
