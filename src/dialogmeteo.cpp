@@ -599,7 +599,7 @@ void Dialog::printHashindice()                                 //Affichage de l'
     {
         ui->label_DUV->setText(QString ("<font color=\"#0fc133\">FAIBLE: %1</font>").arg(indice_value));
         ui->label_indUV->setText("<font color=\"#0fc133\">UV</font>");
-        ui->label_3->setText(QString("<font color=\"#0fc133\">Indice UV</font>"));
+        ui->label_TUV->setText(QString("<font color=\"#0fc133\">Indice UV</font>"));
 
     }
 
@@ -607,28 +607,28 @@ void Dialog::printHashindice()                                 //Affichage de l'
     {
         ui->label_DUV->setText(QString ("<font color=\"#f9eb25\">MOYENNE: %1</font>").arg(indice_value));
         ui->label_indUV->setText("<font color=\"#f9eb25\">UV</font>");
-        ui->label_3->setText(QString("<font color=\"#f9eb25\">Indice UV</font>"));
+        ui->label_TUV->setText(QString("<font color=\"#f9eb25\">Indice UV</font>"));
     }
 
     else if (indice_value>=6 && indice_value<=7)
     {
         ui->label_DUV->setText(QString ("<font color=\"#ff9011\">ÉLEVÉ: %1</font>").arg(indice_value));
         ui->label_indUV->setText("<font color=\"#ff9011\">UV</font>");
-        ui->label_3->setText(QString("<font color=\"#ff9011\">Indice UV</font>"));
+        ui->label_TUV->setText(QString("<font color=\"#ff9011\">Indice UV</font>"));
     }
 
     else if (indice_value>=8 && indice_value<=10)
     {
         ui->label_DUV->setText(QString ("<font color=\"#e00f0f\">TRÈS ÉLEVÉ: %1</font>").arg(indice_value));
         ui->label_indUV->setText("<font color=\"#e00f0f\">UV</font>");
-        ui->label_3->setText(QString("<font color=\"#e00f0f\">Indice UV</font>"));
+        ui->label_TUV->setText(QString("<font color=\"#e00f0f\">Indice UV</font>"));
     }
 
     else {
 
         ui->label_DUV->setText(QString ("<font color=\"#c669e5\">EXTREME: %1</font>").arg(indice_value));
         ui->label_indUV->setText("<font color=\"#c669e5\">UV</font>");
-        ui->label_3->setText(QString("<font color=\"#c669e5\">Indice UV</font>"));
+        ui->label_TUV->setText(QString("<font color=\"#c669e5\">Indice UV</font>"));
     }
 
     ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
