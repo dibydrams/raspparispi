@@ -48,18 +48,21 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
         
 
         GeoObj geo;
-        if(utilitaire::inMap(terra.latitude, terra.longitude))
+        if(terra.type.contains("TERRASSE"))
         {
-            listTerrasse->append(terra);
-            geo.latitude = terra.latitude;
-            geo.longitude = terra.longitude;
-            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(125, 115, 45));
+            if(utilitaire::inMap(terra.latitude, terra.longitude))
+            {
+                listTerrasse->append(terra);
+                geo.latitude = terra.latitude;
+                geo.longitude = terra.longitude;
+                geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(125, 115, 45));
 
 
-            m_list << geo;
+                m_list << geo;
+            }
         }
 
-       
+
     }
 
     emit callFinished(m_list, TERRASSES);  // Signal de fin de traitement de l'API
