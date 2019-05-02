@@ -6,6 +6,10 @@ addrToCoord::addrToCoord(QObject *parent,QString addr) : QObject(parent){
     coordinates(addr);
     loop.exec();
 }
+addrToCoord::addrToCoord(QObject *parent) : QObject(parent){
+    latitude = -1;
+    longitude = -1;
+}
 
 addrToCoord::~addrToCoord()
 {
@@ -40,6 +44,20 @@ void addrToCoord::coordinates(QString addr)
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getCoordinates(QNetworkReply*)));
 }
 
+void addrToCoord::coordinates(QString addr,QNetworkAccessManager*manager)
+{
+    loop.exec();
+    address = addr;
+    manager = new QNetworkAccessManager(this);
+    QUrl url("https://geocoder.api.here.com/6.2/geocode.json?searchtext="+addr+"&app_id="+appId+"&app_code="+appCode);
+    QNetworkRequest request;
+    request.setUrl(url);
+
+    currentReply = manager->get(request);
+
+    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getCoordinates(QNetworkReply*)));
+}
+
 void addrToCoord::getCoordinates(QNetworkReply *reply)
 {
     if (currentReply->error() != QNetworkReply::NoError){
@@ -55,5 +73,5 @@ void addrToCoord::getCoordinates(QNetworkReply *reply)
     longitude = jsobj.toVariantMap()["Response"].toMap()["View"].toList().at(0).toMap()["Result"].
                 toList().at(0).toMap()["Location"].toMap()["DisplayPosition"].toMap()["Longitude"].toDouble();
 
-     loop.exit();
+    loop.exit();
 }

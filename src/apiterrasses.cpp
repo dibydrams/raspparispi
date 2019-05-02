@@ -20,8 +20,6 @@ void ApiTerrasses::API_Call() // Gestion du call à l'API
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=etalages-et-terrasses&rows=-1&facet=libelle_type&facet=red_profession&facet=type_lieu1&facet=type_lieu2&facet=lateralite&facet=longueur&facet=largeurmin&facet=largeurmax&facet=date_periode");
     QNetworkRequest request;
     request.setUrl(url);
-
-
     currentReply = API_Access->get(request);
     connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
 }
@@ -48,18 +46,21 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
         
 
         GeoObj geo;
-        if(utilitaire::inMap(terra.latitude, terra.longitude))
+        if(terra.type.contains("TERRASSE"))
         {
-            listTerrasse->append(terra);
-            geo.latitude = terra.latitude;
-            geo.longitude = terra.longitude;
-            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(125, 115, 45));
+            if(utilitaire::inMap(terra.latitude, terra.longitude))
+            {
+                listTerrasse->append(terra);
+                geo.latitude = terra.latitude;
+                geo.longitude = terra.longitude;
+                geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(125, 115, 45));
 
 
-            m_list << geo;
+                m_list << geo;
+            }
         }
 
-       
+
     }
 
     emit callFinished(m_list, TERRASSES);  // Signal de fin de traitement de l'API

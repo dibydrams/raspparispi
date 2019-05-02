@@ -40,7 +40,7 @@ void apikiosques::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=QPixmap(":/Icons/iconekiosques.png");
+        geo.pixmap=QPixmap(":/Icons/iconekiosquesmap.png");
 
 
         m_list<<geo;
