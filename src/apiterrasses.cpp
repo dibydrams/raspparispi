@@ -7,11 +7,17 @@ ApiTerrasses::ApiTerrasses()
 {
 
 }
+
+ApiTerrasses::~ApiTerrasses()
+{
+    delete API_Access;
+    delete listTerrasse;
+}
 void ApiTerrasses::API_Call() // Gestion du call à l'API
 {
-   API_Access = new QNetworkAccessManager(this);
+    API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=etalages-et-terrasses");
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=etalages-et-terrasses&rows=-1&facet=libelle_type&facet=red_profession&facet=type_lieu1&facet=type_lieu2&facet=lateralite&facet=longueur&facet=largeurmin&facet=largeurmax&facet=date_periode");
     QNetworkRequest request;
     request.setUrl(url);
     currentReply = API_Access->get(request);
@@ -26,20 +32,35 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
     obj = doc.object();
     arr = obj["records"].toArray();
     for ( auto val :  arr) {
+        terrasse terra;
 
-         QJsonObject objn = val.toObject();
-         QJsonValue val2 = objn.value(QString("fields"));
-         QJsonObject item = val2.toObject();
-        longitude = item["geo_point_2d"].toArray()[1].toDouble();
-        latitude = item["geo_point_2d"].toArray()[0].toDouble();
+
+        QJsonObject objn = val.toObject();
+        QJsonValue val2 = objn.value(QString("fields"));
+        QJsonObject item = val2.toObject();
+        terra.profession = item["red_profession"].toString();
+        terra.type = item["libelle_type"].toString();
+        terra.latitude = item["geo_point_2d"].toArray()[0].toDouble();
+        terra.longitude = item["geo_point_2d"].toArray()[1].toDouble();
+
+        
 
         GeoObj geo;
+        if(terra.type.contains("TERRASSE"))
+        {
+            if(utilitaire::inMap(terra.latitude, terra.longitude))
+            {
+                listTerrasse->append(terra);
+                geo.latitude = terra.latitude;
+                geo.longitude = terra.longitude;
+                geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(125, 115, 45));
 
-        geo.longitude = longitude;
-        geo.latitude = latitude;
-        geo.pixmap = QPixmap();
 
-       m_list << geo;
+                m_list << geo;
+            }
+        }
+
+
     }
 
     emit callFinished(m_list, TERRASSES);  // Signal de fin de traitement de l'API

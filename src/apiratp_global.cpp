@@ -4,6 +4,31 @@ ApiRatp_Global::ApiRatp_Global()
 {
 
     m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+    if (referentielStifJson.isEmpty())
+    {
+        if (m_settings->value("Datas/Referentiel").isNull())
+        {
+            QStringList splitList = m_settings->fileName().split("/");
+            m_settings->setValue("Datas/Referentiel", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/referentiel-des-lignes-stif.json");
+        }
+        QString filename = m_settings->value("Datas/Referentiel").toString();
+        referentielStifJson =  LoadJson(filename);
+    }
+
+    if (stopPointList.isEmpty())
+    {
+        if (perimetreStifJson.isEmpty())
+        {
+            if (m_settings->value("Datas/Perimetre").isNull())
+            {
+                QStringList splitList = m_settings->fileName().split("/");
+                m_settings->setValue("Datas/Perimetre", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/referentiel-des-lignes-stif.json");
+            }
+            QString filename = m_settings->value("Datas/Perimetre").toString();
+            perimetreStifJson =  LoadJson(filename);
+        }
+        PeriStifJson();
+    }
 
 }
 
@@ -53,39 +78,11 @@ void ApiRatp_Global::RefStifJson()
 
         // Liste des Arrêts du transport
         QList<StopPoint> mySPList;
-        foreach (StopPoint sp, stopPointList) {
-            if (sp.externalcodeLine == codeLine)
-                mySPList.append(sp);
-        }
+
 
         Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
-
-        if(newTransport.transportMode == Transport::Modes::bus)
-        {
-            for (int j = 0; j < stopPointList.count(); ++j)
-            {
-                if(stopPointList[j].externalcodeLine == newTransport.codeLine)
-                {
-                    busList.append(newTransport);
-                    break;
-                }
-            }
-        }
-        else if(newTransport.transportMode == Transport::Modes::metro)
-        {
-            metroList.append(newTransport);
-        }
-        else
-        {
-            railList.append(newTransport);
-        }
+        transportList << newTransport;
     }
-
-    std::sort(busList.begin(), busList.end(), Transport::compareTransports);
-    std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
-    std::sort(railList.begin(), railList.end(), Transport::compareTransports);
-
-    qDebug() << "RefStif Done !";
 }
 
 void ApiRatp_Global::GeoPoints()
@@ -98,11 +95,11 @@ void ApiRatp_Global::GeoPoints()
         if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
              (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
         {
-          GeoObj geo;
-          geo.longitude = point.x();
-          geo.latitude = point.y();
-          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
-          geoList << geo;
+            GeoObj geo;
+            geo.longitude = point.x();
+            geo.latitude = point.y();
+            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(25, 75, 210));
+            geoList << geo;
         }
     }
     emit callFinished(geoList, RATP);
@@ -110,19 +107,6 @@ void ApiRatp_Global::GeoPoints()
 
 void ApiRatp_Global::FilledTransportLists()
 {
-    qDebug() << "is Empty ?" << referentielStifJson.isEmpty() << "et null ?" << referentielStifJson.isNull() << endl;
-    if (referentielStifJson.isEmpty())
-    {
-        if (m_settings->value("Datas/Referentiel").isNull())
-        {
-            m_settings->setValue("Datas/Referentiel", "Datas/referentiel-des-lignes-stif.json");
-        }
-        QString filename = "/" + m_settings->value("Datas/Referentiel").toString();
-        qDebug() << "now ref Json ?" << filename << endl;
-
-        referentielStifJson =  LoadJson(filename);
-        qDebug() << "now ref Json ?" << referentielStifJson.isEmpty() << endl;
-    }
     RefStifJson();
 }
 
@@ -141,18 +125,6 @@ int ApiRatp_Global::getId()
 
 void ApiRatp_Global::getInfo()
 {
-    if (stopPointList.isEmpty())
-    {
-        if (perimetreStifJson.isEmpty())
-        {
-            if (m_settings->value("Datas/Perimetre").isNull())
-            {
-                m_settings->setValue("Datas/Perimetre", "Datas/perimetre-tr-plateforme-stif.json");
-            }
-            perimetreStifJson =  LoadJson(m_settings->value("Datas/Perimetre").toString().split("/").takeAt(1));
-        }
-        PeriStifJson();
-    }
     GeoPoints();
 }
 

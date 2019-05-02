@@ -24,9 +24,8 @@ public:
     QNetworkRequest *requestUni;
     QNetworkReply *replyUni;
 
-    void DoUniRequest();
-
 public slots:
+    void DoUniRequest();
     void getInfo() override;
 
 private:

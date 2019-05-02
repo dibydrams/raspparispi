@@ -97,6 +97,13 @@ void MainWindow::initButtons()
     connect(Kiosques_btn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
 
+    ptr = new apifontaines;
+    CustomButton *fontaines_btn=new CustomButton(ptr, this);
+    ButtonList << fontaines_btn;
+    ui->horizontalLayout->addWidget(fontaines_btn);
+    connect(fontaines_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
     ptr = new ApiTerrasses;
     CustomButton *terrassesBtn = new CustomButton(ptr, this);
     ButtonList << terrassesBtn;
@@ -147,11 +154,25 @@ void MainWindow::initButtons()
 
 	ptr = new apiVelib;
     CustomButton *buttonVelib = new CustomButton(ptr, this);
+    ButtonList << buttonVelib;
     ui->horizontalLayout->addWidget(buttonVelib);
     connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
 }
 
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+   QMainWindow::resizeEvent(event);
+
+   int btnNb = ButtonList.count();
+   int sizebtn = this->width() / btnNb - 10;
+
+   for ( auto val : ButtonList ) {
+       val->setIconSize(QSize(sizebtn,sizebtn));
+       val->setFixedSize(sizebtn,sizebtn);
+   }
+}
 
 /* ##   FONCTION D'APPEL DE LA MAP : dataReceived(QList)  ##
  *
@@ -161,6 +182,7 @@ void MainWindow::initButtons()
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list)
 {
     ui->widget->m_listePI = list;
+   qDebug()<<"ok recu";
     this->update();
 }
 

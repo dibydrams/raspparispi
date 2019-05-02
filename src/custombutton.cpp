@@ -1,5 +1,6 @@
 #include "custombutton.h"
 #include "Abstract_API.h"
+#include "mainwindow.h"
 
 CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(parent)
 {
@@ -11,10 +12,13 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     setIcon(iconpix);
     setCheckable(true);
     buttonID = ptr->getId();
-    setIconSize(QSize(128,128));
-    setFixedSize(128,128);
-    connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
+//    setIconSize(QSize(100,100));
+//    setFixedSize(100,100);
+
+    if (!this->isChecked()) {
+        connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
+        connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
+    }
 }
 
 void CustomButton::ClickedManage()

@@ -15,6 +15,7 @@
 #include "uiratp.h"
 #include "apiborneswifi.h"
 #include "theatre.h"
+#include "apifontaines.h"
 
 
 namespace Ui {
@@ -32,6 +33,7 @@ public:
     void initButtons();
     QList <CustomButton *> ButtonList;
 
+    void resizeEvent(QResizeEvent *event);
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list);
     void dialog();

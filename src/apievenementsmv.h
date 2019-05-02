@@ -10,6 +10,7 @@
 #include <QList>
 
 #include "Abstract_API.h"
+#include "widgetmap.h"
 
 
 class ApiEvenementsMV : public Abstract_API
@@ -20,6 +21,7 @@ public:
     ApiEvenementsMV();
     int getId() override;
     QPixmap getPixmap() override;
+    WidgetMap settingsAccess;
 
 private slots:
     void API_Call();

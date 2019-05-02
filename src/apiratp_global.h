@@ -2,6 +2,7 @@
 #define APIRATP_GLOBAL_H
 
 #include "Abstract_API.h"
+#include "icon.h"
 #include "stoppoint.h"
 #include "transport.h"
 #include "widgetmap.h"
@@ -29,6 +30,7 @@ public:
     QList<GeoObj> geoList;
     QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
+    QList<Transport> transportList;
     QList<Transport> busList;
     QList<Transport> metroList;
     QList<Transport> railList;
