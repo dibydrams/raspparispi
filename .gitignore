@@ -5,3 +5,4 @@ RATP*
 *.pro.user*
 *moc_*
 .DS_Store
+src/*.o
