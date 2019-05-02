@@ -624,6 +624,7 @@ qrc_iconmeteo.cpp: iconmeteo.qrc \
 		Icons_meteo/09d.png \
 		Icons_meteo/13d.png \
 		Icons_meteo/aqi_h.png \
+		Icons_meteo/protectionUV.png \
 		Icons_meteo/vignette6.png \
 		Icons_meteo/04n.png \
 		Icons_meteo/aqi_g.png \
@@ -662,6 +663,7 @@ qrc_iconmeteo.cpp: iconmeteo.qrc \
 
 qrc_sources.cpp: sources.qrc \
 		../../buildroot-2019.02.1/output/host/bin/rcc \
+		Icons/eventarene.png \
 		Icons/iconespacesverts.png \
 		Icons/theatre.png \
 		Icons/icongroup.png \
@@ -1455,21 +1457,55 @@ moc_apibornes_elec.cpp: Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
 		apibornes_elec.h \
 		moc_predefs.h \
 		../../buildroot-2019.02.1/output/host/bin/moc
@@ -1676,6 +1712,52 @@ moc_apievenementsmv.cpp: ../../buildroot-2019.02.1/output/host/arm-buildroot-lin
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
 		apievenementsmv.h \
 		moc_predefs.h \
 		../../buildroot-2019.02.1/output/host/bin/moc
@@ -2282,30 +2364,82 @@ moc_apivelib.cpp: ../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnue
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonArray \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qjsonarray.h \
 		utilitaire.h \
-		Abstract_API.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPixmap \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfile.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtguiglobal.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtgui-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qrect.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qmargins.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsize.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcolor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qrgb.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qrgba64.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qregion.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qkeysequence.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qevent.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		Abstract_API.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPixmap \
 		apivelib.h \
 		moc_predefs.h \
 		../../buildroot-2019.02.1/output/host/bin/moc
@@ -2527,14 +2661,44 @@ moc_custombutton.cpp: ../../buildroot-2019.02.1/output/host/arm-buildroot-linux-
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
 		custombutton.h \
 		moc_predefs.h \
 		../../buildroot-2019.02.1/output/host/bin/moc
@@ -2967,26 +3131,6 @@ moc_dialogmeteo.cpp: mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		pharmapi.h \
-		apibornes_elec.h \
-		apiquefaire.h \
-		apikiosques.h \
-		sanisette.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
-		apiratp_station.h \
-		apiratp_global.h \
-		stoppoint.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		transport.h \
 		widgetmap.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
@@ -2997,25 +3141,45 @@ moc_dialogmeteo.cpp: mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		pharmapi.h \
+		apibornes_elec.h \
+		apiquefaire.h \
+		apikiosques.h \
+		sanisette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
+		apiratp_station.h \
+		apiratp_global.h \
+		stoppoint.h \
+		transport.h \
 		uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDateTime \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
@@ -3441,6 +3605,15 @@ moc_dialogmeteo.cpp: mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qxylegendmarker.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qtchartsversion.h \
 		ui_dialogmeteo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QApplication \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QFrame \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHBoxLayout \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHeaderView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QSpacerItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTabWidget \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTableView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTextBrowser \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QVBoxLayout \
 		dialogmeteo.h \
 		moc_predefs.h \
 		../../buildroot-2019.02.1/output/host/bin/moc
@@ -3875,26 +4048,6 @@ moc_mainwindow.cpp: ../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gn
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		pharmapi.h \
-		apibornes_elec.h \
-		apiquefaire.h \
-		apikiosques.h \
-		sanisette.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
-		apiratp_station.h \
-		apiratp_global.h \
-		stoppoint.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		transport.h \
 		widgetmap.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
@@ -3905,25 +4058,45 @@ moc_mainwindow.cpp: ../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gn
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		pharmapi.h \
+		apibornes_elec.h \
+		apiquefaire.h \
+		apikiosques.h \
+		sanisette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
+		apiratp_station.h \
+		apiratp_global.h \
+		stoppoint.h \
+		transport.h \
 		uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDateTime \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
@@ -4933,6 +5106,21 @@ moc_uiratp.cpp: apiratp_global.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/bits/stdio-ldbl.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		stoppoint.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QString \
@@ -4990,21 +5178,10 @@ moc_uiratp.cpp: apiratp_global.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
@@ -5014,7 +5191,6 @@ moc_uiratp.cpp: apiratp_global.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
@@ -5190,6 +5366,21 @@ moc_apiratp_global.cpp: Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/bits/stdio-ldbl.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		stoppoint.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QString \
@@ -5247,21 +5438,10 @@ moc_apiratp_global.cpp: Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
@@ -5271,7 +5451,6 @@ moc_apiratp_global.cpp: Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
@@ -5488,6 +5667,22 @@ moc_apiterrasses.cpp: ../../buildroot-2019.02.1/output/host/arm-buildroot-linux-
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		utilitaire.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		apiterrasses.h \
 		moc_predefs.h \
 		../../buildroot-2019.02.1/output/host/bin/moc
@@ -7355,21 +7550,55 @@ apibornes_elec.o: apibornes_elec.cpp apibornes_elec.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apibornes_elec.o apibornes_elec.cpp
 
 apievenementsmv.o: apievenementsmv.cpp apievenementsmv.h \
@@ -7573,7 +7802,56 @@ apievenementsmv.o: apievenementsmv.cpp apievenementsmv.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apievenementsmv.o apievenementsmv.cpp
 
 apimeteo.o: apimeteo.cpp apimeteo.h \
@@ -7970,30 +8248,82 @@ apivelib.o: apivelib.cpp apivelib.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonArray \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qjsonarray.h \
 		utilitaire.h \
-		Abstract_API.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPixmap \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfile.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtguiglobal.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtgui-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qrect.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qmargins.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsize.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcolor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qrgb.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qrgba64.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qregion.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qkeysequence.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qevent.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		Abstract_API.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apivelib.o apivelib.cpp
 
 dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
@@ -8218,26 +8548,6 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		pharmapi.h \
-		apibornes_elec.h \
-		apiquefaire.h \
-		apikiosques.h \
-		sanisette.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
-		apiratp_station.h \
-		apiratp_global.h \
-		stoppoint.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		transport.h \
 		widgetmap.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
@@ -8248,25 +8558,45 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		pharmapi.h \
+		apibornes_elec.h \
+		apiquefaire.h \
+		apikiosques.h \
+		sanisette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
+		apiratp_station.h \
+		apiratp_global.h \
+		stoppoint.h \
+		transport.h \
 		uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDateTime \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
@@ -8692,6 +9022,15 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qxylegendmarker.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qtchartsversion.h \
 		ui_dialogmeteo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QApplication \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QFrame \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHBoxLayout \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHeaderView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QSpacerItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTabWidget \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTableView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTextBrowser \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QVBoxLayout \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/QHorizontalStackedBarSeries \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/QBarCategoryAxis \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/QBarSeries \
@@ -10191,14 +10530,44 @@ custombutton.o: custombutton.cpp custombutton.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		widgetmap.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/ctype.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QEventLoop \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o custombutton.o custombutton.cpp
 
 icon.o: icon.cpp icon.h \
@@ -10595,26 +10964,6 @@ main.o: main.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		pharmapi.h \
-		apibornes_elec.h \
-		apiquefaire.h \
-		apikiosques.h \
-		sanisette.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
-		apiratp_station.h \
-		apiratp_global.h \
-		stoppoint.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		transport.h \
 		widgetmap.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
@@ -10625,25 +10974,45 @@ main.o: main.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		pharmapi.h \
+		apibornes_elec.h \
+		apiquefaire.h \
+		apikiosques.h \
+		sanisette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
+		apiratp_station.h \
+		apiratp_global.h \
+		stoppoint.h \
+		transport.h \
 		uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDateTime \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
@@ -10886,26 +11255,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QList \
 		Abstract_API.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
-		icon.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		pharmapi.h \
-		apibornes_elec.h \
-		apiquefaire.h \
-		apikiosques.h \
-		sanisette.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
-		apiratp_station.h \
-		apiratp_global.h \
-		stoppoint.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		transport.h \
 		widgetmap.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QSettings \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
@@ -10916,25 +11265,45 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItemAnimation \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPoint \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDir \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		pharmapi.h \
+		apibornes_elec.h \
+		apiquefaire.h \
+		apikiosques.h \
+		sanisette.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QJsonValue \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QVariantHash \
+		apiratp_station.h \
+		apiratp_global.h \
+		stoppoint.h \
+		transport.h \
 		uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDateTime \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
@@ -10949,6 +11318,18 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		theatre.h \
 		apifontaines.h \
 		ui_mainwindow.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QApplication \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHBoxLayout \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qboxlayout.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayout.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgridlayout.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QVBoxLayout \
 		dialogmeteo.h \
 		meteo.h \
 		pollution.h \
@@ -10979,10 +11360,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QBrush \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QFont \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGridLayout \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgridlayout.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayout.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qboxlayout.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/QChart \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qchart.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/QAbstractSeries \
@@ -11017,7 +11394,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcollator.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcommandlineoption.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcommandlineparser.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdeadlinetimer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qelapsedtimer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qdiriterator.h \
@@ -11121,8 +11497,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qgenericmatrix.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qgenericplugin.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qgenericpluginfactory.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qiconengine.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qiconengineplugin.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qimageiohandler.h \
@@ -11203,8 +11577,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qaction.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qactiongroup.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qdesktopwidget.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qbuttongroup.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qcalendarwidget.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qcheckbox.h \
@@ -11362,13 +11734,18 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qxylegendmarker.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCharts/qtchartsversion.h \
 		ui_dialogmeteo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QFrame \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHeaderView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QSpacerItem \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTabWidget \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTableView \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QTextBrowser \
 		apimeteo.h \
 		apiterrasses.h \
+		utilitaire.h \
 		apiespacesverts.h \
 		apiratp_search.h \
-		apivelib.h \
-		utilitaire.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHBoxLayout
+		apivelib.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 pharmapi.o: pharmapi.cpp pharmapi.h \
@@ -11572,7 +11949,16 @@ pharmapi.o: pharmapi.cpp pharmapi.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/QSqlQueryModel \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/qsqlquerymodel.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/qtsqlglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/qsqldatabase.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/QSqlQuery \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/qsqlquery.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/QSqlRecord \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtSql/qsqlrecord.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pharmapi.o pharmapi.cpp
 
 utilitaire.o: utilitaire.cpp utilitaire.h
@@ -12225,6 +12611,21 @@ apiratp_station.o: apiratp_station.cpp apiratp_station.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
 		apiratp_global.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		stoppoint.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QString \
@@ -12282,21 +12683,10 @@ apiratp_station.o: apiratp_station.cpp apiratp_station.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
@@ -12306,7 +12696,6 @@ apiratp_station.o: apiratp_station.cpp apiratp_station.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
@@ -12488,6 +12877,21 @@ uiratp.o: uiratp.cpp uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/bits/stdio-ldbl.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		stoppoint.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QString \
@@ -12545,21 +12949,10 @@ uiratp.o: uiratp.cpp uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
@@ -12569,7 +12962,6 @@ uiratp.o: uiratp.cpp uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
@@ -12584,9 +12976,42 @@ uiratp.o: uiratp.cpp uiratp.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialog.h \
 		ui_uiratp.h \
-		apiratp_search.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QApplication \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QComboBox \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qcombobox.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qvalidator.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qregularexpression.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qslider.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractslider.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyle.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabbar.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qrubberband.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QHBoxLayout \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qboxlayout.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayout.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgridlayout.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QLabel \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlabel.h
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qlabel.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QPushButton \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qpushbutton.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QRadioButton \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qradiobutton.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QScrollArea \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QStackedWidget \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedwidget.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o uiratp.o uiratp.cpp
 
 apiratp_global.o: apiratp_global.cpp apiratp_global.h \
@@ -12747,6 +13172,21 @@ apiratp_global.o: apiratp_global.cpp apiratp_global.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/bits/stdio-ldbl.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		stoppoint.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QString \
@@ -12804,21 +13244,10 @@ apiratp_global.o: apiratp_global.cpp apiratp_global.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
@@ -12828,7 +13257,6 @@ apiratp_global.o: apiratp_global.cpp apiratp_global.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
@@ -13043,6 +13471,22 @@ apiterrasses.o: apiterrasses.cpp apiterrasses.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QDebug \
+		utilitaire.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QMetaEnum \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qmetaobject.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTextStream
@@ -13406,6 +13850,21 @@ apiratp_search.o: apiratp_search.cpp apiratp_search.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
 		apiratp_global.h \
+		icon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QIcon \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
+		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
 		stoppoint.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QString \
@@ -13463,21 +13922,10 @@ apiratp_search.o: apiratp_search.cpp apiratp_search.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QBuffer \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QFile \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsScene \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsPixmapItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
@@ -13487,7 +13935,6 @@ apiratp_search.o: apiratp_search.cpp apiratp_search.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsItem \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QKeyEvent \
-		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtGui/QPainter \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/QTimeLine \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
 		../../buildroot-2019.02.1/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \

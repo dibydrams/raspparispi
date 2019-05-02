@@ -2,6 +2,7 @@
 #define APIRATP_GLOBAL_H
 
 #include "Abstract_API.h"
+#include "icon.h"
 #include "stoppoint.h"
 #include "transport.h"
 #include "widgetmap.h"

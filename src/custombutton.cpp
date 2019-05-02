@@ -11,8 +11,8 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     setIcon(iconpix);
     setCheckable(true);
     buttonID = ptr->getId();
-    setIconSize(QSize(128,128));
-    setFixedSize(128,128);
+    setIconSize(QSize(100,100));
+    setFixedSize(100,100);
 
     if (!this->isChecked()) {
         connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
