@@ -9,3 +9,5 @@ src/*.pro.user
 .DS_Store
 src/*.o
 src/Makefile
+qrc*
+ui_*
