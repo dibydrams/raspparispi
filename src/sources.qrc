@@ -22,6 +22,7 @@
         <file>Icons/iconvelibmap.png</file>
         <file>Icons/iconefontainesmap.png</file>
         <file>Icons/iconekiosquesmap.png</file>
+        <file>Icons/pharmloc-pointer.svg</file>
         <file>Icons/eventarene.png</file>
     </qresource>
 </RCC>
