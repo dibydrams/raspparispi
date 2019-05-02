@@ -48,7 +48,7 @@ public slots:
     void getInfo() override;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APIPARKINGPUBLIC_H
