@@ -40,7 +40,7 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 
         geo.longitude = longit;
         geo.latitude = lat;      
-        geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(126, 170, 44));
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
 
 //        geo.pixmap = QPixmap();
 
