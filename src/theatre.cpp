@@ -25,7 +25,7 @@ void theatre::theatreAPI_Call(){
 
 void theatre::readJsonTheatre(){
         m_list.clear();
-        QByteArray responseBit=reply->readAll();
+        QByteArray responseBit = reply->readAll();
         QJsonDocument document = QJsonDocument::fromJson(responseBit);
         QJsonObject replyObj = document.object();
         QJsonArray recordsJsonArray = replyObj["records"].toArray();
@@ -33,11 +33,21 @@ void theatre::readJsonTheatre(){
         foreach (const QJsonValue & value, recordsJsonArray) {
             QJsonObject obj = value.toObject();
             QJsonObject objectFields = obj["fields"].toObject();
-            QVariantHash objHasdh = obj.toVariantHash();
-            QJsonArray objectGeom = objectFields["geom_x_y"].toArray();
-            double latitude = objectGeom[0].toDouble();
-            double longitude = objectGeom[1].toDouble();
-
+            qDebug()<<"keys : : "<< objectFields.keys();
+            qDebug()<<"title : : " << objectFields["title"].toString();
+            qDebug()<<"address : : " << objectFields["address"].toString();
+            qDebug()<<"dep : : "<< objectFields["department"].toString();
+            qDebug()<<"hereherehrehrherehereherehereherehereherehereherehereherehereherehereh";
+            //coordHelper.coordinates()
+            QString adr=objectFields["address"].toString()+" "+objectFields["department"].toString();
+            qDebug()<<" adresse : "<<adr;
+            coordHelper=new addrToCoord(qApp,adr);
+            qDebug()<<" coordonnées : : : :";
+            qDebug()<<" latitude :: "<<coordHelper->getLatitude();
+            qDebug()<< "longitude :: "<<coordHelper->getLongitude();
+            double longitude=coordHelper->getLongitude();
+            double latitude=coordHelper->getLatitude();
+            coordHelper->deleteLater();
             // remplissage de geoObj
             GeoObj geo;
             geo.longitude = longitude;
@@ -45,7 +55,7 @@ void theatre::readJsonTheatre(){
             geo.pixmap = QPixmap();
             m_list << geo;
         }
-        emit callFinished(m_list, TOILETTES);
+        emit callFinished(m_list, THEATRE);
 }
 
 void theatre::getInfo(){
