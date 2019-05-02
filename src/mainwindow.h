@@ -15,6 +15,7 @@
 #include "uiratp.h"
 #include "apiborneswifi.h"
 #include "theatre.h"
+#include "apifontaines.h"
 
 
 namespace Ui {

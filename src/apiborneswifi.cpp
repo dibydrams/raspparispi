@@ -8,7 +8,7 @@ ApiBornesWifi::ApiBornesWifi()
 void ApiBornesWifi::API_Call()
 {
     API_AccessWifi = new QNetworkAccessManager(this);
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&facet=cp&facet=idpw&facet=etat2");
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=sites-disposant-du-service-paris-wi-fi&rows=5000&facet=cp&facet=idpw&facet=etat2");
     QNetworkRequest request;
     request.setUrl(url);
 
@@ -27,8 +27,8 @@ void ApiBornesWifi::API_Results(QNetworkReply *reply)
     for (auto val : arr)
     {
         QJsonObject objn = val.toObject();
-        latitude = objn["fields"].toObject()["geo_point_2d"].toArray()[0].toDouble();
-        longitude = objn["fields"].toObject()["geo_point_2d"].toArray()[1].toDouble();
+        latitude = objn["geometry"].toObject()["coordinates"].toArray()[1].toDouble();
+        longitude = objn["geometry"].toObject()["coordinates"].toArray()[0].toDouble();
 
         GeoObj geo;
 

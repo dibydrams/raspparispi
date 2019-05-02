@@ -39,5 +39,6 @@
         <file>Icons_meteo/vignette4.png</file>
         <file>Icons_meteo/vignette5.png</file>
         <file>Icons_meteo/vignette6.png</file>
+        <file>Icons_meteo/protectionUV.png</file>
     </qresource>
 </RCC>

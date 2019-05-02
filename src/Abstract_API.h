@@ -62,6 +62,7 @@ public:
         CRUES,
         ANIMATIONS,
         THEATRE,
+        FONTAINES,
     };
 
     /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
