@@ -8,7 +8,8 @@ ApiRatp_Global::ApiRatp_Global()
     {
         if (m_settings->value("Datas/Referentiel").isNull())
         {
-            m_settings->setValue("Datas/Referentiel", m_settings->fileName().leftRef(m_settings->fileName().lastIndexOf('/',-2)).toString() + "/referentiel-des-lignes-stif.json");
+            QStringList splitList = m_settings->fileName().split("/");
+            m_settings->setValue("Datas/Referentiel", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/referentiel-des-lignes-stif.json");
         }
         QString filename = m_settings->value("Datas/Referentiel").toString();
         referentielStifJson =  LoadJson(filename);
@@ -20,7 +21,8 @@ ApiRatp_Global::ApiRatp_Global()
         {
             if (m_settings->value("Datas/Perimetre").isNull())
             {
-                m_settings->setValue("Datas/Perimetre", m_settings->fileName().leftRef(m_settings->fileName().lastIndexOf('/',-2)).toString() + "/perimetre-tr-plateforme-stif.json");
+                QStringList splitList = m_settings->fileName().split("/");
+                m_settings->setValue("Datas/Perimetre", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/referentiel-des-lignes-stif.json");
             }
             QString filename = m_settings->value("Datas/Perimetre").toString();
             perimetreStifJson =  LoadJson(filename);
@@ -81,26 +83,6 @@ void ApiRatp_Global::RefStifJson()
         Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
         transportList << newTransport;
     }
-
-//    foreach (StopPoint sp, stopPointList) {
-//        if (sp.externalcodeLine == codeLine)
-//            mySPList.append(sp);
-//    }
-
-//    if(newTransport.transportMode == Transport::Modes::bus)
-//    {
-//        busList << newTransport;
-//    }
-//    else if(newTransport.transportMode == Transport::Modes::metro)
-//    {
-//        metroList << newTransport;
-//    }
-//    else
-//    {
-//        railList << newTransport;
-//    }
-
-
 }
 
 void ApiRatp_Global::GeoPoints()
@@ -116,7 +98,7 @@ void ApiRatp_Global::GeoPoints()
           GeoObj geo;
           geo.longitude = point.x();
           geo.latitude = point.y();
-          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
+          geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(25, 75, 210));
           geoList << geo;
         }
     }
