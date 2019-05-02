@@ -12,7 +12,7 @@ void ApiQueFaire::API_Call() // Gestion du call à l'API
 {
     API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&sort=-date_start&refine.address_city=Paris&refine.category=Animations&rows=20&geofilter.distance=48.8716,2.34599,2000");
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&sort=-date_start&refine.address_city=Paris&refine.category=Animations&rows=-1&geofilter.distance=48.8716,2.34599,5000");
     QNetworkRequest request;
     request.setUrl(url);
 
