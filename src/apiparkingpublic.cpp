@@ -45,7 +45,7 @@ void apiParkingPublic::API_Results(QNetworkReply *reply)
             listParkingPublic->append(parking);
             gObj.latitude = parking.latitude;
             gObj.longitude =parking.longitude;
-            gObj.pixmap = QPixmap(":/Icons/iconparkingpublic.svg");
+            gObj.pixmap = Icon::iconMapOff(getPixmap(), Qt::yellow);
 
             listGeoObj << gObj;
         }

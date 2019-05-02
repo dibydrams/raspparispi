@@ -8,6 +8,7 @@
 #include <QJsonArray>
 #include "utilitaire.h"
 #include "widgetmap.h"
+#include "icon.h"
 
 #include "Abstract_API.h"
 

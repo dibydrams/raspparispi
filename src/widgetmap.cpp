@@ -191,8 +191,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
             for ( auto elem : listePI_API )
             {
                 //qDebug() << elem.longitude;
-                qDebug() << "longitude " << elem.longitude;
-                qDebug() << "latitude " << elem.latitude;
+                //qDebug() << "longitude " << elem.longitude;
+                //qDebug() << "latitude " << elem.latitude;
 
                 resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
                 resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
@@ -204,7 +204,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
                 pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
                 pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
 
-                qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
+                //qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
 
                 // affiche les points d'intérets uniquement à l'intérieur de la carte
 

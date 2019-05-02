@@ -48,7 +48,7 @@ void apiVelib::API_Results(QNetworkReply *reply)
 
             gObj.latitude = velo.latitude;
             gObj.longitude =velo.longitude;
-            gObj.pixmap = QPixmap(":/Icons/iconvelibmap.png");
+            gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosDisponibles), Qt::blue);
 
             listGeoObj << gObj;
         }
