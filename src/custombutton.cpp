@@ -1,5 +1,6 @@
 #include "custombutton.h"
 #include "Abstract_API.h"
+#include "mainwindow.h"
 
 CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(parent)
 {
@@ -11,8 +12,8 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     setIcon(iconpix);
     setCheckable(true);
     buttonID = ptr->getId();
-    setIconSize(QSize(100,100));
-    setFixedSize(100,100);
+//    setIconSize(QSize(100,100));
+//    setFixedSize(100,100);
 
     if (!this->isChecked()) {
         connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));

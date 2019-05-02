@@ -7,3 +7,4 @@ RATP*
 *.o
 .DS_Store
 src/*.o
+src/Makefile

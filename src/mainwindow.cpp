@@ -157,8 +157,21 @@ void MainWindow::initButtons()
     ui->horizontalLayout->addWidget(buttonVelib);
     connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>)));
+
 }
 
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+   QMainWindow::resizeEvent(event);
+
+   int btnNb = ButtonList.count();
+   int sizebtn = this->width() / btnNb - 10;
+
+   for ( auto val : ButtonList ) {
+       val->setIconSize(QSize(sizebtn,sizebtn));
+       val->setFixedSize(sizebtn,sizebtn);
+   }
+}
 
 /* ##   FONCTION D'APPEL DE LA MAP : dataReceived(QList)  ##
  *
