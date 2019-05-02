@@ -92,7 +92,7 @@ HEADERS += \
         sanisette.h \
         theatre.h \
         apiratp_search.h \
-        apiespacesverts.h \
+        apiespacesverts.h
 
 
 FORMS += \
