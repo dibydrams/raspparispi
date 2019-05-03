@@ -29,7 +29,6 @@ ApiRatp_Global::ApiRatp_Global()
         }
         PeriStifJson();
     }
-
 }
 
 void ApiRatp_Global::PeriStifJson()

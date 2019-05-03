@@ -7,8 +7,6 @@ Uiratp::Uiratp(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->MainStackedWidget->setCurrentWidget(ui->SearchPage);
-
     if (ratpGlobal.transportList.count() <= 0)
     {
         ratpGlobal.FilledTransportLists();
@@ -192,11 +190,8 @@ void Uiratp::showFinishedUni(QJsonArray resultArray)
 {
     CleanView();
 
-    ui->MainStackedWidget->setCurrentWidget(ui->SearchPage);
-
     int span = 40;
 
-    ui->SearchPage->hide();
     for (int i = 0; i < resultArray.count(); i++)
     {
 
@@ -237,7 +232,6 @@ void Uiratp::showFinishedUni(QJsonArray resultArray)
         }
 
     }
-    ui->SearchPage->show();
 }
 
 
