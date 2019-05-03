@@ -63,31 +63,24 @@ void UiStation::replyFinishedStation()
 
 void UiStation::showFinishedStation(QJsonArray resultArray)
 {
+    CleanView();
+
+    ui->StackedView->hide();
+
     for (int i = 0; i < resultArray.count(); ++i)
     {
-        /*
-         * foreach widget in stackedwidget
-         *  if widget.name.contains( truc.trainID)
-         *      add labels
-         *      at good pos (center + (span * nbOfDuoLabels)
-         *  else
-         *      create newWidget
-         *      newWidget.name = page_ + truc.trainID
-         *      add labels
-         *      at good pos
-         */
-
         bool isWidgetCreated = false;
         int widgetIndex = i;
         int span = 40;
-        QString lineName = resultArray[i].toObject()["MonitoredVehicleJourney"].toObject()["LineRef"].toObject().value("value").toString();
+
+        QString lineName = resultArray[i].toObject()["MonitoredVehicleJourney"].toObject()["MonitoredCall"].toObject()["StopPointName"].toArray().at(0).toObject()["value"].toString();
+        ui->TitleLabel->setText(lineName);
 
         for (int id = 0; id < ui->StackedView->count(); ++id) {
             if (ui->StackedView->children().at(id)->objectName().contains(lineName))
             {
                 isWidgetCreated = true;
                 widgetIndex = id;
-//                qDebug() << "Count " << ui->StationWidget->count() << "Index of Widg" << widgetIndex << "is Created ?" << isWidgetCreated;
                 break;
             }
         }
@@ -96,22 +89,17 @@ void UiStation::showFinishedStation(QJsonArray resultArray)
         {
             // Create new Widget in StackedWidget
             QWidget *newWidget = new QWidget(ui->StackedView);
-            newWidget->setObjectName("page_" + lineName);
-//            qDebug() << "Widget Name" << newWidget->objectName() << endl;
+            newWidget->setObjectName("page_" + lineName + "_" + QString::number(widgetIndex));
             ui->StackedView->addWidget(newWidget);
 
             widgetIndex = ui->StackedView->indexOf(newWidget);
 
             // Create Page Follower
             QLabel *pagination = new QLabel(ui->StackedView->widget(widgetIndex));
-            pagination->setText(QString::number(widgetIndex));
-            pagination->move(ui->StackedView->geometry().right() - 50, ui->StackedView->geometry().bottom() - 50);
-
-            QLabel *title = new QLabel (lineName, ui->StackedView->widget(widgetIndex));
-            title->move(ui->StackedView->widget(widgetIndex)->geometry().center().x(), 0);
+            pagination->setText("Page : " + QString::number(widgetIndex));
+            pagination->move(ui->StackedView->geometry().topLeft());
         }
 
-        ui->StackedView->widget(widgetIndex)->hide();
 
         // Create Text Slot
         QLabel *labelForDest = new QLabel("Destination : ", ui->StackedView->widget(widgetIndex));
@@ -119,10 +107,10 @@ void UiStation::showFinishedStation(QJsonArray resultArray)
         QLabel *labelDest = new QLabel(ui->StackedView->widget(widgetIndex));
         QLabel *labelTime = new QLabel(ui->StackedView->widget(widgetIndex));
 
-        labelForDest->move(ui->StackedView->geometry().left() + span, 20 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
-        labelForTime->move(ui->StackedView->geometry().left() + span,  35 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
-        labelDest->move(ui->StackedView->geometry().left() + labelForDest->geometry().width() + span, 20 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
-        labelTime->move(ui->StackedView->geometry().left() + labelForTime->geometry().width() + span, 35 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
+        labelForDest->move(ui->StackedView->geometry().left() + span, 0 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
+        labelForTime->move(ui->StackedView->geometry().left() + span,  15 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
+        labelDest->move(ui->StackedView->geometry().left() + labelForDest->geometry().width() + span, 0 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
+        labelTime->move(ui->StackedView->geometry().left() + labelForTime->geometry().width() + span, 15 + (span * (ui->StackedView->widget(widgetIndex)->children().count() / 4)));
 
         labelDest->setText(resultArray[i].toObject()["MonitoredVehicleJourney"].toObject()["DestinationName"].toArray().at(0).toObject().value("value").toString());
 
@@ -138,8 +126,8 @@ void UiStation::showFinishedStation(QJsonArray resultArray)
 
         labelTime->setText(QDateTime::fromTime_t(remainingTime).toUTC().toString("mm") + " min");
 
-        ui->StackedView->widget(widgetIndex)->show();
     }
+    ui->StackedView->show();
 }
 
 void UiStation::CleanView()

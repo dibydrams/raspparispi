@@ -6,6 +6,7 @@
 #include "stoppoint.h"
 #include "transport.h"
 #include "uistation.h"
+#include "utilitaire.h"
 #include "widgetmap.h"
 
 #include <QFile>
