@@ -3,6 +3,8 @@
 #include <QSettings>
 #include <QDebug>
 
+#define MODE_QSETTINGS 0
+
 // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
 // et les renvoient si elles existent
 
@@ -29,7 +31,11 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     int flagConfigVide = 0;
 
-    if( !QFile::exists(m_settings->fileName()))
+#ifndef MODE_QSETTINGS
+    if(!QFile::exists(m_settings->fileName()))
+#else
+    if(1)
+#endif
     {
         m_centreLongitude = 2.34599;//6 rue rougemont
         m_centreLatitude = 48.8699;//48.8716;
@@ -41,6 +47,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     QVariant tmp;
 
+#ifndef MODE_QSETTINGS
     if(InitSetting(m_settings,"Coordonnees/centreLongitude", QString::number(m_centreLongitude,'f',13), tmp))
         if(!flagConfigVide) m_centreLongitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/centreLatitude", QString::number(m_centreLatitude,'f',13), tmp))
@@ -63,6 +70,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     if(InitSetting(m_settings,"Coordonnees/BBOXminLatitude", "", tmp)) m_BBOXminLatitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/BBOXmaxLongitude", "", tmp)) m_BBOXmaxLongitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", "", tmp)) m_BBOXmaxLatitude = tmp.toDouble();
+#endif
 
     // emplacement du fichier carte au même niveau du dossier de config
     // .config/AJC_Linux_embarque/carte.png
@@ -134,6 +142,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 m_largeurImage = pixmap->width();
                 m_hauteurImage = pixmap->height();
 
+#ifndef MODE_QSETTINGS
                 // mise à jour du fichier de config
 
                 InitSetting(m_settings,"Coordonnees/BBOXminLongitude", QString::number(m_BBOXminLongitude,'f',13), tmp);
@@ -142,6 +151,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
                 InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
                 InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
+#endif
             }
         }
         else qDebug() << "erreur api tomtom: " << reply->errorString();
@@ -158,67 +168,67 @@ void WidgetMap::paintEvent(QPaintEvent *)
     QPixmap carte(m_fichierCarte);
     p.drawPixmap(0,0,carte);
 
-//    // icone au centre de la carte
-//    QString fileName = ":/Icons/bonhomme.png";
-//    QPixmap pixmap(fileName);
-//    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
+    //// icone au centre de la carte
+    //QString fileName = ":/Icons/bonhomme.png";
+    //QPixmap pixmap(fileName);
+    //p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
 
-        int resultatPixelPointX;
-        int resultatPixelPointY;
+    int resultatPixelPointX;
+    int resultatPixelPointY;
 
-        double distanceLongitude = std::abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
-        double distanceLatitude = std::abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+    double distanceLongitude = std::abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+    double distanceLatitude = std::abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
 
-        double coefficient_X = carte.width() / distanceLongitude;
-        double coefficient_Y = carte.height() / distanceLatitude;
+    double coefficient_X = carte.width() / distanceLongitude;
+    double coefficient_Y = carte.height() / distanceLatitude;
 
-        QPixmap pix_PI(":/Icons/point_interet.png");
+    QPixmap pix_PI(":/Icons/point_interet.png");
 
-        // calcul du hotspot du pixmap -> au milieu en bas du pixmap
-        // (le hotspot du pointeur peut être donné en tant que position relative au coin supérieur gauche du pixmap)
+    // calcul du hotspot du pixmap -> au milieu en bas du pixmap
+    // (le hotspot du pointeur peut être donné en tant que position relative au coin supérieur gauche du pixmap)
 
-        int decalagePixmapX = 0, decalagePixmapY = 0;
-        int pixelPointPixmapX, pixelPointPixmapY;
+    int decalagePixmapX = 0, decalagePixmapY = 0;
+    int pixelPointPixmapX, pixelPointPixmapY;
 
-        for (auto listePI_API : m_listePI_API)
+    for (auto listePI_API : m_listePI_API)
+    {
+        if( (listePI_API.size() != 0) && listePI_API.first().pixmap.isNull() == false)
         {
-            if( (listePI_API.size() != 0) && listePI_API.first().pixmap.isNull() == false)
+            decalagePixmapX = listePI_API.first().pixmap.width()/2;
+            decalagePixmapY = listePI_API.first().pixmap.height();
+        }
+
+        for ( auto elem : listePI_API )
+        {
+            //qDebug() << "longitude " << elem.longitude;
+            //qDebug() << "latitude " << elem.latitude;
+
+            resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
+            resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
+
+            // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
+            resultatPixelPointY = carte.height() - resultatPixelPointY;
+
+            // prise en compte du hotspot du pixmap
+            pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
+            pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
+
+            //qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
+
+            // affiche les points d'intérets uniquement à l'intérieur de la carte
+
+            if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
+                    && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
             {
-                decalagePixmapX = listePI_API.first().pixmap.width()/2;
-                decalagePixmapY = listePI_API.first().pixmap.height();
-            }
+                if( elem.pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+                else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,elem.pixmap);
 
-            for ( auto elem : listePI_API )
-            {
-                //qDebug() << "longitude " << elem.longitude;
-                //qDebug() << "latitude " << elem.latitude;
-
-                resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
-                resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
-
-                // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
-                resultatPixelPointY = carte.height() - resultatPixelPointY;
-
-                // prise en compte du hotspot du pixmap
-                pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
-                pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
-
-                //qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
-
-                // affiche les points d'intérets uniquement à l'intérieur de la carte
-
-                if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
-                        && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
-                {
-                    if( elem.pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
-                    else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,elem.pixmap);
-
-                    //QString affCoord;
-                    //affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
-                    //p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
-                }
+                //QString affCoord;
+                //affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
+                //p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
             }
         }
+    }
 }
 
 WidgetMap::~WidgetMap()
