@@ -16,7 +16,8 @@
 #include "apiborneswifi.h"
 #include "theatre.h"
 #include "apifontaines.h"
-
+#include "apiparkingpublic.h"
+#include "apiparkingprive.h"
 
 namespace Ui {
 class MainWindow;

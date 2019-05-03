@@ -46,8 +46,9 @@ void pharmapi::getInfo()
              }
          }
      }
-     qDebug()<<"emit"<<PHARMACIES;
-     emit callFinished(m_list, PHARMACIES);  // Signal de fin de traitement de l'API
+    qDebug()<<"emit"<<PHARMACIES;
+    emit callFinished(m_list, PHARMACIES);  // Signal de fin de traitement de l'API
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

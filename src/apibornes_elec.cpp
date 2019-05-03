@@ -48,7 +48,7 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
             geo.longitude = longitude;
             geo.latitude = latitude;
 
-            geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(51, 153, 255));
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(51, 153, 255));
 
            m_list << geo;
         }
@@ -73,6 +73,7 @@ int ApiBornes_Elec::getId()
 void ApiBornes_Elec::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///

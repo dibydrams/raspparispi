@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QList>
 #include <Abstract_API.h>
+#include "icon.h"
 
 class ApiQueFaire : public Abstract_API
 {

@@ -34,6 +34,8 @@ SOURCES += \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
+    apiparkingprive.cpp \
+        apiparkingpublic.cpp \
         apivelib.cpp \
         dialogmeteo.cpp \
         indiceuv.cpp \
@@ -70,6 +72,8 @@ HEADERS += \
         apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
+    apiparkingprive.h \
+        apiparkingpublic.h \
         apiquefaire.h \
         apiratp_station.h \
         apivelib.h \

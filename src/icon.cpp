@@ -145,11 +145,11 @@ QPixmap Icon::iconMapOffV1(QPixmap img, int i)
 /// Icon appear on the map in On state
 /// \brief Icon::iconMapOff
 /// \param img Sources icon
-/// \param int i - ID icon
+/// \param QString str - Optionnal argument string
 /// \param Qcolor RGB - Couleur de l'icone
 /// \return QPixmap
 ///
-QPixmap Icon::iconMapOffV2(QPixmap img, int i, QColor color)
+QPixmap Icon::iconMapOffStr(QPixmap img, QString str, QColor color)
 {
     ///
     /// \brief Outline
@@ -203,14 +203,70 @@ QPixmap Icon::iconMapOffV2(QPixmap img, int i, QColor color)
     painter.setPen(QColor(255,255,255));
     font.setWeight(QFont::SemiCondensed);
     painter.setFont(font);
-    QString nb = QString::number(i);
-    if(i<9)
+
+    if(str.toInt())
     {
-        painter.drawText(QPointF(29,51), nb);
+        if(str.toInt() < 9)
+        {
+            painter.drawText(QPointF(29,51), str);
+        } else {
+            painter.drawText(QPointF(26,51), str);
+        }
     } else {
-        painter.drawText(QPointF(26,51), nb);
+        painter.drawText(QPointF(28,51), str);
     }
-//    painter.drawText(QRect(25, 40, 14, 14), 1, nb);
+
+    return bigPixmap;
+}
+
+
+
+///
+/// Version 2
+/// Icon appear on the map in On state with String in circle
+/// \brief Icon::iconMapOff
+/// \param img Sources icon
+/// \param QString str - Optionnal argument string
+/// \param Qcolor RGB - Couleur de l'icone
+/// \return QPixmap
+///
+QPixmap Icon::iconMapOff(QPixmap img, QColor color)
+{
+    ///
+    /// \brief Outline
+    /// Outline color Gray
+    ///
+    QColor bgcolor(255, 255, 255);
+    QColor outcolor(126, 170, 44);
+
+    QSize pixSize(48, 48);
+
+    // QPixmap background with transparant background and Pen around
+
+    QPixmap img2(":/Icons/map-pin.png");
+
+    QSize test(img2.width(), img2.height());
+
+    QPixmap bigPixmap = img2.scaled(test, Qt::KeepAspectRatio, Qt::FastTransformation);
+
+    QPainter painter(&bigPixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    // Mask on image Pin
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
+    painter.drawRoundedRect(QRectF(0,-2,img2.width()+4, img2.height()+4), 5, 5);
+
+    // White background color behind the icon
+    painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+    painter.setBrush(QBrush(QColor(255, 255, 255), Qt::SolidPattern));
+    painter.setPen(Qt::NoPen);
+    painter.drawRoundedRect(QRectF(15, 7, 33, 33), 20, 20);
+
+    // Icon in the center resized to be smaller
+
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.drawPixmap(QPointF(23, 12), img.scaled(pixSize * 0.4, Qt::KeepAspectRatio, Qt::FastTransformation));
 
     return bigPixmap;
 }

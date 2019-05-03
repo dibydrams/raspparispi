@@ -24,5 +24,7 @@
         <file>Icons/iconekiosquesmap.png</file>
         <file>Icons/pharmloc-pointer.svg</file>
         <file>Icons/eventarene.png</file>
+        <file>Icons/iconparkingprive.png</file>
+        <file>Icons/iconparkingpublic.svg</file>
     </qresource>
 </RCC>
