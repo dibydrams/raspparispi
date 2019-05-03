@@ -119,12 +119,16 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
             "layer=basic&style=main&view=Unified&"
             "zoom=" + QString::number(m_zoom) + "&"
 
-            "bbox=" + QString::number(m_BBOXminLongitude,'f',13) + ","
-                    + QString::number(m_BBOXminLatitude,'f',13)  + ","
-                    + QString::number(m_BBOXmaxLongitude,'f',13) + ","
-                    + QString::number(m_BBOXmaxLatitude,'f',13)
-        );
+//            "bbox=" + QString::number(m_BBOXminLongitude,'g',17) + ","
+//                    + QString::number(m_BBOXminLatitude,'g',17)  + ","
+//                    + QString::number(m_BBOXmaxLongitude,'g',17) + ","
+//                    + QString::number(m_BBOXmaxLatitude,'g',17);
+              "bbox=" +QString("%1").arg(m_BBOXminLongitude, 0, 'g', 17)+","
+                      +QString("%1").arg(m_BBOXminLatitude, 0, 'g', 17)+","
+                      +QString("%1").arg(m_BBOXmaxLongitude, 0, 'g', 17)+","
+                      +QString("%1").arg(m_BBOXmaxLatitude, 0, 'g', 17));
 
+       // qDebug()<<"urlText : : "<<urlText;
         QNetworkRequest req( (QUrl( urlText )) );
 
         QNetworkReply *reply = mgr.get(req);

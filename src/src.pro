@@ -62,9 +62,8 @@ SOURCES += \
         apiespacesverts.cpp \
         theatre.cpp \
         apifontaines.cpp \
-    uistation.cpp
-
-
+        distance.cpp\
+        uistation.cpp
 
 HEADERS += \
         Abstract_API.h \
@@ -100,7 +99,8 @@ HEADERS += \
         apiespacesverts.h \
         apifontaines.h \
         utilitaire.h \
-    uistation.h
+        distance.h\
+        uistation.h
 
 FORMS += \
 	mainwindow.ui \
