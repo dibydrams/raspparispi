@@ -48,7 +48,7 @@ void theatre::readJsonTheatre(){
             GeoObj geo;
             geo.longitude =longitude;
             geo.latitude = latitude;
-            geo.pixmap = QPixmap(":/Icons/theatre.png");
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(247, 212, 120));
             m_list << geo;
         }
              qDebug()<<"emit"<<THEATRE;
