@@ -83,7 +83,7 @@ void ApiRatp_Global::RefStifJson()
     }
 }
 
-void ApiRatp_Global::GeoPoints()
+void ApiRatp_Global::GeoPoints(QNetworkReply * reply)
 {
     geoList.clear();
 
@@ -104,6 +104,7 @@ void ApiRatp_Global::GeoPoints()
     }
 //    uistation.DoStationRequest();
     emit callFinished(geoList, RATP);
+    reply->deleteLater();
 }
 
 void ApiRatp_Global::FilledTransportLists()
@@ -126,7 +127,15 @@ Abstract_API::API_index ApiRatp_Global::getId()
 
 void ApiRatp_Global::getInfo()
 {
-    GeoPoints();
+    API_Access = new QNetworkAccessManager(this);
+
+    QUrl url("");
+    QNetworkRequest request;
+    request.setUrl(url);
+
+    currentReply = API_Access->get(request);
+    connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(GeoPoints(QNetworkReply *)));
+
     QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 

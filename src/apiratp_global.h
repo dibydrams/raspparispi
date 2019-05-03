@@ -12,6 +12,8 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QList>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 #include <QObject>
 
 
@@ -27,6 +29,9 @@ public:
 
     WidgetMap widgetmap;
     UiStation uistation;
+
+    QNetworkAccessManager *API_Access;
+    QNetworkReply *currentReply;
 
     QSettings *m_settings;
 
@@ -47,12 +52,12 @@ private:
     QJsonDocument perimetreStifJson;
     QJsonDocument referentielStifJson;
 
-    void GeoPoints();
     void PeriStifJson();
     void RefStifJson();
 
 public slots:
     void getInfo() override;
+    void GeoPoints(QNetworkReply *);
 
 private slots:
     QJsonDocument LoadJson(QString fileName);
