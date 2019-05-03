@@ -37,6 +37,7 @@ SOURCES += \
     apiparkingprive.cpp \
         apiparkingpublic.cpp \
         apivelib.cpp \
+    coordtoaddr.cpp \
         dialogmeteo.cpp \
         indiceuv.cpp \
         meteo.cpp \
@@ -77,6 +78,7 @@ HEADERS += \
         apiquefaire.h \
         apiratp_station.h \
         apivelib.h \
+    coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
         dialogmeteo.h \
