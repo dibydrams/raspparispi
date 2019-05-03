@@ -10,12 +10,14 @@
 #define UI_DIALOGMETEO_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
@@ -28,15 +30,14 @@ QT_BEGIN_NAMESPACE
 class Ui_Dialog
 {
 public:
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_14;
-    QVBoxLayout *verticalLayout_14;
+    QVBoxLayout *verticalLayout_6;
     QTabWidget *tabWidget;
     QWidget *meteo;
-    QVBoxLayout *verticalLayout_13;
-    QHBoxLayout *horizontalLayout_10;
-    QVBoxLayout *verticalLayout_6;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_16;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_10;
+    QPushButton *pushButton_close;
     QLabel *labeltitre;
     QSpacerItem *verticalSpacer_7;
     QHBoxLayout *horizontalLayout_2;
@@ -68,9 +69,11 @@ public:
     QFrame *line_2;
     QLabel *label_UVprotection;
     QWidget *prevision;
-    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_14;
     QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_13;
     QWidget *widgetPrevision;
+    QSpacerItem *horizontalSpacer_22;
     QHBoxLayout *horizontalLayout_19;
     QSpacerItem *horizontalSpacer_35;
     QVBoxLayout *verticalLayout_2;
@@ -158,30 +161,37 @@ public:
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(1170, 503);
-        layoutWidget = new QWidget(Dialog);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(0, 0, 2, 2));
-        horizontalLayout_14 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
-        horizontalLayout_14->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_14 = new QVBoxLayout(Dialog);
-        verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
+        Dialog->resize(1162, 558);
+        verticalLayout_6 = new QVBoxLayout(Dialog);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         tabWidget = new QTabWidget(Dialog);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setMinimumSize(QSize(1144, 540));
+        tabWidget->setMaximumSize(QSize(1144, 540));
         tabWidget->setTabPosition(QTabWidget::East);
         tabWidget->setTabShape(QTabWidget::Triangular);
         tabWidget->setIconSize(QSize(25, 16));
         meteo = new QWidget();
         meteo->setObjectName(QString::fromUtf8("meteo"));
-        verticalLayout_13 = new QVBoxLayout(meteo);
-        verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
-        horizontalLayout_10 = new QHBoxLayout();
-        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        verticalLayout_4 = new QVBoxLayout(meteo);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
+        pushButton_close = new QPushButton(meteo);
+        pushButton_close->setObjectName(QString::fromUtf8("pushButton_close"));
+        pushButton_close->setMinimumSize(QSize(30, 30));
+        pushButton_close->setMaximumSize(QSize(30, 30));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/Icons_meteo/close_1-512.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_close->setIcon(icon);
+        pushButton_close->setIconSize(QSize(20, 20));
+
+        horizontalLayout_10->addWidget(pushButton_close);
+
         labeltitre = new QLabel(meteo);
         labeltitre->setObjectName(QString::fromUtf8("labeltitre"));
         QFont font;
@@ -191,7 +201,10 @@ public:
         font.setWeight(75);
         labeltitre->setFont(font);
 
-        verticalLayout->addWidget(labeltitre, 0, Qt::AlignHCenter);
+        horizontalLayout_10->addWidget(labeltitre, 0, Qt::AlignHCenter);
+
+
+        verticalLayout->addLayout(horizontalLayout_10);
 
         verticalSpacer_7 = new QSpacerItem(20, 13, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -286,18 +299,15 @@ public:
 
         verticalLayout->addItem(verticalSpacer_10);
 
-
-        verticalLayout_6->addLayout(verticalLayout);
-
         tableView = new QTableView(meteo);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setMinimumSize(QSize(602, 212));
         tableView->setMaximumSize(QSize(602, 212));
 
-        verticalLayout_6->addWidget(tableView);
+        verticalLayout->addWidget(tableView);
 
 
-        horizontalLayout_10->addLayout(verticalLayout_6);
+        horizontalLayout_16->addLayout(verticalLayout);
 
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -366,39 +376,48 @@ public:
         label_UVprotection->setMinimumSize(QSize(461, 201));
         label_UVprotection->setMaximumSize(QSize(461, 201));
 
-        verticalLayout_7->addWidget(label_UVprotection, 0, Qt::AlignHCenter);
+        verticalLayout_7->addWidget(label_UVprotection);
 
 
-        horizontalLayout_10->addLayout(verticalLayout_7);
+        horizontalLayout_16->addLayout(verticalLayout_7);
 
 
-        verticalLayout_13->addLayout(horizontalLayout_10);
+        verticalLayout_4->addLayout(horizontalLayout_16);
 
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/Icons_meteo/s2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        tabWidget->addTab(meteo, icon, QString());
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/Icons_meteo/s2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tabWidget->addTab(meteo, icon1, QString());
         prevision = new QWidget();
         prevision->setObjectName(QString::fromUtf8("prevision"));
-        verticalLayout_4 = new QVBoxLayout(prevision);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        horizontalLayout_14 = new QHBoxLayout(prevision);
+        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        horizontalLayout_13 = new QHBoxLayout();
+        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
         widgetPrevision = new QWidget(prevision);
         widgetPrevision->setObjectName(QString::fromUtf8("widgetPrevision"));
-        widgetPrevision->setMinimumSize(QSize(1034, 331));
-        widgetPrevision->setMaximumSize(QSize(1034, 331));
+        widgetPrevision->setMinimumSize(QSize(900, 350));
+        widgetPrevision->setMaximumSize(QSize(1100, 370));
 
-        verticalLayout_3->addWidget(widgetPrevision);
+        horizontalLayout_13->addWidget(widgetPrevision);
+
+        horizontalSpacer_22 = new QSpacerItem(10, 40, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_13->addItem(horizontalSpacer_22);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_13);
 
         horizontalLayout_19 = new QHBoxLayout();
         horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
-        horizontalSpacer_35 = new QSpacerItem(115, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_35 = new QSpacerItem(105, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_19->addItem(horizontalSpacer_35);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalSpacer_3 = new QSpacerItem(20, 18, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_3 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_2->addItem(verticalSpacer_3);
 
@@ -596,7 +615,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_8);
 
-        verticalSpacer_4 = new QSpacerItem(20, 18, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_4 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_2->addItem(verticalSpacer_4);
 
@@ -611,7 +630,7 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_19);
 
 
-        verticalLayout_4->addLayout(verticalLayout_3);
+        horizontalLayout_14->addLayout(verticalLayout_3);
 
         tabWidget->addTab(prevision, QString());
         pollution = new QWidget();
@@ -790,7 +809,7 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_11);
 
-        verticalSpacer_6 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_6 = new QSpacerItem(20, 25, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_11->addItem(verticalSpacer_6);
 
@@ -801,7 +820,7 @@ public:
 
         verticalLayout_11->addWidget(line);
 
-        verticalSpacer_11 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_11 = new QSpacerItem(20, 25, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_11->addItem(verticalSpacer_11);
 
@@ -824,11 +843,11 @@ public:
 
         verticalLayout_12->addLayout(horizontalLayout_12);
 
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/Icons_meteo/pollution.png"), QSize(), QIcon::Normal, QIcon::Off);
-        tabWidget->addTab(pollution, icon1, QString());
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/Icons_meteo/pollution.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tabWidget->addTab(pollution, icon2, QString());
 
-        verticalLayout_14->addWidget(tabWidget);
+        verticalLayout_6->addWidget(tabWidget);
 
 
         retranslateUi(Dialog);
@@ -842,6 +861,7 @@ public:
     void retranslateUi(QDialog *Dialog)
     {
         Dialog->setWindowTitle(QApplication::translate("Dialog", "M\303\251t\303\251o de Paris", nullptr));
+        pushButton_close->setText(QString());
         labeltitre->setText(QApplication::translate("Dialog", "M\303\251t\303\251o de Paris", nullptr));
         labelIcon->setText(QApplication::translate("Dialog", "Icon", nullptr));
         labelTemp->setText(QApplication::translate("Dialog", "Temp\303\251rature", nullptr));

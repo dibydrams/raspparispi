@@ -33,33 +33,31 @@ void theatre::readJsonTheatre(){
         foreach (const QJsonValue & value, recordsJsonArray) {
             QJsonObject obj = value.toObject();
             QJsonObject objectFields = obj["fields"].toObject();
-            qDebug()<<"keys : : "<< objectFields.keys();
-            qDebug()<<"title : : " << objectFields["title"].toString();
-            qDebug()<<"address : : " << objectFields["address"].toString();
-            qDebug()<<"dep : : "<< objectFields["department"].toString();
-            qDebug()<<"hereherehrehrherehereherehereherehereherehereherehereherehereherehereh";
-            //coordHelper.coordinates()
+
+            //coordinatedHelper
             QString adr=objectFields["address"].toString()+" "+objectFields["department"].toString();
-            qDebug()<<" adresse : "<<adr;
             coordHelper=new addrToCoord(qApp,adr);
             qDebug()<<" coordonnées : : : :";
-            qDebug()<<" latitude :: "<<coordHelper->getLatitude();
-            qDebug()<< "longitude :: "<<coordHelper->getLongitude();
+            qDebug()<<" latitude++ :: "<<coordHelper->getLatitude();
+            qDebug()<< "longitude ++:: "<<coordHelper->getLongitude();
             double longitude=coordHelper->getLongitude();
             double latitude=coordHelper->getLatitude();
             coordHelper->deleteLater();
+
             // remplissage de geoObj
             GeoObj geo;
-            geo.longitude = longitude;
+            geo.longitude =longitude;
             geo.latitude = latitude;
-            geo.pixmap = QPixmap();
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(247, 212, 120));
             m_list << geo;
         }
+             qDebug()<<"emit"<<THEATRE;
         emit callFinished(m_list, THEATRE);
 }
 
 void theatre::getInfo(){
     theatreAPI_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 

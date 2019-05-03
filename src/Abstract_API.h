@@ -30,6 +30,7 @@
 #ifndef ABSTRACT_API_H
 #define ABSTRACT_API_H
 
+#include <QApplication>
 #include <QObject>
 #include <QPixmap>
 #include <QDebug>

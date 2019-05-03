@@ -11,6 +11,7 @@
 #include <QVariantHash>
 #include <QJsonObject>
 #include "Abstract_API.h"
+#include "icon.h"
 
 class sanisette : public Abstract_API
 {
