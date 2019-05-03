@@ -105,7 +105,7 @@ void MainWindow::initButtons()
     CustomButton *fontaines_btn=new CustomButton(ptr, this);
     ButtonList << fontaines_btn;
     ui->horizontalLayout->addWidget(fontaines_btn);
-    connect(fontaines_btn, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(fontaines_btn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(fontaines_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
@@ -211,9 +211,10 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex)
 {
 
-        qDebug()<<"liste recue"<<list.count();
+    qDebug()<<"liste recue"<<list.count();
     for (auto l :ui->widget->m_listePI_API)
         qDebug()<<"nb list"<<l.count();
+
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
     this->update();
