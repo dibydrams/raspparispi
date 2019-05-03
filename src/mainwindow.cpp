@@ -6,7 +6,6 @@
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 #include "apiterrasses.h"
-#include "apiratp_station.h"
 #include "apiespacesverts.h"
 #include "apiratp_search.h"
 #include "apivelib.h"

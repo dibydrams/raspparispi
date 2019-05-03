@@ -10,7 +10,6 @@
 #include "apiquefaire.h"
 #include "apikiosques.h"
 #include "sanisette.h"
-#include "apiratp_station.h"
 #include "apiratp_global.h"
 #include "uiratp.h"
 #include "apiborneswifi.h"
