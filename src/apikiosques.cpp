@@ -42,10 +42,13 @@ void apikiosques::API_results(QNetworkReply *reply)
         statut=objn["fields"].toObject().value("statut").toString();
         adresse=objn["fields"].toObject().value("adresse").toString();
 
+        if (statut=="Ouvert") stat="O";
+        else stat="F";
+
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        //geo.pixmap=Icon::iconMapOffV2(getPixmap(), QColor(126, 170, 44));
+        geo.pixmap=Icon::iconMapOffStr(getPixmap(), stat, Qt::darkMagenta);
 
 
 

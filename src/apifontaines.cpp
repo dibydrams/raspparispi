@@ -46,12 +46,15 @@ void apifontaines::API_results(QNetworkReply *reply)
         sdf=objn["fields"].toObject().value("sdf").toString();
         en_service=objn["fields"].toObject().value("en_service").toString();
         drink=objn["fields"].toObject().value("a_boire").toInt();
+        if (drink==1) statut="B";
+        else statut="NB";
+
 
 
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        //geo.pixmap=Icon::iconMapOffV2(getPixmap(":/Icons/iconefontainesmap.png"),QColor(126, 170, 44));
+        geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
 
 
         m_list<<geo;

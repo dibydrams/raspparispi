@@ -19,6 +19,7 @@ public:
     apikiosques();
     int getId()override;
     QPixmap getPixmap()override;
+    QString stat;
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);

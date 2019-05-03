@@ -18,6 +18,7 @@ public:
     apifontaines();
     int getId()override;
     QPixmap getPixmap()override;
+    QString statut;
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
