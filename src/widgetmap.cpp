@@ -32,7 +32,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     if( !QFile::exists(m_settings->fileName()))
     {
         m_centreLongitude = 2.34599;//6 rue rougemont
-        m_centreLatitude = 48.8716;
+        m_centreLatitude = 48.8699;//48.8716;
         m_rayonCentre = 0.007129412;//0.006;
         m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
         m_compensationLargeurRayon = 2.040087046;//2;
@@ -91,7 +91,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
         // à la requête finished() de l'api tomtom, eventLoop "quit()" sa boucle d'attente
 
-        QObject::connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
+        connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
             "https://api.tomtom.com/map/1/staticimage?"
