@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QJsonArray>
 #include <QEventLoop>
+#include <QDebug>
 
 /**
  * @brief The addrToCoord class
@@ -23,6 +24,7 @@ public:
      * @param addr: the address whose coordinates will be calculated
      */
     addrToCoord(QObject *parent, QString addr);
+    addrToCoord(QObject *parent);
     virtual ~addrToCoord();
 
     /**
@@ -48,6 +50,7 @@ public:
      * @param addr
      */
     void coordinates(QString addr);
+    void coordinates(QString addr,QNetworkAccessManager *manager);
 
 private:
     QNetworkReply* currentReply;

@@ -12,6 +12,8 @@
 #include <QVariantHash>
 #include <QJsonObject>
 #include "Abstract_API.h"
+#include "addrtocoord.h"
+#include "icon.h"
 
 class theatre : public Abstract_API
 {
@@ -19,7 +21,7 @@ class theatre : public Abstract_API
 
 public:
     theatre();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 public slots:
@@ -31,12 +33,13 @@ private:
     QNetworkAccessManager * manager;
     QNetworkRequest request;
     QNetworkReply * reply;
+    addrToCoord *coordHelper;
     double longitude;
     double latitude;
     QList<GeoObj> m_list;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

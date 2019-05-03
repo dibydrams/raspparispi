@@ -20,8 +20,12 @@ class pharmapi : public Abstract_API
 
 public:
     pharmapi();
+<<<<<<< HEAD
     int getId() override;
 //    QEventLoop loop;
+=======
+    API_index getId() override;
+>>>>>>> 2ae71a550f651e3f878d3b406f61be42c7f93faf
     QPixmap getPixmap() override;
     WidgetMap settingsAccess;
 
@@ -43,7 +47,7 @@ private:
     double longitude;
     double latitude;
   signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

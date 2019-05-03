@@ -34,7 +34,10 @@ SOURCES += \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
+    apiparkingprive.cpp \
+        apiparkingpublic.cpp \
         apivelib.cpp \
+    coordtoaddr.cpp \
         dialogmeteo.cpp \
         indiceuv.cpp \
         meteo.cpp \
@@ -51,7 +54,6 @@ SOURCES += \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
-    	apiratp_station.cpp \
     	uiratp.cpp \
         apiratp_global.cpp \
         apiterrasses.cpp \
@@ -59,20 +61,23 @@ SOURCES += \
         apiratp_search.cpp \
         apiespacesverts.cpp \
         theatre.cpp \
-        apifontaines.cpp
+        apifontaines.cpp \
+    uistation.cpp
 
 
 
 HEADERS += \
         Abstract_API.h \
-    addrtocoord.h \
+        addrtocoord.h \
         apiborneswifi.h \
         apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
+    apiparkingprive.h \
+        apiparkingpublic.h \
         apiquefaire.h \
-        apiratp_station.h \
         apivelib.h \
+    coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
         dialogmeteo.h \
@@ -89,20 +94,19 @@ HEADERS += \
         widgetmap.h \
         apiratp_global.h \
         apiterrasses.h \
-    sanisette.h \
-    theatre.h \
-    apiratp_search.h \
-    apiespacesverts.h \
-    apifontaines.h \  
-        utilitaire.h
-
-
-
+        sanisette.h \
+        theatre.h \
+        apiratp_search.h \
+        apiespacesverts.h \
+        apifontaines.h \
+        utilitaire.h \
+    uistation.h
 
 FORMS += \
 	mainwindow.ui \
         uiratp.ui \
-        dialogmeteo.ui
+        dialogmeteo.ui \
+    uistation.ui
 
 
 # Default rules for deployment.

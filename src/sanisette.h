@@ -11,6 +11,7 @@
 #include <QVariantHash>
 #include <QJsonObject>
 #include "Abstract_API.h"
+#include "icon.h"
 
 class sanisette : public Abstract_API
 {
@@ -19,7 +20,7 @@ class sanisette : public Abstract_API
 public:
 
     sanisette();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 
@@ -37,7 +38,7 @@ private:
     QList<GeoObj> m_list;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // SANISETTE_H

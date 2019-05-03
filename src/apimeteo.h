@@ -24,7 +24,7 @@ class ApiMeteo : public Abstract_API
 
 public:
     ApiMeteo();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:
@@ -49,7 +49,7 @@ private:
     double longitude;
     double latitude;
   signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

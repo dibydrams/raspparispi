@@ -7,15 +7,18 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
-#include"Abstract_API.h"
+#include "Abstract_API.h"
+#include "icon.h"
+#include "widgetmap.h"
 
 class apifontaines : public Abstract_API
 {
     Q_OBJECT
 public:
     apifontaines();
-    int getId()override;
+    API_index getId()override;
     QPixmap getPixmap()override;
+    QString statut;
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
@@ -35,9 +38,11 @@ private:
     QString sdf;
     QString en_service;
     int drink;
+    QString latCentre;
+    QString lonCentre;
 
     signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

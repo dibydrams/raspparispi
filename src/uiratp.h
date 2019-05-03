@@ -2,6 +2,7 @@
 #define UIRATP_H
 
 #include "apiratp_global.h"
+#include "apiratp_search.h"
 
 #include <QDateTime>
 #include <QDebug>
@@ -22,22 +23,20 @@ public:
     ~Uiratp();
 
     ApiRatp_Global ratpGlobal;
-
-//    class ApiRatp_Search;
-//    ApiRatp_Search *ratpSearch;
-
-    void showFinishedStation(QJsonArray);
-    void showFinishedUni(QJsonArray);
+    ApiRatp_Search ratpSearch;
 
 private slots:
     void SetUniTransportIndex(int _codeT);
     void SetUniStationIndex(int _codeS);
     void ShowTransports();
     void ShowTransportStopPoints(int _code);
+    void PrepareUniRequest();
+    void showFinishedUni(QJsonArray);
 
 private:
     Ui::Uiratp *ui;
 
+    void CleanView();
 };
 
 #endif // UIRATP_H
