@@ -102,8 +102,8 @@ void ApiRatp_Global::GeoPoints()
             geoList << geo;
         }
     }
-    emit callFinished(geoList, RATP);
     uistation.DoStationRequest();
+    emit callFinished(geoList, RATP);
 }
 
 void ApiRatp_Global::FilledTransportLists()

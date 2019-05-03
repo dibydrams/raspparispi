@@ -53,7 +53,6 @@ SOURCES += \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
-    	apiratp_station.cpp \
     	uiratp.cpp \
         apiratp_global.cpp \
         apiterrasses.cpp \
@@ -76,7 +75,6 @@ HEADERS += \
     apiparkingprive.h \
         apiparkingpublic.h \
         apiquefaire.h \
-        apiratp_station.h \
         apivelib.h \
         custombutton.h \
         apikiosques.h \
