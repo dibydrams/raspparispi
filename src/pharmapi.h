@@ -20,12 +20,7 @@ class pharmapi : public Abstract_API
 
 public:
     pharmapi();
-<<<<<<< HEAD
-    int getId() override;
-//    QEventLoop loop;
-=======
     API_index getId() override;
->>>>>>> 2ae71a550f651e3f878d3b406f61be42c7f93faf
     QPixmap getPixmap() override;
     WidgetMap settingsAccess;
 
