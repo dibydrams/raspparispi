@@ -50,6 +50,7 @@ void sanisette::readJsonSani(){
 
 void sanisette::getInfo(){
     sanisetteAPI_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 

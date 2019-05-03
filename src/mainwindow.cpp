@@ -158,6 +158,20 @@ void MainWindow::initButtons()
     ui->horizontalLayout->addWidget(buttonVelib);
     connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
+
+    ptr = new apiParkingPublic;
+    CustomButton *buttonParkingPublic = new CustomButton(ptr, this);
+    ButtonList << buttonParkingPublic;
+    ui->horizontalLayout->addWidget(buttonParkingPublic);
+    connect(buttonParkingPublic, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
+
+    ptr = new apiParkingPrive;
+    CustomButton *buttonParkingPrive = new CustomButton(ptr, this);
+    ButtonList << buttonParkingPrive;
+    ui->horizontalLayout->addWidget(buttonParkingPrive);
+    connect(buttonParkingPrive, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
@@ -180,13 +194,11 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex)
 {
-//    ui->widget->m_listePI = list;
-
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
-
-    qDebug()<<"ok recu";
+    //qDebug()<<"ok recu";
     this->update();
+    QApplication::restoreOverrideCursor();
 }
 
 void MainWindow::dialog()

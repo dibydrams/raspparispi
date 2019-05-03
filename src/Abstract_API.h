@@ -30,6 +30,7 @@
 #ifndef ABSTRACT_API_H
 #define ABSTRACT_API_H
 
+#include <QApplication>
 #include <QObject>
 #include <QPixmap>
 #include <QDebug>
@@ -51,7 +52,8 @@ public:
         RATP ,
         TERRASSES ,
         VELIB ,
-        PARKING ,
+        PARKING_PUBLIC ,
+        PARKING_PRIVE ,
         BORNES_ELEC ,
         METEO ,
         ESPACES_VERTS ,

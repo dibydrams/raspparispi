@@ -58,4 +58,5 @@ void apifontaines::API_results(QNetworkReply *reply)
 void apifontaines::getInfo()
 {
     API_call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
