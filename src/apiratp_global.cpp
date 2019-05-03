@@ -90,11 +90,11 @@ void ApiRatp_Global::GeoPoints()
     foreach(QPointF point, pointList)
     {
 //      compare Point with Map Coordonnates
-        if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
-             (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
-        {
-//        if (utilitaire::inMap(point.y(), point.x()))
+//        if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
+//             (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
 //        {
+        if (utilitaire::inMap(point.y(), point.x()))
+        {
             GeoObj geo;
             geo.longitude = point.x();
             geo.latitude = point.y();
@@ -102,7 +102,7 @@ void ApiRatp_Global::GeoPoints()
             geoList << geo;
         }
     }
-    uistation.DoStationRequest();
+//    uistation.DoStationRequest();
     emit callFinished(geoList, RATP);
 }
 
