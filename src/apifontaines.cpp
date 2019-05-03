@@ -68,4 +68,5 @@ void apifontaines::getInfo()
 {
     API_call();
     QApplication::setOverrideCursor(Qt::WaitCursor);
+
 }
