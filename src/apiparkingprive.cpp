@@ -10,7 +10,7 @@ apiParkingPrive::~apiParkingPrive()
     delete listParkingPrive;
 }
 
-int apiParkingPrive::getId()
+Abstract_API::API_index apiParkingPrive::getId()
 {
     return PARKING_PRIVE;
 }

@@ -22,7 +22,7 @@ class theatre : public Abstract_API
 
 public:
     theatre();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 public slots:

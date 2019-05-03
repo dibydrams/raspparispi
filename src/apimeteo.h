@@ -24,7 +24,7 @@ class ApiMeteo : public Abstract_API
 
 public:
     ApiMeteo();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:

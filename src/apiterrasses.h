@@ -17,6 +17,7 @@ typedef struct{
     QString profession;
     QString type;
     QString adresse;
+    QString typeIndice;
     double largeur;
     double latitude;
     double longitude;
@@ -28,7 +29,7 @@ class ApiTerrasses :public Abstract_API
 public:
     ApiTerrasses();
     ~ApiTerrasses() override;
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 private slots:
     void API_Call();

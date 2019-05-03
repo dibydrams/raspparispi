@@ -28,7 +28,7 @@ class apiVelib : public Abstract_API
 public:
     apiVelib();
     ~apiVelib() override;
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private:
