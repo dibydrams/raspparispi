@@ -90,6 +90,7 @@ public:
     // Signal de fin de process des data
 signals:
     void callFinished(QList<GeoObj> list, API_index id);
+    void callEmpty(QList<GeoObj> list);
 };
 
 #endif // ABSTRACT_API_H

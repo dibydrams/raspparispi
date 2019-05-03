@@ -50,6 +50,8 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
 
     emit callFinished(m_list, EVENEMENTS);  // Signal de fin de traitement de l'API
     reply->deleteLater();
+    qDebug() << "TEST MICHOU";
+
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)

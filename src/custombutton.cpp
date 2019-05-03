@@ -14,20 +14,19 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
     setIconSize(QSize(100,100));
     setFixedSize(100,100);
 
-    if (!this->isChecked()) {
-        connect (this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
-        connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
-    }
+    connect(this, SIGNAL(clicked()), this, SLOT(ClickedManage()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, API_index)), this, SLOT(FinishedReceived()));
 }
 
 void CustomButton::ClickedManage()
 {
-    emit Clicked(ptrAPI);
+    if (isChecked()) {
+        emit Clicked(ptrAPI); }
+    else {
+        emit RazSig(buttonID); }
 }
 
 void CustomButton::FinishedReceived()
 {
     emit Finished();
 }
-
-

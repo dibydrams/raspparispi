@@ -21,7 +21,9 @@ private:
 
 signals:
     void Clicked(Abstract_API *ptr);
+    void ClickedEmpty(Abstract_API *ptr);
     void Finished();
+    void RazSig(int);
 
 private slots:
     void ClickedManage();

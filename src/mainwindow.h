@@ -38,6 +38,7 @@ private slots:
     void dialog();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
+    void RazSlot(int);
 //  void ratpDialog();
 
 private:
