@@ -17,7 +17,7 @@ class ApiBornes_Elec : public Abstract_API
 
 public:
     ApiBornes_Elec();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:

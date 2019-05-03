@@ -19,7 +19,7 @@ class ApiEvenementsMV : public Abstract_API
 
 public:
     ApiEvenementsMV();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
     WidgetMap settingsAccess;
 

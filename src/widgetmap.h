@@ -56,7 +56,6 @@ licence: GPLv3
 #include <QWidget>
 #include <Abstract_API.h>
 
-
 class WidgetMap : public QWidget
 {
 public:
@@ -73,8 +72,9 @@ public:
     int m_zoom;
 
     QString m_fichierCarte;
-
     QSettings *m_settings;
+
+    void setIconCount( int count);
 
     QList<QList<Abstract_API::GeoObj>> m_listePI_API;
 
@@ -84,6 +84,7 @@ public:
     ~WidgetMap() override;
 private:
     void paintEvent(QPaintEvent *event) override;
+    int m_iconCount;
 };
 
 #endif // WIDGETMAP_H

@@ -34,7 +34,7 @@ class apiParkingPrive : public Abstract_API
 public:
     apiParkingPrive();
     ~apiParkingPrive() override;
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private:

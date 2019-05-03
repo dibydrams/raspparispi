@@ -18,7 +18,7 @@ class pharmapi : public Abstract_API
 
 public:
     pharmapi();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 public slots:

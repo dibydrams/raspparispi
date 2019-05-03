@@ -11,7 +11,7 @@ apiParkingPublic::~apiParkingPublic()
     delete listParkingPublic;
 }
 
-int apiParkingPublic::getId()
+Abstract_API::API_index apiParkingPublic::getId()
 {
     return PARKING_PUBLIC;
 }

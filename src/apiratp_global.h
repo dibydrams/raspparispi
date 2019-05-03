@@ -22,7 +22,7 @@ class ApiRatp_Global : public Abstract_API
 
 public:
     ApiRatp_Global();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
     WidgetMap widgetmap;

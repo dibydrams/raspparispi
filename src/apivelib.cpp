@@ -11,7 +11,7 @@ apiVelib::~apiVelib()
     delete listVelib;
 }
 
-int apiVelib::getId()
+Abstract_API::API_index apiVelib::getId()
 {
     return VELIB;
 }

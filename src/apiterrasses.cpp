@@ -71,7 +71,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiTerrasses::getId()
+Abstract_API::API_index ApiTerrasses::getId()
 {
     return TERRASSES;
 }
