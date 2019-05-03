@@ -3,7 +3,11 @@ build-*
 RATP*
 *.pro.user
 *.pro.user*
+src/*.pro.user
 *moc_*
 *.o
 .DS_Store
 src/*.o
+src/Makefile
+qrc*
+ui_*

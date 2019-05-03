@@ -48,6 +48,7 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(pollutionChart()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(AQI()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
+    connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
     setvignette();
 
     QPixmap uvprotection;

@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QList>
 #include <Abstract_API.h>
+#include "icon.h"
 
 class ApiQueFaire : public Abstract_API
 {
@@ -37,7 +38,7 @@ private:
     double longitude;
     double latitude;
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

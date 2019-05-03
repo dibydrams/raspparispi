@@ -19,8 +19,14 @@ QPixmap apifontaines::getPixmap()
 void apifontaines::API_call()
 {
     API_access=new QNetworkAccessManager(this);
-    currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&facet=arro&facet=modele&facet=a_boire&geofilter.distance=48.8716+%2C+2.34599%2C+600&timezone=Europe%2FParis&rows=-1")));
+    WidgetMap map;
+    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
+    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+    QString rayon = "1000";
+    qDebug() << "latCentre: " << latCentre;
+    currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&facet=arro&facet=modele&rows=-1&facet=a_boire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));
     connect(API_access, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_results(QNetworkReply*)));
+
 
 }
 
@@ -40,12 +46,15 @@ void apifontaines::API_results(QNetworkReply *reply)
         sdf=objn["fields"].toObject().value("sdf").toString();
         en_service=objn["fields"].toObject().value("en_service").toString();
         drink=objn["fields"].toObject().value("a_boire").toInt();
+        if (drink==1) statut="B";
+        else statut="NB";
+
 
 
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=QPixmap(":/Icons/iconefontaines.png");
+        geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
 
 
         m_list<<geo;
@@ -58,4 +67,5 @@ void apifontaines::API_results(QNetworkReply *reply)
 void apifontaines::getInfo()
 {
     API_call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

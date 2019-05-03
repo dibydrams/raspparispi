@@ -40,5 +40,7 @@
         <file>Icons_meteo/vignette5.png</file>
         <file>Icons_meteo/vignette6.png</file>
         <file>Icons_meteo/protectionUV.png</file>
+        <file>Icons_meteo/pollution.png</file>
+        <file>Icons_meteo/close_1-512.png</file>
     </qresource>
 </RCC>

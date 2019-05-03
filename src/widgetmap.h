@@ -76,7 +76,7 @@ public:
 
     QSettings *m_settings;
 
-    QList<Abstract_API::GeoObj> m_listePI;
+    QList<QList<Abstract_API::GeoObj>> m_listePI_API;
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);

@@ -34,6 +34,8 @@ SOURCES += \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
+    apiparkingprive.cpp \
+        apiparkingpublic.cpp \
         apivelib.cpp \
         dialogmeteo.cpp \
         indiceuv.cpp \
@@ -66,11 +68,13 @@ SOURCES += \
 
 HEADERS += \
         Abstract_API.h \
-    addrtocoord.h \
+        addrtocoord.h \
         apiborneswifi.h \
         apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
+    apiparkingprive.h \
+        apiparkingpublic.h \
         apiquefaire.h \
         apiratp_station.h \
         apivelib.h \
@@ -90,16 +94,13 @@ HEADERS += \
         widgetmap.h \
         apiratp_global.h \
         apiterrasses.h \
-    sanisette.h \
-    theatre.h \
-    apiratp_search.h \
-    apiespacesverts.h \
-    apifontaines.h \  
+        sanisette.h \
+        theatre.h \
+        apiratp_search.h \
+        apiespacesverts.h \
+        apifontaines.h \
         utilitaire.h \
     uistation.h
-
-
-
 
 FORMS += \
 	mainwindow.ui \
