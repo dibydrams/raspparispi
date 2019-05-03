@@ -5,7 +5,7 @@ apikiosques::apikiosques()
 
 }
 
-int apikiosques::getId()
+Abstract_API::API_index apikiosques::getId()
 {
     return KIOSQUES;
 

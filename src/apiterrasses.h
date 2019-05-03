@@ -29,7 +29,7 @@ class ApiTerrasses :public Abstract_API
 public:
     ApiTerrasses();
     ~ApiTerrasses() override;
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 private slots:
     void API_Call();

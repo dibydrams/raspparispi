@@ -3,6 +3,7 @@
 #include <QSettings>
 #include <QDebug>
 
+
 #define MODE_QSETTINGS 0
 
 // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
@@ -17,6 +18,16 @@ int WidgetMap::InitSetting( QSettings *settings, const QString key, const QStrin
         return 1;
     }
     return 0;
+}
+
+void WidgetMap::setIconCount(int count)
+{
+    m_iconCount=count;
+    // Remplissage de la iste vide mlisteAPI
+            QList<Abstract_API::GeoObj> emptyL;
+            for (int i = 0; i<m_iconCount; i++ ) {
+                m_listePI_API << emptyL;
+            }
 }
 
 WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)

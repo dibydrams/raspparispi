@@ -6,6 +6,7 @@
 #include "stoppoint.h"
 #include "transport.h"
 #include "uistation.h"
+#include "utilitaire.h"
 #include "widgetmap.h"
 
 #include <QFile>
@@ -21,7 +22,7 @@ class ApiRatp_Global : public Abstract_API
 
 public:
     ApiRatp_Global();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
     WidgetMap widgetmap;
