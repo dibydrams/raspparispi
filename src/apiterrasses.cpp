@@ -40,13 +40,15 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
         QJsonObject item = val2.toObject();
         terra.profession = item["red_profession"].toString();
         terra.type = item["libelle_type"].toString();
+        terra.adresse = item["lieu1"].toString();
+        terra.largeur = item["largeurmin"].toDouble();
         terra.latitude = item["geo_point_2d"].toArray()[0].toDouble();
         terra.longitude = item["geo_point_2d"].toArray()[1].toDouble();
 
         
 
         GeoObj geo;
-        if(terra.type.contains("TERRASSE"))
+        if(terra.type.contains("TERRASSE") && terra.largeur > 1)
         {
             if(utilitaire::inMap(terra.latitude, terra.longitude))
             {
