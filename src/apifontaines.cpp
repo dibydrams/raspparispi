@@ -46,8 +46,8 @@ void apifontaines::API_results(QNetworkReply *reply)
         sdf=objn["fields"].toObject().value("sdf").toString();
         en_service=objn["fields"].toObject().value("en_service").toString();
         drink=objn["fields"].toObject().value("a_boire").toInt();
-        if (drink==1) statut="B";
-        else statut="NB";
+        if (drink==1) statut="P";
+        else statut="X";
 
 
 

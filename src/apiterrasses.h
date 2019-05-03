@@ -17,6 +17,7 @@ typedef struct{
     QString profession;
     QString type;
     QString adresse;
+    QString typeIndice;
     double largeur;
     double latitude;
     double longitude;
