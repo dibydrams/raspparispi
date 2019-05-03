@@ -44,8 +44,8 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
         terra.largeur = item["largeurmin"].toDouble();
         terra.latitude = item["geo_point_2d"].toArray()[0].toDouble();
         terra.longitude = item["geo_point_2d"].toArray()[1].toDouble();
-        int typeIndice = 0;
-        if(terra.type.contains("OUVERTE")) typeIndice = 1;
+        QString typeIndice = "F";
+        if(terra.type.contains("OUVERTE")) typeIndice = "O";
         
 
         GeoObj geo;
@@ -57,7 +57,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
                 geo.latitude = terra.latitude;
                 geo.longitude = terra.longitude;
 
-                geo.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(typeIndice) ,QColor(240, 200, 70));
+                geo.pixmap = Icon::iconMapOffStr(getPixmap(), typeIndice ,QColor(240, 200, 70));
 
                 m_list << geo;
             }
