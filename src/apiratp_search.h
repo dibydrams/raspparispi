@@ -3,7 +3,6 @@
 
 #include "Abstract_API.h"
 #include "apiratp_global.h"
-#include "uiratp.h"
 
 #include <QLabel>
 #include <QNetworkAccessManager>
@@ -12,24 +11,28 @@
 
 class ApiRatp_Search : public Abstract_API
 {
+    Q_OBJECT
+
 public:
     ApiRatp_Search();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
     ApiRatp_Global *ratpGlobal;
-    Uiratp *uiratp;
 
     QNetworkAccessManager *managerUni;
     QNetworkRequest *requestUni;
     QNetworkReply *replyUni;
 
 public slots:
-    void DoUniRequest();
     void getInfo() override;
 
+    void DoUniRequest(QString _transport, QString _station);
 private:
     void replyFinishedUni();
+
+signals:
+    void ShowFinishedUni(QJsonArray);
 };
 
 #endif // APIRATP_SEARCH_H

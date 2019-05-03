@@ -56,7 +56,7 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
 /// \brief ApiQueFaire::getId
 /// \return
 ///
-int ApiQueFaire::getId()
+Abstract_API::API_index ApiQueFaire::getId()
 {
     return ANIMATIONS;
 }

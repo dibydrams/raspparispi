@@ -62,7 +62,7 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
 /// \brief ApiBornes_Elec::getId
 /// \return enum number API
 ///
-int ApiBornes_Elec::getId()
+Abstract_API::API_index ApiBornes_Elec::getId()
 {
     return BORNES_ELEC;
 }

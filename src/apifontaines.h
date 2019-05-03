@@ -16,12 +16,14 @@ class apifontaines : public Abstract_API
     Q_OBJECT
 public:
     apifontaines();
-    int getId()override;
+    API_index getId()override;
     QPixmap getPixmap()override;
     QString statut;
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
+
+public slots:
     void getInfo()override;
 private:
     QNetworkAccessManager *API_access;
