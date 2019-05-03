@@ -61,7 +61,8 @@ SOURCES += \
         apiratp_search.cpp \
         apiespacesverts.cpp \
         theatre.cpp \
-        apifontaines.cpp
+        apifontaines.cpp \
+    distance.cpp
 
 
 
@@ -98,7 +99,8 @@ HEADERS += \
         apiratp_search.h \
         apiespacesverts.h \
         apifontaines.h \
-        utilitaire.h
+        utilitaire.h \
+    distance.h
 
 FORMS += \
 	mainwindow.ui \
