@@ -59,7 +59,8 @@ SOURCES += \
         apiratp_search.cpp \
         apiespacesverts.cpp \
         theatre.cpp \
-        apifontaines.cpp
+        apifontaines.cpp \
+    uistation.cpp
 
 
 
@@ -94,7 +95,8 @@ HEADERS += \
     apiratp_search.h \
     apiespacesverts.h \
     apifontaines.h \  
-        utilitaire.h
+        utilitaire.h \
+    uistation.h
 
 
 
@@ -102,7 +104,8 @@ HEADERS += \
 FORMS += \
 	mainwindow.ui \
         uiratp.ui \
-        dialogmeteo.ui
+        dialogmeteo.ui \
+    uistation.ui
 
 
 # Default rules for deployment.

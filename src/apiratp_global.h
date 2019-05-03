@@ -5,6 +5,7 @@
 #include "icon.h"
 #include "stoppoint.h"
 #include "transport.h"
+#include "uistation.h"
 #include "widgetmap.h"
 
 #include <QFile>
@@ -24,6 +25,7 @@ public:
     QPixmap getPixmap() override;
 
     WidgetMap widgetmap;
+    UiStation uistation;
 
     QSettings *m_settings;
 

@@ -103,6 +103,7 @@ void ApiRatp_Global::GeoPoints()
         }
     }
     emit callFinished(geoList, RATP);
+    uistation.DoStationRequest();
 }
 
 void ApiRatp_Global::FilledTransportLists()
