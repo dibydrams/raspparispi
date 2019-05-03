@@ -46,7 +46,7 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(0, 153, 0));
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(0, 153, 0));
 
        m_list << geo;
     }
@@ -74,7 +74,7 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
 
                 geo.longitude = longitude;
                 geo.latitude = latitude;
-                geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(252, 181, 75));
+                geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(252, 181, 75));
 
                 m_list << geo;
             }
