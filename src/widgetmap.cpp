@@ -3,8 +3,6 @@
 #include <QSettings>
 #include <QDebug>
 
-#define MODE_QSETTINGS 0
-
 // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
 // et les renvoient si elles existent
 
@@ -25,17 +23,13 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
     //
 
-    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");    
 
     // valeurs de départ par defaut au centre de Paris
 
     int flagConfigVide = 0;
 
-#ifndef MODE_QSETTINGS
     if(!QFile::exists(m_settings->fileName()))
-#else
-    if(1)
-#endif
     {
         m_centreLongitude = 2.34599;//6 rue rougemont
         m_centreLatitude = 48.8699;//48.8716;
@@ -47,7 +41,6 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     QVariant tmp;
 
-#ifndef MODE_QSETTINGS
     if(InitSetting(m_settings,"Coordonnees/centreLongitude", QString::number(m_centreLongitude,'f',13), tmp))
         if(!flagConfigVide) m_centreLongitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/centreLatitude", QString::number(m_centreLatitude,'f',13), tmp))
@@ -70,7 +63,6 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     if(InitSetting(m_settings,"Coordonnees/BBOXminLatitude", "", tmp)) m_BBOXminLatitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/BBOXmaxLongitude", "", tmp)) m_BBOXmaxLongitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", "", tmp)) m_BBOXmaxLatitude = tmp.toDouble();
-#endif
 
     // emplacement du fichier carte au même niveau du dossier de config
     // .config/AJC_Linux_embarque/carte.png
@@ -102,7 +94,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
-            "https://api.tomtom.com/map/1/staticimage?"
+            "http://api.tomtom.com/map/1/staticimage?"
             "key=8bUkGqzvXEZzyqvqFnbw0JoTfPk7BFQ8&"
             "format=png&"
             "layer=basic&style=main&view=Unified&"
@@ -142,7 +134,6 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 m_largeurImage = pixmap->width();
                 m_hauteurImage = pixmap->height();
 
-#ifndef MODE_QSETTINGS
                 // mise à jour du fichier de config
 
                 InitSetting(m_settings,"Coordonnees/BBOXminLongitude", QString::number(m_BBOXminLongitude,'f',13), tmp);
@@ -151,7 +142,6 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
                 InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
                 InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
-#endif
             }
         }
         else qDebug() << "erreur api tomtom: " << reply->errorString();
