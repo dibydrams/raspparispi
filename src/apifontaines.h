@@ -22,6 +22,8 @@ public:
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
+
+public slots:
     void getInfo()override;
 private:
     QNetworkAccessManager *API_access;
