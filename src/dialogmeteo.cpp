@@ -48,6 +48,7 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(pollutionChart()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(AQI()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
+    connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
     setvignette();
 
     QPixmap uvprotection;
@@ -215,6 +216,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#39962e\">Bon: %1</font>").arg(aqi_value));
         fondPlan.load(":/Icons_meteo/aqi_g.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#39962e\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=51 && aqi_value<=100)
@@ -222,6 +224,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#eded2d\">Modéré: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_m.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#eded2d\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=101 && aqi_value<=150)
@@ -229,6 +232,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#f99c2a\">Malsain pour sensible: %1</font>").arg(aqi_value));
         fondPlan.load(":/Icons_meteo/aqi_u1.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#f99c2a\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=151 && aqi_value<=200)
@@ -236,6 +240,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString("<font color=\"#ef2121\">Malsain: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_u2.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#ef2121\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=201 && aqi_value<=300)
@@ -243,6 +248,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#9920ef\">Très Malsain!: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_vu.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#9920ef\">Indice Qualité Air</font>"));
     }
 
     else
@@ -250,6 +256,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#c11b1b\">Risqué!!: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_h.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#c11b1b\">Indice Qualité Air</font>"));
 
     }
 
@@ -318,11 +325,13 @@ void Dialog::printHashmeteo()                              //création et rempli
     ui->tableView->verticalHeader()->hide();
     ui->tableView->setColumnWidth(0,400);
     ui->tableView->setColumnWidth(1,200);
+    ui->tableView->setFont(QFont("Ubuntu", 16, QFont::Bold));
 
 
     QString t = hash_meteo.value("temp").toString();
     ui->labelTemp->setText(QString ("%1 °C").arg(t));
     ui->labelCiel->setText(hash_meteo.value("main").toString());
+
 
 
 }
@@ -589,28 +598,41 @@ void Dialog::printHashindice()                                 //Affichage de l'
 
     if (indice_value>=0 && indice_value<=2)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#eded2d\">Faible: %1</font>").arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#eded2d\">UV</font>");
+        ui->label_DUV->setText(QString ("<font color=\"#0fc133\">FAIBLE: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#0fc133\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#0fc133\">Indice UV</font>"));
 
     }
 
     else if (indice_value>=3 && indice_value<=5)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#f4e542\">Modéré: %1</font>").arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#f4e542\">UV</font>");
+        ui->label_DUV->setText(QString ("<font color=\"#f9eb25\">MOYENNE: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#f9eb25\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#f9eb25\">Indice UV</font>"));
     }
 
     else if (indice_value>=6 && indice_value<=7)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#f4c741\">Elevé: %1</font>").arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#f4c741\">UV</font>");
+        ui->label_DUV->setText(QString ("<font color=\"#ff9011\">ÉLEVÉ: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#ff9011\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#ff9011\">Indice UV</font>"));
     }
 
     else if (indice_value>=8 && indice_value<=10)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#f48b41\">Très élevé: %1</font>").arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#f48b41\">UV</font>");
+        ui->label_DUV->setText(QString ("<font color=\"#e00f0f\">TRÈS ÉLEVÉ: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#e00f0f\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#e00f0f\">Indice UV</font>"));
     }
+
+    else {
+
+        ui->label_DUV->setText(QString ("<font color=\"#c669e5\">EXTREME: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#c669e5\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#c669e5\">Indice UV</font>"));
+    }
+
+    ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
 }
 
 

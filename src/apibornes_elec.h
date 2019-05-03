@@ -17,7 +17,7 @@ class ApiBornes_Elec : public Abstract_API
 
 public:
     ApiBornes_Elec();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:
@@ -39,7 +39,7 @@ private:
     double latitude;
     bool isGeoBool(double geo);
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

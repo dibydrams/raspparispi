@@ -16,7 +16,8 @@
 #include "apiborneswifi.h"
 #include "theatre.h"
 #include "apifontaines.h"
-
+#include "apiparkingpublic.h"
+#include "apiparkingprive.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,13 +33,14 @@ public:
 
     void initButtons();
     QList <CustomButton *> ButtonList;
+    void resizeEvent(QResizeEvent *event);
 
 private slots:
-    void dataReceived(QList<Abstract_API::GeoObj> list);
+    void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
-    void RazSlot(int);
+    void RazSlot(Abstract_API::API_index);
 //  void ratpDialog();
 
 private:

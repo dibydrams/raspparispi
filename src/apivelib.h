@@ -8,6 +8,7 @@
 #include <QJsonArray>
 #include "utilitaire.h"
 #include "widgetmap.h"
+#include "icon.h"
 
 #include "Abstract_API.h"
 
@@ -27,7 +28,7 @@ class apiVelib : public Abstract_API
 public:
     apiVelib();
     ~apiVelib() override;
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private:
@@ -45,7 +46,7 @@ public slots:
     void getInfo() override;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APIVELIB_H

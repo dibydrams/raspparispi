@@ -16,6 +16,8 @@
 typedef struct{
     QString profession;
     QString type;
+    QString adresse;
+    double largeur;
     double latitude;
     double longitude;
 }terrasse;
@@ -26,7 +28,7 @@ class ApiTerrasses :public Abstract_API
 public:
     ApiTerrasses();
     ~ApiTerrasses() override;
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 private slots:
     void API_Call();
@@ -47,7 +49,7 @@ private:
 
 
 signals:
-  void callFinished(QList<Abstract_API::GeoObj>, API_index);
+  void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APITERRASSES_H

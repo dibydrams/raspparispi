@@ -15,7 +15,7 @@ class apikiosques : public Abstract_API
     Q_OBJECT
 public:
     apikiosques();
-    int getId()override;
+    API_index getId()override;
     QPixmap getPixmap()override;
 private slots:
     void API_call();
@@ -37,7 +37,7 @@ private:
     QString adresse;
 
     signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 
 

@@ -5,7 +5,7 @@ apikiosques::apikiosques()
 
 }
 
-int apikiosques::getId()
+Abstract_API::API_index apikiosques::getId()
 {
     return KIOSQUES;
 
@@ -40,7 +40,7 @@ void apikiosques::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=QPixmap(":/Icons/iconekiosques.png");
+        geo.pixmap=QPixmap(":/Icons/iconekiosquesmap.png");
 
 
         m_list<<geo;
@@ -52,4 +52,5 @@ void apikiosques::API_results(QNetworkReply *reply)
 void apikiosques::getInfo()
 {
    API_call();
+   QApplication::setOverrideCursor(Qt::WaitCursor);
 }

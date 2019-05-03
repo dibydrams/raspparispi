@@ -3,6 +3,7 @@
 #include <QSettings>
 #include <QDebug>
 
+
 // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
 // et les renvoient si elles existent
 
@@ -15,6 +16,16 @@ int WidgetMap::InitSetting( QSettings *settings, const QString key, const QStrin
         return 1;
     }
     return 0;
+}
+
+void WidgetMap::setIconCount(int count)
+{
+    m_iconCount=count;
+    // Remplissage de la iste vide mlisteAPI
+            QList<Abstract_API::GeoObj> emptyL;
+            for (int i = 0; i<m_iconCount; i++ ) {
+                m_listePI_API << emptyL;
+            }
 }
 
 WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
@@ -32,7 +43,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     if( !QFile::exists(m_settings->fileName()))
     {
         m_centreLongitude = 2.34599;//6 rue rougemont
-        m_centreLatitude = 48.8716;
+        m_centreLatitude = 48.8699;//48.8716;
         m_rayonCentre = 0.007129412;//0.006;
         m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
         m_compensationLargeurRayon = 2.040087046;//2;
@@ -91,7 +102,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
         // à la requête finished() de l'api tomtom, eventLoop "quit()" sa boucle d'attente
 
-        QObject::connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
+        connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
             "https://api.tomtom.com/map/1/staticimage?"
@@ -180,42 +191,43 @@ void WidgetMap::paintEvent(QPaintEvent *)
         int decalagePixmapX = 0, decalagePixmapY = 0;
         int pixelPointPixmapX, pixelPointPixmapY;
 
-        if( (m_listePI.size() != 0) && m_listePI.first().pixmap.isNull() == false)
+        for (auto listePI_API : m_listePI_API)
         {
-            decalagePixmapX = m_listePI.first().pixmap.width()/2;
-            decalagePixmapY = m_listePI.first().pixmap.height();
-        }
-
-        // convertion coords gps en pixels des points d'intérêts
-
-        for (int i = 0; i < m_listePI.size(); i++)
-        {
-            qDebug() << "longitude " << m_listePI.at(i).longitude;
-            qDebug() << "latitude " << m_listePI.at(i).latitude;
-
-            resultatPixelPointX = static_cast<int> ((m_listePI.at(i).longitude - m_BBOXminLongitude) * coefficient_X);
-            resultatPixelPointY = static_cast<int> ((m_listePI.at(i).latitude - m_BBOXminLatitude) * coefficient_Y);
-
-            // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
-            resultatPixelPointY = carte.height() - resultatPixelPointY;
-
-            // prise en compte du hotspot du pixmap
-            pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
-            pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
-
-            qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
-
-            // affiche les points d'intérets uniquement à l'intérieur de la carte
-
-            if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
-                    && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
+            if( (listePI_API.size() != 0) && listePI_API.first().pixmap.isNull() == false)
             {
-                if( m_listePI.at(i).pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
-                else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,m_listePI.at(i).pixmap);
+                decalagePixmapX = listePI_API.first().pixmap.width()/2;
+                decalagePixmapY = listePI_API.first().pixmap.height();
+            }
 
-//                QString affCoord;
-//                affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
-//                p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
+            for ( auto elem : listePI_API )
+            {
+                //qDebug() << "longitude " << elem.longitude;
+                //qDebug() << "latitude " << elem.latitude;
+
+                resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
+                resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
+
+                // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
+                resultatPixelPointY = carte.height() - resultatPixelPointY;
+
+                // prise en compte du hotspot du pixmap
+                pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
+                pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
+
+                //qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
+
+                // affiche les points d'intérets uniquement à l'intérieur de la carte
+
+                if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
+                        && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
+                {
+                    if( elem.pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
+                    else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,elem.pixmap);
+
+                    //QString affCoord;
+                    //affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
+                    //p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
+                }
             }
         }
 }

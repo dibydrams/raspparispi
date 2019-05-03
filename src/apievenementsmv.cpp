@@ -43,19 +43,17 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = Icon::iconMapOffV2(getPixmap(), getId(), QColor(252, 181, 75));
+        geo.pixmap = Icon::iconMapOffStr(getPixmap(), "O", QColor(252, 181, 75));
 
        m_list << geo;
     }
 
     emit callFinished(m_list, EVENEMENTS);  // Signal de fin de traitement de l'API
     reply->deleteLater();
-    qDebug() << "TEST MICHOU";
-
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiEvenementsMV::getId()
+Abstract_API::API_index ApiEvenementsMV::getId()
 {
     return EVENEMENTS;
 }
@@ -63,6 +61,7 @@ int ApiEvenementsMV::getId()
 void ApiEvenementsMV::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

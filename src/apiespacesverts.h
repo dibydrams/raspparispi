@@ -19,7 +19,7 @@ class ApiEspacesVerts : public Abstract_API
 
 public:
     ApiEspacesVerts();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:
@@ -44,7 +44,7 @@ private:
     double lat;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APIESPACESVERTS_H

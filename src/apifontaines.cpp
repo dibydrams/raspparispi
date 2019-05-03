@@ -5,7 +5,7 @@ apifontaines::apifontaines()
 
 }
 
-int apifontaines::getId()
+Abstract_API::API_index apifontaines::getId()
 {
     return FONTAINES;
 
@@ -45,7 +45,7 @@ void apifontaines::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=QPixmap(":/Icons/iconefontaines.png");
+        geo.pixmap=QPixmap(":/Icons/iconefontainesmap.png");
 
 
         m_list<<geo;
@@ -58,4 +58,5 @@ void apifontaines::API_results(QNetworkReply *reply)
 void apifontaines::getInfo()
 {
     API_call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

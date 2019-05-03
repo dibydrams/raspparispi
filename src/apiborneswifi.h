@@ -19,7 +19,7 @@ class ApiBornesWifi : public Abstract_API
 
 public:
     ApiBornesWifi();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:
@@ -41,7 +41,7 @@ private:
     double longitude;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APIBORNESWIFI_H
