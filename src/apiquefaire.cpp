@@ -43,7 +43,6 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-//        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(182, 66, 244));
 
        m_list << geo;
