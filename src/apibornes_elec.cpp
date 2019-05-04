@@ -82,7 +82,7 @@ void ApiBornes_Elec::getInfo()
 ///
 QPixmap ApiBornes_Elec::getPixmap()
 {
-    return QPixmap(":/Icons/iconeleccar.png");
+    return QPixmap(":/Icons/iconelectric-car.png");
 }
 
 ///
