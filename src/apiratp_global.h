@@ -2,13 +2,18 @@
 #define APIRATP_GLOBAL_H
 
 #include "Abstract_API.h"
+#include "icon.h"
 #include "stoppoint.h"
 #include "transport.h"
+#include "uistation.h"
+#include "utilitaire.h"
 #include "widgetmap.h"
 
 #include <QFile>
 #include <QJsonDocument>
 #include <QList>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 #include <QObject>
 
 
@@ -19,17 +24,21 @@ class ApiRatp_Global : public Abstract_API
 
 public:
     ApiRatp_Global();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
     WidgetMap widgetmap;
+    UiStation uistation;
 
-    QJsonDocument perimetreStifJson;
-    QJsonDocument referentielStifJson;
+    QNetworkAccessManager *API_Access;
+    QNetworkReply *currentReply;
 
-    QList<Abstract_API::GeoObj> geoList;
+    QSettings *m_settings;
+
+    QList<GeoObj> geoList;
     QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
+    QList<Transport> transportList;
     QList<Transport> busList;
     QList<Transport> metroList;
     QList<Transport> railList;
@@ -37,17 +46,24 @@ public:
     int indexTranspForUniReq;
     int indexStationForUniReq;
 
+    void FilledTransportLists();
+
 private:
-    void GeoPoints();
+    QJsonDocument perimetreStifJson;
+    QJsonDocument referentielStifJson;
+
     void PeriStifJson();
     void RefStifJson();
 
-private slots:
+public slots:
     void getInfo() override;
+    void GeoPoints(QNetworkReply *);
+
+private slots:
     QJsonDocument LoadJson(QString fileName);
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APIRATP_GLOBAL_H

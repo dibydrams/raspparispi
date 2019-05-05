@@ -5,7 +5,7 @@ ApiEspacesVerts::ApiEspacesVerts()
 
 }
 
-int ApiEspacesVerts::getId()
+Abstract_API::API_index ApiEspacesVerts::getId()
 {
     return ESPACES_VERTS;
 }
@@ -39,8 +39,11 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
         GeoObj geo;
 
         geo.longitude = longit;
-        geo.latitude = lat;
-        geo.pixmap = QPixmap();
+        geo.latitude = lat;      
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
+
+//        geo.pixmap = QPixmap();
+
         //geo.id = getId();
 
         m_list << geo;
@@ -53,4 +56,5 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 void ApiEspacesVerts::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

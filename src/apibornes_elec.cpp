@@ -12,7 +12,7 @@ void ApiBornes_Elec::API_Call()
 {
    API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&rows=50&geofilter.distance=48.8716,2.34599,1000");
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&rows=-1&geofilter.distance=48.8716,2.34599,4000");
     QNetworkRequest request;
     request.setUrl(url);
 
@@ -41,13 +41,17 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
         longitude = item.value("longitude").toDouble();
         latitude = item.value("latitude").toDouble();
 
-        GeoObj geo;
+        if(isGeoBool(latitude) && isGeoBool(longitude))
+        {
+            GeoObj geo;
 
-        geo.longitude = longitude;
-        geo.latitude = latitude;
-        geo.pixmap = QPixmap();
+            geo.longitude = longitude;
+            geo.latitude = latitude;
 
-       m_list << geo;
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(51, 153, 255));
+
+           m_list << geo;
+        }
     }
 
     emit callFinished(m_list, BORNES_ELEC);  // Signal de fin de traitement de l'API
@@ -58,7 +62,7 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
 /// \brief ApiBornes_Elec::getId
 /// \return enum number API
 ///
-int ApiBornes_Elec::getId()
+Abstract_API::API_index ApiBornes_Elec::getId()
 {
     return BORNES_ELEC;
 }
@@ -69,6 +73,7 @@ int ApiBornes_Elec::getId()
 void ApiBornes_Elec::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///
@@ -77,6 +82,17 @@ void ApiBornes_Elec::getInfo()
 ///
 QPixmap ApiBornes_Elec::getPixmap()
 {
-    return QPixmap(":/Icons/iconeleccar.png");
+    return QPixmap(":/Icons/iconelectric-car.png");
+}
+
+///
+/// Check if geo exist
+/// \brief ApiBornes_Elec::getBool
+/// \param geo
+/// \return bool
+///
+bool ApiBornes_Elec::isGeoBool(double geo)
+{
+    return (!static_cast<bool>(geo)) ? false : true;
 }
 

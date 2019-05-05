@@ -8,6 +8,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
+#include "widgetmap.h"
+#include "icon.h"
 
 class ApiBornes_Elec : public Abstract_API
 {
@@ -15,12 +17,14 @@ class ApiBornes_Elec : public Abstract_API
 
 public:
     ApiBornes_Elec();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
+
+public slots:
     void getInfo() override;
 
 private:
@@ -33,8 +37,9 @@ private:
 
     double longitude;
     double latitude;
+    bool isGeoBool(double geo);
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 
 };
 

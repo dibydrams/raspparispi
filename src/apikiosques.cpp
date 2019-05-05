@@ -5,7 +5,7 @@ apikiosques::apikiosques()
 
 }
 
-int apikiosques::getId()
+Abstract_API::API_index apikiosques::getId()
 {
     return KIOSQUES;
 
@@ -13,13 +13,18 @@ int apikiosques::getId()
 
 QPixmap apikiosques::getPixmap()
 {
-    return QPixmap(":/Icons/iconeKiosques.png");
+    return QPixmap(":/Icons/iconekiosques.png");
 }
 
 void apikiosques::API_call()
 {
     API_access=new QNetworkAccessManager(this);
-    currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=liste_des_kiosques_presse_a_paris&facet=code_postal&facet=statut&geofilter.distance=48.8716%2C2.34599%2C400&timezone=Europe%2FParis&rows=-1")));
+    WidgetMap map;
+    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
+    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+    QString rayon = "1000";
+    qDebug() << "latCentre: " << latCentre;
+    currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=liste_des_kiosques_presse_a_paris&rows=-1&facet=code_postal&facet=statut&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));
     connect(API_access, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_results(QNetworkReply*)));
 
 }
@@ -37,10 +42,15 @@ void apikiosques::API_results(QNetworkReply *reply)
         statut=objn["fields"].toObject().value("statut").toString();
         adresse=objn["fields"].toObject().value("adresse").toString();
 
+        if (statut=="Ouvert") stat="O";
+        else stat="F";
+
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=QPixmap();
+        geo.pixmap=Icon::iconMapOffStr(getPixmap(), stat, Qt::darkMagenta);
+
+
 
 
         m_list<<geo;
@@ -52,4 +62,5 @@ void apikiosques::API_results(QNetworkReply *reply)
 void apikiosques::getInfo()
 {
    API_call();
+   QApplication::setOverrideCursor(Qt::WaitCursor);
 }

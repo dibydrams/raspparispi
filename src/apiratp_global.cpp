@@ -3,6 +3,32 @@
 ApiRatp_Global::ApiRatp_Global()
 {
 
+    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+    if (referentielStifJson.isEmpty())
+    {
+        if (m_settings->value("Datas/Referentiel").isNull())
+        {
+            QStringList splitList = m_settings->fileName().split("/");
+            m_settings->setValue("Datas/Referentiel", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/referentiel-des-lignes-stif.json");
+        }
+        QString filename = m_settings->value("Datas/Referentiel").toString();
+        referentielStifJson =  LoadJson(filename);
+    }
+
+    if (stopPointList.isEmpty())
+    {
+        if (perimetreStifJson.isEmpty())
+        {
+            if (m_settings->value("Datas/Perimetre").isNull())
+            {
+                QStringList splitList = m_settings->fileName().split("/");
+                m_settings->setValue("Datas/Perimetre", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/perimetre-tr-plateforme-stif.json");
+            }
+            QString filename = m_settings->value("Datas/Perimetre").toString();
+            perimetreStifJson =  LoadJson(filename);
+        }
+        PeriStifJson();
+    }
 }
 
 void ApiRatp_Global::PeriStifJson()
@@ -22,7 +48,6 @@ void ApiRatp_Global::PeriStifJson()
         double coordX = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(0).toDouble();
         double coordY = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(1).toDouble();
         QPointF coordsZDE(coordX,coordY);
-
 
         pointList.append(coordsZDE);
         StopPoint newStopPoint(externalcodeLine, nomZDE, monoRefZDE, idZDE, coordsZDE, i);
@@ -51,57 +76,40 @@ void ApiRatp_Global::RefStifJson()
 
         // Liste des Arrêts du transport
         QList<StopPoint> mySPList;
-        foreach (StopPoint sp, stopPointList) {
-            if (sp.externalcodeLine == codeLine)
-                mySPList.append(sp);
-        }
+
 
         Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
-
-        if(newTransport.transportMode == Transport::Modes::bus)
-        {
-            for (int j = 0; j < stopPointList.count(); ++j)
-            {
-                if(stopPointList[j].externalcodeLine == newTransport.codeLine)
-                {
-                    busList.append(newTransport);
-                    break;
-                }
-            }
-        }
-        else if(newTransport.transportMode == Transport::Modes::metro)
-        {
-            metroList.append(newTransport);
-        }
-        else
-        {
-            railList.append(newTransport);
-        }
+        transportList << newTransport;
     }
-
-    std::sort(busList.begin(), busList.end(), Transport::compareTransports);
-    std::sort(metroList.begin(), metroList.end(), Transport::compareTransports);
-    std::sort(railList.begin(), railList.end(), Transport::compareTransports);
 }
 
-void ApiRatp_Global::GeoPoints()
+void ApiRatp_Global::GeoPoints(QNetworkReply * reply)
 {
     geoList.clear();
 
     foreach(QPointF point, pointList)
     {
 //      compare Point with Map Coordonnates
-        if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
-             (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
+//        if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
+//             (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
+//        {
+        if (utilitaire::inMap(point.y(), point.x()))
         {
-          GeoObj geo;
-          geo.longitude = point.x();
-          geo.latitude = point.y();
-          geo.pixmap = QPixmap(":/Icons/iconRatpStationSpot.png");
-          geoList << geo;
+            GeoObj geo;
+            geo.longitude = point.x();
+            geo.latitude = point.y();
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(25, 75, 210));
+            geoList << geo;
         }
     }
+//    uistation.DoStationRequest();
     emit callFinished(geoList, RATP);
+    reply->deleteLater();
+}
+
+void ApiRatp_Global::FilledTransportLists()
+{
+    RefStifJson();
 }
 
 QJsonDocument ApiRatp_Global::LoadJson(QString fileName)
@@ -112,30 +120,23 @@ QJsonDocument ApiRatp_Global::LoadJson(QString fileName)
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiRatp_Global::getId()
+Abstract_API::API_index ApiRatp_Global::getId()
 {
     return RATP;
 }
 
 void ApiRatp_Global::getInfo()
 {
-//    if (stopPointList.isEmpty())
-//    {
-//        if (perimetreStifJson.isEmpty())
-//        {
-//            perimetreStifJson = LoadJson(":/Datas/perimetre-tr-plateforme-stif.json");
-//        }
-//        PeriStifJson();
-//    }
-//    GeoPoints();
-//    if(busList.isEmpty())
-//    {
-//        if (referentielStifJson.isEmpty())
-//        {
-//            referentielStifJson = LoadJson(":/Datas/referentiel-des-lignes-stif.json");
-//        }
-//        RefStifJson();
-//    }
+    API_Access = new QNetworkAccessManager(this);
+
+    QUrl url("");
+    QNetworkRequest request;
+    request.setUrl(url);
+
+    currentReply = API_Access->get(request);
+    connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(GeoPoints(QNetworkReply *)));
+
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

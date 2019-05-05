@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QList>
+#include "icon.h"
 
 #include "Abstract_API.h"
 
@@ -18,12 +19,14 @@ class ApiEspacesVerts : public Abstract_API
 
 public:
     ApiEspacesVerts();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
+
+public slots:
     void getInfo() override;
 
 private:
@@ -41,7 +44,7 @@ private:
     double lat;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APIESPACESVERTS_H

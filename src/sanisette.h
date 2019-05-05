@@ -11,17 +11,17 @@
 #include <QVariantHash>
 #include <QJsonObject>
 #include "Abstract_API.h"
+#include "icon.h"
+#include "distance.h"
 
 class sanisette : public Abstract_API
 {
     Q_OBJECT
 
 public:
-
     sanisette();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
-
 
 public slots:
     void sanisetteAPI_Call();
@@ -35,9 +35,10 @@ private:
     double longitude;
     double latitude;
     QList<GeoObj> m_list;
+    distance *dist;
 
 signals:
-    void callFinished(QList<Abstract_API::GeoObj>, API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // SANISETTE_H

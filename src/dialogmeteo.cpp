@@ -25,6 +25,7 @@
 #include <QtCharts>
 #include <QtCharts/QBarSet>
 #include <QStandardItem>
+#include <QPixmap>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -47,7 +48,12 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(pollutionChart()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(AQI()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
+    connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
     setvignette();
+
+    QPixmap uvprotection;
+    uvprotection.load(":/Icons_meteo/protectionUV.png");
+    ui->label_UVprotection->setPixmap(uvprotection);
 
 }
 
@@ -75,32 +81,32 @@ void Dialog::setvignette()
     v6.load(":/Icons_meteo/vignette6.png");
 
 
-    if (jours != "sam" | jours != "dim")
+    if (jours != "sam" || jours != "dim")
     {
         if (heures >="08" && heures <="20")
+        {
 
-    {
-
-        ui->label_vignette1->setPixmap(v1);
-        ui->label_vignette2->setPixmap(v2);
-        ui->label_vignette3->setPixmap(v3);
-        ui->label_vignette4->setPixmap(v4);
-        ui->label_vignette5->setPixmap(v5);
-
-    }
+            ui->label_vignette1->setPixmap(v1);
+            ui->label_vignette2->setPixmap(v2);
+            ui->label_vignette3->setPixmap(v3);
+            ui->label_vignette4->setPixmap(v4);
+            ui->label_vignette5->setPixmap(v5);
 
 
+        }
 
-    else
-    {
+        else
+        {
 
-        ui->label_vignette1->setPixmap(v1);
-        ui->label_vignette2->setPixmap(v2);
-        ui->label_vignette3->setPixmap(v3);
-        ui->label_vignette4->setPixmap(v4);
-        ui->label_vignette5->setPixmap(v5);
-        ui->label_vignette6->setPixmap(v6);
+            ui->label_vignette1->setPixmap(v1);
+            ui->label_vignette2->setPixmap(v2);
+            ui->label_vignette3->setPixmap(v3);
+            ui->label_vignette4->setPixmap(v4);
+            ui->label_vignette5->setPixmap(v5);
+            ui->label_vignette6->setPixmap(v6);
 
+
+        }
 
         }
     }
@@ -148,7 +154,7 @@ void Dialog::pollutionChart()                           //Création et remplissa
 
 
     QStringList categories;
-    categories << "PM25" << "PM10" << "O3" << "NO2" << "CO(/100)" << "SO2";
+    categories << "PM25" << "PM10" << "O3" << "NO2" << "CO" << "SO2";
 
     /* Définiton du max*/
 
@@ -211,6 +217,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#39962e\">Bon: %1</font>").arg(aqi_value));
         fondPlan.load(":/Icons_meteo/aqi_g.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#39962e\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=51 && aqi_value<=100)
@@ -218,6 +225,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#eded2d\">Modéré: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_m.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#eded2d\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=101 && aqi_value<=150)
@@ -225,6 +233,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#f99c2a\">Malsain pour sensible: %1</font>").arg(aqi_value));
         fondPlan.load(":/Icons_meteo/aqi_u1.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#f99c2a\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=151 && aqi_value<=200)
@@ -232,6 +241,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString("<font color=\"#ef2121\">Malsain: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_u2.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#ef2121\">Indice Qualité Air</font>"));
     }
 
     else if (aqi_value>=201 && aqi_value<=300)
@@ -239,6 +249,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#9920ef\">Très Malsain!: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_vu.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#9920ef\">Indice Qualité Air</font>"));
     }
 
     else
@@ -246,6 +257,7 @@ void Dialog::AQI()                                  //affichage de l'AQI et l'ic
         ui->label_DAQI->setText(QString ("<font color=\"#c11b1b\">Risqué!!: %1</font>").arg(aqi_value));
         fondPlan.load("://Icons_meteo/aqi_h.png");
         ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#c11b1b\">Indice Qualité Air</font>"));
 
     }
 
@@ -261,11 +273,8 @@ void Dialog::Icon()                                        //affichage de l'icon
     QString icon=hash_meteo.value("icon").toString();
     QPixmap ic;
 
-
     ic.load(QString("://Icons_meteo/%1.png").arg(icon));
     ui->labelIcon->setPixmap(ic);
-
-
 
 }
 
@@ -278,25 +287,52 @@ void Dialog::printHashmeteo()                              //création et rempli
     hash_meteo=m_meteo->getHash();
 
 
-    /*Remplissage du QTableWidget avec les données*/
+    /*Remplissage du QTableView avec les données*/
 
-    int i=0;
 
-    for (i=0;i<=6;i++)
+    QStandardItemModel *model=new QStandardItemModel(7,2,this);
+
+    item1->setData("Température max (°C)",0);
+    model->setItem(0, 0, item1);
+    item2->setData("Température min (°C)",0);
+    model->setItem(1, 0, item2);
+    item3->setData("Ciel",0);
+    model->setItem(2, 0, item3);
+    item4->setData("Humidité (%)",0);
+    model->setItem(3, 0, item4);
+    item5->setData("Vitesse du vent (km/h)",0);
+    model->setItem(4, 0, item5);
+    item6->setData("Direction du vent (°)",0);
+    model->setItem(5, 0, item6);
+    item7->setText("Pression (hPa)");
+    model->setItem(6, 0, item7);
+
+
+    for (int i=0;i<=6;i++)
     {
 
-
-        table = new QTableWidgetItem;
-        ui->tableWidget->setItem(i,0,table);
-        QString m =hash_meteo.value(QString ("%1").arg(i)).toString();
-        table->setText(m);
-
+        QStandardItem *m = new QStandardItem;
+        m->setText(hash_meteo.value(QString ("%1").arg(i)).toString());
+        model->setItem(i,1,m);
 
     }
+
+
+    /*Configuration du tableView*/
+
+    ui->tableView->setModel(model);
+    //ui->tableView->resizeColumnsToContents();
+    ui->tableView->horizontalHeader()->hide();
+    ui->tableView->verticalHeader()->hide();
+    ui->tableView->setColumnWidth(0,400);
+    ui->tableView->setColumnWidth(1,200);
+    ui->tableView->setFont(QFont("Ubuntu", 16, QFont::Bold));
+
 
     QString t = hash_meteo.value("temp").toString();
     ui->labelTemp->setText(QString ("%1 °C").arg(t));
     ui->labelCiel->setText(hash_meteo.value("main").toString());
+
 
 
 }
@@ -348,6 +384,9 @@ void Dialog::printHashprevision()
     icon=hash_prevision.value("Icon8").toString();
     ic.load(QString("://Icons_meteo/%1.png").arg(icon));
     ui->label_icon8->setPixmap(ic);
+
+
+
 
 
     /*Affichage des températures dans l'onglet prévision*/
@@ -551,7 +590,7 @@ QHash <QString, QVariant> Dialog::printHashpollution()        //récupération d
 void Dialog::printHashindice()                                 //Affichage de l'indice UV et de l'icon correspondante
 {
 
-    QPixmap soleil;
+
     QHash <QString, QVariant>indice;
     indice=i_indice->getHash();
     int indice_value=indice.value("UV").toInt();
@@ -560,31 +599,41 @@ void Dialog::printHashindice()                                 //Affichage de l'
 
     if (indice_value>=0 && indice_value<=2)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#eded2d\">Faible: %1</font>").arg(indice_value));
-        soleil.load("://Icons_meteo/s1.png");
-        ui->label_IUV->setPixmap(soleil);
+        ui->label_DUV->setText(QString ("<font color=\"#0fc133\">FAIBLE: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#0fc133\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#0fc133\">Indice UV</font>"));
+
     }
 
     else if (indice_value>=3 && indice_value<=5)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#f4e542\">Modéré: %1</font>").arg(indice_value));
-        soleil.load("://Icons_meteo/s2.png");
-        ui->label_IUV->setPixmap(soleil);
+        ui->label_DUV->setText(QString ("<font color=\"#f9eb25\">MOYENNE: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#f9eb25\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#f9eb25\">Indice UV</font>"));
     }
 
     else if (indice_value>=6 && indice_value<=7)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#f4c741\">Elevé: %1</font>").arg(indice_value));
-        soleil.load("://Icons_meteo/s3.png");
-        ui->label_IUV->setPixmap(soleil);
+        ui->label_DUV->setText(QString ("<font color=\"#ff9011\">ÉLEVÉ: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#ff9011\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#ff9011\">Indice UV</font>"));
     }
 
     else if (indice_value>=8 && indice_value<=10)
     {
-        ui->label_DUV->setText(QString ("<font color=\"#f48b41\">Très élevé: %1</font>").arg(indice_value));
-        soleil.load("://Icons_meteo/s4.png");
-        ui->label_IUV->setPixmap(soleil);
+        ui->label_DUV->setText(QString ("<font color=\"#e00f0f\">TRÈS ÉLEVÉ: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#e00f0f\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#e00f0f\">Indice UV</font>"));
     }
+
+    else {
+
+        ui->label_DUV->setText(QString ("<font color=\"#c669e5\">EXTREME: %1</font>").arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#c669e5\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#c669e5\">Indice UV</font>"));
+    }
+
+    ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
 }
 
 

@@ -1,18 +1,27 @@
 #include "pharmapi.h"
+#include "icon.h"
+#include <QSqlQuery>
+#include <QDebug>
 
 pharmapi::pharmapi()
 {
 
 }
 
-void pharmapi::API_Call() // Gestion du call à l'API
+void pharmapi::API_Call()
 {
-   API_Access = new QNetworkAccessManager(this);
+    API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://api.predicthq.com/v1/events/?country=FR&active.gte=2019-05-10&active.lte=2019-05-10&within=1km@48.871602,2.345994&category=expos, sports, community, concerts, conferences, festivals");
+    // Accès aux settings de widgetmap.h
+    double conf_longitude  = settingsAccess.m_centreLongitude;
+    double conf_latitude = settingsAccess.m_centreLatitude;
+
+    QString lat = QString::number(conf_latitude);
+    QString lon = QString::number(conf_longitude);
+
+    QUrl url("https://data.iledefrance.fr/api/records/1.0/search/?dataset=carte-des-pharmacies-dile-de-france&rows=987&facet=libdepartement&facet=commune&refine.libdepartement=PARIS");
     QNetworkRequest request;
     request.setUrl(url);
-    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer wH3fafHllNhQBCFfhFkQbNTUToSpql"));
 
     currentReply = API_Access->get(request);
     connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
@@ -24,35 +33,71 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
 
     doc = QJsonDocument::fromJson(reply->readAll());
     obj = doc.object();
-    arr = obj["results"].toArray();
-    for ( auto val :  arr) {
+    arr = obj["records"].toArray();
 
+    for (auto val : arr)
+    {
         QJsonObject objn = val.toObject();
-        longitude = objn["location"].toArray()[0].toDouble();
-        latitude = objn["location"].toArray()[1].toDouble();
+        longitude = objn["geometry"].toObject()["coordinates"].toArray()[0].toDouble();
+        latitude = objn["geometry"].toObject()["coordinates"].toArray()[1].toDouble();
+        qDebug()<<latitude;
 
         GeoObj geo;
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = QPixmap();
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(0, 153, 0));
 
        m_list << geo;
     }
 
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("/home/dibydrams/pharmloc.db");
+    db.open();
+
+    if(db.open())
+    {
+        qDebug() << "Vous êtes maintenant connecté à la base de donnée pharmloc.";
+        QSqlQuery query;
+        if(query.exec("SELECT * FROM pharmloc"))
+        {
+            while(query.next())
+            {
+                qDebug() << "Ajout d'une nouvelle pharmacie";
+                // Récupère les valeurs dans des variables.
+                latitude = query.value(1).toDouble();
+                longitude = query.value(2).toDouble();
+                qDebug() << "Pharmlat : " << latitude;
+                qDebug() << "Pharmlong : "<< longitude;
+
+                GeoObj geo;
+
+                geo.longitude = longitude;
+                geo.latitude = latitude;
+                geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(252, 181, 75));
+
+                m_list << geo;
+            }
+            qDebug() << "Fin des requêtes.";
+        }
+    }
+    db.close();
+
     emit callFinished(m_list, PHARMACIES);  // Signal de fin de traitement de l'API
+    qDebug()<<"emit"<<PHARMACIES;
     reply->deleteLater();
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int pharmapi::getId()
+Abstract_API::API_index pharmapi::getId()
 {
-    return EVENEMENTS;
+    return PHARMACIES;
 }
 
 void pharmapi::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

@@ -56,7 +56,6 @@ licence: GPLv3
 #include <QWidget>
 #include <Abstract_API.h>
 
-
 class WidgetMap : public QWidget
 {
 public:
@@ -67,16 +66,17 @@ public:
     double m_BBOXminLatitude;
     double m_BBOXmaxLongitude;
     double m_BBOXmaxLatitude;
+    double m_compensationLargeurRayon;
     int m_largeurImage;
     int m_hauteurImage;
     int m_zoom;
-    int m_compensationLargeurRayon;
 
     QString m_fichierCarte;
-
     QSettings *m_settings;
 
-    QList<Abstract_API::GeoObj> m_listePI;
+    void setIconCount( int count);
+
+    QList<QList<Abstract_API::GeoObj>> m_listePI_API;
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);
@@ -84,10 +84,7 @@ public:
     ~WidgetMap() override;
 private:
     void paintEvent(QPaintEvent *event) override;
-
-private slots:
-    void dataReceived(QList<Abstract_API::GeoObj> list);
-
+    int m_iconCount;
 };
 
 #endif // WIDGETMAP_H

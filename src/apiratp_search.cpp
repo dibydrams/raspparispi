@@ -5,30 +5,17 @@ ApiRatp_Search::ApiRatp_Search()
 
 }
 
-void ApiRatp_Search::DoUniRequest()
+void ApiRatp_Search::DoUniRequest(QString _transport, QString _station)
 {
+    managerUni = new QNetworkAccessManager(this) ;
     requestUni = new QNetworkRequest () ;
     requestUni->setRawHeader(QByteArray("Authorization"), QByteArray("Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz"));
 
     QByteArray encodedCodeline;
     QByteArray encodedIdZde;
 //    qDebug() << "code Transport" << indexTranspForUniReq << "code Station" << indexStationForUniReq;
-
-//    if (ui->radioBus->isChecked())
-//    {
-//        encodedCodeline = QUrl::toPercentEncoding(ratpGlobal->busList[ratpGlobal->indexTranspForUniReq].codeLine);
-//        encodedIdZde = QUrl::toPercentEncoding(ratpGlobal->busList[ratpGlobal->indexTranspForUniReq].mySPList[ratpGlobal->indexStationForUniReq].idZDE.replace(0,1,"s"));
-//    }
-//    else if (ui->radioMetro->isChecked())
-//    {
-//        encodedCodeline = QUrl::toPercentEncoding(ratpGlobal->metroList[ratpGlobal->indexTranspForUniReq].codeLine);
-//        encodedIdZde = QUrl::toPercentEncoding(ratpGlobal->metroList[ratpGlobal->indexTranspForUniReq].mySPList[ratpGlobal->indexStationForUniReq].idZDE.replace(0,1,"s"));
-//    }
-//    else
-//    {
-        encodedCodeline = QUrl::toPercentEncoding(ratpGlobal->railList[ratpGlobal->indexTranspForUniReq].codeLine);
-        encodedIdZde = QUrl::toPercentEncoding(ratpGlobal->railList[ratpGlobal->indexTranspForUniReq].mySPList[ratpGlobal->indexStationForUniReq].idZDE.replace(0,1,"s"));
-//    }
+    encodedCodeline = QUrl::toPercentEncoding(_transport);
+    encodedIdZde = QUrl::toPercentEncoding(_station.replace(0,1,"s"));
 
 //    qDebug() << encodedIdZde << encodedCodeline;
 
@@ -46,23 +33,25 @@ void ApiRatp_Search::replyFinishedUni()
 
     QJsonArray arrayDoc = doc.array();
 
-    uiratp->showFinishedUni(arrayDoc);
+    emit ShowFinishedUni(arrayDoc);
+
+//    uiratp->showFinishedUni(arrayDoc);
 }
 
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiRatp_Search::getId()
+Abstract_API::API_index ApiRatp_Search::getId()
 {
     return RATP;
 }
 
 void ApiRatp_Search::getInfo()
 {
-    DoUniRequest();
+
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
 QPixmap ApiRatp_Search::getPixmap()
 {
-    return QPixmap(":/Icons/iconStation.png"); // icône PNG préférable
+    return QPixmap(":/Icons/iconSearch.png"); // icône PNG préférable
 }

@@ -12,7 +12,7 @@ void ApiQueFaire::API_Call() // Gestion du call à l'API
 {
     API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&sort=-date_start&refine.address_city=Paris&refine.category=Animations&rows=20&geofilter.distance=48.8716,2.34599,2000");
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&sort=-date_start&refine.address_city=Paris&refine.category=Animations&rows=-1&geofilter.distance=48.8716,2.34599,5000");
     QNetworkRequest request;
     request.setUrl(url);
 
@@ -43,7 +43,7 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = QPixmap();
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(182, 66, 244));
 
        m_list << geo;
     }
@@ -56,7 +56,7 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
 /// \brief ApiQueFaire::getId
 /// \return
 ///
-int ApiQueFaire::getId()
+Abstract_API::API_index ApiQueFaire::getId()
 {
     return ANIMATIONS;
 }
@@ -67,6 +67,7 @@ int ApiQueFaire::getId()
 void ApiQueFaire::getInfo()
 {
     API_Call();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///
@@ -75,5 +76,5 @@ void ApiQueFaire::getInfo()
 ///
 QPixmap ApiQueFaire::getPixmap()
 {
-    return QPixmap(":/Icons/icongroup.png"); // icône PNG préférable
+    return QPixmap(":/Icons/iconfireworks.png");
 }
