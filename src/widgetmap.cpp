@@ -179,6 +179,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
         int decalagePixmapX = 0, decalagePixmapY = 0;
         int pixelPointPixmapX, pixelPointPixmapY;
+        int cptAPI = 0;
 
         for (auto listePI_API : m_listePI_API)
         {
@@ -214,54 +215,96 @@ void WidgetMap::paintEvent(QPaintEvent *)
                     if( elem.pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
                     else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,elem.pixmap);
 
+                    if( m_flagClic)
+                    {
+                        //qDebug() << " " << pixelPointPixmapX << " " << pixelPointPixmapX + elem.pixmap.width();
+                        //qDebug() << " " << pixelPointPixmapY << " " << pixelPointPixmapY + elem.pixmap.height();
+
+                        if( (m_pointClicSouris.x() >= pixelPointPixmapX) && (m_pointClicSouris.x() <= pixelPointPixmapX + elem.pixmap.width()) &&
+                                (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
+                                )
+                        {
+                            qDebug() << "dedans pixmap" << "API " << cptAPI << "longitude " << elem.longitude << "latitude " << elem.latitude;
+                        }
+                    }
+
     //                QString affCoord;
     //                affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
     //                p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
                 }
             }
+            cptAPI ++;
         }
-
-/////////////////////////////////////////////
-//        if( (m_listePI.size() != 0) && m_listePI.first().pixmap.isNull() == false)
-//        {
-//            decalagePixmapX = m_listePI.first().pixmap.width()/2;
-//            decalagePixmapY = m_listePI.first().pixmap.height();
-//        }
-
-//        // convertion coords gps en pixels des points d'intérêts
-
-//        for (int i = 0; i < m_listePI.size(); i++)
-//        {
-//            qDebug() << "longitude " << m_listePI.at(i).longitude;
-//            qDebug() << "latitude " << m_listePI.at(i).latitude;
-
-//            resultatPixelPointX = static_cast<int> ((m_listePI.at(i).longitude - m_BBOXminLongitude) * coefficient_X);
-//            resultatPixelPointY = static_cast<int> ((m_listePI.at(i).latitude - m_BBOXminLatitude) * coefficient_Y);
-
-//            // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
-//            resultatPixelPointY = carte.height() - resultatPixelPointY;
-
-//            // prise en compte du hotspot du pixmap
-//            pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
-//            pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
-
-//            qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
-
-//            // affiche les points d'intérets uniquement à l'intérieur de la carte
-
-//            if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
-//                    && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
-//            {
-//                if( m_listePI.at(i).pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
-//                else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,m_listePI.at(i).pixmap);
-
-////                QString affCoord;
-////                affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
-////                p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
-//            }
-//        }
-//////////////////////////////////////////////////////////////////
+        m_flagClic = 0;
 }
+
+void WidgetMap::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << "clic mousePressEvent" << endl;
+
+    if (event->button() == Qt::LeftButton)
+    {
+        QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
+        qDebug() << text;
+        m_pointClicSouris.setX(event->x());
+        m_pointClicSouris.setY(event->y());
+        m_flagClic = 1;
+        this->update();
+    }
+
+    //    QPainter p(this);
+    //    QPixmap carte(m_fichierCarte);
+    //    p.drawPixmap(0,0,carte);
+
+    //    int resultatPixelPointX;
+    //    int resultatPixelPointY;
+
+    //    double distanceLongitude = std::abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+    //    double distanceLatitude = std::abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+
+    //    double coefficient_X = carte.width() / distanceLongitude;
+    //    double coefficient_Y = carte.height() / distanceLatitude;
+
+    //    int decalagePixmapX = 0, decalagePixmapY = 0;
+    //    int pixelPointPixmapX, pixelPointPixmapY;
+
+    //    for (auto listePI_API : m_listePI_API)
+    //    {
+    //        if( (listePI_API.size() != 0) && listePI_API.first().pixmap.isNull() == false)
+    //        {
+    //            decalagePixmapX = listePI_API.first().pixmap.width()/2;
+    //            decalagePixmapY = listePI_API.first().pixmap.height();
+    //        }
+    //        for (auto elem : listePI_API)
+    //        {
+    //            qDebug() << elem.longitude;
+    //            qDebug() << elem.latitude;
+
+    //            resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
+    //            resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
+
+    //            // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
+    //            resultatPixelPointY = carte.height() - resultatPixelPointY;
+
+    //            // prise en compte du hotspot du pixmapstatic_cast
+    //            pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
+    //            pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
+
+    //            qDebug() << "X :" << resultatPixelPointX << "Y :" << resultatPixelPointY;
+    //        }
+
+    //        event->pos();
+    //        qDebug() << event;
+
+    //        QRectF rectangle(10.0, 20.0, 80.0, 60.0);
+    //        rectangle(pix_PI);
+    //        QPainter painter(this);
+    //        painter.drawRoundedRect(rectangle, 20.0, 15.0);
+
+    //    }
+}
+
+
 
 WidgetMap::~WidgetMap()
 {
