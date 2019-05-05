@@ -5,15 +5,11 @@
 #include "icon.h"
 #include "stoppoint.h"
 #include "transport.h"
-#include "uistation.h"
-#include "utilitaire.h"
 #include "widgetmap.h"
 
 #include <QFile>
 #include <QJsonDocument>
 #include <QList>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
 #include <QObject>
 
 
@@ -24,14 +20,10 @@ class ApiRatp_Global : public Abstract_API
 
 public:
     ApiRatp_Global();
-    API_index getId() override;
+    int getId() override;
     QPixmap getPixmap() override;
 
     WidgetMap widgetmap;
-    UiStation uistation;
-
-    QNetworkAccessManager *API_Access;
-    QNetworkReply *currentReply;
 
     QSettings *m_settings;
 
@@ -52,12 +44,12 @@ private:
     QJsonDocument perimetreStifJson;
     QJsonDocument referentielStifJson;
 
+    void GeoPoints();
     void PeriStifJson();
     void RefStifJson();
 
 public slots:
     void getInfo() override;
-    void GeoPoints(QNetworkReply *);
 
 private slots:
     QJsonDocument LoadJson(QString fileName);

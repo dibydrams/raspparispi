@@ -11,7 +11,7 @@ apiVelib::~apiVelib()
     delete listVelib;
 }
 
-Abstract_API::API_index apiVelib::getId()
+int apiVelib::getId()
 {
     return VELIB;
 }
@@ -48,7 +48,7 @@ void apiVelib::API_Results(QNetworkReply *reply)
 
             gObj.latitude = velo.latitude;
             gObj.longitude =velo.longitude;
-            gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosDisponibles), QColor(214, 171, 220));
+            gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosDisponibles), Qt::blue);
 
             listGeoObj << gObj;
         }
@@ -71,5 +71,4 @@ void apiVelib::getInfo()
     currentReply = networkManager->get(request);
 
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

@@ -17,7 +17,7 @@ class ApiQueFaire : public Abstract_API
 
 public:
     ApiQueFaire();
-    API_index getId() override;
+    int getId() override;
     QPixmap getPixmap() override;
 
 private slots:

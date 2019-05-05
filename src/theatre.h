@@ -13,8 +13,6 @@
 #include <QJsonObject>
 #include "Abstract_API.h"
 #include "addrtocoord.h"
-#include "icon.h"
-#include "distance.h"
 
 class theatre : public Abstract_API
 {
@@ -22,7 +20,7 @@ class theatre : public Abstract_API
 
 public:
     theatre();
-    API_index getId() override;
+    int getId() override;
     QPixmap getPixmap() override;
 
 public slots:

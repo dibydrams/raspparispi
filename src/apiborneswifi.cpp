@@ -42,7 +42,7 @@ void ApiBornesWifi::API_Results(QNetworkReply *reply)
     reply->deleteLater();
 }
 
-Abstract_API::API_index ApiBornesWifi::getId()
+int ApiBornesWifi::getId()
 {
     return BORNES_WIFI;
 }
@@ -50,7 +50,6 @@ Abstract_API::API_index ApiBornesWifi::getId()
 void ApiBornesWifi::getInfo()
 {
     API_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 QPixmap ApiBornesWifi::getPixmap()

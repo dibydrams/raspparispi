@@ -14,5 +14,19 @@ void Abstract_API::debug(QList <GeoObj> list)
         qDebug() << i.longitude;
         qDebug() << i.latitude;
         qDebug() << i.pixmap;
+        //qDebug() << i.id;
     }
 }
+
+
+
+//void Abstract_API::debug(QList <GeoObj> list, API_index id)
+//{
+//    for (auto i : list) {
+//        qDebug() << i.longitude;
+//        qDebug() << i.latitude;
+//        qDebug() << i.pixmap;
+//    }
+//    id = EVENEMENTS;
+//}
+

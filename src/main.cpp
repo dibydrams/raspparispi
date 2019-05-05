@@ -1,10 +1,20 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QTranslator>
+#include <QDebug>
+#include "dialogtraduction.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+//    QTranslator translator;
+//    Dialogtraduction d;
+
+//    //qDebug()<< translator.load("src_en.qm") ;
+//    a.installTranslator(&translator);
+
     MainWindow w;
 
     // Add style css on mainwindow
@@ -12,6 +22,10 @@ int main(int argc, char *argv[])
     file.open(QFile::ReadOnly);
     QString styleSheet = file.readAll();
     w.setStyleSheet(styleSheet);
+
+    /*Traducteur*/
+
+
 
     w.show();
 

@@ -4,6 +4,7 @@
         <file>Tmp_Map/maprougemont.png</file>
         <file>Icons/pharmicon.png</file>
         <file>Icons/iconeleccar.png</file>
+        <file>Icons/icongroup.png</file>
         <file>Style/style.css</file>
         <file>Icons/iconeterrace.png</file>
         <file>Icons/point_interet.png</file>
@@ -25,7 +26,5 @@
         <file>Icons/eventarene.png</file>
         <file>Icons/iconparkingprive.png</file>
         <file>Icons/iconparkingpublic.svg</file>
-        <file>Icons/iconelectric-car.png</file>
-        <file>Icons/iconfireworks.png</file>
     </qresource>
 </RCC>

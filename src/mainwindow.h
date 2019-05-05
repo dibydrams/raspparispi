@@ -10,6 +10,7 @@
 #include "apiquefaire.h"
 #include "apikiosques.h"
 #include "sanisette.h"
+#include "apiratp_station.h"
 #include "apiratp_global.h"
 #include "uiratp.h"
 #include "apiborneswifi.h"
@@ -32,14 +33,14 @@ public:
 
     void initButtons();
     QList <CustomButton *> ButtonList;
-    void resizeEvent(QResizeEvent *event);
 
+    void resizeEvent(QResizeEvent *event);
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
+    void dialogtraduction();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
-    void RazSlot(Abstract_API::API_index);
 //  void ratpDialog();
 
 private:

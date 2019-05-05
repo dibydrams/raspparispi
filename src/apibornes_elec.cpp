@@ -62,7 +62,7 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
 /// \brief ApiBornes_Elec::getId
 /// \return enum number API
 ///
-Abstract_API::API_index ApiBornes_Elec::getId()
+int ApiBornes_Elec::getId()
 {
     return BORNES_ELEC;
 }
@@ -73,7 +73,6 @@ Abstract_API::API_index ApiBornes_Elec::getId()
 void ApiBornes_Elec::getInfo()
 {
     API_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///
@@ -82,7 +81,7 @@ void ApiBornes_Elec::getInfo()
 ///
 QPixmap ApiBornes_Elec::getPixmap()
 {
-    return QPixmap(":/Icons/iconelectric-car.png");
+    return QPixmap(":/Icons/iconeleccar.png");
 }
 
 ///

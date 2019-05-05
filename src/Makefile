@@ -58,6 +58,8 @@ SOURCES       = Abstract_API.cpp \
 		apibornes_elec.cpp \
 		apievenementsmv.cpp \
 		apimeteo.cpp \
+		apiparkingprive.cpp \
+		apiparkingpublic.cpp \
 		apivelib.cpp \
 		dialogmeteo.cpp \
 		indiceuv.cpp \
@@ -91,6 +93,8 @@ SOURCES       = Abstract_API.cpp \
 		moc_apibornes_elec.cpp \
 		moc_apievenementsmv.cpp \
 		moc_apimeteo.cpp \
+		moc_apiparkingprive.cpp \
+		moc_apiparkingpublic.cpp \
 		moc_apiquefaire.cpp \
 		moc_apivelib.cpp \
 		moc_custombutton.cpp \
@@ -115,6 +119,8 @@ OBJECTS       = Abstract_API.o \
 		apibornes_elec.o \
 		apievenementsmv.o \
 		apimeteo.o \
+		apiparkingprive.o \
+		apiparkingpublic.o \
 		apivelib.o \
 		dialogmeteo.o \
 		indiceuv.o \
@@ -149,6 +155,8 @@ OBJECTS       = Abstract_API.o \
 		moc_apibornes_elec.o \
 		moc_apievenementsmv.o \
 		moc_apimeteo.o \
+		moc_apiparkingprive.o \
+		moc_apiparkingpublic.o \
 		moc_apiquefaire.o \
 		moc_apivelib.o \
 		moc_custombutton.o \
@@ -365,6 +373,8 @@ DIST          = ../../Qt/5.12.2/gcc_64/mkspecs/features/spec_pre.prf \
 		apibornes_elec.h \
 		apievenementsmv.h \
 		apimeteo.h \
+		apiparkingprive.h \
+		apiparkingpublic.h \
 		apiquefaire.h \
 		apiratp_station.h \
 		apivelib.h \
@@ -380,6 +390,9 @@ DIST          = ../../Qt/5.12.2/gcc_64/mkspecs/features/spec_pre.prf \
 		prevision.h \
 		stoppoint.h \
 		transport.h \
+		ui_dialogmeteo.h \
+		ui_mainwindow.h \
+		ui_uiratp.h \
 		uiratp.h \
 		widgetmap.h \
 		apiratp_global.h \
@@ -395,6 +408,8 @@ DIST          = ../../Qt/5.12.2/gcc_64/mkspecs/features/spec_pre.prf \
 		apibornes_elec.cpp \
 		apievenementsmv.cpp \
 		apimeteo.cpp \
+		apiparkingprive.cpp \
+		apiparkingpublic.cpp \
 		apivelib.cpp \
 		dialogmeteo.cpp \
 		indiceuv.cpp \
@@ -851,9 +866,10 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents iconmeteo.qrc sources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.12.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Abstract_API.h addrtocoord.h apiborneswifi.h apibornes_elec.h apievenementsmv.h apimeteo.h apiquefaire.h apiratp_station.h apivelib.h custombutton.h apikiosques.h dialogmeteo.h icon.h indiceuv.h mainwindow.h meteo.h pharmapi.h pollution.h prevision.h stoppoint.h transport.h uiratp.h widgetmap.h apiratp_global.h apiterrasses.h sanisette.h theatre.h apiratp_search.h apiespacesverts.h apifontaines.h utilitaire.h $(DISTDIR)/
-	$(COPY_FILE) --parents Abstract_API.cpp addrtocoord.cpp apiborneswifi.cpp apibornes_elec.cpp apievenementsmv.cpp apimeteo.cpp apivelib.cpp dialogmeteo.cpp indiceuv.cpp meteo.cpp pollution.cpp prevision.cpp apiquefaire.cpp apikiosques.cpp custombutton.cpp icon.cpp main.cpp mainwindow.cpp pharmapi.cpp utilitaire.cpp widgetmap.cpp stoppoint.cpp transport.cpp apiratp_station.cpp uiratp.cpp apiratp_global.cpp apiterrasses.cpp sanisette.cpp apiratp_search.cpp apiespacesverts.cpp theatre.cpp apifontaines.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Abstract_API.h addrtocoord.h apiborneswifi.h apibornes_elec.h apievenementsmv.h apimeteo.h apiparkingprive.h apiparkingpublic.h apiquefaire.h apiratp_station.h apivelib.h custombutton.h apikiosques.h dialogmeteo.h icon.h indiceuv.h mainwindow.h meteo.h pharmapi.h pollution.h prevision.h stoppoint.h transport.h ui_dialogmeteo.h ui_mainwindow.h ui_uiratp.h uiratp.h widgetmap.h apiratp_global.h apiterrasses.h sanisette.h theatre.h apiratp_search.h apiespacesverts.h apifontaines.h utilitaire.h $(DISTDIR)/
+	$(COPY_FILE) --parents Abstract_API.cpp addrtocoord.cpp apiborneswifi.cpp apibornes_elec.cpp apievenementsmv.cpp apimeteo.cpp apiparkingprive.cpp apiparkingpublic.cpp apivelib.cpp dialogmeteo.cpp indiceuv.cpp meteo.cpp pollution.cpp prevision.cpp apiquefaire.cpp apikiosques.cpp custombutton.cpp icon.cpp main.cpp mainwindow.cpp pharmapi.cpp utilitaire.cpp widgetmap.cpp stoppoint.cpp transport.cpp apiratp_station.cpp uiratp.cpp apiratp_global.cpp apiterrasses.cpp sanisette.cpp apiratp_search.cpp apiespacesverts.cpp theatre.cpp apifontaines.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui uiratp.ui dialogmeteo.ui $(DISTDIR)/
+	$(COPY_FILE) --parents src_en.ts $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -931,6 +947,7 @@ qrc_sources.cpp: sources.qrc \
 		Icons/eventarene.png \
 		Icons/iconekiosquesmap.png \
 		Icons/iconespacesverts.png \
+		Icons/iconparkingpublic.svg \
 		Icons/theatre.png \
 		Icons/icongroup.png \
 		Icons/iconStation.png \
@@ -949,6 +966,7 @@ qrc_sources.cpp: sources.qrc \
 		Icons/pharmloc-pointer.svg \
 		Icons/pharmicon.png \
 		Icons/iconefontainesmap.png \
+		Icons/iconparkingprive.png \
 		Icons/point_interet.png \
 		Style/style.css \
 		Tmp_Map/maprougemont.png
@@ -960,9 +978,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../Qt/5.12.2/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../Qt/5.12.2/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_Abstract_API.cpp moc_addrtocoord.cpp moc_apiborneswifi.cpp moc_apibornes_elec.cpp moc_apievenementsmv.cpp moc_apimeteo.cpp moc_apiquefaire.cpp moc_apivelib.cpp moc_custombutton.cpp moc_apikiosques.cpp moc_dialogmeteo.cpp moc_indiceuv.cpp moc_mainwindow.cpp moc_meteo.cpp moc_pharmapi.cpp moc_pollution.cpp moc_prevision.cpp moc_uiratp.cpp moc_apiratp_global.cpp moc_apiterrasses.cpp moc_sanisette.cpp moc_theatre.cpp moc_apiespacesverts.cpp moc_apifontaines.cpp
+compiler_moc_header_make_all: moc_Abstract_API.cpp moc_addrtocoord.cpp moc_apiborneswifi.cpp moc_apibornes_elec.cpp moc_apievenementsmv.cpp moc_apimeteo.cpp moc_apiparkingprive.cpp moc_apiparkingpublic.cpp moc_apiquefaire.cpp moc_apivelib.cpp moc_custombutton.cpp moc_apikiosques.cpp moc_dialogmeteo.cpp moc_indiceuv.cpp moc_mainwindow.cpp moc_meteo.cpp moc_pharmapi.cpp moc_pollution.cpp moc_prevision.cpp moc_uiratp.cpp moc_apiratp_global.cpp moc_apiterrasses.cpp moc_sanisette.cpp moc_theatre.cpp moc_apiespacesverts.cpp moc_apifontaines.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_Abstract_API.cpp moc_addrtocoord.cpp moc_apiborneswifi.cpp moc_apibornes_elec.cpp moc_apievenementsmv.cpp moc_apimeteo.cpp moc_apiquefaire.cpp moc_apivelib.cpp moc_custombutton.cpp moc_apikiosques.cpp moc_dialogmeteo.cpp moc_indiceuv.cpp moc_mainwindow.cpp moc_meteo.cpp moc_pharmapi.cpp moc_pollution.cpp moc_prevision.cpp moc_uiratp.cpp moc_apiratp_global.cpp moc_apiterrasses.cpp moc_sanisette.cpp moc_theatre.cpp moc_apiespacesverts.cpp moc_apifontaines.cpp
+	-$(DEL_FILE) moc_Abstract_API.cpp moc_addrtocoord.cpp moc_apiborneswifi.cpp moc_apibornes_elec.cpp moc_apievenementsmv.cpp moc_apimeteo.cpp moc_apiparkingprive.cpp moc_apiparkingpublic.cpp moc_apiquefaire.cpp moc_apivelib.cpp moc_custombutton.cpp moc_apikiosques.cpp moc_dialogmeteo.cpp moc_indiceuv.cpp moc_mainwindow.cpp moc_meteo.cpp moc_pharmapi.cpp moc_pollution.cpp moc_prevision.cpp moc_uiratp.cpp moc_apiratp_global.cpp moc_apiterrasses.cpp moc_sanisette.cpp moc_theatre.cpp moc_apiespacesverts.cpp moc_apifontaines.cpp
 moc_Abstract_API.cpp: Abstract_API.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qobject.h \
@@ -1840,6 +1858,376 @@ moc_apimeteo.cpp: apimeteo.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
 	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apimeteo.h -o moc_apimeteo.cpp
 
+moc_apiparkingprive.cpp: apiparkingprive.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSharedDataPointer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QString \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QUrl \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvariant.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdebug.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qset.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVector \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslerror.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatetime.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qssl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFlags \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QMetaType \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkReply \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QIODevice \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonDocument \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsondocument.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonObject \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonArray \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonarray.h \
+		utilitaire.h \
+		widgetmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSettings \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsettings.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QHash \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QBuffer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbuffer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFile \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrect.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmargins.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsize.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcolor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgb.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qregion.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtransform.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qimage.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsView \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainter.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpalette.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcursor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QKeyEvent \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPainter \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTimeLine \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtimeline.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeasingcurve.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItemAnimation \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitemanimation.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPoint \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPointF \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
+		Abstract_API.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
+		moc_predefs.h \
+		../../Qt/5.12.2/gcc_64/bin/moc
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiparkingprive.h -o moc_apiparkingprive.cpp
+
+moc_apiparkingpublic.cpp: apiparkingpublic.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSharedDataPointer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QString \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QUrl \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvariant.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdebug.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qset.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVector \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslerror.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatetime.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qssl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFlags \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QMetaType \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkReply \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QIODevice \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonDocument \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsondocument.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonObject \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonArray \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonarray.h \
+		utilitaire.h \
+		widgetmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSettings \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsettings.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QHash \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QBuffer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbuffer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFile \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrect.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmargins.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsize.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcolor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgb.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qregion.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtransform.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qimage.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsView \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainter.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpalette.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcursor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QKeyEvent \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPainter \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTimeLine \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtimeline.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeasingcurve.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItemAnimation \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitemanimation.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPoint \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPointF \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
+		Abstract_API.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
+		moc_predefs.h \
+		../../Qt/5.12.2/gcc_64/bin/moc
+	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiparkingpublic.h -o moc_apiparkingpublic.cpp
+
 moc_apiquefaire.cpp: apiquefaire.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qobject.h \
@@ -1973,6 +2361,21 @@ moc_apiquefaire.cpp: apiquefaire.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPainter \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainter.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
 	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apiquefaire.h -o moc_apiquefaire.cpp
@@ -2155,6 +2558,9 @@ moc_apivelib.cpp: apivelib.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
 		Abstract_API.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
 	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include apivelib.h -o moc_apivelib.cpp
@@ -2702,6 +3108,9 @@ moc_dialogmeteo.cpp: dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
+		apiparkingpublic.h \
+		utilitaire.h \
+		apiparkingprive.h \
 		meteo.h \
 		pollution.h \
 		indiceuv.h \
@@ -3109,6 +3518,7 @@ moc_dialogmeteo.cpp: dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qvxymodelmapper.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qxylegendmarker.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qtchartsversion.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTranslator \
 		ui_dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QFrame \
@@ -3479,6 +3889,9 @@ moc_mainwindow.cpp: mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
+		apiparkingpublic.h \
+		utilitaire.h \
+		apiparkingprive.h \
 		moc_predefs.h \
 		../../Qt/5.12.2/gcc_64/bin/moc
 	/home/haissam/Qt/5.12.2/gcc_64/bin/moc $(DEFINES) --include /home/haissam/raspparispi/src/moc_predefs.h -I/home/haissam/Qt/5.12.2/gcc_64/mkspecs/linux-g++ -I/home/haissam/raspparispi/src -I/home/haissam/Qt/5.12.2/gcc_64/include -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCharts -I/home/haissam/Qt/5.12.2/gcc_64/include/QtWidgets -I/home/haissam/Qt/5.12.2/gcc_64/include/QtGui -I/home/haissam/Qt/5.12.2/gcc_64/include/QtNetwork -I/home/haissam/Qt/5.12.2/gcc_64/include/QtSql -I/home/haissam/Qt/5.12.2/gcc_64/include/QtCore -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
@@ -6203,6 +6616,372 @@ apimeteo.o: apimeteo.cpp apimeteo.h \
 		indiceuv.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apimeteo.o apimeteo.cpp
 
+apiparkingprive.o: apiparkingprive.cpp apiparkingprive.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSharedDataPointer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QString \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QUrl \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvariant.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdebug.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qset.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVector \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslerror.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatetime.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qssl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFlags \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QMetaType \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkReply \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QIODevice \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonDocument \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsondocument.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonObject \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonArray \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonarray.h \
+		utilitaire.h \
+		widgetmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSettings \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsettings.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QHash \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QBuffer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbuffer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFile \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrect.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmargins.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsize.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcolor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgb.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qregion.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtransform.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qimage.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsView \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainter.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpalette.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcursor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QKeyEvent \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPainter \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTimeLine \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtimeline.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeasingcurve.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItemAnimation \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitemanimation.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPoint \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPointF \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
+		Abstract_API.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apiparkingprive.o apiparkingprive.cpp
+
+apiparkingpublic.o: apiparkingpublic.cpp apiparkingpublic.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSharedDataPointer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QString \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QUrl \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvariant.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdebug.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qset.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QVector \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslerror.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatetime.h \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qssl.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFlags \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QMetaType \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkReply \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QIODevice \
+		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonDocument \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsondocument.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonObject \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QJsonArray \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qjsonarray.h \
+		utilitaire.h \
+		widgetmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QSettings \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsettings.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QEventLoop \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QHash \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QBuffer \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qbuffer.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QFile \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qrect.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qmargins.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qsize.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcolor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgb.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qregion.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtransform.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qimage.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsView \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainter.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpalette.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qcursor.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qevent.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QKeyEvent \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPainter \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTimeLine \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtimeline.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qeasingcurve.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsItemAnimation \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsitemanimation.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPoint \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QPointF \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
+		Abstract_API.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apiparkingpublic.o apiparkingpublic.cpp
+
 apivelib.o: apivelib.cpp apivelib.h \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../Qt/5.12.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
@@ -6380,7 +7159,10 @@ apivelib.o: apivelib.cpp apivelib.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
 		Abstract_API.h \
-		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apivelib.o apivelib.cpp
 
 dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
@@ -6600,6 +7382,9 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
+		apiparkingpublic.h \
+		utilitaire.h \
+		apiparkingprive.h \
 		meteo.h \
 		pollution.h \
 		indiceuv.h \
@@ -7007,6 +7792,7 @@ dialogmeteo.o: dialogmeteo.cpp dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qvxymodelmapper.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qxylegendmarker.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qtchartsversion.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTranslator \
 		ui_dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QFrame \
@@ -7747,7 +8533,22 @@ apiquefaire.o: apiquefaire.cpp apiquefaire.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qpolygon.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qline.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qpainterpath.h \
-		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug
+		../../Qt/5.12.2/gcc_64/include/QtCore/QDebug \
+		icon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QIcon \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/QPainter \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpainter.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qbrush.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfont.h \
+		../../Qt/5.12.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgets-config.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o apiquefaire.o apiquefaire.cpp
 
 apikiosques.o: apikiosques.cpp apikiosques.h \
@@ -8100,7 +8901,10 @@ custombutton.o: custombutton.cpp custombutton.h \
 		addrtocoord.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
-		apifontaines.h
+		apifontaines.h \
+		apiparkingpublic.h \
+		utilitaire.h \
+		apiparkingprive.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o custombutton.o custombutton.cpp
 
 icon.o: icon.cpp icon.h \
@@ -8423,11 +9227,16 @@ main.o: main.cpp mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
+		apiparkingpublic.h \
+		utilitaire.h \
+		apiparkingprive.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../Qt/5.12.2/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt/5.12.2/gcc_64/include/QtGui/qinputmethod.h
+		../../Qt/5.12.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTranslator \
+		../../Qt/5.12.2/gcc_64/include/QtCore/qtranslator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -8646,6 +9455,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtCore/QCoreApplication \
 		../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
 		apifontaines.h \
+		apiparkingpublic.h \
+		utilitaire.h \
+		apiparkingprive.h \
 		ui_mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/qapplication.h \
@@ -9058,6 +9870,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qvxymodelmapper.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qxylegendmarker.h \
 		../../Qt/5.12.2/gcc_64/include/QtCharts/qtchartsversion.h \
+		../../Qt/5.12.2/gcc_64/include/QtCore/QTranslator \
 		ui_dialogmeteo.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QFrame \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QHeaderView \
@@ -9067,7 +9880,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.12.2/gcc_64/include/QtWidgets/QTextBrowser \
 		apimeteo.h \
 		apiterrasses.h \
-		utilitaire.h \
 		apiespacesverts.h \
 		apiratp_search.h \
 		apivelib.h
@@ -11050,6 +11862,12 @@ moc_apievenementsmv.o: moc_apievenementsmv.cpp
 
 moc_apimeteo.o: moc_apimeteo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_apimeteo.o moc_apimeteo.cpp
+
+moc_apiparkingprive.o: moc_apiparkingprive.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_apiparkingprive.o moc_apiparkingprive.cpp
+
+moc_apiparkingpublic.o: moc_apiparkingpublic.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_apiparkingpublic.o moc_apiparkingpublic.cpp
 
 moc_apiquefaire.o: moc_apiquefaire.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_apiquefaire.o moc_apiquefaire.cpp
