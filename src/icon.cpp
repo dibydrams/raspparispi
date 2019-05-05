@@ -223,7 +223,7 @@ QPixmap Icon::iconMapOffStr(QPixmap img, QString str, QColor color)
 
 ///
 /// Version 2
-/// Icon appear on the map in On state with String in circle
+/// Icon appear on the map in Off state without any information
 /// \brief Icon::iconMapOff
 /// \param img Sources icon
 /// \param QString str - Optionnal argument string
@@ -267,6 +267,128 @@ QPixmap Icon::iconMapOff(QPixmap img, QColor color)
 
     painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
     painter.drawPixmap(QPointF(23, 12), img.scaled(pixSize * 0.4, Qt::KeepAspectRatio, Qt::FastTransformation));
+
+    return bigPixmap;
+}
+
+
+///
+///  Icon appear on the map in Off state with an rorated line
+/// \brief Icon::iconMapOffClose
+/// \param img
+/// \param color
+/// \param close
+/// \return QPixmap
+///
+QPixmap Icon::iconMapOffClose(QPixmap img, QColor color, int close = 1)
+{
+    ///
+    /// \brief Outline
+    /// Outline color Gray
+    ///
+    QColor bgcolor(255, 255, 255);
+    QColor outcolor(126, 170, 44);
+
+    QSize pixSize(48, 48);
+
+    // QPixmap background with transparant background and Pen around
+
+    QPixmap img2(":/Icons/map-pin.png");
+
+    QSize test(img2.width(), img2.height());
+
+    QPixmap bigPixmap = img2.scaled(test, Qt::KeepAspectRatio, Qt::FastTransformation);
+
+    QPainter painter(&bigPixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    // Mask on image Pin
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
+    painter.drawRoundedRect(QRectF(0,-2,img2.width()+4, img2.height()+4), 5, 5);
+
+    // White background color behind the icon
+    painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+    painter.setBrush(QBrush(QColor(255, 255, 255), Qt::SolidPattern));
+    painter.setPen(Qt::NoPen);
+    painter.drawRoundedRect(QRectF(15, 7, 33, 33), 20, 20);
+
+    // Icon in the center resized to be smaller
+
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.drawPixmap(QPointF(23, 12), img.scaled(pixSize * 0.4, Qt::KeepAspectRatio, Qt::FastTransformation));
+
+    // Close or open icon over the center icon
+    if(close == 0)
+    {
+        painter.rotate(330);
+
+        painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
+        QRectF closeRect(0,33, 35,5);
+        painter.drawRect(closeRect);
+    }
+
+    return bigPixmap;
+}
+
+///
+///  Icon appear on the map in Off state with additionnal PIxmap on bottom circle
+/// \brief Icon::iconMapOffpix
+/// \param img QPixmap
+/// \param sIcon QPixmap
+/// \param color
+/// \return QPixmap
+///
+QPixmap Icon::iconMapOffpix(QPixmap img, QPixmap pixbottom, QColor color)
+{
+    ///
+    /// \brief Outline
+    /// Outline color Gray
+    ///
+    QColor bgcolor(255, 255, 255);
+    QColor outcolor(126, 170, 44);
+
+    QSize pixSize(48, 48);
+
+    // QPixmap background with transparant background and Pen around
+
+    QPixmap img2(":/Icons/map-pin.png");
+
+    QSize test(img2.width(), img2.height());
+
+    QPixmap bigPixmap = img2.scaled(test, Qt::KeepAspectRatio, Qt::FastTransformation);
+
+    QPainter painter(&bigPixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    // Mask on image Pin
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
+    painter.drawRoundedRect(QRectF(0,-2,img2.width()+4, img2.height()+4), 5, 5);
+
+    // White background color behind the icon
+    painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+    painter.setBrush(QBrush(QColor(255, 255, 255), Qt::SolidPattern));
+    painter.setPen(Qt::NoPen);
+    painter.drawRoundedRect(QRectF(15, 7, 33, 33), 20, 20);
+
+    // Icon in the center resized to be smaller
+
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.drawPixmap(QPointF(23, 12), img.scaled(pixSize * 0.4, Qt::KeepAspectRatio, Qt::FastTransformation));
+
+
+    // Rectangle rounded in bottom
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.setBrush(QBrush(QColor(bgcolor), Qt::SolidPattern));
+    painter.setPen(Qt::NoPen);
+    QRect rWhite(25, 40, 14, 14);
+    painter.drawRoundedRect(rWhite, 10, 10);
+
+    // Show additionnal Pixmap in bottom circle
+
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.drawPixmap(QPointF(26, 41), pixbottom.scaled(pixSize * 0.3, Qt::KeepAspectRatio, Qt::FastTransformation));
 
     return bigPixmap;
 }
