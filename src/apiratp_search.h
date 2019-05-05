@@ -14,7 +14,7 @@ class ApiRatp_Search : public Abstract_API
 {
 public:
     ApiRatp_Search();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
     ApiRatp_Global *ratpGlobal;

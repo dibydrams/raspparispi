@@ -118,7 +118,7 @@ QJsonDocument ApiRatp_Global::LoadJson(QString fileName)
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiRatp_Global::getId()
+Abstract_API::API_index ApiRatp_Global::getId()
 {
     return RATP;
 }

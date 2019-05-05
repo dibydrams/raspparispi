@@ -42,7 +42,7 @@ void ApiBornesWifi::API_Results(QNetworkReply *reply)
     reply->deleteLater();
 }
 
-int ApiBornesWifi::getId()
+Abstract_API::API_index ApiBornesWifi::getId()
 {
     return BORNES_WIFI;
 }

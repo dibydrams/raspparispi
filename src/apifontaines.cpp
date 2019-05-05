@@ -5,7 +5,7 @@ apifontaines::apifontaines()
 
 }
 
-int apifontaines::getId()
+Abstract_API::API_index apifontaines::getId()
 {
     return FONTAINES;
 

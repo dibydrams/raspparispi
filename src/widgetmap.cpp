@@ -17,6 +17,16 @@ int WidgetMap::InitSetting( QSettings *settings, const QString key, const QStrin
     return 0;
 }
 
+void WidgetMap::setIconCount(int count)
+{
+    m_iconCount=count;
+    // Remplissage de la iste vide mlisteAPI
+            QList<Abstract_API::GeoObj> emptyL;
+            for (int i = 0; i<m_iconCount; i++ ) {
+                m_listePI_API << emptyL;
+            }
+}
+
 WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 {
 

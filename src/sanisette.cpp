@@ -5,7 +5,7 @@ sanisette::sanisette()
 
 }
 
-int sanisette::getId()
+Abstract_API::API_index sanisette::getId()
 {
     return TOILETTES;
 }

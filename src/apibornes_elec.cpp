@@ -62,7 +62,7 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
 /// \brief ApiBornes_Elec::getId
 /// \return enum number API
 ///
-int ApiBornes_Elec::getId()
+Abstract_API::API_index ApiBornes_Elec::getId()
 {
     return BORNES_ELEC;
 }
@@ -81,7 +81,7 @@ void ApiBornes_Elec::getInfo()
 ///
 QPixmap ApiBornes_Elec::getPixmap()
 {
-    return QPixmap(":/Icons/iconeleccar.png");
+    return QPixmap(":/Icons/iconelectric-car.png");
 }
 
 ///

@@ -53,7 +53,7 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiEvenementsMV::getId()
+Abstract_API::API_index ApiEvenementsMV::getId()
 {
     return EVENEMENTS;
 }

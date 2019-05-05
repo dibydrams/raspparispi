@@ -41,6 +41,7 @@ private slots:
     void dialogtraduction();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
+    void RazSlot(Abstract_API::API_index);
 //  void ratpDialog();
 
 private:

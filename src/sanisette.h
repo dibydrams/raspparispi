@@ -19,7 +19,7 @@ class sanisette : public Abstract_API
 public:
 
     sanisette();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 

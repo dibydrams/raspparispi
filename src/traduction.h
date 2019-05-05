@@ -9,7 +9,7 @@ class traduction : public Abstract_API
 {
 public:
     traduction();
-    int getId() override;
+    API_index getId() override;
     QPixmap getPixmap() override;
 
 

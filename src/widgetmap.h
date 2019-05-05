@@ -78,6 +78,8 @@ public:
     QPoint m_pointClicSouris;
     QPixmap pix_PI;
 
+    void setIconCount(int count);
+
     QList<Abstract_API::GeoObj> m_listePI;
     QList<QList<Abstract_API::GeoObj>> m_listePI_API;
     QList<QList<QPoint>> m_listePixelPoint;

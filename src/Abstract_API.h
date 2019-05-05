@@ -79,7 +79,7 @@ public:
 
     // Méthodes virtuelles pures + explications
     virtual QPixmap getPixmap() = 0;
-    virtual int getId() = 0;
+    virtual API_index getId() = 0;
 
     // Public slot sous forme de méthode virtuelle pure
 public slots:
@@ -92,6 +92,7 @@ public:
     // Signal de fin de process des data
 signals:
     void callFinished(QList<GeoObj> list, API_index id);
+    void callEmpty(QList<GeoObj> list);
 };
 
 #endif // ABSTRACT_API_H

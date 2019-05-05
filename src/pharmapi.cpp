@@ -10,7 +10,7 @@ pharmapi::pharmapi()
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int pharmapi::getId()
+Abstract_API::API_index pharmapi::getId()
 {
     return PHARMACIES;
 }

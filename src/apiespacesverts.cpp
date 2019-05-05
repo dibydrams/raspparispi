@@ -5,7 +5,7 @@ ApiEspacesVerts::ApiEspacesVerts()
 
 }
 
-int ApiEspacesVerts::getId()
+Abstract_API::API_index ApiEspacesVerts::getId()
 {
     return ESPACES_VERTS;
 }

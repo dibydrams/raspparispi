@@ -51,7 +51,7 @@ void ApiRatp_Search::replyFinishedUni()
 
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiRatp_Search::getId()
+Abstract_API::API_index ApiRatp_Search::getId()
 {
     return RATP;
 }

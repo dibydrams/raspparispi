@@ -41,7 +41,7 @@ void ApiRatp_Station::replyFinishedStation()
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-int ApiRatp_Station::getId()
+Abstract_API::API_index ApiRatp_Station::getId()
 {
     return RATP;
 }

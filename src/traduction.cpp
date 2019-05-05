@@ -5,7 +5,7 @@ traduction::traduction()
 
 }
 
-int traduction::getId()
+Abstract_API::API_index traduction::getId()
 {
     return TRADUCTION;
 }

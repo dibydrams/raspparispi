@@ -5,7 +5,7 @@ theatre::theatre()
 
 }
 
-int theatre::getId()
+Abstract_API::API_index theatre::getId()
 {
     return THEATRE;
 }
