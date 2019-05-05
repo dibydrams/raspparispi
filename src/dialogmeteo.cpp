@@ -88,8 +88,6 @@ void Dialog::setvignette()
         ui->label_vignette5->setPixmap(v5);
 
     }
-    }
-
 
 
 
@@ -104,6 +102,7 @@ void Dialog::setvignette()
         ui->label_vignette6->setPixmap(v6);
 
 
+        }
     }
 
 }
