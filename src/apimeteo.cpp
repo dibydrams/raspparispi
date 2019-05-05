@@ -7,7 +7,7 @@ ApiMeteo::ApiMeteo()
 
 }
 
-Abstract_API::API_index ApiMeteo::getId()
+int ApiMeteo::getId()
 {
     return METEO;
 }

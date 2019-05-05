@@ -19,7 +19,7 @@ class ApiBornesWifi : public Abstract_API
 
 public:
     ApiBornesWifi();
-    API_index getId() override;
+    int getId() override;
     QPixmap getPixmap() override;
 
 private slots:

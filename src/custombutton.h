@@ -14,16 +14,14 @@ class CustomButton : public QPushButton
 public:
     explicit CustomButton(Abstract_API *ptr,QWidget *parent = nullptr);
     Abstract_API *ptrAPI;
-    Abstract_API::API_index buttonID;
+    int buttonID;
 
 private:
     QPixmap icon;
 
 signals:
     void Clicked(Abstract_API *ptr);
-    void ClickedEmpty(Abstract_API *ptr);
     void Finished();
-    void RazSig(Abstract_API::API_index buttonID);
 
 private slots:
     void ClickedManage();

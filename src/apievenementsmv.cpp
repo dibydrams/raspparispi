@@ -53,7 +53,7 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
 }
 
 // Mon identifiant au sein de l'enumération (classe mère)
-Abstract_API::API_index ApiEvenementsMV::getId()
+int ApiEvenementsMV::getId()
 {
     return EVENEMENTS;
 }
@@ -61,7 +61,6 @@ Abstract_API::API_index ApiEvenementsMV::getId()
 void ApiEvenementsMV::getInfo()
 {
     API_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

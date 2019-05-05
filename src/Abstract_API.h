@@ -30,7 +30,6 @@
 #ifndef ABSTRACT_API_H
 #define ABSTRACT_API_H
 
-#include <QApplication>
 #include <QObject>
 #include <QPixmap>
 #include <QDebug>
@@ -47,7 +46,6 @@ public:
     /* Enumération servant d'identification
      * Vous pouvez modifier et/ou rajouter des identifiants si nécessaires, en majuscules
      * Ne pas supprimer d'identifiants utilisés */
-
     enum API_index {
         EVENEMENTS ,
         RATP ,
@@ -66,9 +64,8 @@ public:
         ANIMATIONS,
         THEATRE,
         FONTAINES,
+        TRADUCTION,
     };
-
-
 
     /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
      * Les longitudes et latitudes doivent IMPERATIVEMENT être exprimées en type Double
@@ -82,7 +79,7 @@ public:
 
     // Méthodes virtuelles pures + explications
     virtual QPixmap getPixmap() = 0;
-    virtual API_index getId() = 0;
+    virtual int getId() = 0;
 
     // Public slot sous forme de méthode virtuelle pure
 public slots:
@@ -95,7 +92,6 @@ public:
     // Signal de fin de process des data
 signals:
     void callFinished(QList<GeoObj> list, API_index id);
-    void callEmpty(QList<GeoObj> list);
 };
 
 #endif // ABSTRACT_API_H

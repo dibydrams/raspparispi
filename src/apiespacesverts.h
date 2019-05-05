@@ -19,7 +19,7 @@ class ApiEspacesVerts : public Abstract_API
 
 public:
     ApiEspacesVerts();
-    API_index getId() override;
+    int getId() override;
     QPixmap getPixmap() override;
 
 private slots:

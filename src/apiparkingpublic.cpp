@@ -11,7 +11,7 @@ apiParkingPublic::~apiParkingPublic()
     delete listParkingPublic;
 }
 
-Abstract_API::API_index apiParkingPublic::getId()
+int apiParkingPublic::getId()
 {
     return PARKING_PUBLIC;
 }
@@ -66,5 +66,4 @@ void apiParkingPublic::getInfo()
     currentReply = networkManager->get(request);
 
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

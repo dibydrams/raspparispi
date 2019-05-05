@@ -8,10 +8,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
-//#include <QEventLoop>
 
 #include "Abstract_API.h"
-#include "widgetmap.h"
 
 
 class pharmapi : public Abstract_API
@@ -20,13 +18,8 @@ class pharmapi : public Abstract_API
 
 public:
     pharmapi();
-    API_index getId() override;
+    int getId() override;
     QPixmap getPixmap() override;
-    WidgetMap settingsAccess;
-
-private slots:
-    void API_Call();
-    void API_Results(QNetworkReply *reply);
 
 public slots:
     void getInfo() override;
