@@ -71,13 +71,16 @@ public:
     int m_largeurImage;
     int m_hauteurImage;
     int m_zoom;
+    int m_flagClic;
 
     QString m_fichierCarte;
-
     QSettings *m_settings;
+    QPoint m_pointClicSouris;
+    QPixmap pix_PI;
 
     QList<Abstract_API::GeoObj> m_listePI;
     QList<QList<Abstract_API::GeoObj>> m_listePI_API;
+    QList<QList<QPoint>> m_listePixelPoint;
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);
@@ -85,6 +88,13 @@ public:
     ~WidgetMap() override;
 private:
     void paintEvent(QPaintEvent *event) override;
+    int m_iconCount;
+
+protected:
+        virtual void mousePressEvent(QMouseEvent *event) override;
+
+signals:
+        void clicIcon();
 };
 
 #endif // WIDGETMAP_H
