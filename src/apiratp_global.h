@@ -7,14 +7,15 @@
 #include "transport.h"
 #include "uistation.h"
 #include "utilitaire.h"
-#include "widgetmap.h"
 
+#include <QDir>
 #include <QFile>
 #include <QJsonDocument>
 #include <QList>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
+#include <QSettings>
 
 
 
@@ -27,7 +28,6 @@ public:
     API_index getId() override;
     QPixmap getPixmap() override;
 
-    WidgetMap widgetmap;
     UiStation uistation;
 
     QNetworkAccessManager *API_Access;
