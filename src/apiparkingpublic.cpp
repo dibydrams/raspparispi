@@ -53,7 +53,6 @@ void apiParkingPublic::API_Results(QNetworkReply *reply)
             coordToAddr *addr = new coordToAddr(this, lat, lon);
             v.rue = addr->getStreet();
             v.codePostal = addr->getPostalCode();
-            qDebug() << v.rue << "\t" << v.codePostal;
         }
 
         if(!listVoie->contains(v)){
