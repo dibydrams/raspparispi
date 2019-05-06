@@ -76,6 +76,12 @@ public:
     QSettings *m_settings;
     QPoint m_pointClicSouris;
     QPixmap pix_PI;
+//    static QMap<QString, double> m_infosWidgetmap;
+    static double centreLongitude;
+    static double centreLatitude;
+    static double rayonCentre;
+    static double compensationLargeurRayon;
+    static int zoom;
 
     void setIconCount( int count);
 
@@ -85,6 +91,7 @@ public:
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);
+    static double GetParamsWidgetMap();
 
     ~WidgetMap() override;
 private:

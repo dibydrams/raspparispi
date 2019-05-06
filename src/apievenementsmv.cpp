@@ -1,5 +1,6 @@
 #include "apievenementsmv.h"
 #include "icon.h"
+#include "widgetmap.h"
 
 ApiEvenementsMV::ApiEvenementsMV()
 {
@@ -62,6 +63,8 @@ void ApiEvenementsMV::getInfo()
 {
     API_Call();
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    //qDebug() << "acces settings carte centreLongitude: " << WidgetMap::centreLongitude;
+    //qDebug() << "acces settings carte centreLatitude: " << WidgetMap::centreLatitude;
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
