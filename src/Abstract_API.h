@@ -66,6 +66,7 @@ public:
         ANIMATIONS,
         THEATRE,
         FONTAINES,
+        TRADUCTION,
     };
 
 

@@ -39,6 +39,7 @@ SOURCES += \
         apivelib.cpp \
     coordtoaddr.cpp \
         dialogmeteo.cpp \
+    dialogtraduction.cpp \
         indiceuv.cpp \
         meteo.cpp \
         pollution.cpp \
@@ -50,6 +51,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+    traduction.cpp \
         utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
@@ -80,6 +82,7 @@ HEADERS += \
         custombutton.h \
         apikiosques.h \
         dialogmeteo.h \
+    dialogtraduction.h \
         icon.h \
         indiceuv.h \
         mainwindow.h \
@@ -88,6 +91,7 @@ HEADERS += \
         pollution.h \
         prevision.h \
         stoppoint.h \
+    traduction.h \
         transport.h \
         uiratp.h \
         widgetmap.h \
@@ -103,6 +107,7 @@ HEADERS += \
         uistation.h
 
 FORMS += \
+    dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \
         dialogmeteo.ui \
@@ -117,3 +122,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
         iconmeteo.qrc \
         sources.qrc
+
+TRANSLATIONS += \
+             src_en.ts

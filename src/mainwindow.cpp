@@ -9,6 +9,8 @@
 #include "apiespacesverts.h"
 #include "apiratp_search.h"
 #include "apivelib.h"
+#include "traduction.h"
+#include "dialogtraduction.h"
 
 #include <QHBoxLayout>
 
@@ -51,6 +53,13 @@ void MainWindow::initButtons()
     // ##   INITIATION DE CHAQUE BOUTON CI-DESSOUS  ##
     /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
      *  Ne pas changer le code du premier bouton */
+
+    ptr = new traduction;
+    CustomButton *buttonTraduction = new CustomButton(ptr,this);
+    ButtonList << buttonTraduction;
+    ui->horizontalLayout->addWidget(buttonTraduction);
+    buttonTraduction->setCheckable(false);
+    connect(buttonTraduction,SIGNAL(clicked()),this,SLOT(dialogtraduction()));
 
     ptr = new ApiMeteo;
     CustomButton *buttonMeteo = new CustomButton(ptr, this);
@@ -224,6 +233,12 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::AP
 void MainWindow::dialog()
 {
     Dialog fenetre;
+    fenetre.exec();
+}
+
+void MainWindow::dialogtraduction()
+{
+    Dialogtraduction fenetre;
     fenetre.exec();
 }
 

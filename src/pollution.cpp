@@ -20,6 +20,7 @@ void Pollution::setRequest()
 
     manager = new QNetworkAccessManager(this);
     QUrl url("http://api.weatherbit.io/v2.0/current/airquality?lat=48.86&lon=2.35&key=9b80e0427ca94ad39b83354f3f8e2b64");
+    //https://api.waqi.info/feed/paris/?token=a74334edb92ad4b8ba053a6fa13c2c7ca7fb6f8d
     request.setUrl(url);
     reply = manager->get(request);
 
