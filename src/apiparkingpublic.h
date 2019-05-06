@@ -9,19 +9,24 @@
 #include "utilitaire.h"
 #include "widgetmap.h"
 #include "icon.h"
-
+#include "coordtoaddr.h"
 #include "Abstract_API.h"
 
+typedef struct _voie{
+    QString rue;
+    int codePostal;
+
+    bool operator==(const struct _voie& v){
+        return (v.rue == rue && v.codePostal == codePostal);
+    }
+}Voie;
+
 typedef struct{
-    QString voie;
-    QString regprio;
-    QString regpart;
+    Voie v;
     QString tarif;
-    double longueur;
-    double largeur;
-    QString parite;
     double latitude;
     double longitude;
+    int nb;
 } parkingPublic;
 
 class apiParkingPublic : public Abstract_API
@@ -37,10 +42,13 @@ private:
     QNetworkReply* currentReply;
     QNetworkAccessManager *networkManager;
     QList<parkingPublic> *listParkingPublic = new QList<parkingPublic>();
+    QList<Voie> *listVoie = new QList<Voie>();
     QList<GeoObj> listGeoObj;
     QString latCentre;
     QString lonCentre;
     QString rayon = "1000";
+
+    void copyGeoObj();
 
 private slots:
     void API_Results(QNetworkReply *reply);
