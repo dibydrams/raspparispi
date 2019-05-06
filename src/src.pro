@@ -126,4 +126,6 @@ RESOURCES += \
         sources.qrc
 
 TRANSLATIONS += \
-             src_en.ts
+             src_en.ts \
+             src_fr.ts \
+             src_ar.ts

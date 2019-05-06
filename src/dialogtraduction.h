@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QTranslator>
-#include "mainwindow.h"
+
 
 namespace Ui {
 class Dialogtraduction;
@@ -17,9 +17,9 @@ public:
     explicit Dialogtraduction(QWidget *parent = nullptr);
     ~Dialogtraduction();
 
-
 private:
     Ui::Dialogtraduction *ui;
+
 
 private slots:
     void language();
@@ -27,8 +27,6 @@ private slots:
 
 public slots:
     void loadlang();
-
-
 
 };
 
