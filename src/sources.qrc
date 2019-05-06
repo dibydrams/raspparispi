@@ -18,7 +18,6 @@
         <file>Icons/iconekiosques.png</file>
         <file>Icons/iconefontaines.png</file>
         <file>Icons/iconvelib.png</file>
-        <file>Icons/iconvelibmap.png</file>
         <file>Icons/iconefontainesmap.png</file>
         <file>Icons/iconekiosquesmap.png</file>
         <file>Icons/pharmloc-pointer.svg</file>
@@ -27,5 +26,6 @@
         <file>Icons/iconparkingpublic.svg</file>
         <file>Icons/iconelectric-car.png</file>
         <file>Icons/iconfireworks.png</file>
+        <file>Icons/iconvelibwork.png</file>
     </qresource>
 </RCC>
