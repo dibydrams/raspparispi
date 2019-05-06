@@ -7,13 +7,14 @@
 class StopPoint
 {
 public:
-    StopPoint(QString sp_externalcodeline, QString sp_nomzde, QString sp_monorefzde, QString sp_idzde, QPointF sp_coordszde, int sp_myIndex);
+    StopPoint(QString sp_externalcodeline, QString sp_nomzde, QString sp_monorefzde, QString sp_idzde, QPointF sp_coordszde, QString sp_networkname, int sp_myIndex);
 
     QString externalcodeLine;
     QString nomZDE;
     QString monoRefZDE;
     QString idZDE;
     QPointF coordsZDE;
+    QString networkName;
     int myIndex;
 
     static bool compareStopPoint(const StopPoint &sp1, const StopPoint &sp2);
