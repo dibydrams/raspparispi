@@ -53,6 +53,7 @@ void MainWindow::initButtons()
     /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
      *  Ne pas changer le code du premier bouton */
 
+
     ptr = new ApiMeteo;
     CustomButton *buttonMeteo = new CustomButton(ptr, this);
     ButtonList << buttonMeteo;
