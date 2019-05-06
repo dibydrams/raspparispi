@@ -18,17 +18,17 @@ class distance : public QObject
     Q_OBJECT
 
 public:
-    explicit distance (QObject *parent = nullptr);
-    explicit distance(QString latitudeDest, QString longitudeDest,  QObject *parent = nullptr);
-    explicit distance(QString latitudeDest, QString longitudeDest, QString modeDeTransport, QObject *parent = nullptr);
-    explicit distance(double latitudeDest, double longitudeDest, QObject *parent = nullptr);
-    explicit distance(double latitudeDest, double longitudeDest,  QString modeDeTransport, QObject *parent = nullptr);
+    explicit distance(QObject *parent = nullptr);
+    explicit distance(QString longitudeDest, QString latitudeDest, QObject *parent = nullptr);
+    explicit distance(QString longitudeDest, QString latitudeDest, QString modeDeTransport, QObject *parent = nullptr);
+    explicit distance(double longitudeDest, double latitudeDest, QObject *parent = nullptr);
+    explicit distance(double longitudeDest, double latitudeDest, QString modeDeTransport, QObject *parent = nullptr);
     virtual ~distance();
 
-    QString setRequest(QString latitudeDest, QString longitudeDest);
-    QString setRequest(QString latitudeDest, QString longitudeDest, QString modeDeTransport);
-    QString setRequest(double latitudeDest, double longitudeDest);
-    QString setRequest(double latitudeDest, double longitudeDest, QString modeDeTransport);
+    QString setRequest(QString longitudeDest, QString latitudeDest);
+    QString setRequest(QString longitudeDest, QString latitudeDest, QString modeDeTransport);
+    QString setRequest(double longitudeDest, double latitudeDest);
+    QString setRequest(double longitudeDest, double latitudeDest, QString modeDeTransport);
 
     int getDistanceInMeters() const;
     void setDistanceInMeters(int value);
