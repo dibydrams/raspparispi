@@ -66,7 +66,8 @@ SOURCES += \
         theatre.cpp \
         apifontaines.cpp \
         distance.cpp\
-        uistation.cpp
+        uistation.cpp \
+    dist1.cpp
 
 HEADERS += \
         Abstract_API.h \
@@ -106,7 +107,8 @@ HEADERS += \
         apifontaines.h \
         utilitaire.h \
         distance.h\
-        uistation.h
+        uistation.h \
+    dist1.h
 
 FORMS += \
     dialogtraduction.ui \
