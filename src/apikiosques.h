@@ -17,6 +17,7 @@ class apikiosques : public Abstract_API
     Q_OBJECT
 public:
     apikiosques();
+    ~apikiosques()override;
     API_index getId()override;
     QPixmap getPixmap()override;
     QString stat;
