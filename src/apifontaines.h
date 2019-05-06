@@ -16,6 +16,7 @@ class apifontaines : public Abstract_API
     Q_OBJECT
 public:
     apifontaines();
+    ~apifontaines()override;
     API_index getId()override;
     QPixmap getPixmap()override;
     QString statut;

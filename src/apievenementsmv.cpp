@@ -44,7 +44,7 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = Icon::iconMapOffStr(getPixmap(), "O", QColor(252, 181, 75));
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(252, 181, 75));
 
        m_list << geo;
     }

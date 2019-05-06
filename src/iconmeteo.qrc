@@ -42,5 +42,9 @@
         <file>Icons_meteo/protectionUV.png</file>
         <file>Icons_meteo/pollution.png</file>
         <file>Icons_meteo/close_1-512.png</file>
+        <file>Icons_meteo/translation.png</file>
+        <file>Traduction/src_en.qm</file>
+        <file>Traduction/src_ar.qm</file>
+        <file>Traduction/src_fr.qm</file>
     </qresource>
 </RCC>

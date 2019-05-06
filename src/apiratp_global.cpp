@@ -43,6 +43,8 @@ void ApiRatp_Global::PeriStifJson()
         QString monoRefZDE = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["monitoringref_zde"].toString();
         // gtfs_stop_id = ID de l'arret,
         QString idZDE = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["gtfs_stop_id"].toString();
+        // codifligne_network_name = Nom du network gérant
+        QString networkName = perimetreStifJson.array().at(i).toObject()["fields"].toObject()["codifligne_network_name"].toString();
 
         // xy = Coordonnées GPS de l'arret
         double coordX = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(0).toDouble();
@@ -50,7 +52,7 @@ void ApiRatp_Global::PeriStifJson()
         QPointF coordsZDE(coordX,coordY);
 
         pointList.append(coordsZDE);
-        StopPoint newStopPoint(externalcodeLine, nomZDE, monoRefZDE, idZDE, coordsZDE, i);
+        StopPoint newStopPoint(externalcodeLine, nomZDE, monoRefZDE, idZDE, coordsZDE, networkName, i);
         stopPointList.append(newStopPoint);
     }
 
@@ -77,7 +79,6 @@ void ApiRatp_Global::RefStifJson()
         // Liste des Arrêts du transport
         QList<StopPoint> mySPList;
 
-
         Transport newTransport(codeLine, shortnameLine, shortnameGroupoflines, networkname, transportmode, accessibility, i, mySPList);
         transportList << newTransport;
     }
@@ -87,14 +88,29 @@ void ApiRatp_Global::GeoPoints(QNetworkReply * reply)
 {
     geoList.clear();
 
-    foreach(QPointF point, pointList)
+    foreach(StopPoint stop, stopPointList)
     {
-        if (utilitaire::inMap(point.y(), point.x()))
+        if (utilitaire::inMap(stop.coordsZDE.y(), stop.coordsZDE.x()))
         {
             GeoObj geo;
-            geo.longitude = point.x();
-            geo.latitude = point.y();
-            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(130, 220, 115));
+            geo.longitude = stop.coordsZDE.x();
+            geo.latitude = stop.coordsZDE.y();
+            if (stop.networkName == "METRO")
+            {
+                geo.pixmap = Icon::iconMapOffStr(getPixmap(), "M", QColor(25, 130, 80));
+            }
+            else if (stop.networkName == "RER")
+            {
+                geo.pixmap = Icon::iconMapOffStr(getPixmap(), "R", QColor(110, 100, 90));
+            }
+            else if (stop.networkName == "TRAMWAY")
+            {
+                geo.pixmap = Icon::iconMapOffStr(getPixmap(), "T", QColor(210, 210, 115));
+            }
+            else
+            {
+                geo.pixmap = Icon::iconMapOffStr(getPixmap(), "B", QColor(0, 170, 145));
+            }
             geoList << geo;
         }
     }

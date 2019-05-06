@@ -22,10 +22,21 @@ void ApiTerrasses::API_Call() // Gestion du call à l'API
     request.setUrl(url);
     currentReply = API_Access->get(request);
     connect(API_Access, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
+//rajout debut
+    connect(currentReply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
+//rajout fin
 }
 
 void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats au format JSON
 {
+// rajout debut
+//    if(reply->error())
+//        {
+//            qDebug() << "ERReur de connection!";
+//            qDebug() << reply->errorString();
+//        }
+
+// rajout fin
     m_list.clear(); // Reset de la liste de GeoObj à chaque passage dans la fonction
 
     doc = QJsonDocument::fromJson(reply->readAll());
@@ -69,7 +80,12 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
     emit callFinished(m_list, TERRASSES);  // Signal de fin de traitement de l'API
     reply->deleteLater();
 }
-
+//ajout debut
+void ApiTerrasses::slotError(QNetworkReply::NetworkError)
+{
+qDebug()<<"Pas de connection";
+}
+//ajout fin
 // Mon identifiant au sein de l'enumération (classe mère)
 Abstract_API::API_index ApiTerrasses::getId()
 {
