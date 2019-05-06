@@ -89,16 +89,12 @@ void ApiRatp_Global::GeoPoints(QNetworkReply * reply)
 
     foreach(QPointF point, pointList)
     {
-//      compare Point with Map Coordonnates
-//        if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
-//             (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
-//        {
         if (utilitaire::inMap(point.y(), point.x()))
         {
             GeoObj geo;
             geo.longitude = point.x();
             geo.latitude = point.y();
-            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(25, 75, 210));
+            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(130, 220, 115));
             geoList << geo;
         }
     }
