@@ -39,6 +39,7 @@ public:
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
+    void dialogtraduction();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
     void RazSlot(Abstract_API::API_index);

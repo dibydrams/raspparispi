@@ -5,6 +5,12 @@ apikiosques::apikiosques()
 
 }
 
+apikiosques::~apikiosques()
+{
+    delete API_access;
+
+}
+
 Abstract_API::API_index apikiosques::getId()
 {
     return KIOSQUES;
@@ -49,8 +55,6 @@ void apikiosques::API_results(QNetworkReply *reply)
         geo.latitude=latitude;
         geo.longitude=longitude;
         geo.pixmap=Icon::iconMapOffStr(getPixmap(), stat, Qt::darkMagenta);
-
-
 
 
         m_list<<geo;

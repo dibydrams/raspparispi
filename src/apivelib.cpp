@@ -23,6 +23,8 @@ QPixmap apiVelib::getPixmap()
 
 void apiVelib::API_Results(QNetworkReply *reply)
 {
+    listGeoObj.clear();
+    listVelib->clear();
     QJsonDocument jsdoc = QJsonDocument::fromJson(reply->readAll());
     QJsonObject jsobj = jsdoc.object();
     QJsonArray jsarr = jsobj["records"].toArray();
@@ -48,7 +50,12 @@ void apiVelib::API_Results(QNetworkReply *reply)
 
             gObj.latitude = velo.latitude;
             gObj.longitude =velo.longitude;
-            gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosDisponibles), QColor(214, 171, 220));
+            if(status == "Opérationnelle")
+                gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosDisponibles), QColor(214, 171, 220));
+            else if(status == "Fermée")
+                gObj.pixmap = Icon::iconMapOffClose(getPixmap(), QColor(214, 171, 220));
+            else
+                gObj.pixmap = Icon::iconMapOffStr(QPixmap(":/Icons/iconvelibwork.png"), QString::number(velo.velosDisponibles), QColor(214, 171, 220));
 
             listGeoObj << gObj;
         }

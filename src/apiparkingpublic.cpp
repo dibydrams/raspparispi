@@ -9,6 +9,7 @@ apiParkingPublic::~apiParkingPublic()
 {
     delete networkManager;
     delete listParkingPublic;
+    delete listVoie;
 }
 
 Abstract_API::API_index apiParkingPublic::getId()
@@ -24,6 +25,7 @@ QPixmap apiParkingPublic::getPixmap()
 void apiParkingPublic::copyGeoObj()
 {
     GeoObj gObj;
+
     for(parkingPublic p : *listParkingPublic){
         gObj.latitude = p.latitude;
         gObj.longitude =p.longitude;
@@ -35,6 +37,10 @@ void apiParkingPublic::copyGeoObj()
 
 void apiParkingPublic::API_Results(QNetworkReply *reply)
 {
+    listGeoObj.clear();
+    listVoie->clear();
+    listParkingPublic->clear();
+
     QJsonDocument jsdoc = QJsonDocument::fromJson(reply->readAll());
     QJsonObject jsobj = jsdoc.object();
     QJsonArray jsarr = jsobj["records"].toArray();

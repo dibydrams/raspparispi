@@ -5,6 +5,12 @@ apifontaines::apifontaines()
 
 }
 
+apifontaines::~apifontaines()
+{
+    delete API_access;
+
+}
+
 Abstract_API::API_index apifontaines::getId()
 {
     return FONTAINES;

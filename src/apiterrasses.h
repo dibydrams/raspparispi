@@ -34,6 +34,9 @@ public:
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
+//ajout debut
+    void slotError(QNetworkReply::NetworkError);
+//ajout fin
 
 public slots:
     void getInfo() override;
