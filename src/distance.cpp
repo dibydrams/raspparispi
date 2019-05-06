@@ -12,7 +12,7 @@ distance::~distance(){
     delete manager;
 }
 
-distance::distance(QString latitudeDest, QString longitudeDest, QObject *parent): QObject(parent)
+distance::distance( QString longitudeDest, QString latitudeDest, QObject *parent): QObject(parent)
 {
     manager = new QNetworkAccessManager ();
     request.setUrl(setRequest(longitudeDest,latitudeDest));
@@ -21,19 +21,18 @@ distance::distance(QString latitudeDest, QString longitudeDest, QObject *parent)
     loop.exec();
 }
 
-distance::distance(QString latitudeDest, QString longitudeDest, QString modeDeTransport, QObject *parent):QObject(parent)
+distance::distance(QString longitudeDest, QString latitudeDest,  QString modeDeTransport, QObject *parent):QObject(parent)
 {
     manager = new QNetworkAccessManager ();
-    request.setUrl(setRequest(latitudeDest, longitudeDest, modeDeTransport));
+    request.setUrl(setRequest(longitudeDest,latitudeDest,modeDeTransport));
     reply = manager->get(request);
     connect(reply,SIGNAL(finished()), this,SLOT(dataReading()));
     loop.exec();
 }
 
-distance::distance(double latitudeDest, double longitudeDest, QObject *parent) : QObject(parent)
+distance::distance(double longitudeDest, double latitudeDest,  QObject *parent) : QObject(parent)
 {
     manager = new QNetworkAccessManager ();
-    setR();
     QString rek=setRequest(longitudeDest,latitudeDest);
     connect(reply,SIGNAL(finished()), this,SLOT(dataReading()));
     loop.exec();
@@ -48,7 +47,7 @@ distance::distance(double latitudeDest, double longitudeDest, QObject *parent) :
  * taxi
  * truck
  */
-distance::distance(double latitudeDest, double longitudeDest, QString modeDeTransport, QObject *parent) :QObject (parent)
+distance::distance(double longitudeDest, double latitudeDest,  QString modeDeTransport, QObject *parent) :QObject (parent)
 {
     manager = new QNetworkAccessManager ();
     request.setUrl(setRequest(longitudeDest,latitudeDest,modeDeTransport));
@@ -57,103 +56,69 @@ distance::distance(double latitudeDest, double longitudeDest, QString modeDeTran
     loop.exec();
 }
 
-void distance::setR(){
-    QNetworkRequest request;
-    request.setUrl(QUrl("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:48.75,2.2999999999999545/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all"));
-    reply = manager->get(request);
-}
-
-QString distance::setRequest(QString latitudeDest, QString longitudeDest)
+QString distance::setRequest(QString longitudeDest, QString latitudeDest)
 {
-    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitudeDest+","+longitudeDest+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all";
+    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+longitudeDest+","+latitudeDest+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all";
     return rek;
 }
 
-QString distance::setRequest(QString latitudeDest, QString longitudeDest, QString modeDeTransport)
+QString distance::setRequest(QString longitudeDest, QString latitudeDest, QString modeDeTransport)
 {
-    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitudeDest+","+longitudeDest+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+modeDeTransport+"&language=fr-FR&computeTravelTimeFor=all";
+    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+longitudeDest+","+latitudeDest+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+modeDeTransport+"&language=fr-FR&computeTravelTimeFor=all";
     return rek;
 }
 
-QString distance::setRequest(double latitudeDest, double longitudeDest)
+QString distance::setRequest(double longitudeDest, double latitudeDest)
 {
     QString strLong = QString("%1").arg(longitudeDest, 0, 'g', 17);
     QString strLat = QString("%1").arg(latitudeDest, 0, 'g', 17);
-    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+strLat+","+strLong+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all";
+    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+strLong+","+strLat+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all";
     return rek;
 }
-QString distance::setRequest(double latitudeDest, double longitudeDest, QString modeDeTransport)
+QString distance::setRequest(double longitudeDest, double latitudeDest,  QString modeDeTransport)
 {
     QString strLong = QString("%1").arg(longitudeDest, 0, 'g', 17);
     QString strLat = QString("%1").arg(latitudeDest, 0, 'g', 17);
-    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+strLat+","+strLong+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+modeDeTransport+"&language=fr-FR&computeTravelTimeFor=all";
+    QString rek="https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+strLong+","+strLat +"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+modeDeTransport+"&language=fr-FR&computeTravelTimeFor=all";
     return rek;
 }
 
 void distance::dataReading()
 {
-    qDebug()<<"dataReading";
     readJson();
     reply->deleteLater();
     emit readed();
 }
 
 void distance::readJson(){
-    qDebug()<<"readJson";
+  //  qDebug()<<"connect readjson";
     QByteArray responseBit=reply->readAll();
-    qDebug()<<"reply"<<responseBit;
+  // qDebug()<<"responsebit : :"<<responseBit;
     QJsonDocument document = QJsonDocument::fromJson(responseBit);
-    qDebug()<<" here 0";
     QJsonObject replyObj = document.object();
-    qDebug()<<" here 1";
     QJsonArray routes = replyObj["routes"].toArray();
-    qDebug()<<" here 2";
     foreach (const QJsonValue & value, routes){
         QJsonObject obj = value.toObject();
-        qDebug()<<" here 3";
         QJsonObject summary = obj["summary"].toObject();
-        qDebug()<<" here 4";
         QString arrival = summary["arrivalTime"].toString();
-        qDebug()<<" here 5";
-//        this->setDistanceInMeters(summary["lengthInMeters"].toInt()); // distance en mètres
-//        this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt()); // temps de trajet en secondes
-//        this->setDelay(summary["trafficDelayInSeconds"].toInt()); //retards en fonction du traffic rafraichi en live chez tomtom
-//        this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt()); // temps de trajet en fonction des incidents (lié à delay)
+
+        //***remplisasge des propriété de l'objet***
+//        this->setDistanceInMeters(summary["lengthInMeters"].toInt());
+//        this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
+//        this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
+//        this->setDelay(summary["trafficDelayInSeconds"].toInt());
 //        this->setArrival(arrival);
-//        qDebug()<<"*** Distance compte rendu ***";
-//        qDebug()<<"Distance : : "<<this-getDistanceInMeters();
-//        qDebug()<<"noTrafficTravelTimeInSeconds : : "<<this->getTimetravel();
-//        qDebug()<<"Retard prévu en seconde : : "<<this->getDelay();
+
+//        qDebug()<<"*** Distance compte rendu JSONJSON ***";
+//        qDebug()<<"Distance : : "<<summary["lengthInMeters"].toInt();
+//        qDebug()<<"noTrafficTravelTimeInSeconds : : "<<summary["noTrafficTravelTimeInSeconds"].toInt();
+//        qDebug()<<"Retard prévu en seconde : : "<<summary["trafficDelayInSeconds"].toInt();
 //        qDebug()<<"arrival :: "<<arrival;
     }
+
     loop.exit();
 }
 
-void distance::readJson(QNetworkReply *replyToRead)
-{
-    qDebug()<<"readJson distance()";
-    QByteArray responseBit=replyToRead->readAll();
-    QJsonDocument document = QJsonDocument::fromJson(responseBit);
-    QJsonObject replyObj = document.object();
-    QJsonArray routes = replyObj["routes"].toArray();
-    foreach (const QJsonValue & value, routes){
-        QJsonObject obj = value.toObject();
-        QJsonObject summary = obj["summary"].toObject();
-    //    QString arrival = summary["arrivalTime"].toString();
-//        this->setDistanceInMeters(summary["lengthInMeters"].toInt()); // distance en mètres
-//        this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt()); // temps de trajet en secondes
-//        this->setDelay(summary["trafficDelayInSeconds"].toInt()); //retards en fonction du traffic rafraichi en live chez tomtom
-//        this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt()); // temps de trajet en fonction des incidents (lié à delay)
-//        this->setArrival(arrival);
-        qDebug()<<"*** Distance compte rendu ***";
-       // qDebug()<<" arrival "<<arrival;
-//        qDebug()<<"Distance : : "<<this->getDistanceInMeters();
-//        qDebug()<<"noTrafficTravelTimeInSeconds : : "<<this->getTimetravel();
-//        qDebug()<<"Retard prévu en seconde : : "<<this->getDelay();
-//        qDebug()<<"arrival :: "<<arrival;
-    }
-    loop.exit();
-}
 
 QString distance::getArrival() const
 {
