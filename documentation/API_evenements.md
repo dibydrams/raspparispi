@@ -2,7 +2,7 @@
 
 ## Liste des événements
 
-**URL**
+**URL DU SERVICE API**
 
 https://api.predicthq.com/v1/events/
 
