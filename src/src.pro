@@ -52,6 +52,7 @@ SOURCES += \
         mainwindow.cpp \
         pharmapi.cpp \
     traduction.cpp \
+    resetbuttons.cpp \
         utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
@@ -90,6 +91,7 @@ HEADERS += \
         pharmapi.h \
         pollution.h \
         prevision.h \
+    resetbuttons.h \
         stoppoint.h \
     traduction.h \
         transport.h \

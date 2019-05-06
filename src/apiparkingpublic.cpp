@@ -21,6 +21,18 @@ QPixmap apiParkingPublic::getPixmap()
     return QPixmap(":/Icons/iconparkingpublic.svg");
 }
 
+void apiParkingPublic::copyGeoObj()
+{
+    GeoObj gObj;
+    for(parkingPublic p : *listParkingPublic){
+        gObj.latitude = p.latitude;
+        gObj.longitude =p.longitude;
+        gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(p.nb), Qt::yellow);
+
+        listGeoObj << gObj;
+    }
+}
+
 void apiParkingPublic::API_Results(QNetworkReply *reply)
 {
     QJsonDocument jsdoc = QJsonDocument::fromJson(reply->readAll());
@@ -28,29 +40,46 @@ void apiParkingPublic::API_Results(QNetworkReply *reply)
     QJsonArray jsarr = jsobj["records"].toArray();
 
     for(QJsonValue jsval : jsarr){
-        parkingPublic parking;
-        GeoObj gObj;
+        Voie v;
+        parkingPublic p;
         QJsonObject jsob = jsval.toObject();
-        parking.voie = jsob["fields"].toObject()["nomvoie"].toString();
-        parking.regprio = jsob["fields"].toObject()["regpri"].toString();
-        parking.regpart = jsob["fields"].toObject()["regpar"].toString();
-        parking.tarif = jsob["fields"].toObject()["tar"].toString();
-        parking.longueur = jsob["fields"].toObject()["longueur_calculee"].toDouble();
-        parking.largeur = jsob["fields"].toObject()["lar"].toDouble();
-        parking.parite = jsob["fields"].toObject()["parite"].toString();
-        parking.latitude = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[1].toDouble();
-        parking.longitude = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[0].toDouble();
+        v.rue = jsob["fields"].toObject()["nomvoie"].toString()+" "+jsob["fields"].toObject()["typevoie"].toString();
+        v.codePostal = jsob["fields"].toObject()["arrond"].toInt() + 75000;
 
-        if(utilitaire::inMap(parking.latitude, parking.longitude)){
-            listParkingPublic->append(parking);
-            gObj.latitude = parking.latitude;
-            gObj.longitude =parking.longitude;
-            gObj.pixmap = Icon::iconMapOff(getPixmap(), Qt::yellow);
+        if(v.rue == " "){
+            double lat = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[1].toDouble();
+            double lon = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[0].toDouble();
 
-            listGeoObj << gObj;
+            coordToAddr *addr = new coordToAddr(this, lat, lon);
+            v.rue = addr->getStreet();
+            v.codePostal = addr->getPostalCode();
         }
+
+        if(!listVoie->contains(v)){
+            p.v = v;
+            p.tarif = jsob["fields"].toObject()["tar"].toString();
+            p.nb = 1;
+            p.latitude = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[1].toDouble();
+            p.longitude = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[0].toDouble();
+
+            if(utilitaire::inMap(p.latitude, p.longitude)){
+                listParkingPublic->append(p);
+                listVoie->append(v);
+            }
+        }
+
+        else {
+            for(int i=0; i<listParkingPublic->size(); ++i){
+                if(listParkingPublic->operator[](i).v == v){
+                    listParkingPublic->operator[](i).nb++;
+                    break;
+                }
+            }
+        }
+
     }
 
+    copyGeoObj();
     emit callFinished(listGeoObj, PARKING_PUBLIC);
 }
 

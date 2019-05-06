@@ -16,9 +16,14 @@ public:
     static QPixmap iconNormalOff(QPixmap img);
     static QPixmap iconNormalOn(QPixmap img);
 
-    // Icon pour la map Version 1
+    // Icon Map Off base
     static QPixmap iconMapOffStr(QPixmap img, QString str, QColor color);
     static QPixmap iconMapOff(QPixmap img, QColor color);
+
+    // Icon Map Off variantes
+
+    static QPixmap iconMapOffClose(QPixmap img, QColor color);
+    static QPixmap iconMapOffpix(QPixmap img, QPixmap pixbottom, QColor color);
 
 
     // Icon Test

@@ -27,5 +27,6 @@
         <file>Icons/iconparkingpublic.svg</file>
         <file>Icons/iconelectric-car.png</file>
         <file>Icons/iconfireworks.png</file>
+        <file>Icons/reseticon.png</file>
     </qresource>
 </RCC>
