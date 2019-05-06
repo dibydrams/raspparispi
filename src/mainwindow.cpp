@@ -61,6 +61,7 @@ void MainWindow::initButtons()
     ButtonList << buttonTraduction;
     ui->horizontalLayout->addWidget(buttonTraduction);
     buttonTraduction->setCheckable(false);
+    buttonTraduction->setToolTip("Changer la Langue / Change Language");
     connect(buttonTraduction,SIGNAL(clicked()),this,SLOT(dialogtraduction()));
 
     ptr = new ApiMeteo;
