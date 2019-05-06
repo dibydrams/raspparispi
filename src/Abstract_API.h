@@ -66,6 +66,9 @@ public:
         ANIMATIONS,
         THEATRE,
         FONTAINES,
+        TRADUCTION,
+        RESET,
+
     };
 
 
@@ -94,7 +97,7 @@ public:
 
     // Signal de fin de process des data
 signals:
-    void callFinished(QList<GeoObj> list, API_index id);
+    void callFinished(QList<Abstract_API::GeoObj> list, Abstract_API::API_index id);
     void callEmpty(QList<GeoObj> list);
 };
 

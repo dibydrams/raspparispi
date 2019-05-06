@@ -17,6 +17,7 @@
 #include "apifontaines.h"
 #include "apiparkingpublic.h"
 #include "apiparkingprive.h"
+#include "resetbuttons.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,14 +33,17 @@ public:
 
     void initButtons();
     QList <CustomButton *> ButtonList;
+    QList<Abstract_API::GeoObj> emptyList;
     void resizeEvent(QResizeEvent *event);
 
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
+    void dialogtraduction();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
     void RazSlot(Abstract_API::API_index);
+    void resetAllButtons();
 //  void ratpDialog();
 
 private:

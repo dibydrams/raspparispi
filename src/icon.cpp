@@ -280,7 +280,7 @@ QPixmap Icon::iconMapOff(QPixmap img, QColor color)
 /// \param close
 /// \return QPixmap
 ///
-QPixmap Icon::iconMapOffClose(QPixmap img, QColor color, int close = 1)
+QPixmap Icon::iconMapOffClose(QPixmap img, QColor color)
 {
     ///
     /// \brief Outline
@@ -319,14 +319,11 @@ QPixmap Icon::iconMapOffClose(QPixmap img, QColor color, int close = 1)
     painter.drawPixmap(QPointF(23, 12), img.scaled(pixSize * 0.4, Qt::KeepAspectRatio, Qt::FastTransformation));
 
     // Close or open icon over the center icon
-    if(close == 0)
-    {
-        painter.rotate(330);
+    painter.rotate(330);
 
-        painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
-        QRectF closeRect(0,33, 35,5);
-        painter.drawRect(closeRect);
-    }
+    painter.setBrush(QBrush(QColor(color), Qt::SolidPattern));
+    QRectF closeRect(0,33, 35,5);
+    painter.drawRect(closeRect);
 
     return bigPixmap;
 }

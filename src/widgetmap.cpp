@@ -194,6 +194,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
     int decalagePixmapX = 0, decalagePixmapY = 0;
     int pixelPointPixmapX, pixelPointPixmapY;
+    int cptAPI = 0;
 
     for (auto listePI_API : m_listePI_API)
     {
@@ -228,11 +229,41 @@ void WidgetMap::paintEvent(QPaintEvent *)
                 if( elem.pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
                 else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,elem.pixmap);
 
+                if( m_flagClic)
+                {
+                    //qDebug() << " " << pixelPointPixmapX << " " << pixelPointPixmapX + elem.pixmap.width();
+                    //qDebug() << " " << pixelPointPixmapY << " " << pixelPointPixmapY + elem.pixmap.height();
+
+                    if( (m_pointClicSouris.x() >= pixelPointPixmapX) && (m_pointClicSouris.x() <= pixelPointPixmapX + elem.pixmap.width()) &&
+                            (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
+                            )
+                    {
+                        qDebug() << "dedans pixmap" << "API " << cptAPI << "latitude " << elem.latitude << "longitude " << elem.longitude;
+                    }
+                }
+
                 //QString affCoord;
                 //affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
                 //p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
             }
         }
+        cptAPI ++;
+    }
+    m_flagClic = 0;
+}
+
+void WidgetMap::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << "clic mousePressEvent" << endl;
+
+    if (event->button() == Qt::LeftButton)
+    {
+        QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
+        qDebug() << text;
+        m_pointClicSouris.setX(event->x());
+        m_pointClicSouris.setY(event->y());
+        m_flagClic = 1;
+        this->update();
     }
 }
 
