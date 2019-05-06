@@ -23,6 +23,8 @@ QPixmap apiVelib::getPixmap()
 
 void apiVelib::API_Results(QNetworkReply *reply)
 {
+    listGeoObj.clear();
+    listVelib->clear();
     QJsonDocument jsdoc = QJsonDocument::fromJson(reply->readAll());
     QJsonObject jsobj = jsdoc.object();
     QJsonArray jsarr = jsobj["records"].toArray();

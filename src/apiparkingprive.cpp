@@ -22,6 +22,8 @@ QPixmap apiParkingPrive::getPixmap()
 
 void apiParkingPrive::API_Results(QNetworkReply *reply)
 {
+    listGeoObj.clear();
+    listParkingPrive->clear();
     QJsonDocument jsdoc = QJsonDocument::fromJson(reply->readAll());
     QJsonObject jsobj = jsdoc.object();
     QJsonArray jsarr = jsobj["records"].toArray();
