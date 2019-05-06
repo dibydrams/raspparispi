@@ -22,7 +22,7 @@ public:
 
     // Icon Map Off variantes
 
-    static QPixmap iconMapOffClose(QPixmap img, QColor color, int close);
+    static QPixmap iconMapOffClose(QPixmap img, QColor color);
     static QPixmap iconMapOffpix(QPixmap img, QPixmap pixbottom, QColor color);
 
 
