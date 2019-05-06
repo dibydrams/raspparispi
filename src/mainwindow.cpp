@@ -9,6 +9,7 @@
 #include "apiespacesverts.h"
 #include "apiratp_search.h"
 #include "apivelib.h"
+#include "resetbuttons.h"
 
 #include <QHBoxLayout>
 
@@ -187,6 +188,14 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonParkingPrive, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
+    // Bouton servant à réinitialiser la map et les boutons
+    ptr = new resetButtons;
+    CustomButton *resetButtons = new CustomButton(ptr, this);
+    ButtonList << resetButtons;
+    ui->horizontalLayout->addWidget(resetButtons);
+    resetButtons->setCheckable(false);
+    connect(resetButtons, SIGNAL(clicked()), this, SLOT(resetAllButtons()));
+
     ui->widget->setIconCount(ButtonList.count());
 }
 
@@ -246,8 +255,15 @@ void MainWindow::enableButtons()
 void MainWindow::RazSlot(Abstract_API::API_index button_ID)
 {
     qDebug()<<"razslot"<<button_ID;
-    QList<Abstract_API::GeoObj> emptyList;
     dataReceived(emptyList, button_ID);
+}
+
+void MainWindow::resetAllButtons()
+{
+    for (auto button : ButtonList) {
+            button->setChecked(false);
+            dataReceived(emptyList, button->buttonID);
+        }
 }
 
 //void MainWindow::ratpDialog()
