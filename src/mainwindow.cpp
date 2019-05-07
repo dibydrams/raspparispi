@@ -13,7 +13,6 @@
 #include "dialogtraduction.h"
 #include "resetbuttons.h"
 
-
 #include <QHBoxLayout>
 
 
@@ -247,11 +246,6 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex)
 {
-
-    qDebug()<<"liste recue"<<list.count();
-    for (auto l :ui->widget->m_listePI_API)
-        qDebug()<<"nb list"<<l.count();
-
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
     this->update();
@@ -288,7 +282,6 @@ void MainWindow::enableButtons()
 
 void MainWindow::RazSlot(Abstract_API::API_index button_ID)
 {
-    qDebug()<<"razslot"<<button_ID;
     dataReceived(emptyList, button_ID);
 }
 

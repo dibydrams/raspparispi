@@ -22,7 +22,6 @@ CustomButton::CustomButton(Abstract_API *ptr, QWidget *parent) : QPushButton(par
 
 void CustomButton::ClickedManage()
 {
-    qDebug()<<isChecked()<<isEnabled();
     if (this->isChecked()) {
         emit Clicked(ptrAPI); }
     else {
