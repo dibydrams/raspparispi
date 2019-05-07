@@ -67,6 +67,7 @@ SOURCES += \
         theatre.cpp \
         apifontaines.cpp \
         uistation.cpp \
+        dialogconnexion.cpp \
         distance.cpp
 
 HEADERS += \
@@ -108,6 +109,7 @@ HEADERS += \
         apifontaines.h \
         utilitaire.h \
         uistation.h \
+        dialogconnexion.h \
         distance.h
 
 FORMS += \
@@ -116,7 +118,8 @@ FORMS += \
 	mainwindow.ui \
         uiratp.ui \
         dialogmeteo.ui \
-        uistation.ui
+        uistation.ui \
+        dialogconnexion.ui
 
 
 # Default rules for deployment.
