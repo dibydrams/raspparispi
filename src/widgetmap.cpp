@@ -1,4 +1,5 @@
 #include "widgetmap.h"
+#include "dialoginfo.h"
 #include <QPainter>
 #include <QSettings>
 #include <QDebug>
@@ -273,6 +274,8 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
         m_pointClicSouris.setY(event->y());
         m_flagClic = 1;
         this->update();
+        dialoginfo fenetre;
+        fenetre.exec();
     }
 }
 
