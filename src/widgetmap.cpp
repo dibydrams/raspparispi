@@ -3,6 +3,14 @@
 #include <QSettings>
 #include <QDebug>
 
+// valeurs de départ par defaut au centre de Paris
+
+double WidgetMap::centreLongitude = 2.34599; //6 rue rougemont
+double WidgetMap::centreLatitude = 48.8699; //48.8716;
+double WidgetMap::rayonCentre = 0.007129412; //0.006;
+double WidgetMap::compensationLargeurRayon = 2.040087046;
+int WidgetMap::zoom = 15;
+
 
 // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
 // et les renvoient si elles existent
@@ -42,38 +50,38 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
     if(!QFile::exists(m_settings->fileName()))
     {
-        m_centreLongitude = 2.34599;//6 rue rougemont
-        m_centreLatitude = 48.8699;//48.8716;
-        m_rayonCentre = 0.007129412;//0.006;
-        m_zoom = 15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
-        m_compensationLargeurRayon = 2.040087046;//2;
+        m_centreLongitude = centreLongitude; //2.34599;//6 rue rougemont
+        m_centreLatitude = centreLatitude; //48.8699;//48.8716;
+        m_rayonCentre = rayonCentre; //0.007129412;//0.006;
+        m_zoom = zoom; //15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
+        m_compensationLargeurRayon = compensationLargeurRayon;//2.040087046;//2;
         flagConfigVide = 1;
     }   
 
     QVariant tmp;
 
     if(InitSetting(m_settings,"Coordonnees/centreLongitude", QString::number(m_centreLongitude,'f',13), tmp))
-        if(!flagConfigVide) m_centreLongitude = tmp.toDouble();
+        if(!flagConfigVide) m_centreLongitude = centreLongitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/centreLatitude", QString::number(m_centreLatitude,'f',13), tmp))
-        if(!flagConfigVide) m_centreLatitude = tmp.toDouble();
+        if(!flagConfigVide) m_centreLatitude = centreLatitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/rayonCentre", QString::number(m_rayonCentre,'f',13), tmp))
-        if(!flagConfigVide) m_rayonCentre = tmp.toDouble();
+        if(!flagConfigVide) m_rayonCentre = rayonCentre = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/compensationLargeurRayon", QString::number(m_compensationLargeurRayon,'f',13), tmp))
-        if(!flagConfigVide) m_compensationLargeurRayon = tmp.toDouble();
-    if(InitSetting(m_settings,"Image/largeur", "", tmp)) m_largeurImage = tmp.toInt();
-    if(InitSetting(m_settings,"Image/hauteur", "", tmp)) m_hauteurImage = tmp.toInt();
-    if(InitSetting(m_settings,"Image/zoom", QString::number(m_zoom), tmp) ) {
-        m_zoom = tmp.toInt();
+        if(!flagConfigVide) m_compensationLargeurRayon = compensationLargeurRayon = tmp.toDouble();
+    //if(InitSetting(m_settings,"Image/largeur", "", tmp)) m_largeurImage = tmp.toInt();
+    //if(InitSetting(m_settings,"Image/hauteur", "", tmp)) m_hauteurImage = tmp.toInt();
+    if(InitSetting(m_settings,"Coordonnees/zoom", QString::number(m_zoom), tmp) ) {
+        m_zoom = zoom = tmp.toInt();
         if( m_zoom < 0 || m_zoom > 17 ) {
             // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
-            m_zoom = 15;
+            m_zoom = zoom; //15;
             m_settings->setValue("Image/zoom", QString::number(15));
         }
     }
-    if(InitSetting(m_settings,"Coordonnees/BBOXminLongitude", "", tmp)) m_BBOXminLongitude = tmp.toDouble();
-    if(InitSetting(m_settings,"Coordonnees/BBOXminLatitude", "", tmp)) m_BBOXminLatitude = tmp.toDouble();
-    if(InitSetting(m_settings,"Coordonnees/BBOXmaxLongitude", "", tmp)) m_BBOXmaxLongitude = tmp.toDouble();
-    if(InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", "", tmp)) m_BBOXmaxLatitude = tmp.toDouble();
+    //if(InitSetting(m_settings,"Coordonnees/BBOXminLongitude", "", tmp)) m_BBOXminLongitude = tmp.toDouble();
+    //if(InitSetting(m_settings,"Coordonnees/BBOXminLatitude", "", tmp)) m_BBOXminLatitude = tmp.toDouble();
+    //if(InitSetting(m_settings,"Coordonnees/BBOXmaxLongitude", "", tmp)) m_BBOXmaxLongitude = tmp.toDouble();
+    //if(InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", "", tmp)) m_BBOXmaxLatitude = tmp.toDouble();
 
     // emplacement du fichier carte au même niveau du dossier de config
     // .config/AJC_Linux_embarque/carte.png
@@ -111,16 +119,13 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
             "layer=basic&style=main&view=Unified&"
             "zoom=" + QString::number(m_zoom) + "&"
 
-//            "bbox=" + QString::number(m_BBOXminLongitude,'g',17) + ","
-//                    + QString::number(m_BBOXminLatitude,'g',17)  + ","
-//                    + QString::number(m_BBOXmaxLongitude,'g',17) + ","
-//                    + QString::number(m_BBOXmaxLatitude,'g',17);
-              "bbox=" +QString("%1").arg(m_BBOXminLongitude, 0, 'g', 17)+","
-                      +QString("%1").arg(m_BBOXminLatitude, 0, 'g', 17)+","
-                      +QString("%1").arg(m_BBOXmaxLongitude, 0, 'g', 17)+","
-                      +QString("%1").arg(m_BBOXmaxLatitude, 0, 'g', 17));
+            "bbox=" + QString::number(m_BBOXminLongitude,'f',13) + ","
+                    + QString::number(m_BBOXminLatitude,'f',13)  + ","
+                    + QString::number(m_BBOXmaxLongitude,'f',13) + ","
+                    + QString::number(m_BBOXmaxLatitude,'f',13)
+                );
 
-       // qDebug()<<"urlText : : "<<urlText;
+       // qDebug()<<"url carte tomtom: " << urlText;
         QNetworkRequest req( (QUrl( urlText )) );
 
         QNetworkReply *reply = mgr.get(req);
@@ -151,12 +156,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
                 // mise à jour du fichier de config
 
-                InitSetting(m_settings,"Coordonnees/BBOXminLongitude", QString::number(m_BBOXminLongitude,'f',13), tmp);
-                InitSetting(m_settings,"Coordonnees/BBOXminLatitude", QString::number(m_BBOXminLatitude,'f',13), tmp);
-                InitSetting(m_settings,"Coordonnees/BBOXmaxLongitude", QString::number(m_BBOXmaxLongitude,'f',13), tmp);
-                InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
-                InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
-                InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
+                //InitSetting(m_settings,"Coordonnees/BBOXminLongitude", QString::number(m_BBOXminLongitude,'f',13), tmp);
+                //InitSetting(m_settings,"Coordonnees/BBOXminLatitude", QString::number(m_BBOXminLatitude,'f',13), tmp);
+                //InitSetting(m_settings,"Coordonnees/BBOXmaxLongitude", QString::number(m_BBOXmaxLongitude,'f',13), tmp);
+                //InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
+                //InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
+                //InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
             }
         }
         else qDebug() << "erreur api tomtom: " << reply->errorString();
@@ -241,10 +246,6 @@ void WidgetMap::paintEvent(QPaintEvent *)
                         qDebug() << "dedans pixmap" << "API " << cptAPI << "latitude " << elem.latitude << "longitude " << elem.longitude;
                     }
                 }
-
-                //QString affCoord;
-                //affCoord = QString::number(m_listePI.at(i).longitude, 'f', 13) + "  " + QString::number(m_listePI.at(i).latitude, 'f', 13);
-                //p.drawText(resultatPixelPointX+10,resultatPixelPointY+40,affCoord);
             }
         }
         cptAPI ++;

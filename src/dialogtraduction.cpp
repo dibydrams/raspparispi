@@ -25,8 +25,8 @@ Dialogtraduction::~Dialogtraduction()
 void Dialogtraduction::language()
 {
 
-    ui->comboBox->insertItem(0,"");
-    ui->comboBox->insertItem(1,"Anglais");
+    ui->comboBox->insertItem(0,"Français");
+    ui->comboBox->insertItem(1,"English");
     ui->comboBox->insertItem(2,"Arabe");
 
 
@@ -37,14 +37,26 @@ void Dialogtraduction::loadlang()
 {
 
 
-    Dialogtraduction d;
     QTranslator translator;
 
-    if(ui->comboBox->currentText() == "Anglais")
+    if(ui->comboBox->currentText() == "Français")
+    {
+
+        qDebug() << "Français";
+        qDebug()<< translator.load(":/Traduction/src_fr.qm") ;
+        qApp->installTranslator(&translator);                               //qApp est un pointeur sur la classe QApplication
+        ui->retranslateUi(this);
+
+    }
+
+    else if(ui->comboBox->currentText() == "English")
 
     {
 
-        qDebug()<< translator.load("src_en.qm") ;
+        qDebug() << "English";
+        qDebug()<< translator.load(":/Traduction/src_en.qm") ;
+        qApp->installTranslator(&translator);                               //qApp est un pointeur sur la classe QApplication
+        ui->retranslateUi(this);
 
 
     }
@@ -53,10 +65,14 @@ void Dialogtraduction::loadlang()
 
     {
 
-        qDebug()<< translator.load("src_ar.qm") ;
 
+        qDebug() << "Arabe";
+        qDebug()<< translator.load(":/Traduction/src_ar.qm") ;
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
 
     }
+
 
 
 }

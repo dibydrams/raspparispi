@@ -40,7 +40,7 @@ int coordToAddr::getPostalCode() const
 void coordToAddr::getAddress(QNetworkReply *reply)
 {
     if (currentReply->error() != QNetworkReply::NoError){
-        qDebug()<<"erreur\n";
+        //qDebug()<<"erreur\n";
         return;
     }
 

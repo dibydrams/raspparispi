@@ -20,6 +20,7 @@
 #include <QChartView>
 #include <QDialog>
 #include <QtCharts>
+#include "dialogtraduction.h"
 
 #include "ui_dialogmeteo.h"
 
@@ -39,6 +40,7 @@ public:
 private:
 
     Ui::Dialog *ui;
+
 
     meteo *m_meteo;
     Pollution *p_pollution;

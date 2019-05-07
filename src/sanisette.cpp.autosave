@@ -46,15 +46,15 @@ void sanisette::readJsonSani(){
         geo.pixmap = Icon::iconMapOff(getPixmap(),QColor(42, 132, 255));//
         m_list << geo;
     }
-    dist=new distance("48.8977","2.3594000000000506","car",qApp);
-    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~distance();
-    dist=new distance("48.8977","2.3594000000000506","pedestrian",qApp);
-    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~distance();
-    dist=new distance("48.8977","2.3594000000000506","bicycle",qApp);
-    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~distance();
+//    dist=new distance("48.8977","2.3594000000000506","car",qApp);
+//    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+//    dist->~distance();
+//    dist=new distance("48.8977","2.3594000000000506","pedestrian",qApp);
+//    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+//    dist->~distance();
+//    dist=new distance("48.8977","2.3594000000000506","bicycle",qApp);
+//    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+//    dist->~distance();
 
 
     emit callFinished(m_list, TOILETTES);
