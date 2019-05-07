@@ -26,10 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initButtons();
     l_lang = new Dialogtraduction(this);
-    meteo = new Dialog(this);
-
     connect(l_lang,SIGNAL(received(QString)),this,SLOT(loadlanguage(QString)));
-    connect(l_lang,SIGNAL(received(QString)),meteo,SLOT(loadlanguage(QString)));
 
 
 }
@@ -81,7 +78,7 @@ void MainWindow::initButtons()
     buttonMeteo->setCheckable(false);
     connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog()));
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
+    //connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
 
     ptr = new ApiEvenementsMV;
     CustomButton *buttonEv = new CustomButton(ptr, this);
@@ -264,8 +261,10 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::AP
 
 void MainWindow::dialog()
 {
-    Dialog fenetre;
+    Dialog fenetre(this);
+    //fenetre.loadlanguage("en");
     fenetre.exec();
+
 }
 
 void MainWindow::dialogtraduction()
@@ -311,31 +310,13 @@ void MainWindow::resetAllButtons()
 void MainWindow::loadlanguage(QString lang)
 {
 
-
+    qDebug() << "MainWindow";
     qDebug() << lang;
     QTranslator translator;
 
-    if(lang == "Anglais")
-    {
-        qDebug()<< translator.load(":/Traduction/src_en.qm");
-        qApp->installTranslator(&translator);
-        ui->retranslateUi(this);
-    }
-
-    else if(lang == "Français")
-    {
-        qDebug()<< translator.load(":/Traduction/src_fr.qm");
-        qApp->installTranslator(&translator);
-        ui->retranslateUi(this);
-    }
-
-    else if(lang == "Arabe")
-    {
-        qDebug()<< translator.load(":/Traduction/src_ar.qm");
-        qApp->installTranslator(&translator);
-        ui->retranslateUi(this);
-    }
-
+    translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
 
     l_lang->hide();
 

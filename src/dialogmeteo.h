@@ -35,6 +35,7 @@ public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
     void setvignette();
+    void loadlanguage(QString lang);
 
 private:
 
@@ -44,7 +45,6 @@ private:
     Pollution *p_pollution;
     IndiceUV *i_indice;
     Prevision *pm_prevision;
-    Dialogtraduction *l_lang;
     QStandardItemModel *table;
     QBarSet *set0;
     QBarSet *set1;
@@ -69,7 +69,8 @@ void printHashindice();
 void pollutionChart();
 void AQI();
 void Icon();
-void loadlanguage(QString lang);
+
+
 //void updatedial();
 
 
