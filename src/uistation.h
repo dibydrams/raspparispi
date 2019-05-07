@@ -1,6 +1,7 @@
 #ifndef UISTATION_H
 #define UISTATION_H
 
+#include <QDateTime>
 #include <QDialog>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -9,7 +10,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QDateTime>
 
 namespace Ui {
 class UiStation;
