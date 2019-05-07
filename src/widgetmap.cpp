@@ -12,7 +12,7 @@ double WidgetMap::compensationLargeurRayon = 2.040087046;
 int WidgetMap::zoom = 15;
 
 
-// initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
+// initialise les valeurs de .config/raspparispi/raspparispi.conf si elles n'existent pas
 // et les renvoient si elles existent
 
 int WidgetMap::InitSetting( QSettings *settings, const QString key, const QString value, QVariant &var )
@@ -29,7 +29,7 @@ int WidgetMap::InitSetting( QSettings *settings, const QString key, const QStrin
 void WidgetMap::setIconCount(int count)
 {
     m_iconCount=count;
-    // Remplissage de la iste vide mlisteAPI
+    // Remplissage de la iste vide m_listePI_API
             QList<Abstract_API::GeoObj> emptyL;
             for (int i = 0; i<m_iconCount; i++ ) {
                 m_listePI_API << emptyL;
@@ -39,10 +39,10 @@ void WidgetMap::setIconCount(int count)
 WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 {
 
-    // initialise les valeurs de .config/AJC_Linux_embarque/RasParispi.conf si elles n'existent pas
+    // initialise les valeurs de .config/raspparispi/raspparispi.conf si elles n'existent pas
     //
 
-    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");    
+    m_settings = new QSettings("raspparispi", "raspparispi");
 
     // valeurs de départ par defaut au centre de Paris
 
@@ -84,7 +84,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
     //if(InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", "", tmp)) m_BBOXmaxLatitude = tmp.toDouble();
 
     // emplacement du fichier carte au même niveau du dossier de config
-    // .config/AJC_Linux_embarque/carte.png
+    // .config/raspparispi/carte.png
 
     m_fichierCarte = m_settings->fileName();
     m_fichierCarte = m_fichierCarte.leftRef(m_fichierCarte.lastIndexOf('/',-2)).toString();
@@ -101,6 +101,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         m_BBOXminLatitude = m_centreLatitude - m_rayonCentre;
         m_BBOXmaxLongitude = m_centreLongitude + (m_rayonCentre*m_compensationLargeurRayon);
         m_BBOXmaxLatitude = m_centreLatitude + m_rayonCentre;
+
+        // test format hd 1920*1080 sans compensation en largeur
+        //m_BBOXminLongitude = 2.325374833;
+        //m_BBOXminLatitude = 48.86227647;
+        //m_BBOXmaxLongitude = 2.366605167;
+        //m_BBOXmaxLatitude = 48.87752353;
 
         // téléchargement d'une zone carte sur l'api tomtom
         //
@@ -146,7 +152,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
 
             QImage image = pixmap->toImage();
 
-            // enregistrement .config/AJC_Linux_embarque/carte.png
+            // enregistrement .config/raspparispi/carte.png
 
             if( !image.save(m_fichierCarte)) qDebug() << "erreur de sauvegarde: " << m_fichierCarte;
             else {
@@ -243,7 +249,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
                             )
                     {
-                        qDebug() << "dedans pixmap" << "API " << cptAPI << "latitude " << elem.latitude << "longitude " << elem.longitude;
+                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
+                        qDebug() << elem.info.values();
                     }
                 }
             }
@@ -255,8 +262,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
 void WidgetMap::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "clic mousePressEvent" << endl;
-
+    //qDebug() << "clic mousePressEvent" << endl;
     if (event->button() == Qt::LeftButton)
     {
         QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
