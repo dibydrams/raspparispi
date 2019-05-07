@@ -25,9 +25,11 @@ QPixmap apikiosques::getPixmap()
 void apikiosques::API_call()
 {
     API_access=new QNetworkAccessManager(this);
+
     //Acces aux setting de WidgetMap.h
     latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
     lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
+
     QString rayon = "1000";
     qDebug() << "latCentre: " << latCentre;
     currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=liste_des_kiosques_presse_a_paris&rows=-1&facet=code_postal&facet=statut&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));

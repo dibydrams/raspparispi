@@ -2,7 +2,7 @@
 #include <QMetaEnum>
 #include <QTextStream>
 #include <QDebug>
-
+#include "dialogconnexion.h"
 
 ApiTerrasses::ApiTerrasses()
 {
@@ -85,6 +85,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
 void ApiTerrasses::slotError(QNetworkReply::NetworkError)
 {
 qDebug()<<"Pas de connection";
+DialogConnexion::afficherConnexion();
 
 }
 //ajout fin

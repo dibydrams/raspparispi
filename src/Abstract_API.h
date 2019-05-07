@@ -34,6 +34,8 @@
 #include <QObject>
 #include <QPixmap>
 #include <QDebug>
+#include <QList>
+#include <QMap>
 
 class CustomButton;
 
@@ -75,10 +77,14 @@ public:
     /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
      * Les longitudes et latitudes doivent IMPERATIVEMENT être exprimées en type Double
      * L'ID correspond à un numéro associé aux catégories de l'énumération (EVENEMENTS = 0, RATP = 1, TERRASSES = 2, etc.) */
+
+    /*QMap permet d'afficher les informations que nous souhaitons afficher dans la QDialog*/
     struct  GeoObj {
         double longitude;
         double latitude;
         QPixmap pixmap;
+        API_index id;
+        QMap <QString,QString> info;
     };
 
     // Méthodes virtuelles pures + explications

@@ -9,7 +9,7 @@ QT       += network
 QT       += charts
 QT       += sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = src
 TEMPLATE = app
@@ -37,7 +37,9 @@ SOURCES += \
         apiparkingprive.cpp \
         apiparkingpublic.cpp \
         apivelib.cpp \
+    apivigicrues.cpp \
         coordtoaddr.cpp \
+    dialoginfo.cpp \
         dialogmeteo.cpp \
         dialogtraduction.cpp \
         indiceuv.cpp \
@@ -51,9 +53,12 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+    qcustomplot.cpp \
         traduction.cpp \
         resetbuttons.cpp \
         utilitaire.cpp \
+    vigicruesdebit.cpp \
+    vigicrueshauteur.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
@@ -80,9 +85,11 @@ HEADERS += \
         apiparkingpublic.h \
         apiquefaire.h \
         apivelib.h \
+        apivigicrues.h \
         coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
+        dialoginfo.h \
         dialogmeteo.h \
         dialogtraduction.h \
         icon.h \
@@ -92,11 +99,14 @@ HEADERS += \
         pharmapi.h \
         pollution.h \
         prevision.h \
+        qcustomplot.h \
         resetbuttons.h \
         stoppoint.h \
         traduction.h \
         transport.h \
         uiratp.h \
+        vigicruesdebit.h \
+        vigicrueshauteur.h \
         widgetmap.h \
         apiratp_global.h \
         apiterrasses.h \
@@ -111,6 +121,7 @@ HEADERS += \
         distance.h
 
 FORMS += \
+    dialoginfo.ui \
         dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \

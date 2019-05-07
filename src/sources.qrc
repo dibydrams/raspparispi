@@ -27,6 +27,7 @@
         <file>Icons/iconelectric-car.png</file>
         <file>Icons/iconfireworks.png</file>
         <file>Icons/iconvelibwork.png</file>
-	<file>Icons/reseticon.png</file>
+        <file>Icons/reseticon.png</file>
+        <file>Icons/floodicon.png</file>
     </qresource>
 </RCC>

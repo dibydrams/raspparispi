@@ -102,6 +102,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         m_BBOXmaxLongitude = m_centreLongitude + (m_rayonCentre*m_compensationLargeurRayon);
         m_BBOXmaxLatitude = m_centreLatitude + m_rayonCentre;
 
+        // test format hd 1920*1080 sans compensation en largeur
+        //m_BBOXminLongitude = 2.325374833;
+        //m_BBOXminLatitude = 48.86227647;
+        //m_BBOXmaxLongitude = 2.366605167;
+        //m_BBOXmaxLatitude = 48.87752353;
+
         // téléchargement d'une zone carte sur l'api tomtom
         //
 
@@ -243,7 +249,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
                             )
                     {
-                        qDebug() << "dedans pixmap" << "API " << cptAPI << "latitude " << elem.latitude << "longitude " << elem.longitude;
+                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
+                        qDebug() << elem.info.values();
                     }
                 }
             }
@@ -255,8 +262,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
 void WidgetMap::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "clic mousePressEvent" << endl;
-
+    //qDebug() << "clic mousePressEvent" << endl;
     if (event->button() == Qt::LeftButton)
     {
         QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
