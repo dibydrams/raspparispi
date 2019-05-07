@@ -11,8 +11,10 @@ void ApiEvenementsMV::API_Call() // Gestion du call à l'API
     API_Access = new QNetworkAccessManager(this);
 
     // Accès aux settings de widgetmap.h
-    double conf_longitude  = settingsAccess.m_centreLongitude;
-    double conf_latitude = settingsAccess.m_centreLatitude;
+//    double conf_longitude  = settingsAccess.m_centreLongitude;
+//    double conf_latitude = settingsAccess.m_centreLatitude;
+    double conf_longitude  = WidgetMap::centreLongitude;
+    double conf_latitude = WidgetMap::centreLatitude;
 
     QString lat = QString::number(conf_latitude);
     QString lon = QString::number(conf_longitude);
@@ -62,6 +64,8 @@ void ApiEvenementsMV::getInfo()
 {
     API_Call();
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    //qDebug() << "acces settings carte centreLongitude: " << WidgetMap::centreLongitude;
+    //qDebug() << "acces settings carte centreLatitude: " << WidgetMap::centreLatitude;
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)

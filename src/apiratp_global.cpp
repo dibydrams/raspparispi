@@ -2,8 +2,7 @@
 
 ApiRatp_Global::ApiRatp_Global()
 {
-
-    m_settings = new QSettings("AJC_Linux_embarque", "RasParispi");
+    m_settings = new QSettings("raspparispi", "raspparispi");
     if (referentielStifJson.isEmpty())
     {
         if (m_settings->value("Datas/Referentiel").isNull())

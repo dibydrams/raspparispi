@@ -9,7 +9,7 @@ QT       += network
 QT       += charts
 QT       += sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = src
 TEMPLATE = app
@@ -34,12 +34,14 @@ SOURCES += \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
-    apiparkingprive.cpp \
+        apiparkingprive.cpp \
         apiparkingpublic.cpp \
         apivelib.cpp \
-    coordtoaddr.cpp \
+    apivigicrues.cpp \
+        coordtoaddr.cpp \
+    dialoginfo.cpp \
         dialogmeteo.cpp \
-    dialogtraduction.cpp \
+        dialogtraduction.cpp \
         indiceuv.cpp \
         meteo.cpp \
         pollution.cpp \
@@ -51,9 +53,12 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
-    traduction.cpp \
-    resetbuttons.cpp \
+    qcustomplot.cpp \
+        traduction.cpp \
+        resetbuttons.cpp \
         utilitaire.cpp \
+    vigicruesdebit.cpp \
+    vigicrueshauteur.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
@@ -65,8 +70,9 @@ SOURCES += \
         apiespacesverts.cpp \
         theatre.cpp \
         apifontaines.cpp \
-        distance.cpp\
-        uistation.cpp
+        uistation.cpp \
+        dialogconnexion.cpp \
+        distance.cpp
 
 HEADERS += \
         Abstract_API.h \
@@ -75,15 +81,17 @@ HEADERS += \
         apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
-    apiparkingprive.h \
+        apiparkingprive.h \
         apiparkingpublic.h \
         apiquefaire.h \
         apivelib.h \
-    coordtoaddr.h \
+        apivigicrues.h \
+        coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
+        dialoginfo.h \
         dialogmeteo.h \
-    dialogtraduction.h \
+        dialogtraduction.h \
         icon.h \
         indiceuv.h \
         mainwindow.h \
@@ -91,11 +99,14 @@ HEADERS += \
         pharmapi.h \
         pollution.h \
         prevision.h \
-    resetbuttons.h \
+        qcustomplot.h \
+        resetbuttons.h \
         stoppoint.h \
-    traduction.h \
+        traduction.h \
         transport.h \
         uiratp.h \
+        vigicruesdebit.h \
+        vigicrueshauteur.h \
         widgetmap.h \
         apiratp_global.h \
         apiterrasses.h \
@@ -105,15 +116,18 @@ HEADERS += \
         apiespacesverts.h \
         apifontaines.h \
         utilitaire.h \
-        distance.h\
-        uistation.h
+        uistation.h \
+        dialogconnexion.h \
+        distance.h
 
 FORMS += \
-    dialogtraduction.ui \
+    dialoginfo.ui \
+        dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \
         dialogmeteo.ui \
-    uistation.ui
+        uistation.ui \
+        dialogconnexion.ui
 
 
 # Default rules for deployment.

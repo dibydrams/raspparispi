@@ -67,9 +67,8 @@ void apiVelib::API_Results(QNetworkReply *reply)
 void apiVelib::getInfo()
 {
     networkManager = new QNetworkAccessManager(this);
-    WidgetMap map;
-    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
-    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
+    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
     QString rayon = "1000";
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&rows=-1&facet=overflowactivation&facet=creditcard&facet=kioskstate&facet=station_state&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
     QNetworkRequest request;

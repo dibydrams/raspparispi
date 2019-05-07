@@ -92,9 +92,8 @@ void apiParkingPublic::API_Results(QNetworkReply *reply)
 void apiParkingPublic::getInfo()
 {
     networkManager = new QNetworkAccessManager(this);
-    WidgetMap map;
-    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
-    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
+    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&rows=-1&facet=regpri&facet=regpar&facet=typsta&facet=arrond&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
     QNetworkRequest request;
     request.setUrl(url);

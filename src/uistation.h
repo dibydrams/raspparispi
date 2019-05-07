@@ -1,6 +1,7 @@
 #ifndef UISTATION_H
 #define UISTATION_H
 
+#include <QDateTime>
 #include <QDialog>
 #include <QJsonArray>
 #include <QJsonDocument>

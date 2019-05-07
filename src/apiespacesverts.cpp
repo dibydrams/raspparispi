@@ -2,7 +2,6 @@
 
 ApiEspacesVerts::ApiEspacesVerts()
 {
-
 }
 
 Abstract_API::API_index ApiEspacesVerts::getId()
@@ -42,9 +41,17 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
         geo.latitude = lat;      
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
 
-//        geo.pixmap = QPixmap();
+        /*Ce sont les informations que je souhaite récupéré du JSON, pour l'API espaces verts.
+         *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
+         *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
 
-        //geo.id = getId();
+        geo.info.insert("typeVoie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
+        geo.info.insert("nomVoie",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
+        geo.info.insert("nomEV",jsObj["fields"].toObject()["nom_ev"].toString());
+        geo.info.insert("codePostal",jsObj["fields"].toObject()["adresse_codepostal"].toString());
+        geo.info.insert("categorie",jsObj["fields"].toObject()["categorie"].toString());
+        geo.info.insert("presCloture",jsObj["fields"].toObject()["presence_cloture"].toString());
+        geo.info.insert("ouvertFerme",jsObj["fields"].toObject()["ouvert_ferme"].toString());
 
         m_list << geo;
     }

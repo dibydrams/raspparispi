@@ -3,6 +3,7 @@
 
 #include "Abstract_API.h"
 #include "dialogmeteo.h"
+#include "dialoginfo.h"
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 #include "apiterrasses.h"
@@ -13,7 +14,6 @@
 #include "dialogtraduction.h"
 #include "resetbuttons.h"
 #include "QString"
-
 
 #include <QHBoxLayout>
 
@@ -256,11 +256,6 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex)
 {
-
-    qDebug()<<"liste recue"<<list.count();
-    for (auto l :ui->widget->m_listePI_API)
-        qDebug()<<"nb list"<<l.count();
-
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
     this->update();
@@ -276,6 +271,12 @@ void MainWindow::dialog()
 void MainWindow::dialogtraduction()
 {
     l_lang->show();
+}
+
+void MainWindow::dialogInfo()
+{
+   dialoginfo fenetre;
+   fenetre.exec();
 }
 
 void MainWindow::GetInfo(Abstract_API *ptr)
@@ -296,7 +297,6 @@ void MainWindow::enableButtons()
 
 void MainWindow::RazSlot(Abstract_API::API_index button_ID)
 {
-    qDebug()<<"razslot"<<button_ID;
     dataReceived(emptyList, button_ID);
 }
 

@@ -25,9 +25,11 @@ QPixmap apifontaines::getPixmap()
 void apifontaines::API_call()
 {
     API_access=new QNetworkAccessManager(this);
-    WidgetMap map;
-    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
-    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+
+    //Acces aux setting de WidgetMap.h
+    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
+    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
+
     QString rayon = "1000";
     qDebug() << "latCentre: " << latCentre;
     currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&facet=arro&facet=modele&rows=-1&facet=a_boire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));
@@ -60,7 +62,8 @@ void apifontaines::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
+        if (statut=="P") geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
+        else geo.pixmap=Icon::iconMapOffClose(getPixmap(), Qt::darkCyan);
 
 
         m_list<<geo;

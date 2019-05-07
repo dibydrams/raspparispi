@@ -37,7 +37,6 @@ void sanisette::readJsonSani(){
         QJsonArray objectGeom = objectFields["geom_x_y"].toArray();
         double latitude = objectGeom[0].toDouble();
         double longitude = objectGeom[1].toDouble();
-        //dist=new distance(latitude,longitude,qApp);
 
         // remplissage de geoObj
         GeoObj geo;
@@ -46,6 +45,18 @@ void sanisette::readJsonSani(){
         geo.pixmap = Icon::iconMapOff(getPixmap(),QColor(42, 132, 255));//
         m_list << geo;
     }
+
+    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
+   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+    dist->~distance();
+    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
+    //qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+    dist->~distance();
+    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
+   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+    dist->~distance();
+
+
     emit callFinished(m_list, TOILETTES);
 }
 

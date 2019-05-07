@@ -17,8 +17,8 @@ description:
 
 A travers l'API Tomtom (https://api.tomtom.com/map/1/staticimage) :
 télécharge une zone de la carte par ses coordonnées gps au centre,
-puis la stocke près du fichier de configuation RasParispi.conf
-du répertoire .config/AJC_Linux_embarque/
+puis la stocke près du fichier de configuation raspparispi.conf
+du répertoire .config/raspparispi/
 
 La carte.png est lancée localement à la prochaine execution
 du programme avec ses caractéristiques enregistrées.
@@ -77,14 +77,20 @@ public:
     QPoint m_pointClicSouris;
     QPixmap pix_PI;
 
+    static double centreLongitude;
+    static double centreLatitude;
+    static double rayonCentre;
+    static double compensationLargeurRayon;
+    static int zoom;
+
     void setIconCount( int count);
 
-    QList<Abstract_API::GeoObj> m_listePI;
     QList<QList<Abstract_API::GeoObj>> m_listePI_API;
     QList<QList<QPoint>> m_listePixelPoint;
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);
+    static double GetParamsWidgetMap();
 
     ~WidgetMap() override;
 private:
