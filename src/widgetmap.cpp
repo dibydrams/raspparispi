@@ -250,7 +250,9 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             )
                     {
                         /*Le qDebug ci-dessous permet lors du clic de la souris, d'afficher les informations*/
+
                         qDebug() << elem.info.values();
+                        //qDebug() << "l'API qui est cliqué" << cptAPI << "la longitude" << elem.longitude << "la latitude" << elem.latitude;
                     }
                 }
             }
