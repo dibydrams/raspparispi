@@ -12,7 +12,6 @@
 #include <QJsonObject>
 #include "Abstract_API.h"
 #include "icon.h"
-#include "distance.h"
 #include "dist1.h"
 
 class sanisette : public Abstract_API
