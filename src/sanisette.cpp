@@ -38,7 +38,6 @@ void sanisette::readJsonSani(){
         double latitude = objectGeom[0].toDouble();
         double longitude = objectGeom[1].toDouble();
 
-
         // remplissage de geoObj
         GeoObj geo;
         geo.longitude = longitude;
@@ -46,14 +45,15 @@ void sanisette::readJsonSani(){
         geo.pixmap = Icon::iconMapOff(getPixmap(),QColor(42, 132, 255));//
         m_list << geo;
     }
-    dist=new distance("48.8977","2.3594000000000506","car",qApp);
-    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+
+    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
+   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
     dist->~distance();
-    dist=new distance("48.8977","2.3594000000000506","pedestrian",qApp);
-    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
+    //qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
     dist->~distance();
-    dist=new distance("48.8977","2.3594000000000506","bicycle",qApp);
-    qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
+    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
+   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
     dist->~distance();
 
 

@@ -14,7 +14,6 @@
 #include "Abstract_API.h"
 #include "addrtocoord.h"
 #include "icon.h"
-#include "distance.h"
 
 class theatre : public Abstract_API
 {

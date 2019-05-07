@@ -34,12 +34,12 @@ SOURCES += \
         apibornes_elec.cpp \
         apievenementsmv.cpp \
         apimeteo.cpp \
-    apiparkingprive.cpp \
+        apiparkingprive.cpp \
         apiparkingpublic.cpp \
         apivelib.cpp \
-    coordtoaddr.cpp \
+        coordtoaddr.cpp \
         dialogmeteo.cpp \
-    dialogtraduction.cpp \
+        dialogtraduction.cpp \
         indiceuv.cpp \
         meteo.cpp \
         pollution.cpp \
@@ -51,8 +51,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
-    traduction.cpp \
-    resetbuttons.cpp \
+        traduction.cpp \
+        resetbuttons.cpp \
         utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
@@ -65,10 +65,9 @@ SOURCES += \
         apiespacesverts.cpp \
         theatre.cpp \
         apifontaines.cpp \
-        distance.cpp\
         uistation.cpp \
-    dist1.cpp \
-    dialogconnexion.cpp
+        dialogconnexion.cpp \
+        distance.cpp
 
 HEADERS += \
         Abstract_API.h \
@@ -77,15 +76,15 @@ HEADERS += \
         apibornes_elec.h \
         apievenementsmv.h \
         apimeteo.h \
-    apiparkingprive.h \
+        apiparkingprive.h \
         apiparkingpublic.h \
         apiquefaire.h \
         apivelib.h \
-    coordtoaddr.h \
+        coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
         dialogmeteo.h \
-    dialogtraduction.h \
+        dialogtraduction.h \
         icon.h \
         indiceuv.h \
         mainwindow.h \
@@ -93,9 +92,9 @@ HEADERS += \
         pharmapi.h \
         pollution.h \
         prevision.h \
-    resetbuttons.h \
+        resetbuttons.h \
         stoppoint.h \
-    traduction.h \
+        traduction.h \
         transport.h \
         uiratp.h \
         widgetmap.h \
@@ -107,18 +106,17 @@ HEADERS += \
         apiespacesverts.h \
         apifontaines.h \
         utilitaire.h \
-        distance.h\
         uistation.h \
-    dist1.h \
-    dialogconnexion.h
+        dialogconnexion.h \
+        distance.h
 
 FORMS += \
-    dialogtraduction.ui \
+        dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \
         dialogmeteo.ui \
-    uistation.ui \
-    dialogconnexion.ui
+        uistation.ui \
+        dialogconnexion.ui
 
 
 # Default rules for deployment.

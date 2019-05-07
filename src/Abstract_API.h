@@ -68,7 +68,6 @@ public:
         FONTAINES,
         TRADUCTION,
         RESET,
-
     };
 
 
@@ -80,7 +79,6 @@ public:
         double longitude;
         double latitude;
         QPixmap pixmap;
-        //int id;
     };
 
     // Méthodes virtuelles pures + explications
