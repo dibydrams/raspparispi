@@ -56,7 +56,8 @@ public slots:
 private:
     Ui::MainWindow *ui;
     Dialogtraduction *l_lang;
-    Dialog *meteo;
+signals:
+    void open();
 
 };
 

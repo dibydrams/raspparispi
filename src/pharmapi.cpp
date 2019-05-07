@@ -48,6 +48,14 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(0, 153, 0));
+        geo.id = getId();
+
+        /*Ce sont les informations que je souhaite récupéré du JSON, pour l'API espaces verts.
+         *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
+         *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
+
+        geo.info.insert("nom",objn["fields"].toObject()["rs"].toString());
+        geo.info.insert("telephone",objn["fields"].toObject()["telephone"].toVariant().toString());
 
        m_list << geo;
     }

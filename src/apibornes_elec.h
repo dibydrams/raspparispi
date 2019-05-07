@@ -34,6 +34,8 @@ private:
     QJsonObject obj;
     QJsonArray arr;
     QList<GeoObj> m_list;
+    QString lat;
+    QString lon;
 
     double longitude;
     double latitude;
