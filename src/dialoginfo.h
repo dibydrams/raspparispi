@@ -22,7 +22,7 @@ public:
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QTableWidget *tableWidgetDistance;
-    QTableWidget QList<QTableWidget>;
+   // QTableWidget QList<QTableWidget>;
     explicit dialoginfo(QWidget *parent = nullptr);
     ~dialoginfo();
 
