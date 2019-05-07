@@ -102,6 +102,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         m_BBOXmaxLongitude = m_centreLongitude + (m_rayonCentre*m_compensationLargeurRayon);
         m_BBOXmaxLatitude = m_centreLatitude + m_rayonCentre;
 
+        // test format hd 1920*1080 sans compensation en largeur
+        //m_BBOXminLongitude = 2.325374833;
+        //m_BBOXminLatitude = 48.86227647;
+        //m_BBOXmaxLongitude = 2.366605167;
+        //m_BBOXmaxLatitude = 48.87752353;
+
         // téléchargement d'une zone carte sur l'api tomtom
         //
 
