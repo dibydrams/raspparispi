@@ -11,3 +11,4 @@ src/*.o
 src/Makefile
 qrc*
 ui_*
+*.autosave
