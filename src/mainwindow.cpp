@@ -3,6 +3,7 @@
 
 #include "Abstract_API.h"
 #include "dialogmeteo.h"
+#include "dialoginfo.h"
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 #include "apiterrasses.h"
@@ -262,6 +263,12 @@ void MainWindow::dialogtraduction()
 {
     Dialogtraduction fenetre;
     fenetre.exec();
+}
+
+void MainWindow::dialogInfo()
+{
+   dialoginfo fenetre;
+   fenetre.exec();
 }
 
 void MainWindow::GetInfo(Abstract_API *ptr)
