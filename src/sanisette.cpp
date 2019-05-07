@@ -53,7 +53,39 @@ void sanisette::readJsonSani(){
         QJsonArray objectGeom = objectFields["geom_x_y"].toArray();
         double latitude = objectGeom[0].toDouble();
         double longitude = objectGeom[1].toDouble();
+        double arrondissement = objectFields["arrondissement"].toDouble();
+        QString strArrondissement = QString("%1").arg(arrondissement);
+        QString numero_voie = objectFields["numero_voie"].toString();
+        QString nom_voie = objectFields["nom_voie"].toString();
+        QString valueHO = objectFields["horaires_ouverture"].toString();
+        QString adr=numero_voie+" "+nom_voie+ " Paris "+ strArrondissement;
+        QString strLong = QString("%1").arg(longitude, 0, 'g', 17);
+        qDebug()<<"strLong  "<< strLong;
 
+        QString strLat = QString("%1").arg(latitude, 0, 'g', 17);
+        qDebug()<<"strLat "<< strLat;
+        dist=new distance(qApp,strLat,strLong,"pedestrian");
+        int distance=dist->getDistanceInMeters();
+        //QString distancestr=QString(distance);//
+        qDebug()<<"distances : : "<<distance;
+       // int timeTravelPedestrian=dist->getTimetravel();
+        //QString timeTravelPedstr=QString(timeTravelPedestrian);//
+        //qDebug()<<"timeTravelPedstr : : "<<timeTravelPedestrian;
+       // dist->~distance();
+//        dist=new class distance(qApp,strLat,strLong,"car");
+//        int timeTravelCar=dist->getTimetravelWithTraffic();
+//        QString timeTravelCarstr=QString(timeTravelCar);
+//        qDebug()<<"timeTravelCarstr : : "<<timeTravelCarstr;
+//        dist->~distance();
+//        dist=new class distance(qApp,strLat,strLong,"bus");
+//        int timeTravelBus=dist->getTimetravelWithTraffic();
+//        QString timeTravelBusstr=QString(timeTravelBus);
+//        qDebug()<<"timeTravelBusstr : : "<<timeTravelBusstr;
+//        dist->~distance();
+        qDebug()<<" adr : : "<<adr;
+//        QMap<QString,QString> mapsanisette;
+//        mapsanisette["adrr"]=adr;
+//        mapsanisette["horaire"]=valueHO;
         // remplissage de geoObj
         GeoObj geo;
         geo.longitude = longitude;
@@ -61,7 +93,6 @@ void sanisette::readJsonSani(){
         geo.pixmap = Icon::iconMapOff(getPixmap(),QColor(42, 132, 255));//
         m_list << geo;
     }
-
     emit callFinished(m_list, TOILETTES);
 }
 

@@ -19,6 +19,7 @@
 #include <QJsonValue>
 #include <QVariantHash>
 #include <QJsonObject>
+#include <QMap>
 #include "Abstract_API.h"
 #include "icon.h"
 #include "distance.h"
