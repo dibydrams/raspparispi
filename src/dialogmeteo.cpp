@@ -43,6 +43,8 @@ Dialog::Dialog(QWidget *parent) :
     p_pollution = new Pollution;
     i_indice = new IndiceUV;
     pm_prevision=new Prevision;
+    l_lang = new Dialogtraduction(this);
+
 
     connect(m_meteo,SIGNAL(received()),this,SLOT(printHashmeteo()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(printHashpollution()));
@@ -53,11 +55,13 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
     connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
 
+
     setvignette();
 
     QPixmap uvprotection;
     uvprotection.load(":/Icons_meteo/protectionUV.png");
     ui->label_UVprotection->setPixmap(uvprotection);
+
 
 }
 
@@ -278,6 +282,42 @@ void Dialog::Icon()                                        //affichage de l'icon
 
     ic.load(QString(":/Icons_meteo/%1.png").arg(icon));
     ui->labelIcon->setPixmap(ic);
+
+}
+
+void Dialog::loadlanguage(QString lang)
+{
+
+    qDebug() << "Iciiiiiiiii!!!!!";
+
+    qDebug() << lang;
+    QTranslator translator;
+
+    if(lang == "Anglais")
+    {
+        qDebug()<< translator.load(":/Traduction/src_en.qm");
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
+    }
+
+    else if(lang == "Français")
+    {
+        qDebug()<< translator.load(":/Traduction/src_fr.qm");
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
+    }
+
+    else if(lang == "Arabe")
+    {
+        qDebug()<< translator.load(":/Traduction/src_ar.qm");
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
+    }
+
+
+
+    l_lang->hide();
+
 
 }
 
@@ -643,6 +683,8 @@ void Dialog::printHashindice()                                 //Affichage de l'
 
     ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
 }
+
+
 
 
 /*Unité

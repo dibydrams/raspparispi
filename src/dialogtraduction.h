@@ -19,14 +19,17 @@ public:
 
 private:
     Ui::Dialogtraduction *ui;
-
-
-private slots:
-    void language();
-
+    QString m_lang;
+    Dialogtraduction *l_lang;
 
 public slots:
-    void loadlang();
+    void loadfr();
+    void loadar();
+    void loaden();
+
+
+signals:
+    void received(QString lang);
 
 };
 

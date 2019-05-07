@@ -18,6 +18,8 @@
 #include "apiparkingpublic.h"
 #include "apiparkingprive.h"
 #include "resetbuttons.h"
+#include "dialogtraduction.h"
+#include "dialogmeteo.h"
 
 namespace Ui {
 class MainWindow;
@@ -46,8 +48,15 @@ private slots:
     void resetAllButtons();
 //  void ratpDialog();
 
+
+public slots:
+    void loadlanguage(QString lang);
+
 private:
     Ui::MainWindow *ui;
+    Dialogtraduction *l_lang;
+    Dialog *meteo;
+
 };
 
 #endif // MAINWINDOW_H

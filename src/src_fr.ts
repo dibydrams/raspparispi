@@ -386,7 +386,7 @@ p, li { white-space: pre-wrap; }
     <name>Dialogtraduction</name>
     <message>
         <location filename="dialogtraduction.ui" line="14"/>
-        <source>Dialog</source>
+        <source>Traduction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -400,7 +400,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="26"/>
         <source>Around Me - Map</source>
-        <translation type="unfinished"></translation>
+        <translation>Carte - Autour de Moi</translation>
     </message>
 </context>
 <context>
