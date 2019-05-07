@@ -9,7 +9,7 @@ QT       += network
 QT       += charts
 QT       += sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = src
 TEMPLATE = app
@@ -52,6 +52,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+    qcustomplot.cpp \
         traduction.cpp \
         resetbuttons.cpp \
         utilitaire.cpp \
@@ -94,6 +95,7 @@ HEADERS += \
         pharmapi.h \
         pollution.h \
         prevision.h \
+        qcustomplot.h \
         resetbuttons.h \
         stoppoint.h \
         traduction.h \
