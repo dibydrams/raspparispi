@@ -56,6 +56,7 @@ SOURCES += \
         traduction.cpp \
         resetbuttons.cpp \
         utilitaire.cpp \
+    vigicruesdebit.cpp \
     vigicrueshauteur.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
@@ -102,6 +103,7 @@ HEADERS += \
         traduction.h \
         transport.h \
         uiratp.h \
+        vigicruesdebit.h \
         vigicrueshauteur.h \
         widgetmap.h \
         apiratp_global.h \
