@@ -7,6 +7,7 @@ DialogConnexion::DialogConnexion(QWidget *parent) :
     ui(new Ui::DialogConnexion)
 {
     ui->setupUi(this);
+
 }
 
 DialogConnexion::~DialogConnexion()
@@ -17,6 +18,8 @@ DialogConnexion::~DialogConnexion()
 void DialogConnexion::afficherConnexion()
 {
 qDebug()<<"c'est la fonction afficherConnexion";
-
+DialogConnexion *fenetr = new DialogConnexion;
+fenetr->ui->label->setText("Problème de connexion !!");
+fenetr->show();
 
 }

@@ -38,6 +38,7 @@ SOURCES += \
         apiparkingpublic.cpp \
         apivelib.cpp \
         coordtoaddr.cpp \
+    dialoginfo.cpp \
         dialogmeteo.cpp \
         dialogtraduction.cpp \
         indiceuv.cpp \
@@ -83,6 +84,7 @@ HEADERS += \
         coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
+        dialoginfo.h \
         dialogmeteo.h \
         dialogtraduction.h \
         icon.h \
@@ -111,6 +113,7 @@ HEADERS += \
         distance.h
 
 FORMS += \
+    dialoginfo.ui \
         dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \
