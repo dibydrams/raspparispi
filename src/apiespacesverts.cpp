@@ -40,7 +40,6 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
         geo.longitude = longit;
         geo.latitude = lat;      
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
-        geo.id = getId();
 
         /*Ce sont les informations que je souhaite récupéré du JSON, pour l'API espaces verts.
          *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
