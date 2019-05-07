@@ -83,6 +83,13 @@ public:
         //int id;
     };
 
+    /* Structure permettant de récupérer la long, la lat et l'id, lors du clic sur l'icone*/
+    struct ClickedGeoObj {
+        double longitude;
+        double latitude;
+        int id;
+    };
+
     // Méthodes virtuelles pures + explications
     virtual QPixmap getPixmap() = 0;
     virtual API_index getId() = 0;
@@ -94,6 +101,7 @@ public slots:
     // Aide au déboggage
 public:
     void debug(QList<GeoObj> list);
+    void debugId(QList<ClickedGeoObj> listclickedgeoobj);
 
     // Signal de fin de process des data
 signals:
