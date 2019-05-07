@@ -1,7 +1,7 @@
 #include "pharmapi.h"
 #include "icon.h"
 #include <QSqlQuery>
-#include <QDebug>
+//#include <QDebug>
 
 pharmapi::pharmapi()
 {
@@ -40,7 +40,6 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
         QJsonObject objn = val.toObject();
         longitude = objn["geometry"].toObject()["coordinates"].toArray()[0].toDouble();
         latitude = objn["geometry"].toObject()["coordinates"].toArray()[1].toDouble();
-        qDebug()<<latitude;
 
         GeoObj geo;
 
@@ -51,40 +50,40 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
        m_list << geo;
     }
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/dibydrams/pharmloc.db");
-    db.open();
+//    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+//    db.setDatabaseName("/home/dibydrams/pharmloc.db");
+//    db.open();
 
-    if(db.open())
-    {
-        qDebug() << "Vous êtes maintenant connecté à la base de donnée pharmloc.";
-        QSqlQuery query;
-        if(query.exec("SELECT * FROM pharmloc"))
-        {
-            while(query.next())
-            {
-                qDebug() << "Ajout d'une nouvelle pharmacie";
-                // Récupère les valeurs dans des variables.
-                latitude = query.value(1).toDouble();
-                longitude = query.value(2).toDouble();
-                qDebug() << "Pharmlat : " << latitude;
-                qDebug() << "Pharmlong : "<< longitude;
+//    if(db.open())
+//    {
+//        qDebug() << "Vous êtes maintenant connecté à la base de donnée pharmloc.";
+//        QSqlQuery query;
+//        if(query.exec("SELECT * FROM pharmloc"))
+//        {
+//            while(query.next())
+//            {
+//                qDebug() << "Ajout d'une nouvelle pharmacie";
+//                // Récupère les valeurs dans des variables.
+//                latitude = query.value(1).toDouble();
+//                longitude = query.value(2).toDouble();
+//                qDebug() << "Pharmlat : " << latitude;
+//                qDebug() << "Pharmlong : "<< longitude;
 
-                GeoObj geo;
+//                GeoObj geo;
 
-                geo.longitude = longitude;
-                geo.latitude = latitude;
-                geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(252, 181, 75));
+//                geo.longitude = longitude;
+//                geo.latitude = latitude;
+//                geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(252, 181, 75));
 
-                m_list << geo;
-            }
-            qDebug() << "Fin des requêtes.";
-        }
-    }
-    db.close();
+//                m_list << geo;
+//            }
+//            qDebug() << "Fin des requêtes.";
+//        }
+//    }
+//    db.close();
 
     emit callFinished(m_list, PHARMACIES);  // Signal de fin de traitement de l'API
-    qDebug()<<"emit"<<PHARMACIES;
+//    qDebug()<<"emit"<<PHARMACIES;
     reply->deleteLater();
 }
 
