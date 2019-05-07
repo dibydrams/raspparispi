@@ -4,6 +4,7 @@
 #include "QComboBox"
 #include "QApplication"
 #include "QTranslator"
+#include "dialogmeteo.h"
 
 
 Dialogtraduction::Dialogtraduction(QWidget *parent) :
@@ -11,8 +12,11 @@ Dialogtraduction::Dialogtraduction(QWidget *parent) :
     ui(new Ui::Dialogtraduction)
 {
     ui->setupUi(this);
-    language();
-    connect(ui->comboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(loadlang()));
+
+
+    connect(ui->pushButton_FR,SIGNAL(clicked()),this,SLOT(loadfr()));
+    connect(ui->pushButton_AR,SIGNAL(clicked()),this,SLOT(loadar()));
+    connect(ui->pushButton_EN,SIGNAL(clicked()),this,SLOT(loaden()));
 
 
 }
@@ -22,57 +26,35 @@ Dialogtraduction::~Dialogtraduction()
     delete ui;
 }
 
-void Dialogtraduction::language()
+
+void Dialogtraduction::loadfr()
 {
 
-    ui->comboBox->insertItem(0,"Français");
-    ui->comboBox->insertItem(1,"English");
-    ui->comboBox->insertItem(2,"Arabe");
-
-
+    QString lang;
+    lang = "Français";
+    qDebug() << "Français";
+    emit received(lang);
 
 }
 
-void Dialogtraduction::loadlang()
+void Dialogtraduction::loadar()
 {
-
-
-    QTranslator translator;
-
-    if(ui->comboBox->currentText() == "Français")
-    {
-
-        qDebug() << "Français";
-        qDebug()<< translator.load(":/Traduction/src_fr.qm") ;
-        qApp->installTranslator(&translator);                               //qApp est un pointeur sur la classe QApplication
-        ui->retranslateUi(this);
-
-    }
-
-    else if(ui->comboBox->currentText() == "English")
-
-    {
-
-        qDebug() << "English";
-        qDebug()<< translator.load(":/Traduction/src_en.qm") ;
-        qApp->installTranslator(&translator);                               //qApp est un pointeur sur la classe QApplication
-        ui->retranslateUi(this);
-
-
-    }
-
-    else if (ui->comboBox->currentText() == "Arabe")
-
-    {
-
-
-        qDebug() << "Arabe";
-        qDebug()<< translator.load(":/Traduction/src_ar.qm") ;
-        qApp->installTranslator(&translator);
-        ui->retranslateUi(this);
-
-    }
-
-
+    QString lang;
+    lang = "Arabe";
+    qDebug() << "Arabe";
+    emit received(lang);
 
 }
+
+void Dialogtraduction::loaden()
+{
+    QString lang;
+    lang = "Anglais";
+    qDebug() << "Anglais";
+    emit received(lang);
+
+}
+
+
+
+

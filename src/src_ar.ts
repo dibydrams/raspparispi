@@ -385,8 +385,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Dialogtraduction</name>
     <message>
-        <location filename="dialogtraduction.ui" line="14"/>
         <source>Dialog</source>
+        <translation type="vanished">ترجمة</translation>
+    </message>
+    <message>
+        <location filename="dialogtraduction.ui" line="14"/>
+        <source>Traduction</source>
         <translation>ترجمة</translation>
     </message>
     <message>

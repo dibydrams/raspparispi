@@ -62,7 +62,8 @@ void apifontaines::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
+        if (statut=="P") geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
+        else geo.pixmap=Icon::iconMapOffClose(getPixmap(), Qt::darkCyan);
 
 
         m_list<<geo;

@@ -13,11 +13,12 @@ DialogConnexion::DialogConnexion(QWidget *parent) :
 DialogConnexion::~DialogConnexion()
 {
     delete ui;
+
 }
 
 void DialogConnexion::afficherConnexion()
 {
-qDebug()<<"c'est la fonction afficherConnexion";
+
 DialogConnexion *fenetr = new DialogConnexion;
 fenetr->ui->label->setText("Problème de connexion !!");
 fenetr->show();

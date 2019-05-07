@@ -56,8 +56,8 @@ void apikiosques::API_results(QNetworkReply *reply)
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
-        geo.pixmap=Icon::iconMapOffStr(getPixmap(), stat, Qt::darkMagenta);
-
+        if (stat=="O") geo.pixmap=Icon::iconMapOffStr(getPixmap(), stat, Qt::darkMagenta);
+        else geo.pixmap=Icon::iconMapOffClose(getPixmap(), Qt::darkMagenta);
 
         m_list<<geo;
     }
