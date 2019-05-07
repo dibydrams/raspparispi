@@ -10,9 +10,12 @@ ApiBornes_Elec::ApiBornes_Elec()
 ///
 void ApiBornes_Elec::API_Call()
 {
-   API_Access = new QNetworkAccessManager(this);
+    API_Access = new QNetworkAccessManager(this);
 
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&rows=-1&geofilter.distance=48.8716,2.34599,4000");
+    lat = QString::number(static_cast<double>(WidgetMap::centreLatitude));
+    lon = QString::number(static_cast<double>(WidgetMap::centreLongitude));
+
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&rows=-1&geofilter.distance=" + lat + "," + lon + ",4000");
     QNetworkRequest request;
     request.setUrl(url);
 
@@ -47,8 +50,19 @@ void ApiBornes_Elec::API_Results(QNetworkReply *reply)
 
             geo.longitude = longitude;
             geo.latitude = latitude;
-
             geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(51, 153, 255));
+            geo.id = BORNES_ELEC;
+
+            geo.info.insert("Adresse", item.value("adresse_rue").toString());
+            geo.info.insert("Réseau", item.value("reseau").toString());
+            geo.info.insert("Type charge", item.value("type_charge").toString());
+            geo.info.insert("Type de courant", item.value("type_courant_pdc").toString());
+            geo.info.insert("Type de stationnement", item.value("type_stationnement").toString());
+            geo.info.insert("Emplacement Borne", item.value("emplacement_borne").toString());
+            geo.info.insert("Type de connecteur", item.value("type_connecteur_pdc").toString());
+            geo.info.insert("Puissance", item.value("puissance_pdc_kw").toString());
+            geo.info.insert("Tarif", item.value("tarif_general").toString());
+            geo.info.insert("Paiement", item.value("paiement").toString());
 
            m_list << geo;
         }
