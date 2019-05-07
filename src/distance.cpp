@@ -1,21 +1,53 @@
 #include "distance.h"
 
+/**
+ * @brief distance::distance (constructor)
+ * @param parent -> pointer sur QObject
+ * @details constructeur simple et vide qui ne fera pas appel à l'API de lui même
+ * Il faudra donc après optention de l'objet, lui demander d'effectuer une requête avec la fonction "sendRequest()"
+ */
+distance::distance(QObject *parent) : QObject(parent)
+{
 
+}
+
+/**
+ * @brief distance::distance (constructor)
+ * @details surcharge du constructeur permettant de renseigner longitude et latitude de destination;
+ * va envoyer la requête immédiatement
+ * @param parent        :  type pointer sur QObject ou descendant
+ * @param longitude     :  type QString
+ * @param latitude      :  type QString
+ */
 distance::distance(QObject *parent,QString longitude,QString latitude) : QObject(parent)
 {
-    getDistance(longitude,latitude);
+    sendRequest(longitude,latitude);
     loop.exec();
 }
 
+/**
+ * @brief distance::distance*
+ * @details surcharge du constructeur permettant de renseigner longitude et latitude de destination,
+ * ainsi que le mode de transport
+ * @param parent
+ * @param latitude          : type QString
+ * @param longitude         : type QString
+ * @param modeDeTransport   : type QString
+ */
 distance::distance(QObject *parent, QString latitude, QString longitude, QString modeDeTransport): QObject(parent)
 {
-    getDistance(longitude,latitude,modeDeTransport);
+    sendRequest(longitude,latitude,modeDeTransport);
     loop.exec();
 }
 
-void distance::getDistance(QString longitude, QString latitude)
+/**
+ * @brief distance::sendRequest
+ * @details fonction effectuant l'envoi de la requête via l'API TomTom
+ * @param longitude     : type QString
+ * @param latitude      : type QString
+ */
+void distance::sendRequest(QString longitude, QString latitude)
 {
-
     networkManager = new QNetworkAccessManager(this);
     QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all");
     QNetworkRequest request;
@@ -24,9 +56,15 @@ void distance::getDistance(QString longitude, QString latitude)
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getDistanceReply(QNetworkReply*)));
 }
 
-void distance::getDistance(QString longitude, QString latitude, QString ModeDeTransport)
+/**
+ * @brief distance::sendRequest
+ * @details surcharge de la fonction sendRequest permettant de renseigner en plus le mode de transport
+ * @param longitude     : type QString
+ * @param latitude      : type QString
+ * @param ModeDeTransport   : type QString
+ */
+void distance::sendRequest(QString longitude, QString latitude, QString ModeDeTransport)
 {
-
     networkManager = new QNetworkAccessManager(this);
     QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
     QNetworkRequest request;
@@ -35,13 +73,18 @@ void distance::getDistance(QString longitude, QString latitude, QString ModeDeTr
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getDistanceReply(QNetworkReply*)));
 }
 
+/**
+ * @brief distance::getDistanceReply
+ * @details fonction/slot qui récupère la réponse de la requête émise précédemment (fonction senRequest)
+ * Et qui va lire cette dernière et remplir l'objet distance avec les données correspiondants.
+ * @param reply     : pointer sur un  QNetworkReply
+ */
 void distance::getDistanceReply(QNetworkReply *reply)
 {
     if (currentReply->error() != QNetworkReply::NoError){
         qDebug()<<"erreur\n";
         return;
     }
-
     QByteArray responseBit=reply->readAll();
     QJsonDocument document = QJsonDocument::fromJson(responseBit);
     QJsonObject replyObj = document.object();
@@ -52,23 +95,67 @@ void distance::getDistanceReply(QNetworkReply *reply)
         QString arrival = summary["arrivalTime"].toString();
 
         //***remplisasge des propriété de l'objet***
-//        this->setDistanceInMeters(summary["lengthInMeters"].toInt());
-//        this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
-//        this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
-//        this->setDelay(summary["trafficDelayInSeconds"].toInt());
-//        this->setArrival(arrival);
-
-        qDebug()<<"*** Distance compte rendu JSONJSON ***";
-        qDebug()<<"Distance : : "<<summary["lengthInMeters"].toInt();
-        qDebug()<<"noTrafficTravelTimeInSeconds : : "<<summary["noTrafficTravelTimeInSeconds"].toInt();
-        qDebug()<<"Retard prévu en seconde : : "<<summary["trafficDelayInSeconds"].toInt();
-        qDebug()<<"arrival :: "<<arrival;
+          this->setDistanceInMeters(summary["lengthInMeters"].toInt());
+          this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
+          this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
+          this->setDelay(summary["trafficDelayInSeconds"].toInt());
+          this->setArrival(arrival);
     }
     loop.exit();
 }
 
 distance::~distance(){
     delete networkManager;
+}
+
+int distance::getTimetravel() const
+{
+    return timetravel;
+}
+
+void distance::setTimetravel(int value)
+{
+    timetravel = value;
+}
+
+int distance::getDistanceInMeters() const
+{
+    return distanceInMeters;
+}
+
+void distance::setDistanceInMeters(int value)
+{
+    distanceInMeters = value;
+}
+
+int distance::getDelay() const
+{
+    return delay;
+}
+
+void distance::setDelay(int value)
+{
+    delay = value;
+}
+
+QString distance::getArrival() const
+{
+    return arrival;
+}
+
+void distance::setArrival(const QString &value)
+{
+    arrival = value;
+}
+
+int distance::getTimetravelWithTraffic() const
+{
+    return timetravelWithTraffic;
+}
+
+void distance::setTimetravelWithTraffic(int value)
+{
+    timetravelWithTraffic = value;
 }
 
 

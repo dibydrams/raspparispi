@@ -1,20 +1,36 @@
 #include "theatre.h"
 
+/**
+ * @brief theatre::theatre
+ * @details constructeur simple et vide
+ */
 theatre::theatre()
 {
 
 }
 
+/**
+ * @brief theatre::getId
+ * @return le numéro index de THEATRE  : type int
+ */
 Abstract_API::API_index theatre::getId()
 {
     return THEATRE;
 }
 
+/**
+ * @brief theatre::getPixmap
+ * @return le QPixmap de l'icone theatre (pour le boutton de commande en bas de l'IHM)
+ */
 QPixmap theatre::getPixmap()
 {
     return QPixmap(":/Icons/theatre.png");
 }
 
+/**
+ * @brief theatre::theatreAPI_Call
+ * @details fonction/slots qui effectue l'appel à l'API opendatasoft
+ */
 void theatre::theatreAPI_Call(){
     manager=new QNetworkAccessManager();
     QNetworkRequest request;
@@ -23,6 +39,11 @@ void theatre::theatreAPI_Call(){
     connect(reply,SIGNAL(finished()),this,SLOT(readJsonTheatre()));
 }
 
+/**
+ * @brief theatre::readJsonTheatre
+ * @details fonction qui va lire la réponse retournée par la requête envoyée précédement (theatreAPI_Call)
+ * Fait appel à la classe "addrToCoord" qui va permettre de traduire les adresses en point gps (latitude et longitude).
+ */
 void theatre::readJsonTheatre(){
     m_list.clear();
     QByteArray responseBit = reply->readAll();
@@ -51,6 +72,10 @@ void theatre::readJsonTheatre(){
     emit callFinished(m_list, THEATRE);
 }
 
+/**
+ * @brief theatre::getInfo
+ * @details redifinition de la fonction virtuel pur getInfo(); fait appel à theatreAPI_Call();
+ */
 void theatre::getInfo(){
     theatreAPI_Call();
     QApplication::setOverrideCursor(Qt::WaitCursor);
