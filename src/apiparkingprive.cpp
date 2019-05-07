@@ -62,9 +62,8 @@ void apiParkingPrive::API_Results(QNetworkReply *reply)
 void apiParkingPrive::getInfo()
 {
     networkManager = new QNetworkAccessManager(this);
-    WidgetMap map;
-    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
-    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
+    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=parcs-de-stationnement-concedes-de-la-ville-de-paris&rows=-1&facet=acces_vl&facet=arrdt&facet=deleg&facet=h_parc_cm&facet=type_parc&facet=horaire_na&facet=asc_surf&facet=acces_moto&facet=acces_velo&facet=v_elec_ch&facet=autopart&facet=tarif_pr&facet=tarif_res&facet=tf_pr_moto&facet=tf_res_mo&facet=parc_amod&facet=parc_relai&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
     QNetworkRequest request;
     request.setUrl(url);

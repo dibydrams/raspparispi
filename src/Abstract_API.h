@@ -68,7 +68,6 @@ public:
         FONTAINES,
         TRADUCTION,
         RESET,
-
     };
 
 
@@ -80,7 +79,6 @@ public:
         double longitude;
         double latitude;
         QPixmap pixmap;
-        //int id;
     };
 
     /* Structure permettant de récupérer la long, la lat et l'id, lors du clic sur l'icone*/
