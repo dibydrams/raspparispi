@@ -19,6 +19,7 @@ typedef struct{
     QString adresse;
     QString typeIndice;
     double largeur;
+    double longueur;
     double latitude;
     double longitude;
 }terrasse;
