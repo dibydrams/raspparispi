@@ -22,7 +22,7 @@ public:
     pharmapi();
     API_index getId() override;
     QPixmap getPixmap() override;
-    WidgetMap settingsAccess;
+//    WidgetMap settingsAccess;
 
 private slots:
     void API_Call();
