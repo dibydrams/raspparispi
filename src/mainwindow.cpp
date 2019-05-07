@@ -3,6 +3,7 @@
 
 #include "Abstract_API.h"
 #include "dialogmeteo.h"
+#include "dialoginfo.h"
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 #include "apiterrasses.h"
@@ -12,6 +13,7 @@
 #include "traduction.h"
 #include "dialogtraduction.h"
 #include "resetbuttons.h"
+#include "QString"
 
 #include <QHBoxLayout>
 
@@ -20,8 +22,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);  
+
+    ui->setupUi(this);
     initButtons();
+    l_lang = new Dialogtraduction(this);
+    connect(l_lang,SIGNAL(received(QString)),this,SLOT(loadlanguage(QString)));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -71,7 +78,7 @@ void MainWindow::initButtons()
     buttonMeteo->setCheckable(false);
     connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog()));
-    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
+    //connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
 
     ptr = new ApiEvenementsMV;
     CustomButton *buttonEv = new CustomButton(ptr, this);
@@ -264,14 +271,21 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::AP
 
 void MainWindow::dialog()
 {
-    Dialog fenetre;
+    Dialog fenetre(this);
+    //fenetre.loadlanguage("en");
     fenetre.exec();
+
 }
 
 void MainWindow::dialogtraduction()
 {
-    Dialogtraduction fenetre;
-    fenetre.exec();
+    l_lang->show();
+}
+
+void MainWindow::dialogInfo()
+{
+   dialoginfo fenetre;
+   fenetre.exec();
 }
 
 void MainWindow::dialogvigicrues()
@@ -306,7 +320,22 @@ void MainWindow::resetAllButtons()
     for (auto button : ButtonList) {
             button->setChecked(false);
             dataReceived(emptyList, button->buttonID);
-        }
+    }
+}
+
+void MainWindow::loadlanguage(QString lang)
+{
+
+    qDebug() << "MainWindow";
+    qDebug() << lang;
+    QTranslator translator;
+
+    translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+
+    l_lang->hide();
+
 }
 
 //void MainWindow::ratpDialog()

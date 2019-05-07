@@ -1,7 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include <QDialog>
 #include <QMainWindow>
 #include <QMainWindow>
@@ -35,17 +35,16 @@ public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
     void setvignette();
+    void loadlanguage(QString lang);
 
 private:
 
     Ui::Dialog *ui;
 
-
     meteo *m_meteo;
     Pollution *p_pollution;
     IndiceUV *i_indice;
     Prevision *pm_prevision;
-    //QTableWidgetItem *table;
     QStandardItemModel *table;
     QBarSet *set0;
     QBarSet *set1;
@@ -70,7 +69,10 @@ void printHashindice();
 void pollutionChart();
 void AQI();
 void Icon();
+
+
 //void updatedial();
+
 
 };
 

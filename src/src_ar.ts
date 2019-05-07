@@ -227,172 +227,198 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="39"/>
+        <location filename="dialogmeteo.cpp" line="45"/>
         <source>ddd d MMMM  hh:mm </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="125"/>
+        <location filename="dialogmeteo.cpp" line="124"/>
         <source>Taux Actuel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="126"/>
+        <location filename="dialogmeteo.cpp" line="125"/>
         <source>Objectifs de Qualité</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="127"/>
+        <location filename="dialogmeteo.cpp" line="126"/>
         <source>Valeurs Limites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="155"/>
+        <location filename="dialogmeteo.cpp" line="154"/>
         <source>Pollution par polluant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="179"/>
+        <location filename="dialogmeteo.cpp" line="178"/>
         <source>Concentration (µg/m³)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="216"/>
+        <location filename="dialogmeteo.cpp" line="215"/>
         <source>Indice Qualité Air </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="220"/>
+        <location filename="dialogmeteo.cpp" line="219"/>
         <source>Bon: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="228"/>
+        <location filename="dialogmeteo.cpp" line="227"/>
         <source>Modéré: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="236"/>
+        <location filename="dialogmeteo.cpp" line="235"/>
         <source>Malsain pour sensible: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="244"/>
+        <location filename="dialogmeteo.cpp" line="243"/>
         <source>Malsain: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="252"/>
+        <location filename="dialogmeteo.cpp" line="251"/>
         <source>Très Malsain!: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="260"/>
+        <location filename="dialogmeteo.cpp" line="259"/>
         <source>Risqué!!: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="298"/>
+        <location filename="dialogmeteo.cpp" line="310"/>
         <source>Température max (°C)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="300"/>
+        <location filename="dialogmeteo.cpp" line="312"/>
         <source>Température min (°C)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="302"/>
+        <location filename="dialogmeteo.cpp" line="314"/>
         <source>Ciel </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="304"/>
+        <location filename="dialogmeteo.cpp" line="316"/>
         <source>Humidité (%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="306"/>
+        <location filename="dialogmeteo.cpp" line="318"/>
         <source>Vitesse du vent (km/h)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="308"/>
+        <location filename="dialogmeteo.cpp" line="320"/>
         <source>Direction du vent (°)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="310"/>
+        <location filename="dialogmeteo.cpp" line="322"/>
         <source>Pression (hPa)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="496"/>
+        <location filename="dialogmeteo.cpp" line="508"/>
         <source>Précipitation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="517"/>
+        <location filename="dialogmeteo.cpp" line="529"/>
         <source>Précipitaion en mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="548"/>
+        <location filename="dialogmeteo.cpp" line="560"/>
         <source>Température en °C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="561"/>
+        <location filename="dialogmeteo.cpp" line="573"/>
         <source>Heure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="577"/>
+        <location filename="dialogmeteo.cpp" line="589"/>
         <source>Prévision météo pour les prochaines 24h</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="604"/>
+        <location filename="dialogmeteo.cpp" line="616"/>
         <source>Indice UV </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="610"/>
+        <location filename="dialogmeteo.cpp" line="622"/>
         <source>Faible: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="618"/>
+        <location filename="dialogmeteo.cpp" line="630"/>
         <source>Moyen: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="625"/>
+        <location filename="dialogmeteo.cpp" line="637"/>
         <source>Élevé!: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="632"/>
+        <location filename="dialogmeteo.cpp" line="644"/>
         <source>Très Élevé!!: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="639"/>
+        <location filename="dialogmeteo.cpp" line="651"/>
         <source>Extreme!!!: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
+    <name>DialogConnexion</name>
+    <message>
+        <location filename="dialogconnexion.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">ترجمة</translation>
+    </message>
+</context>
+<context>
     <name>Dialogtraduction</name>
     <message>
-        <location filename="dialogtraduction.ui" line="14"/>
         <source>Dialog</source>
+        <translation type="vanished">ترجمة</translation>
+    </message>
+    <message>
+        <location filename="dialogtraduction.ui" line="14"/>
+        <source>Traduction</source>
         <translation>ترجمة</translation>
     </message>
     <message>
-        <location filename="dialogtraduction.ui" line="62"/>
+        <location filename="dialogtraduction.ui" line="37"/>
+        <source>Français</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialogtraduction.ui" line="44"/>
+        <source>Arabe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialogtraduction.ui" line="51"/>
+        <source>Anglais</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Veuillez choisir la langue de traduction</source>
-        <translation>اختر لغة الترجمة</translation>
+        <translation type="vanished">اختر لغة الترجمة</translation>
     </message>
 </context>
 <context>
@@ -462,6 +488,14 @@ p, li { white-space: pre-wrap; }
         <location filename="uiratp.ui" line="135"/>
         <source>Send Request</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>dialoginfo</name>
+    <message>
+        <location filename="dialoginfo.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">ترجمة</translation>
     </message>
 </context>
 </TS>

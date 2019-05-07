@@ -1,10 +1,18 @@
 #include "sanisette.h"
 
+/**
+ * @brief sanisette::sanisette
+ * @details constructeur simple
+ */
 sanisette::sanisette()
 {
 
 }
 
+/**
+ * @brief sanisette::getId
+ * @return
+ */
 Abstract_API::API_index sanisette::getId()
 {
     return TOILETTES;
@@ -15,6 +23,10 @@ QPixmap sanisette::getPixmap()
     return QPixmap(":/Icons/toilette.png");
 }
 
+/**
+ * @brief sanisette::sanisetteAPI_Call
+ * @details fonction qui va faire appel à l'API aopendata.paris (qui s'apppuie sur OpenDataSoft).
+ */
 void sanisette::sanisetteAPI_Call(){
     manager=new QNetworkAccessManager();
     QNetworkRequest request;
@@ -23,6 +35,10 @@ void sanisette::sanisetteAPI_Call(){
     connect(reply,SIGNAL(finished()),this,SLOT(readJsonSani()));
 }
 
+/**
+ * @brief sanisette::readJsonSani
+ * @details fonction qui va lire le retour de la requête au format Json et va remplir les propriété de l'objet.
+ */
 void sanisette::readJsonSani(){
     m_list.clear();
     QByteArray responseBit=reply->readAll();
@@ -46,20 +62,13 @@ void sanisette::readJsonSani(){
         m_list << geo;
     }
 
-    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
-   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~distance();
-    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
-    //qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~distance();
-    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
-   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~distance();
-
-
     emit callFinished(m_list, TOILETTES);
 }
 
+/**
+ * @brief sanisette::getInfo
+ * @details redéfinition de la fonction virtuel pure de ABSTRACT_API
+ */
 void sanisette::getInfo(){
     sanisetteAPI_Call();
     QApplication::setOverrideCursor(Qt::WaitCursor);

@@ -20,6 +20,8 @@
 #include "resetbuttons.h"
 #include "apivigicrues.h"
 #include "dialogvigicrues.h"
+#include "dialogtraduction.h"
+#include "dialogmeteo.h"
 
 namespace Ui {
 class MainWindow;
@@ -41,6 +43,7 @@ public:
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
+    void dialogInfo();
     void dialogtraduction();
     void dialogvigicrues();
     void GetInfo(Abstract_API *ptr);
@@ -49,8 +52,16 @@ private slots:
     void resetAllButtons();
 //  void ratpDialog();
 
+
+public slots:
+    void loadlanguage(QString lang);
+
 private:
     Ui::MainWindow *ui;
+    Dialogtraduction *l_lang;
+signals:
+    void open();
+
 };
 
 #endif // MAINWINDOW_H

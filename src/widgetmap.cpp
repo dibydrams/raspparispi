@@ -1,4 +1,5 @@
 #include "widgetmap.h"
+#include "dialoginfo.h"
 #include <QPainter>
 #include <QSettings>
 #include <QDebug>
@@ -119,7 +120,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
-            "http://api.tomtom.com/map/1/staticimage?"
+            "https://api.tomtom.com/map/1/staticimage?"
             "key=8bUkGqzvXEZzyqvqFnbw0JoTfPk7BFQ8&"
             "format=png&"
             "layer=basic&style=main&view=Unified&"
@@ -249,8 +250,10 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
                             )
                     {
-                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
+                        /*Le qDebug ci-dessous permet lors du clic de la souris, d'afficher les informations*/
+
                         qDebug() << elem.info.values();
+                        //qDebug() << "l'API qui est cliqué" << cptAPI << "la longitude" << elem.longitude << "la latitude" << elem.latitude;
                     }
                 }
             }
@@ -271,6 +274,8 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
         m_pointClicSouris.setY(event->y());
         m_flagClic = 1;
         this->update();
+        dialoginfo fenetre;
+        fenetre.exec();
     }
 }
 

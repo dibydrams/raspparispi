@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QList>
+#include <QRegularExpression>
 
 #include "Abstract_API.h"
 #include "widgetmap.h"
@@ -36,6 +37,7 @@ private:
     QJsonDocument doc;
     QJsonObject obj;
     QJsonArray arr;
+    QJsonArray newArr;
     QList<GeoObj> m_list;
 
     double longitude;

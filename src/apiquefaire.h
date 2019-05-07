@@ -10,6 +10,7 @@
 #include <QList>
 #include <Abstract_API.h>
 #include "icon.h"
+#include "widgetmap.h"
 
 class ApiQueFaire : public Abstract_API
 {
@@ -34,6 +35,9 @@ private:
     QJsonObject obj;
     QJsonArray arr;
     QList<GeoObj> m_list;
+
+    QString lat;
+    QString lon;
 
     double longitude;
     double latitude;
