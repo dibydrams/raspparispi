@@ -10,9 +10,9 @@ void ApiEvenementsMV::API_Call() // Gestion du call à l'API
 {
     API_Access = new QNetworkAccessManager(this);
 
-    // Accès aux settings de widgetmap.h
-//    double conf_longitude  = settingsAccess.m_centreLongitude;
-//    double conf_latitude = settingsAccess.m_centreLatitude;
+    //  Accès aux settings de widgetmap.h
+    //  double conf_longitude  = settingsAccess.m_centreLongitude;
+    //  double conf_latitude = settingsAccess.m_centreLatitude;
     double conf_longitude  = WidgetMap::centreLongitude;
     double conf_latitude = WidgetMap::centreLatitude;
 
@@ -41,11 +41,31 @@ void ApiEvenementsMV::API_Results(QNetworkReply *reply) // Gestion des résultat
         longitude = objn["location"].toArray()[0].toDouble();
         latitude = objn["location"].toArray()[1].toDouble();
 
+        // Traitement de l'horaire de début
+        QString horaire;
+        QString tmp = objn["start"].toString();
+        horaire = tmp.at(11);
+        horaire = horaire + tmp.at(12);
+        horaire = horaire + "h" + tmp.at(14);
+        horaire = horaire + tmp.at(15);
+
+        // Traitement de l'adresse
+        QString tmp2 = objn["entities"].toArray()[0].toObject()["formatted_address"].toString();
+       QStringList elem = tmp2.split("\n");
+       QString adresse = elem.join(", ");
+
         GeoObj geo;
 
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(252, 181, 75));
+        geo.id = EVENEMENTS;
+
+        geo.info.insert("Titre : ", objn["title"].toString());
+        geo.info.insert("Catégorie : ", objn["category"].toString());
+        geo.info.insert("Horaire : ", horaire);
+        geo.info.insert("Lieu: ", objn["entities"].toArray()[0].toObject()["name"].toString());
+        geo.info.insert("Adresse : ", adresse);
 
        m_list << geo;
     }
