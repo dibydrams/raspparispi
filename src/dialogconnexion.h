@@ -14,9 +14,11 @@ class DialogConnexion : public QDialog
 public:
     explicit DialogConnexion(QWidget *parent = nullptr);
     ~DialogConnexion();
+    static void afficherConnexion();
 
 private:
     Ui::DialogConnexion *ui;
+
 };
 
 #endif // DIALOGCONNEXION_H

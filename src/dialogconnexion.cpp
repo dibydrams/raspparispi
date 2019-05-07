@@ -1,5 +1,6 @@
 #include "dialogconnexion.h"
 #include "ui_dialogconnexion.h"
+#include <QDebug>
 
 DialogConnexion::DialogConnexion(QWidget *parent) :
     QDialog(parent),
@@ -11,4 +12,11 @@ DialogConnexion::DialogConnexion(QWidget *parent) :
 DialogConnexion::~DialogConnexion()
 {
     delete ui;
+}
+
+void DialogConnexion::afficherConnexion()
+{
+qDebug()<<"c'est la fonction afficherConnexion";
+
+
 }
