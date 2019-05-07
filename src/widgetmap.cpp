@@ -249,7 +249,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
                             )
                     {
-                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
+                        /*Le qDebug ci-dessous permet lors du clic de la souris, d'afficher les informations*/
                         qDebug() << elem.info.values();
                     }
                 }
