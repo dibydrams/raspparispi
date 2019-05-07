@@ -249,7 +249,16 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
                             )
                     {
-                        qDebug() << "dedans pixmap" << "API " << cptAPI << "latitude " << elem.latitude << "longitude " << elem.longitude;
+                        Abstract_API::ClickedGeoObj clickedgeoobj;
+
+                        clickedgeoobj.longitude = elem.longitude;
+                        clickedgeoobj.latitude = elem.latitude;
+                        clickedgeoobj.id = cptAPI;
+
+                        //list << clickedgeoobj;
+
+                        //qDebug()  << clickedgeoobj.longitude << clickedgeoobj.latitude << clickedgeoobj.id;
+                        //qDebug() << "dedans pixmap" << "API " << cptAPI << "longitude " << elem.longitude << "latitude " << elem.latitude;
                     }
                 }
             }
@@ -261,8 +270,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
 void WidgetMap::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "clic mousePressEvent" << endl;
-
+    //qDebug() << "clic mousePressEvent" << endl;
     if (event->button() == Qt::LeftButton)
     {
         QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";

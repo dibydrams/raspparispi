@@ -25,9 +25,8 @@ QPixmap apifontaines::getPixmap()
 void apifontaines::API_call()
 {
     API_access=new QNetworkAccessManager(this);
-//    WidgetMap map;
-//    latCentre = QString::number(map.m_centreLatitude, 'g', 13);
-//    lonCentre = QString::number(map.m_centreLongitude, 'g', 13);
+
+    //Acces aux setting de WidgetMap.h
     latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
     lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
 

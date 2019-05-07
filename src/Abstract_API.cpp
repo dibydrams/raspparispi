@@ -16,3 +16,12 @@ void Abstract_API::debug(QList <GeoObj> list)
         qDebug() << i.pixmap;
     }
 }
+
+void Abstract_API::debugId(QList<ClickedGeoObj> listclickedgeoobj)
+{
+    for (auto i : listclickedgeoobj) {
+        qDebug() << i.longitude;
+        qDebug() << i.latitude;
+        qDebug() << i.id;
+    }
+}
