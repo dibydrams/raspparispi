@@ -12,7 +12,7 @@
 #include <QJsonObject>
 #include "Abstract_API.h"
 #include "icon.h"
-#include "dist1.h"
+#include "distance.h"
 
 class sanisette : public Abstract_API
 {
@@ -35,7 +35,7 @@ private:
     double longitude;
     double latitude;
     QList<GeoObj> m_list;
-    dist1 *dist;
+    distance *dist;
 
 signals:
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);

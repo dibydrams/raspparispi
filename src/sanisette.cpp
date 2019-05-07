@@ -46,15 +46,15 @@ void sanisette::readJsonSani(){
         m_list << geo;
     }
 
-    dist=new dist1(qApp,"48.8977","2.3594000000000506","car");
+    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
    // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~dist1();
-    dist=new dist1(qApp,"48.8977","2.3594000000000506","pedestrian");
+    dist->~distance();
+    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
     //qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~dist1();
-    dist=new dist1(qApp,"48.8977","2.3594000000000506","bicycle");
+    dist->~distance();
+    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
    // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    dist->~dist1();
+    dist->~distance();
 
 
     emit callFinished(m_list, TOILETTES);

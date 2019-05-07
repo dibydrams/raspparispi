@@ -1,19 +1,19 @@
-#include "dist1.h"
+#include "distance.h"
 
 
-dist1::dist1(QObject *parent,QString longitude,QString latitude) : QObject(parent)
+distance::distance(QObject *parent,QString longitude,QString latitude) : QObject(parent)
 {
-    distance(longitude,latitude);
+    getDistance(longitude,latitude);
     loop.exec();
 }
 
-dist1::dist1(QObject *parent, QString latitude, QString longitude, QString modeDeTransport): QObject(parent)
+distance::distance(QObject *parent, QString latitude, QString longitude, QString modeDeTransport): QObject(parent)
 {
-    distance(longitude,latitude,modeDeTransport);
+    getDistance(longitude,latitude,modeDeTransport);
     loop.exec();
 }
 
-void dist1::distance(QString longitude, QString latitude)
+void distance::getDistance(QString longitude, QString latitude)
 {
 
     networkManager = new QNetworkAccessManager(this);
@@ -21,10 +21,10 @@ void dist1::distance(QString longitude, QString latitude)
     QNetworkRequest request;
     request.setUrl(url);
     currentReply = networkManager->get(request);
-    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getDistance(QNetworkReply*)));
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getDistanceReply(QNetworkReply*)));
 }
 
-void dist1::distance(QString longitude, QString latitude, QString ModeDeTransport)
+void distance::getDistance(QString longitude, QString latitude, QString ModeDeTransport)
 {
 
     networkManager = new QNetworkAccessManager(this);
@@ -32,10 +32,10 @@ void dist1::distance(QString longitude, QString latitude, QString ModeDeTranspor
     QNetworkRequest request;
     request.setUrl(url);
     currentReply = networkManager->get(request);
-    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getDistance(QNetworkReply*)));
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getDistanceReply(QNetworkReply*)));
 }
 
-void dist1::getDistance(QNetworkReply *reply)
+void distance::getDistanceReply(QNetworkReply *reply)
 {
     if (currentReply->error() != QNetworkReply::NoError){
         qDebug()<<"erreur\n";
@@ -67,7 +67,7 @@ void dist1::getDistance(QNetworkReply *reply)
     loop.exit();
 }
 
-dist1::~dist1(){
+distance::~distance(){
     delete networkManager;
 }
 
