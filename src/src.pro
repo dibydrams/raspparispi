@@ -67,7 +67,8 @@ SOURCES += \
         apifontaines.cpp \
         distance.cpp\
         uistation.cpp \
-    dist1.cpp
+    dist1.cpp \
+    dialogconnexion.cpp
 
 HEADERS += \
         Abstract_API.h \
@@ -108,14 +109,16 @@ HEADERS += \
         utilitaire.h \
         distance.h\
         uistation.h \
-    dist1.h
+    dist1.h \
+    dialogconnexion.h
 
 FORMS += \
     dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \
         dialogmeteo.ui \
-    uistation.ui
+    uistation.ui \
+    dialogconnexion.ui
 
 
 # Default rules for deployment.
