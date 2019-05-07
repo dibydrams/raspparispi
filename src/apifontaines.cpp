@@ -56,6 +56,9 @@ void apifontaines::API_results(QNetworkReply *reply)
         drink=objn["fields"].toObject().value("a_boire").toInt();
         if (drink==1) statut="P";
         else statut="X";
+        lon=QString::number(longitude, 'g', 13);
+        lat=QString::number(latitude, 'g', 13);
+        dist=new distance(qApp,"lon","lat");
 
 
 
@@ -64,6 +67,18 @@ void apifontaines::API_results(QNetworkReply *reply)
         geo.longitude=longitude;
         if (statut=="P") geo.pixmap=Icon::iconMapOffStr(getPixmap(), statut, Qt::darkCyan);
         else geo.pixmap=Icon::iconMapOffClose(getPixmap(), Qt::darkCyan);
+
+        /*Ce sont les informations que je souhaite récupéré du JSON, pour l'API fontaines.
+         *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
+         *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
+
+        geo.info.insert("adresse",adresse);
+        geo.info.insert("modele",modele);
+        geo.info.insert("en_service",en_service);
+        geo.info.insert("ouverture hiver", ouv_hiver);
+        geo.info.insert("sdf",sdf);
+        //geo.info.insert("distance",(QString)dist->getDistance(lon, lat));
+
 
 
         m_list<<geo;

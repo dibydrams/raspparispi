@@ -49,15 +49,27 @@ void apikiosques::API_results(QNetworkReply *reply)
         longitude=objn["fields"].toObject().value("geo_point_2d").toArray()[1].toDouble();
         statut=objn["fields"].toObject().value("statut").toString();
         adresse=objn["fields"].toObject().value("adresse").toString();
-
+        lon=QString::number(longitude, 'g', 13);
+        lat=QString::number(latitude, 'g', 13);
+        dist=new distance(qApp,"lon","lat");
         if (statut=="Ouvert") stat="O";
         else stat="F";
+
 
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
         if (stat=="O") geo.pixmap=Icon::iconMapOffStr(getPixmap(), stat, Qt::darkMagenta);
         else geo.pixmap=Icon::iconMapOffClose(getPixmap(), Qt::darkMagenta);
+
+        /*Ce sont les informations que je souhaite récupéré du JSON, pour l'API kiosques.
+         *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
+         *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
+
+        geo.info.insert("adresse",adresse);
+        geo.info.insert("statut",statut);
+       // geo.info.insert("distance",(QString)dist->getDistance(lon, lat));
+
 
         m_list<<geo;
     }

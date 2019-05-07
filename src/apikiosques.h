@@ -10,6 +10,7 @@
 #include "Abstract_API.h"
 #include "icon.h"
 #include "widgetmap.h"
+#include "distance.h"
 
 
 class apikiosques : public Abstract_API
@@ -21,6 +22,7 @@ public:
     API_index getId()override;
     QPixmap getPixmap()override;
     QString stat;
+
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
@@ -39,8 +41,11 @@ private:
     double longitude;
     QString statut;
     QString adresse;
+    QString lat;
+    QString lon;
     QString latCentre;
     QString lonCentre;
+    distance *dist;
 
     signals:
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
