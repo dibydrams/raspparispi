@@ -34,15 +34,20 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->labelDate->setText(QTime::currentTime().toString("hh:mm"));
-    ui->labelDate->setText(QDate::currentDate().toString());
-    ui->labelDate->setText(QDateTime::currentDateTime().toString(tr("ddd d MMMM  hh:mm ")));
-
-
     m_meteo = new meteo;
     p_pollution = new Pollution;
     i_indice = new IndiceUV;
     pm_prevision=new Prevision;
+    QPixmap uvprotection;
+
+    //ui->labelDate->setText(QTime::currentTime().toString("hh:mm"));
+    //ui->labelDate->setText(QDate::currentDate().toString());
+    ui->labelDate->setText(QDateTime::currentDateTime().toString(("ddd d MMMM  hh:mm ")));
+
+    setvignette();
+
+    uvprotection.load(":/Icons_meteo/protectionUV.png");
+    ui->label_UVprotection->setPixmap(uvprotection);
 
     connect(m_meteo,SIGNAL(received()),this,SLOT(printHashmeteo()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(printHashpollution()));
@@ -52,12 +57,6 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(AQI()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
     connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
-
-    setvignette();
-
-    QPixmap uvprotection;
-    uvprotection.load(":/Icons_meteo/protectionUV.png");
-    ui->label_UVprotection->setPixmap(uvprotection);
 
 }
 
@@ -279,6 +278,19 @@ void Dialog::Icon()                                        //affichage de l'icon
     ic.load(QString(":/Icons_meteo/%1.png").arg(icon));
     ui->labelIcon->setPixmap(ic);
 
+}
+
+void Dialog::loadlanguage(QString lang)
+{
+
+    qDebug() << "Météo";
+
+    qDebug() << lang;
+    QTranslator translator;
+
+    translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
 }
 
 
@@ -643,6 +655,8 @@ void Dialog::printHashindice()                                 //Affichage de l'
 
     ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
 }
+
+
 
 
 /*Unité
