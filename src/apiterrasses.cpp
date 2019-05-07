@@ -3,6 +3,7 @@
 #include <QTextStream>
 #include <QDebug>
 
+
 ApiTerrasses::ApiTerrasses()
 {
 
@@ -84,6 +85,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
 void ApiTerrasses::slotError(QNetworkReply::NetworkError)
 {
 qDebug()<<"Pas de connection";
+
 }
 //ajout fin
 // Mon identifiant au sein de l'enumération (classe mère)
