@@ -21,7 +21,7 @@ distance::distance(QObject *parent) : QObject(parent)
  * @param latitude      :  type QString
  * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
  */
-distance::distance(QObject *parent,QString longitude,QString latitude) : QObject(parent)
+distance::distance(QObject *parent,QString latitude,QString longitude) : QObject(parent)
 {
     sendRequest(longitude,latitude);
     loop.exec();
@@ -79,7 +79,7 @@ distance::distance(QObject *parent, QString latitude, QString longitude, QString
  * @param longitude     : type QString
  * @param latitude      : type QString
  */
-void distance::sendRequest(QString longitude, QString latitude)
+void distance::sendRequest(QString latitude, QString longitude)
 {
     networkManager = new QNetworkAccessManager(this);
     QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all");
@@ -96,10 +96,10 @@ void distance::sendRequest(QString longitude, QString latitude)
  * @param latitude      : type QString
  * @param ModeDeTransport   : type QString
  */
-void distance::sendRequest(QString longitude, QString latitude, QString ModeDeTransport)
+void distance::sendRequest(QString latitude, QString longitude, QString ModeDeTransport)
 {
     networkManager = new QNetworkAccessManager(this);
-    QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
+    QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+longitude+","+latitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
     QNetworkRequest request;
     request.setUrl(url);
     currentReply = networkManager->get(request);
@@ -116,7 +116,7 @@ void distance::getDistanceReply(QNetworkReply *reply)
 {
     if (currentReply->error() != QNetworkReply::NoError){
         qDebug()<<"erreur\n";
-        return;
+        //return;
     }
     QByteArray responseBit=reply->readAll();
     QJsonDocument document = QJsonDocument::fromJson(responseBit);
