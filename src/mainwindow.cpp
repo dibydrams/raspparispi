@@ -214,6 +214,16 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonParkingPrive, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
+    ptr = new apiVigiCrues;
+    CustomButton *buttonVigiCrues = new CustomButton(ptr, this);
+    ButtonList << buttonVigiCrues;
+    ui->horizontalLayout->addWidget(buttonVigiCrues);
+    buttonVigiCrues->setToolTip("VigiCrues");
+    connect(buttonVigiCrues, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(buttonVigiCrues, SIGNAL(clicked()), this, SLOT(dialogvigicrues()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
+
+
     // Bouton servant à réinitialiser la map et les boutons
     ptr = new resetButtons;
     CustomButton *resetButtons = new CustomButton(ptr, this);
@@ -261,6 +271,12 @@ void MainWindow::dialog()
 void MainWindow::dialogtraduction()
 {
     Dialogtraduction fenetre;
+    fenetre.exec();
+}
+
+void MainWindow::dialogvigicrues()
+{
+    DialogVigicrues fenetre;
     fenetre.exec();
 }
 
