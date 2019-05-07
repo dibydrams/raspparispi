@@ -13,6 +13,7 @@
 #include "Abstract_API.h"
 #include "icon.h"
 #include "distance.h"
+#include "dist1.h"
 
 class sanisette : public Abstract_API
 {
@@ -35,7 +36,7 @@ private:
     double longitude;
     double latitude;
     QList<GeoObj> m_list;
-    distance *dist;
+    dist1 *dist;
 
 signals:
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);

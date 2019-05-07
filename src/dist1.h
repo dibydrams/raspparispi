@@ -38,7 +38,6 @@ private:
 private slots:
 
     void getDistance(QNetworkReply* reply);
-
 }
 
 ;
