@@ -17,7 +17,8 @@ public:
     static void afficherConnexion();
 
 private:
-    Ui::DialogConnexion *ui;
+     Ui::DialogConnexion *ui;
+
 
 };
 
