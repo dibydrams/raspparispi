@@ -25,6 +25,7 @@ QPixmap sanisette::getPixmap()
 
 /**
  * @brief sanisette::sanisetteAPI_Call
+ * @details fonction qui va faire appel à l'API aopendata.paris (qui s'apppuie sur OpenDataSoft).
  */
 void sanisette::sanisetteAPI_Call(){
     manager=new QNetworkAccessManager();
@@ -36,6 +37,7 @@ void sanisette::sanisetteAPI_Call(){
 
 /**
  * @brief sanisette::readJsonSani
+ * @details fonction qui va lire le retour de la requête au format Json et va remplir les propriété de l'objet.
  */
 void sanisette::readJsonSani(){
     m_list.clear();
@@ -60,39 +62,12 @@ void sanisette::readJsonSani(){
         m_list << geo;
     }
 
-    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
-   // qDebug()<<"getTimetravel : : "<<dist->getDistanceInMeters();
-    qDebug()<<"*** Distance car compte rendu objet ***";
-    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
-    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
-    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
-    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
-    qDebug()<<"arrival :: "<<dist->getArrival();
-    dist->~distance();
-
-    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
-    qDebug()<<"*** Distance pedestrian compte rendu objet ***";
-    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
-    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
-    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
-    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
-    qDebug()<<"arrival :: "<<dist->getArrival();
-    dist->~distance();
-
-    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
-    qDebug()<<"*** Distance bicycle compte rendu objet ***";
-    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
-    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
-    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
-    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
-    qDebug()<<"arrival :: "<<dist->getArrival();
-    dist->~distance();
-
     emit callFinished(m_list, TOILETTES);
 }
 
 /**
  * @brief sanisette::getInfo
+ * @details redéfinition de la fonction virtuel pure de ABSTRACT_API
  */
 void sanisette::getInfo(){
     sanisetteAPI_Call();

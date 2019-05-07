@@ -13,6 +13,8 @@
 * avec des coordonnées de type string ou double.
 * Un QEventLoop est utilisé afin de rendre la requête et son retour synchrone
 * (ce qui permettra d'envoyer de multiples requêtes d'affilé ou d'émettre des requêtes dans une boucle)
+* Dans cette 1er version le point de départ sera toujours 6 rue Rougemont.
+* Un exemple complet d'utilisation de cette classe se trouve en commentaire dans sanisette.cpp->sanisette::readJsonSani()
 */
 
 #include <QCoreApplication>

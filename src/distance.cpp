@@ -26,13 +26,45 @@ distance::distance(QObject *parent,QString longitude,QString latitude) : QObject
 }
 
 /**
- * @brief distance::distance*
+ * @brief distance::distance
  * @details surcharge du constructeur permettant de renseigner longitude et latitude de destination,
  * ainsi que le mode de transport
  * @param parent
  * @param latitude          : type QString
  * @param longitude         : type QString
  * @param modeDeTransport   : type QString
+ * @example :   dist=new distance(qApp,"48.8977","2.3594000000000506","car");
+ * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
+ *
+ *  @example (ces trois appel peuvent fonctionner à la suite; et il faut faire un objet pour chaque appel)
+ *
+ *    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
+ *    qDebug()<<"*** Distance car compte rendu objet ***";
+ *    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
+ *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
+ *    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
+ *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
+ *    qDebug()<<"arrival :: "<<dist->getArrival();
+ *    dist->~distance();
+
+ *    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
+ *    qDebug()<<"*** Distance pedestrian compte rendu objet ***";
+ *    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
+ *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
+ *    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
+ *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
+ *    qDebug()<<"arrival :: "<<dist->getArrival();
+ *    dist->~distance();
+
+ *    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
+ *    qDebug()<<"*** Distance bicycle compte rendu objet ***";
+ *    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
+ *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
+ *    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
+ *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
+ *    qDebug()<<"arrival :: "<<dist->getArrival();
+ *    dist->~distance();
+ *
  */
 distance::distance(QObject *parent, QString latitude, QString longitude, QString modeDeTransport): QObject(parent)
 {
