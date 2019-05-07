@@ -37,6 +37,7 @@ SOURCES += \
         apiparkingprive.cpp \
         apiparkingpublic.cpp \
         apivelib.cpp \
+    apivigicrues.cpp \
         coordtoaddr.cpp \
     dialoginfo.cpp \
         dialogmeteo.cpp \
@@ -84,6 +85,7 @@ HEADERS += \
         apiparkingpublic.h \
         apiquefaire.h \
         apivelib.h \
+        apivigicrues.h \
         coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
