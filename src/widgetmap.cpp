@@ -119,7 +119,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
-            "http://api.tomtom.com/map/1/staticimage?"
+            "https://api.tomtom.com/map/1/staticimage?"
             "key=8bUkGqzvXEZzyqvqFnbw0JoTfPk7BFQ8&"
             "format=png&"
             "layer=basic&style=main&view=Unified&"

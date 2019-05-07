@@ -5,6 +5,7 @@
  * @param parent -> pointer sur QObject
  * @details constructeur simple et vide qui ne fera pas appel à l'API de lui même
  * Il faudra donc après optention de l'objet, lui demander d'effectuer une requête avec la fonction "sendRequest()"
+ * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
  */
 distance::distance(QObject *parent) : QObject(parent)
 {
@@ -18,6 +19,7 @@ distance::distance(QObject *parent) : QObject(parent)
  * @param parent        :  type pointer sur QObject ou descendant
  * @param longitude     :  type QString
  * @param latitude      :  type QString
+ * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
  */
 distance::distance(QObject *parent,QString longitude,QString latitude) : QObject(parent)
 {
@@ -36,7 +38,7 @@ distance::distance(QObject *parent,QString longitude,QString latitude) : QObject
  * @example :   dist=new distance(qApp,"48.8977","2.3594000000000506","car");
  * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
  *
- *  @example (ces trois appel peuvent fonctionner à la suite; et il faut faire un objet pour chaque appel)
+ *  @example (ces trois appels peuvent fonctionner à la suite; et il faut faire un objet pour chaque appel)
  *
  *    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
  *    qDebug()<<"*** Distance car compte rendu objet ***";
@@ -64,7 +66,6 @@ distance::distance(QObject *parent,QString longitude,QString latitude) : QObject
  *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
  *    qDebug()<<"arrival :: "<<dist->getArrival();
  *    dist->~distance();
- *
  */
 distance::distance(QObject *parent, QString latitude, QString longitude, QString modeDeTransport): QObject(parent)
 {

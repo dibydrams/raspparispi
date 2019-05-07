@@ -35,7 +35,7 @@
  * timetravelWithTraffic (int)  : temps de trajet en tenant compte du traffic, en secondes
  * arrival (Qstring)            : heure d'arrivée Qstring format DateTime
  *
- * La classe possède aussi un SLOT getDistanceReply(), qui sera appellée
+ * La classe possède aussi un SLOT getDistanceReply(), qui sera appellé
  * à la reception du SIGNAL finished() d'un reply
  *
  */
