@@ -1,4 +1,5 @@
 #include "pollution.h"
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QDebug>
@@ -58,8 +59,6 @@ QVariantHash Pollution::readJson()
     hash["PM25"]=(obj2.value("pm25").toDouble());
     hash["PM10"]=(obj2.value("pm10").toDouble());
     hash["CO"]=(obj2.value("co").toDouble());
-
-
 
 
     return hash;

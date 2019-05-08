@@ -1,4 +1,5 @@
 #include "meteo.h"
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QDebug>
@@ -16,7 +17,6 @@ meteo::meteo()
 
     setRequest();
     connect(manager,&QNetworkAccessManager::finished,this,&meteo::replyFinished);
-
 
 }
 

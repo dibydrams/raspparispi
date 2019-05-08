@@ -34,21 +34,39 @@
        <item>
         <widget class="QPushButton" name="pushButton_FR">
          <property name="text">
-          <string>Français</string>
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_AR">
          <property name="text">
-          <string>Arabe</string>
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_EN">
          <property name="text">
-          <string>Anglais</string>
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
          </property>
         </widget>
        </item>
