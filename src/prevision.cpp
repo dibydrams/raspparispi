@@ -46,8 +46,6 @@ QHash<QString, QVariant> Prevision::readJson()
     tableauJSON = obj["list"].toArray();
 
 
-
-
     for (int i = 0; i < tableauJSON.size(); i++) {
 
 
@@ -78,9 +76,7 @@ QHash<QString, QVariant> Prevision::readJson()
         hash[QString ("Rain%1").arg(i)]=item1.value("3h").toDouble();
 
 
-
-
-}
+    }
 
 
     return hash;

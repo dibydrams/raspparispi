@@ -46,5 +46,8 @@
         <file>Traduction/src_en.qm</file>
         <file>Traduction/src_ar.qm</file>
         <file>Traduction/src_fr.qm</file>
+        <file>Traduction/egypt.png</file>
+        <file>Traduction/france.png</file>
+        <file>Traduction/usa.png</file>
     </qresource>
 </RCC>

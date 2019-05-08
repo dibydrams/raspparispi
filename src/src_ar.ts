@@ -7,12 +7,12 @@
         <location filename="dialogmeteo.ui" line="14"/>
         <location filename="dialogmeteo.ui" line="101"/>
         <source>Météo de Paris</source>
-        <translation type="unfinished"></translation>
+        <translation>طقس باريس</translation>
     </message>
     <message>
         <location filename="dialogmeteo.ui" line="52"/>
         <source>Météo</source>
-        <translation type="unfinished"></translation>
+        <translation>طقس</translation>
     </message>
     <message>
         <location filename="dialogmeteo.ui" line="141"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="dialogmeteo.ui" line="356"/>
         <source>Indice UV</source>
-        <translation type="unfinished"></translation>
+        <translation>مؤشر UV</translation>
     </message>
     <message>
         <location filename="dialogmeteo.ui" line="383"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="dialogmeteo.ui" line="466"/>
         <source>Prévision</source>
-        <translation type="unfinished"></translation>
+        <translation>تنبؤ</translation>
     </message>
     <message>
         <location filename="dialogmeteo.ui" line="553"/>
@@ -182,12 +182,12 @@
     <message>
         <location filename="dialogmeteo.ui" line="890"/>
         <source>Pollution</source>
-        <translation type="unfinished"></translation>
+        <translation>التلوث</translation>
     </message>
     <message>
         <location filename="dialogmeteo.ui" line="971"/>
         <source>Indice Qualité de l&apos;air</source>
-        <translation type="unfinished"></translation>
+        <translation>مؤشر جودة الهواء</translation>
     </message>
     <message>
         <location filename="dialogmeteo.ui" line="996"/>
@@ -224,170 +224,208 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;NO2 (Oxydes d&apos;azote) : &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;gaz irritant pour les bronches (émis principalement par le trafic routier).&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;CO (Monoxyde de carbone) : &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;gaz provennant majoritairement des gaz d&apos;échappement des véhicules. Peut provoquer des intoxications.&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SO2 (Dioxyde de soufre) : &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;gaz qui irrite les muqueuses de la peau et des voies respiratoires supérieures.&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;PM (الجسيمات المتعلقة):&lt;/span&gt;&lt;/p&gt;
+&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;20&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- جزيئات PM10 (أقل من 10 ميكرون في الحجم) تخترق الجهاز التنفسي.&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;-- جزيئات دقيقة أو PM2.5 (أقل من أو تساوي 2.5 ميكرون) تخترق تداعيات الشعب الهوائية (الحويصلات الهوائية).&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;O3 (الأوزون): &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;ملوث يهيج العينين والجهاز التنفسي وله آثار على النباتات.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;NO2 (أكاسيد النيتروجين): &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;غاز مزعج للقصبات الهوائية (ينبعث أساسا من حركة المرور على الطرق).&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;CO (أكسيد الكربون): &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;الغاز يصدر بشكل رئيسي من عادم السيارة. قد يسبب التسمم.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SO2 (غاز ثاني أكسيد الكبريت): &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;الغاز الذي يهيج الأغشية المخاطية للجلد والجهاز التنفسي العلوي.&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="45"/>
-        <source>ddd d MMMM  hh:mm </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="124"/>
+        <location filename="dialogmeteo.cpp" line="202"/>
         <source>Taux Actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>المعدل الحالي</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="125"/>
+        <location filename="dialogmeteo.cpp" line="203"/>
         <source>Objectifs de Qualité</source>
-        <translation type="unfinished"></translation>
+        <translation>أهداف الجودة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="126"/>
+        <location filename="dialogmeteo.cpp" line="204"/>
         <source>Valeurs Limites</source>
-        <translation type="unfinished"></translation>
+        <translation>حدود القيم</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="154"/>
+        <location filename="dialogmeteo.cpp" line="232"/>
         <source>Pollution par polluant</source>
-        <translation type="unfinished"></translation>
+        <translation>تلوث الهواء</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="178"/>
+        <location filename="dialogmeteo.cpp" line="256"/>
         <source>Concentration (µg/m³)</source>
+        <translation>كثافة (µg/m3)</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="454"/>
+        <source>Précipitation en mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="215"/>
+        <location filename="dialogmeteo.cpp" line="532"/>
         <source>Indice Qualité Air </source>
-        <translation type="unfinished"></translation>
+        <translation>مؤشر جودة الهواء</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="219"/>
+        <location filename="dialogmeteo.cpp" line="536"/>
         <source>Bon: </source>
-        <translation type="unfinished"></translation>
+        <translation>جيد</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="227"/>
+        <location filename="dialogmeteo.cpp" line="544"/>
         <source>Modéré: </source>
-        <translation type="unfinished"></translation>
+        <translation>معتدل</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="235"/>
+        <location filename="dialogmeteo.cpp" line="552"/>
         <source>Malsain pour sensible: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="243"/>
-        <source>Malsain: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="251"/>
-        <source>Très Malsain!: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="259"/>
-        <source>Risqué!!: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="310"/>
-        <source>Température max (°C)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="312"/>
-        <source>Température min (°C)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="314"/>
-        <source>Ciel </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="316"/>
-        <source>Humidité (%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="318"/>
-        <source>Vitesse du vent (km/h)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="320"/>
-        <source>Direction du vent (°)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="322"/>
-        <source>Pression (hPa)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="508"/>
-        <source>Précipitation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogmeteo.cpp" line="529"/>
-        <source>Précipitaion en mm</source>
-        <translation type="unfinished"></translation>
+        <translation>غير صحية للحساسية</translation>
     </message>
     <message>
         <location filename="dialogmeteo.cpp" line="560"/>
+        <source>Malsain: </source>
+        <translation>غير صحي</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="568"/>
+        <source>Très Malsain!: </source>
+        <translation>غير صحي للغاية!</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="576"/>
+        <source>Risqué!!: </source>
+        <translation>محفوف بالمخاطر!!</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="76"/>
+        <source>Température max (°C)</source>
+        <translation>(°C) درجة الحرارة القصوى</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="78"/>
+        <source>Température min (°C)</source>
+        <translation>(°C) درجة الحرارة الدنيا</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="80"/>
+        <source>Ciel </source>
+        <translation>السماء</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="82"/>
+        <source>Humidité (%)</source>
+        <translation>(%) رطوبة</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="84"/>
+        <source>Vitesse du vent (km/h)</source>
+        <translation>(km/h) سرعة الرياح</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="86"/>
+        <source>Direction du vent (°)</source>
+        <translation>(°) اتجاه الرياح</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="88"/>
+        <source>Pression (hPa)</source>
+        <translation>(hPa) الضغط</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="433"/>
+        <source>Précipitation</source>
+        <translation>مطر</translation>
+    </message>
+    <message>
+        <source>Précipitaion en mm</source>
+        <translation type="vanished">مطر (mm)</translation>
+    </message>
+    <message>
+        <location filename="dialogmeteo.cpp" line="485"/>
         <source>Température en °C</source>
-        <translation type="unfinished"></translation>
+        <translation>درجة الحرارة (C°)</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="573"/>
+        <location filename="dialogmeteo.cpp" line="498"/>
         <source>Heure</source>
-        <translation type="unfinished"></translation>
+        <translation>ساعة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="589"/>
+        <location filename="dialogmeteo.cpp" line="514"/>
         <source>Prévision météo pour les prochaines 24h</source>
-        <translation type="unfinished"></translation>
+        <translation>توقعات الطقس لل 24 ساعة القادمة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="616"/>
+        <location filename="dialogmeteo.cpp" line="136"/>
         <source>Indice UV </source>
-        <translation type="unfinished"></translation>
+        <translation>مؤشر UV</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="622"/>
+        <location filename="dialogmeteo.cpp" line="142"/>
         <source>Faible: </source>
-        <translation type="unfinished"></translation>
+        <translation>منخفض:</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="630"/>
+        <location filename="dialogmeteo.cpp" line="150"/>
         <source>Moyen: </source>
-        <translation type="unfinished"></translation>
+        <translation>متوسط:</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="637"/>
+        <location filename="dialogmeteo.cpp" line="157"/>
         <source>Élevé!: </source>
-        <translation type="unfinished"></translation>
+        <translation>مرتفع! :</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="644"/>
+        <location filename="dialogmeteo.cpp" line="164"/>
         <source>Très Élevé!!: </source>
-        <translation type="unfinished"></translation>
+        <translation>مرتفع جدا!! :</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="651"/>
+        <location filename="dialogmeteo.cpp" line="171"/>
         <source>Extreme!!!: </source>
-        <translation type="unfinished"></translation>
+        <translation>قصى!!! :</translation>
     </message>
 </context>
 <context>
     <name>DialogConnexion</name>
     <message>
+        <source>Dialog</source>
+        <translation type="obsolete">ترجمة</translation>
+    </message>
+    <message>
         <location filename="dialogconnexion.ui" line="14"/>
+        <source>Connexion</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogVigicrues</name>
+    <message>
+        <location filename="dialogvigicrues.ui" line="14"/>
         <source>Dialog</source>
         <translation type="unfinished">ترجمة</translation>
+    </message>
+    <message>
+        <location filename="dialogvigicrues.ui" line="20"/>
+        <source>Graph</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="dialogvigicrues.ui" line="45"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -402,21 +440,6 @@ p, li { white-space: pre-wrap; }
         <translation>ترجمة</translation>
     </message>
     <message>
-        <location filename="dialogtraduction.ui" line="37"/>
-        <source>Français</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogtraduction.ui" line="44"/>
-        <source>Arabe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogtraduction.ui" line="51"/>
-        <source>Anglais</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Veuillez choisir la langue de traduction</source>
         <translation type="vanished">اختر لغة الترجمة</translation>
     </message>
@@ -425,7 +448,103 @@ p, li { white-space: pre-wrap; }
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="26"/>
-        <source>Around Me - Map</source>
+        <source>Carte - Autours de Moi</source>
+        <oldsource>Around Me - Map</oldsource>
+        <translation>خريطة - حولي</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="70"/>
+        <source>Traduction</source>
+        <translation type="unfinished">ترجمة</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="78"/>
+        <source>Météo</source>
+        <translation type="unfinished">طقس</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="88"/>
+        <source>Evénements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="97"/>
+        <source>Pharmacies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="105"/>
+        <source>Bornes Electriques</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="115"/>
+        <source>Animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="124"/>
+        <source>Kiosques</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="133"/>
+        <source>Fontaines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="142"/>
+        <source>Terrasses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="151"/>
+        <source>Toilettes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="160"/>
+        <source>Transports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="175"/>
+        <source>Parcs &amp; Espaces Verts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="184"/>
+        <source>Bornes WiFi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="193"/>
+        <source>Théâtres</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="202"/>
+        <source>Bornes Vélib&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="211"/>
+        <source>Parkings Publics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="220"/>
+        <source>Parkings Privés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="229"/>
+        <source>VigiCrues</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="241"/>
+        <source>Réinitialiser les Filtres</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

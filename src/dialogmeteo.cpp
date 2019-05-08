@@ -1,15 +1,13 @@
 #include "dialogmeteo.h"
 #include "mainwindow.h"
-
 #include "meteo.h"
 #include "prevision.h"
 #include "pollution.h"
 #include "indiceuv.h"
+#include "dialogtraduction.h"
 
 #include <QDebug>
 #include <QTableWidgetItem>
-#include <QtCharts/QBarSet>
-#include <QHorizontalStackedBarSeries>
 #include <QChart>
 #include <QBarCategoryAxis>
 #include <QValueAxis>
@@ -23,10 +21,9 @@
 #include <QChart>
 #include <QBarSet>
 #include <QtCharts>
-#include <QtCharts/QBarSet>
 #include <QStandardItem>
 #include <QPixmap>
-#include "dialogtraduction.h"
+
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -38,24 +35,15 @@ Dialog::Dialog(QWidget *parent) :
     p_pollution = new Pollution;
     i_indice = new IndiceUV;
     pm_prevision=new Prevision;
-    QPixmap uvprotection;
-
-    //ui->labelDate->setText(QTime::currentTime().toString("hh:mm"));
-    //ui->labelDate->setText(QDate::currentDate().toString());
-    ui->labelDate->setText(QDateTime::currentDateTime().toString(("ddd d MMMM  hh:mm ")));
-
-    setvignette();
-
-    uvprotection.load(":/Icons_meteo/protectionUV.png");
-    ui->label_UVprotection->setPixmap(uvprotection);
 
     connect(m_meteo,SIGNAL(received()),this,SLOT(printHashmeteo()));
-    connect(p_pollution,SIGNAL(received()),this,SLOT(printHashpollution()));
     connect(i_indice,SIGNAL(received()),this,SLOT(printHashindice()));
     connect(pm_prevision,SIGNAL(received()),this,SLOT(printHashprevision()));
+    connect(p_pollution,SIGNAL(received()),this,SLOT(printHashpollution()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(pollutionChart()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(AQI()));
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
+
     connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
 
 }
@@ -64,238 +52,16 @@ Dialog::~Dialog()
 {
 
     delete ui;
+    delete m_meteo;
+    delete p_pollution;
+    delete i_indice;
+    delete pm_prevision;
 
 }
 
-void Dialog::setvignette()
-{
 
-    QString jours = (QDate::currentDate().toString("ddd"));
-    QString heures = (QTime::currentTime().toString("hh"));
 
-
-    QPixmap v1 ,v2,v3,v4,v5,v6;
-
-    v1.load(":/Icons_meteo/vignette1.png");
-    v2.load(":/Icons_meteo/vignette2.png");
-    v3.load(":/Icons_meteo/vignette3.png");
-    v4.load(":/Icons_meteo/vignette4.png");
-    v5.load(":/Icons_meteo/vignette5.png");
-    v6.load(":/Icons_meteo/vignette6.png");
-
-
-    if (jours != "sam" || jours != "dim")
-    {
-        if (heures >="08" && heures <="20")
-
-        {
-
-            ui->label_vignette1->setPixmap(v1);
-            ui->label_vignette2->setPixmap(v2);
-            ui->label_vignette3->setPixmap(v3);
-            ui->label_vignette4->setPixmap(v4);
-            ui->label_vignette5->setPixmap(v5);
-
-        }
-
-        else
-        {
-
-            ui->label_vignette1->setPixmap(v1);
-            ui->label_vignette2->setPixmap(v2);
-            ui->label_vignette3->setPixmap(v3);
-            ui->label_vignette4->setPixmap(v4);
-            ui->label_vignette5->setPixmap(v5);
-            ui->label_vignette6->setPixmap(v6);
-
-
-        }
-
-    }
-
-}
-
-void Dialog::pollutionChart()                           //Création et remplissage du graphique
-{
-
-
-    /* Ajout des titres des sets*/
-
-    set0 = new QBarSet(tr("Taux Actuel"));
-    set1 = new QBarSet(tr("Objectifs de Qualité"));
-    set2 = new QBarSet(tr("Valeurs Limites"));
-
-    /*Récupération des taux de pollutions grace à la fonction prinHashpollution */
-
-    QHash <QString, QVariant> pol=printHashpollution();
-
-    int p1,p2,p3,p4,p5,p6;
-
-    p1 = pol.value("PM25").toInt();
-    p2 = pol.value("PM10").toInt();
-    p3 = pol.value("O3").toInt();
-    p4 = pol.value("NO2").toInt();
-    p5 = (pol.value("CO").toInt())/100;
-    p6 = pol.value("SO2").toInt();
-
-
-    *set0 << p1 << p2 << p3 << p4 << p5 << p6;     //Taux actuels récupérer par l'API pollution
-    *set1 << 10 << 30 << 120 << 40 << 10000/100 << 50;                                                                                                                                                        //Normes de ces polluants
-    *set2 << 25 << 50 << 240 << 200<< 10000/100 << 125 ;
-
-
-    QBarSeries *series = new QBarSeries();
-    series->append(set0);
-    series->append(set1);
-    series->append(set2);
-
-    QChart *chart = new QChart();
-    chart->addSeries(series);
-    chart->setTitle(tr("Pollution par polluant"));
-    chart->setAnimationOptions(QChart::SeriesAnimations);
-
-
-    QStringList categories;
-    categories << "PM25" << "PM10" << "O3" << "NO2" << "CO" << "SO2";
-
-    /* Définiton du max*/
-
-    QValueAxis *axisY = new QValueAxis();
-
-    int mymax[] = {p1,p2,p3,p4,p5,p6};
-    int *max;
-    max = std::max_element (mymax,mymax+6);
-
-    if (*max <= 240)
-    {
-        axisY->setRange(0,240+10);                       //240 correspond au maximum des valeurs limites des polluants.
-    }
-
-    else {
-        axisY->setRange(0,*max+10);
-    }
-
-    axisY->setTitleText(tr("Concentration (µg/m³)"));
-    chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisY);
-
-    QBarCategoryAxis *axisX = new QBarCategoryAxis();
-    axisX->append(categories);
-    chart->addAxis(axisX, Qt::AlignBottom);
-    series->attachAxis(axisX);
-
-    chart->legend()->setVisible(true);
-    chart->legend()->setAlignment(Qt::AlignBottom);
-
-    QChartView *chartView = new QChartView();
-    chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setChart(chart);
-
-    gridLayout = new QGridLayout(ui->widgetPollution);
-    gridLayout->addWidget(chartView);
-
-    chart->setAnimationDuration(2000);
-    chart->setAnimationOptions(QChart::AllAnimations);
-
-    QFont font;
-    font.setPixelSize(20);
-    font.setBold(1);
-    chart->setTitleFont(font);
-
-
-
-}
-
-void Dialog::AQI()                                  //affichage de l'AQI et l'icone correspondante
-{
-
-    QPixmap fondPlan;
-    QHash <QString, QVariant> aqi=printHashpollution();
-    int aqi_value= aqi.value("AQI").toInt();
-    QString aq=tr("Indice Qualité Air ");
-
-    if (aqi_value>=0 && aqi_value<=50)
-    {
-        ui->label_DAQI->setText(QString ("<font color=\"#39962e\">%0: %1</font>").arg(tr("Bon: ")).arg(aqi_value));
-        fondPlan.load(":/Icons_meteo/aqi_g.png");
-        ui->label_IAQI->setPixmap(fondPlan);
-        ui->label->setText(QString ("<font color=\"#39962e\">%1</font>").arg(aq));
-    }
-
-    else if (aqi_value>=51 && aqi_value<=100)
-    {
-        ui->label_DAQI->setText(QString ("<font color=\"#eded2d\">%0 %1</font>").arg(tr("Modéré: ")).arg(aqi_value));
-        fondPlan.load(":/Icons_meteo/aqi_m.png");
-        ui->label_IAQI->setPixmap(fondPlan);
-        ui->label->setText(QString ("<font color=\"#eded2d\">%1</font>").arg(aq));
-    }
-
-    else if (aqi_value>=101 && aqi_value<=150)
-    {
-        ui->label_DAQI->setText(QString ("<font color=\"#f99c2a\">%0 %1</font>").arg(tr("Malsain pour sensible: ")).arg(aqi_value));
-        fondPlan.load(":/Icons_meteo/aqi_u1.png");
-        ui->label_IAQI->setPixmap(fondPlan);
-        ui->label->setText(QString ("<font color=\"#f99c2a\">%1</font>").arg(aq));
-    }
-
-    else if (aqi_value>=151 && aqi_value<=200)
-    {
-        ui->label_DAQI->setText(QString("<font color=\"#ef2121\">%0 %1</font>").arg(tr("Malsain: ")).arg(aqi_value));
-        fondPlan.load(":/Icons_meteo/aqi_u2.png");
-        ui->label_IAQI->setPixmap(fondPlan);
-        ui->label->setText(QString ("<font color=\"#ef2121\">%1</font>").arg(aq));
-    }
-
-    else if (aqi_value>=201 && aqi_value<=300)
-    {
-        ui->label_DAQI->setText(QString ("<font color=\"#9920ef\">%0 %1</font>").arg(tr("Très Malsain!: ")).arg(aqi_value));
-        fondPlan.load(":/Icons_meteo/aqi_vu.png");
-        ui->label_IAQI->setPixmap(fondPlan);
-        ui->label->setText(QString ("<font color=\"#9920ef\">%1</font>").arg(aq));
-    }
-
-    else
-    {
-        ui->label_DAQI->setText(QString ("<font color=\"#c11b1b\">%0 %1</font>").arg(tr("Risqué!!: ")).arg(aqi_value));
-        fondPlan.load(":/Icons_meteo/aqi_h.png");
-        ui->label_IAQI->setPixmap(fondPlan);
-        ui->label->setText(QString ("<font color=\"#c11b1b\">%1</font>").arg(aq));
-
-    }
-
-
-
-}
-
-void Dialog::Icon()                                        //affichage de l'icone meteo
-{
-
-    QHash <QString, QVariant>hash_meteo;
-    hash_meteo=m_meteo->getHash();
-    QString icon=hash_meteo.value("icon").toString();
-    QPixmap ic;
-
-    ic.load(QString(":/Icons_meteo/%1.png").arg(icon));
-    ui->labelIcon->setPixmap(ic);
-
-}
-
-void Dialog::loadlanguage(QString lang)
-{
-
-    qDebug() << "Météo";
-
-    qDebug() << lang;
-    QTranslator translator;
-
-    translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));
-    qApp->installTranslator(&translator);
-    ui->retranslateUi(this);
-}
-
-
-
-void Dialog::printHashmeteo()                              //création et remplissage du tableWidget
+void Dialog::printHashmeteo()                              //création et remplissage du tableWidget xontenant les informations sur la météo du jours
 {
 
     QHash <QString, QVariant>hash_meteo;
@@ -346,17 +112,178 @@ void Dialog::printHashmeteo()                              //création et rempli
 
     //ui->tableView->setDisabled(1);
     ui->tableView->setFont(QFont("Ubuntu", 16, QFont::Bold));
+    ui->tableView->setEditTriggers(nullptr);                          //Permet de mettre le tableau en readonly
 
 
     QString t = hash_meteo.value("temp").toString();
     ui->labelTemp->setText(QString ("%1 °C").arg(t));
     ui->labelCiel->setText(hash_meteo.value("main").toString());
+    ui->labelDate->setText(QDateTime::currentDateTime().toString(("ddd d MMMM  hh:mm ")));
 
 
 
 }
 
-void Dialog::printHashprevision()
+
+
+void Dialog::printHashindice()                                 //Affichage de l'indice UV et de l'icon correspondante
+{
+
+
+    QHash <QString, QVariant>indice;
+    indice=i_indice->getHash();
+    int indice_value=indice.value("UV").toInt();
+    QString ind=tr("Indice UV ");
+
+
+
+    if (indice_value>=0 && indice_value<=2)
+    {
+        ui->label_DUV->setText(QString ("<font color=\"#0fc133\">%0 %1</font>").arg(tr("Faible: ")).arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#0fc133\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#0fc133\">%1</font>").arg(ind));
+
+    }
+
+    else if (indice_value>=3 && indice_value<=5)
+    {
+        ui->label_DUV->setText(QString ("<font color=\"#f9eb25\">%0 %1</font>").arg(tr("Moyen: ")).arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#f9eb25\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#f9eb25\">%1</font>").arg(ind));
+    }
+
+    else if (indice_value>=6 && indice_value<=7)
+    {
+        ui->label_DUV->setText(QString ("<font color=\"#ff9011\">%0 %1</font>").arg(tr("Élevé!: ")).arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#ff9011\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#ff9011\">%1</font>").arg(ind));
+    }
+
+    else if (indice_value>=8 && indice_value<=10)
+    {
+        ui->label_DUV->setText(QString ("<font color=\"#e00f0f\">%0 %1</font>").arg(tr("Très Élevé!!: ")).arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#e00f0f\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#e00f0f\">%1</font>").arg(ind));
+    }
+
+    else {
+
+        ui->label_DUV->setText(QString ("<font color=\"#c669e5\">%0 %1</font>").arg(tr("Extreme!!!: ")).arg(indice_value));
+        ui->label_indUV->setText("<font color=\"#c669e5\">UV</font>");
+        ui->label_TUV->setText(QString("<font color=\"#c669e5\">%1</font>").arg(ind));
+    }
+
+    ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
+
+
+    /* Affichage de la l'image contenant les légendes des indices UV*/
+
+    QPixmap uvprotection;
+    uvprotection.load(":/Icons_meteo/protectionUV.png");
+    ui->label_UVprotection->setPixmap(uvprotection);
+}
+
+
+QHash <QString, QVariant> Dialog::printHashpollution()          //récupération des données pollution
+{
+
+    QHash <QString, QVariant>hash_pollution;
+    hash_pollution=p_pollution->getHash();
+    return hash_pollution;
+
+}
+
+void Dialog::pollutionChart()                                   //Création et remplissage du graphique "Pollution par polluants"
+{
+
+
+    /* Ajout des titres des sets*/
+
+    set0 = new QBarSet(tr("Taux Actuel"));
+    set1 = new QBarSet(tr("Objectifs de Qualité"));
+    set2 = new QBarSet(tr("Valeurs Limites"));
+
+    /*Récupération des taux de pollutions grace à la fonction prinHashpollution */
+
+    QHash <QString, QVariant> pol=printHashpollution();
+
+    int p1,p2,p3,p4,p5,p6;
+
+    p1 = pol.value("PM25").toInt();
+    p2 = pol.value("PM10").toInt();
+    p3 = pol.value("O3").toInt();
+    p4 = pol.value("NO2").toInt();
+    p5 = (pol.value("CO").toInt())/100;
+    p6 = pol.value("SO2").toInt();
+
+
+    *set0 << p1 << p2 << p3 << p4 << p5 << p6;                      //Taux actuels récupérer par l'API pollution
+    *set1 << 10 << 30 << 120 << 40 << 10000/100 << 50;                                                                                                                                                        //Normes de ces polluants
+    *set2 << 25 << 50 << 240 << 200<< 10000/100 << 125 ;
+
+
+    QBarSeries *series = new QBarSeries();
+    series->append(set0);
+    series->append(set1);
+    series->append(set2);
+
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle(tr("Pollution par polluant"));
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+
+    QStringList categories;
+    categories << "PM25" << "PM10" << "O3" << "NO2" << "CO" << "SO2";
+
+    /* Définiton du taux max*/
+
+    QValueAxis *axisY = new QValueAxis();
+
+    int mymax[] = {p1,p2,p3,p4,p5,p6};
+    int *max;
+    max = std::max_element (mymax,mymax+6);
+
+    if (*max <= 240)
+    {
+        axisY->setRange(0,240+10);                       //240 correspond au maximum des valeurs limites des polluants.
+    }
+
+    else {
+        axisY->setRange(0,*max+10);
+    }
+
+    axisY->setTitleText(tr("Concentration (µg/m³)"));
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
+
+    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    axisX->append(categories);
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
+
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+
+    QChartView *chartView = new QChartView();
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->setChart(chart);
+
+    gridLayout = new QGridLayout(ui->widgetPollution);
+    gridLayout->addWidget(chartView);
+
+    chart->setAnimationDuration(2000);
+    chart->setAnimationOptions(QChart::AllAnimations);
+
+    QFont font;
+    font.setPixelSize(20);
+    font.setBold(1);
+    chart->setTitleFont(font);
+
+}
+
+
+void Dialog::printHashprevision()                          //Affichage des prévisions pour les prochaines 24h (par intervalles de 3h), onglet prévision
 {
 
     QHash <QString, QVariant>hash_prevision;
@@ -403,8 +330,6 @@ void Dialog::printHashprevision()
     icon=hash_prevision.value("Icon8").toString();
     ic.load(QString(":/Icons_meteo/%1.png").arg(icon));
     ui->label_icon8->setPixmap(ic);
-
-
 
 
 
@@ -526,7 +451,7 @@ void Dialog::printHashprevision()
     maxp = std::max_element (mymaxp,mymaxp+8);
 
     axisY1->setRange(0,*maxp+1);
-    axisY1->setTitleText(tr("Précipitaion en mm"));
+    axisY1->setTitleText(tr("Précipitation en mm"));
     axisY1->setLabelsColor(QColor(39, 114, 234));
     chart->addAxis(axisY1, Qt::AlignRight);
     series1->attachAxis(axisY1);
@@ -597,80 +522,152 @@ void Dialog::printHashprevision()
 
 }
 
-QHash <QString, QVariant> Dialog::printHashpollution()        //récupération des données pollution
+
+void Dialog::AQI()                                          //affichage de l'AQI et l'icone correspondante
 {
 
-    QHash <QString, QVariant>hash_pollution;
-    hash_pollution=p_pollution->getHash();
-    return hash_pollution;
+    QPixmap fondPlan;
+    QHash <QString, QVariant> aqi=printHashpollution();
+    int aqi_value= aqi.value("AQI").toInt();
+    QString aq=tr("Indice Qualité Air ");
+
+    if (aqi_value>=0 && aqi_value<=50)
+    {
+        ui->label_DAQI->setText(QString ("<font color=\"#39962e\">%0 %1</font>").arg(tr("Bon: ")).arg(aqi_value));
+        fondPlan.load(":/Icons_meteo/aqi_g.png");
+        ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#39962e\">%1</font>").arg(aq));
+    }
+
+    else if (aqi_value>=51 && aqi_value<=100)
+    {
+        ui->label_DAQI->setText(QString ("<font color=\"#eded2d\">%0 %1</font>").arg(tr("Modéré: ")).arg(aqi_value));
+        fondPlan.load(":/Icons_meteo/aqi_m.png");
+        ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#eded2d\">%1</font>").arg(aq));
+    }
+
+    else if (aqi_value>=101 && aqi_value<=150)
+    {
+        ui->label_DAQI->setText(QString ("<font color=\"#f99c2a\">%0 %1</font>").arg(tr("Malsain pour sensible: ")).arg(aqi_value));
+        fondPlan.load(":/Icons_meteo/aqi_u1.png");
+        ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#f99c2a\">%1</font>").arg(aq));
+    }
+
+    else if (aqi_value>=151 && aqi_value<=200)
+    {
+        ui->label_DAQI->setText(QString("<font color=\"#ef2121\">%0 %1</font>").arg(tr("Malsain: ")).arg(aqi_value));
+        fondPlan.load(":/Icons_meteo/aqi_u2.png");
+        ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#ef2121\">%1</font>").arg(aq));
+    }
+
+    else if (aqi_value>=201 && aqi_value<=300)
+    {
+        ui->label_DAQI->setText(QString ("<font color=\"#9920ef\">%0 %1</font>").arg(tr("Très Malsain!: ")).arg(aqi_value));
+        fondPlan.load(":/Icons_meteo/aqi_vu.png");
+        ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#9920ef\">%1</font>").arg(aq));
+    }
+
+    else
+    {
+        ui->label_DAQI->setText(QString ("<font color=\"#c11b1b\">%0 %1</font>").arg(tr("Risqué!!: ")).arg(aqi_value));
+        fondPlan.load(":/Icons_meteo/aqi_h.png");
+        ui->label_IAQI->setPixmap(fondPlan);
+        ui->label->setText(QString ("<font color=\"#c11b1b\">%1</font>").arg(aq));
+
+    }
+
+    setvignette();         //affichage des vignettes Crit'Air
 
 }
 
-void Dialog::printHashindice()                                 //Affichage de l'indice UV et de l'icon correspondante
+
+void Dialog::Icon()                                        //affichage de l'icone meteo dans l'onglet Météo
 {
 
+    QHash <QString, QVariant>hash_meteo;
+    hash_meteo=m_meteo->getHash();
+    QString icon=hash_meteo.value("icon").toString();
+    QPixmap ic;
 
-    QHash <QString, QVariant>indice;
-    indice=i_indice->getHash();
-    int indice_value=indice.value("UV").toInt();
-    QString ind=tr("Indice UV ");
+    ic.load(QString(":/Icons_meteo/%1.png").arg(icon));
+    ui->labelIcon->setPixmap(ic);
+
+}
 
 
+void Dialog::setvignette()                                          //Affichage des vignettes Crit'Air autorisées à la circulation
+{
 
-    if (indice_value>=0 && indice_value<=2)
+    QString jours = (QDate::currentDate().toString("ddd"));
+    QString heures = (QTime::currentTime().toString("hh"));
+
+
+    QPixmap v1 ,v2,v3,v4,v5,v6;
+
+    v1.load(":/Icons_meteo/vignette1.png");
+    v2.load(":/Icons_meteo/vignette2.png");
+    v3.load(":/Icons_meteo/vignette3.png");
+    v4.load(":/Icons_meteo/vignette4.png");
+    v5.load(":/Icons_meteo/vignette5.png");
+    v6.load(":/Icons_meteo/vignette6.png");
+
+
+    if (jours != "sam" || jours != "dim")
     {
-        ui->label_DUV->setText(QString ("<font color=\"#0fc133\">%0 %1</font>").arg(tr("Faible: ")).arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#0fc133\">UV</font>");
-        ui->label_TUV->setText(QString("<font color=\"#0fc133\">%1</font>").arg(ind));
+        if (heures >="08" && heures <="20")
+
+        {
+
+            ui->label_vignette1->setPixmap(v1);
+            ui->label_vignette2->setPixmap(v2);
+            ui->label_vignette3->setPixmap(v3);
+            ui->label_vignette4->setPixmap(v4);
+            ui->label_vignette5->setPixmap(v5);
+
+        }
+
+        else
+        {
+
+            ui->label_vignette1->setPixmap(v1);
+            ui->label_vignette2->setPixmap(v2);
+            ui->label_vignette3->setPixmap(v3);
+            ui->label_vignette4->setPixmap(v4);
+            ui->label_vignette5->setPixmap(v5);
+            ui->label_vignette6->setPixmap(v6);
+
+
+        }
 
     }
 
-    else if (indice_value>=3 && indice_value<=5)
-    {
-        ui->label_DUV->setText(QString ("<font color=\"#f9eb25\">%0 %1</font>").arg(tr("Moyen: ")).arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#f9eb25\">UV</font>");
-        ui->label_TUV->setText(QString("<font color=\"#f9eb25\">%1</font>").arg(ind));
-    }
-
-    else if (indice_value>=6 && indice_value<=7)
-    {
-        ui->label_DUV->setText(QString ("<font color=\"#ff9011\">%0 %1</font>").arg(tr("Élevé!: ")).arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#ff9011\">UV</font>");
-        ui->label_TUV->setText(QString("<font color=\"#ff9011\">%1</font>").arg(ind));
-    }
-
-    else if (indice_value>=8 && indice_value<=10)
-    {
-        ui->label_DUV->setText(QString ("<font color=\"#e00f0f\">%0 %1</font>").arg(tr("Très Élevé!!: ")).arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#e00f0f\">UV</font>");
-        ui->label_TUV->setText(QString("<font color=\"#e00f0f\">%1</font>").arg(ind));
-    }
-
-    else {
-
-        ui->label_DUV->setText(QString ("<font color=\"#c669e5\">%0 %1</font>").arg(tr("Extreme!!!: ")).arg(indice_value));
-        ui->label_indUV->setText("<font color=\"#c669e5\">UV</font>");
-        ui->label_TUV->setText(QString("<font color=\"#c669e5\">%1</font>").arg(ind));
-    }
-
-    ui->label_DUV->setFont(QFont("Ubuntu",16,QFont::Bold));
 }
 
 
 
 
-/*Unité
- *
- * Longitude(°,')
- * Latitude(°,')
- * Pression(hPa)
- * Température(°C)
- * Humidité(%)
- * Vitesse du vent(km/h)
- * Direction du vent(°)
- * Heure levé du Soleil
- * Heure couché du Soleil
- * Temps
- *
- * */
+
+void Dialog::loadlanguage(QString lang)                 //Chargement de la langue de traduction
+{
+
+    qDebug() << "Météo";
+
+    qDebug() << lang;
+    QTranslator translator;
+
+    translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+
+}
+
+
+
+
+
+
 

@@ -12,7 +12,7 @@ Abstract_API::API_index traduction::getId()
 
 QPixmap traduction::getPixmap()
 {
- return QPixmap(":/Icons_meteo/translation.png");
+    return QPixmap(":/Icons_meteo/translation.png");
 }
 
 void traduction::getInfo()
