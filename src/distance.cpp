@@ -128,11 +128,11 @@ void distance::getDistanceReply(QNetworkReply *reply)
         QString arrival = summary["arrivalTime"].toString();
 
         //***remplisasge des propriété de l'objet***
-          this->setDistanceInMeters(summary["lengthInMeters"].toInt());
-          this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
-          this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
-          this->setDelay(summary["trafficDelayInSeconds"].toInt());
-          this->setArrival(arrival);
+        this->setDistanceInMeters(summary["lengthInMeters"].toInt());
+        this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
+        this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
+        this->setDelay(summary["trafficDelayInSeconds"].toInt());
+        this->setArrival(arrival);
     }
     loop.exit();
 }
