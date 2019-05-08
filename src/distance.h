@@ -45,13 +45,15 @@ class distance : public QObject
  Q_OBJECT
 
 public:
-    distance(QObject *parent);
-    distance(QObject *parent, QString latitude,QString Longitude);
-    distance(QObject *parent, QString latitude,QString Longitude,QString modeDeTransport);
+    distance(QObject * parent);
+    distance(QObject * parent, QString latitude,QString Longitude);
+    distance(QObject * parent, QString latitude,QString Longitude,QString modeDeTransport);
 
     void sendRequest(QString longitude,QString latitude);
     void sendRequest(QString longitude,QString latitude,QString modeDeTransport);
-    virtual ~distance();
+
+    static QString kilometers_meters(int meters);
+    static QString time_hours_minutes_seconds(int seconds);
 
     int getDistanceInMeters() const;
     void setDistanceInMeters(int value);
@@ -68,9 +70,11 @@ public:
     QString getArrival() const;
     void setArrival(const QString &value);
 
+    virtual ~distance();
+
 private:
-    QNetworkReply* currentReply;
-    QNetworkAccessManager *networkManager;
+    QNetworkReply * currentReply;
+    QNetworkAccessManager * networkManager;
     QEventLoop loop;
 
     int distanceInMeters;

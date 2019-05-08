@@ -50,70 +50,57 @@ void theatre::readJsonTheatre(){
     QJsonDocument document = QJsonDocument::fromJson(responseBit);
     QJsonObject replyObj = document.object();
     QJsonArray recordsJsonArray = replyObj["records"].toArray();
-   // qDebug()<<" records : : "<< recordsJsonArray;
-    foreach (const QJsonValue & value, recordsJsonArray) {
+
+    for ( auto value :  recordsJsonArray) {
         QJsonObject obj = value.toObject();
         QJsonObject objectFields = obj["fields"].toObject();
-       // qDebug()<<" keys : : "<<objectFields.keys();
-        //coordinatedHelper
-        QString adr=objectFields["address"].toString();//+" "+objectFields["department"].toString();
-        QString city=objectFields["city"].toString();
-        QString date_end=objectFields["date_end"].toString();
+        QString adr=objectFields["address"].toString();
         QString description=objectFields["description"].toString();
         QString free_text=objectFields["free_text"].toString();
         QString image=objectFields["image"].toString();
-        QString image_thumb=objectFields["image_thumb"].toString();
+        //QString image_thumb=objectFields["image_thumb"].toString();
         QJsonArray latlon = objectFields["latlon"].toArray();
         double latitude = latlon[0].toDouble();
         double longitude = latlon[1].toDouble();
-
-        //QString latlon=objectFields["latlon"].toString();
         QString placename=objectFields["placename"].toString();
         QString pricing_info=objectFields["pricing_info"].toString();
-        QString region=objectFields["region"].toString();
         QString space_time_info=objectFields["space_time_info"].toString();
         QString tags=objectFields["tags"].toString();
-        QString timetable=objectFields["timetable"].toString();
+        //QString timetable=objectFields["timetable"].toString();
         QString title=objectFields["title"].toString();
-        QString uid=objectFields["uid"].toString();
 
+        //        qDebug()<<"";
+        //        qDebug()<<"";
+        //        qDebug()<<"";
+        //        qDebug()<<"######## INFORMATION ########";
+        //        qDebug()<<"######## INFORMATION ########";
+        //        qDebug()<<"######## INFORMATION ########";
+        //        qDebug()<<" placename : : "<< placename;
+        //        qDebug()<<" title : : "<< title;
+        //        qDebug()<<" description : : "<< description;
+        //        qDebug()<<" free_text : : "<< free_text;
+        //        qDebug()<<" tags : : "<< tags;
+        //        qDebug()<<" image : : "<< image;
+        //        qDebug()<<" space_time_info : : "<< space_time_info;
+        //        qDebug()<<" adresse : : "<< adr;
+        //        qDebug()<<" pricing_info : : "<< pricing_info;
 
-        qDebug()<<"";
-        qDebug()<<"";
-        qDebug()<<"";
-        qDebug()<<"######## INFORMATION ########";
-        qDebug()<<"######## INFORMATION ########";
-        qDebug()<<"######## INFORMATION ########";
-        qDebug()<<" placename : : "<< placename;
-        qDebug()<<" title : : "<< title;
-        qDebug()<<" description : : "<< description;
-        qDebug()<<" free_text : : "<< free_text;
-        qDebug()<<" tags : : "<< tags;
-        qDebug()<<" image : : "<< image;
-        qDebug()<<" space_time_info : : "<< space_time_info;
-        qDebug()<<" adresse : : "<< adr;
-        qDebug()<<" pricing_info : : "<< pricing_info;
-        //qDebug()<<" image_thumb : : "<< image_thumb;
-        // qDebug()<<" latlon : : "<< latitude <<" : "<< longitude;
-        //qDebug()<<" city : : "<< city;
-        //qDebug()<<" date_end : : "<< date_end;
-        //  qDebug()<<" region : : "<< region;
         //qDebug()<<" timetable : : "<< timetable;
-        //qDebug()<<" uid : : "<< uid;
 
-
-
-
-//        coordHelper=new addrToCoord(qApp,adr);
-//        double longitude=coordHelper->getLongitude();
-//        double latitude=coordHelper->getLatitude();
-//        coordHelper->deleteLater();
-
-//        // remplissage de geoObj
+        //remplissage de geoObj
         GeoObj geo;
         geo.longitude =longitude;
         geo.latitude = latitude;
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(247, 212, 120));
+        geo.info.insert("Lieu",placename);
+        geo.info.insert("Titre",title);
+        geo.info.insert("Description",description);
+        geo.info.insert("Synopsis",free_text);
+        geo.info.insert("Tags",tags);
+        geo.info.insert("Image",image);
+        geo.info.insert("Space_time_info",space_time_info);
+        geo.info.insert("Adresse",adr);
+        geo.info.insert("Pricing_info",pricing_info);
         m_list << geo;
     }
     emit callFinished(m_list, THEATRE);
