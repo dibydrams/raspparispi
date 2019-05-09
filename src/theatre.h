@@ -36,10 +36,11 @@ public:
     theatre();
     API_index getId() override;
     QPixmap getPixmap() override;
+    void theatreAPI_Call();
+    QString timetableFormat(QString timetable);
 
 public slots:
     void getInfo() override;
-    void theatreAPI_Call();
     void readJsonTheatre();
 
 private:
