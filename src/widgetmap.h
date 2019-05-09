@@ -82,6 +82,10 @@ public:
     static double rayonCentre;
     static double compensationLargeurRayon;
     static int zoom;
+    static double BBOXminLongitude;
+    static double BBOXminLatitude;
+    static double BBOXmaxLongitude;
+    static double BBOXmaxLatitude;
 
     void setIconCount( int count);
 

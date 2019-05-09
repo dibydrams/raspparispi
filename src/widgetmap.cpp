@@ -13,6 +13,11 @@ double WidgetMap::rayonCentre = 0.007129412; //0.006;
 double WidgetMap::compensationLargeurRayon = 2.040087046;
 int WidgetMap::zoom = 15;
 
+double WidgetMap::BBOXminLongitude;
+double WidgetMap::BBOXminLatitude;
+double WidgetMap::BBOXmaxLongitude;
+double WidgetMap::BBOXmaxLatitude;
+
 
 // initialise les valeurs de .config/raspparispi/raspparispi.conf si elles n'existent pas
 // et les renvoient si elles existent
@@ -170,6 +175,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 //InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
                 //InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
                 //InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
+
+                BBOXminLongitude = m_BBOXminLongitude;
+                BBOXminLatitude = m_BBOXminLatitude;
+                BBOXmaxLongitude = m_BBOXmaxLongitude;
+                BBOXmaxLatitude = m_BBOXmaxLatitude;
+
             }
         }
         else qDebug() << "erreur api tomtom: " << reply->errorString();
