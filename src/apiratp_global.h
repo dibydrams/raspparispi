@@ -46,6 +46,8 @@ public:
     int indexTranspForUniReq;
     int indexStationForUniReq;
 
+    QString stationId;
+
     void FilledTransportLists();
 
 private:
@@ -58,6 +60,7 @@ private:
 public slots:
     void getInfo() override;
     void GeoPoints(QNetworkReply *);
+    void GotoStation();
 
 private slots:
     QJsonDocument LoadJson(QString fileName);
