@@ -55,7 +55,7 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
             int k=-1;
             while (j.hasNext()) {
                 j.next();
-                qDebug() << j.key() << ": " << j.value() << endl;
+                // qDebug() << j.key() << ": " << j.value() << endl;
                 QTableWidgetItem *newkey = new QTableWidgetItem(j.key());
                 QTableWidgetItem *newvalue = new QTableWidgetItem(j.value());
                 tableInfo->setItem(k,2,newkey);
