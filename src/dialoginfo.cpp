@@ -7,10 +7,10 @@
 #include <QHeaderView>
 #include <QDebug>
 
-void dialoginfo::setData(const QString cliclong, const QString cliclat)
+void dialoginfo::setData(const double cliclong, const double cliclat)
 {
-    QString longitude = cliclong;
-    QString latitude = cliclat;
+    QVariant longitude = cliclong;
+    QVariant latitude = cliclat;
     tableWidgetDistance = new QTableWidget(this);
     ui->verticalLayout->addWidget(tableWidgetDistance);
     tableWidgetDistance->setColumnCount(2);
@@ -18,12 +18,15 @@ void dialoginfo::setData(const QString cliclong, const QString cliclat)
     row = tableWidgetDistance->rowCount() - 1;
     tableWidgetDistance->insertRow(tableWidgetDistance->rowCount());
 //    tableWidgetDistance->setItem(row, 2, new QTableWidgetItem((QVariant(WidgetMap::centreLongitude)).toString()));
-    tableWidgetDistance->setItem(row, 2, new QTableWidgetItem(longitude));
-    tableWidgetDistance->setItem(row, 3, new QTableWidgetItem(latitude));
+
+    tableWidgetDistance->setItem(row, 2, new QTableWidgetItem(longitude.toString()));
+    tableWidgetDistance->setItem(row, 3, new QTableWidgetItem(latitude.toString()));
     qDebug()<<"longitude : :"<<longitude;
     qDebug()<<"latitude : :"<<latitude;
-    dist=new distance(qApp,latitude,longitude,"pedestrian");
-    qDebug()<<"ditance : : "<<dist->getDistanceInMeters();
+    dist=new distance(qApp,latitude.toString(),longitude.toString(),"pedestrian");
+    qDebug()<<"distance : : "<<distance::kilometers_meters(dist->getDistanceInMeters());
+    qDebug()<<"timeTravel : "<<distance::time_hours_minutes_seconds(dist->getTimetravel());
+
 }
 
 dialoginfo::dialoginfo(QWidget *parent) :

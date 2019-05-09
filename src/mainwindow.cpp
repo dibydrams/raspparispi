@@ -227,6 +227,7 @@ void MainWindow::initButtons()
     ButtonList << buttonVigiCrues;
     ui->horizontalLayout->addWidget(buttonVigiCrues);
     buttonVigiCrues->setToolTip(tr("VigiCrues"));
+    buttonVigiCrues->setCheckable(false);
     connect(buttonVigiCrues, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(buttonVigiCrues, SIGNAL(clicked()), this, SLOT(dialogvigicrues()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
