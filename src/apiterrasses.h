@@ -35,9 +35,10 @@ public:
 private slots:
     void API_Call();
     void API_Results(QNetworkReply *reply);
-//ajout debut
+    //ajout debut
     void slotError(QNetworkReply::NetworkError);
-//ajout fin
+    //ajout fin
+
 
 public slots:
     void getInfo() override;
@@ -50,11 +51,11 @@ private:
     QJsonObject obj;
     QJsonArray arr;
     QList<GeoObj> m_list;
-     QList<terrasse> *listTerrasse = new QList<terrasse>();
+    QList<terrasse> *listTerrasse = new QList<terrasse>();
 
 
 signals:
-  void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
+    void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
 #endif // APITERRASSES_H
