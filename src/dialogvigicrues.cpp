@@ -64,7 +64,7 @@ void DialogVigicrues::printHashhauteur()
 
     // EChelle axe des x
     QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
-    dateTicker->setDateTimeFormat("hh:mm");  //d. MMMM\nyyyy
+    dateTicker->setDateTimeFormat("hh:mm \n dd/MM/yy");  //d. MMMM\nyyyy
     ui->widgetGraph->xAxis->setTicker(dateTicker);
 
     // Taille de police plus compacte pour le nom des axes
