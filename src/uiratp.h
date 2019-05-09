@@ -28,10 +28,11 @@ public:
 private slots:
     void SetUniTransportIndex(int _codeT);
     void SetUniStationIndex(int _codeS);
+    void ShowErrorUni(QString);
+    void ShowFinishedUni(QJsonArray);
     void ShowTransports();
     void ShowTransportStopPoints(int _code);
     void PrepareUniRequest();
-    void showFinishedUni(QJsonArray);
 
 private:
     Ui::Uiratp *ui;
