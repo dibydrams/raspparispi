@@ -18,8 +18,8 @@ void pharmapi::API_Call()
 
     QString lat = QString::number(conf_latitude);
     QString lon = QString::number(conf_longitude);
-
-    QUrl url("https://data.iledefrance.fr/api/records/1.0/search/?dataset=carte-des-pharmacies-dile-de-france&rows=987&facet=libdepartement&facet=commune&refine.libdepartement=PARIS");
+    QString rayon = "1000";
+    QUrl url("https://data.iledefrance.fr/api/records/1.0/search/?dataset=carte-des-pharmacies-dile-de-france&rows=500&facet=libdepartement&facet=commune&refine.libdepartement=PARIS&geofilter.distance="+lat+"%2C"+lon+"%2C"+rayon);
     QNetworkRequest request;
     request.setUrl(url);
 
