@@ -49,6 +49,9 @@ void apikiosques::API_results(QNetworkReply *reply)
         longitude=objn["fields"].toObject().value("geo_point_2d").toArray()[1].toDouble();
         statut=objn["fields"].toObject().value("statut").toString();
         adresse=objn["fields"].toObject().value("adresse").toString();
+        lon=QString::number(longitude, 'g', 13);
+        lat=QString::number(latitude, 'g', 13);
+        //dist=new distance(qApp,lon,lat);
         if (statut=="Ouvert") stat="O";
         else stat="F";
 
@@ -65,7 +68,9 @@ void apikiosques::API_results(QNetworkReply *reply)
 
         geo.info.insert("adresse",adresse);
         geo.info.insert("statut",statut);
-       // geo.info.insert("distance",(QString)dist->getDistance(lon, lat));
+        //geo.info.insert("distance",(QString)dist->getDistanceInMeters());
+       // qDebug<<"distance"<<(QString)dist->getDistanceInMeters();
+
 
 
         m_list<<geo;
