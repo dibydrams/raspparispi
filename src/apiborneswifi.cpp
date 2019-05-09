@@ -36,6 +36,11 @@ void ApiBornesWifi::API_Results(QNetworkReply *reply)
         geo.latitude = latitude;
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(157, 181, 233));
 
+        geo.info.insert("Nom du site",objn["fields"].toObject()["nom_site"].toString());
+        geo.info.insert("Adresse",objn["fields"].toObject()["arc_adresse"].toString());
+        geo.info.insert("Code postal",objn["fields"].toObject()["cp"].toString());
+        geo.info.insert("Nombre de bornes",objn["fields"].toObject()["nombre_de_borne_wifi"].toString());
+        geo.info.insert("Etat",objn["fields"].toObject()["etat2"].toString());
         m_list << geo;
     }
     emit callFinished(m_list, BORNES_WIFI);

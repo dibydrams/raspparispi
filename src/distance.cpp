@@ -21,9 +21,9 @@ distance::distance(QObject *parent) : QObject(parent)
  * @param latitude      :  type QString
  * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
  */
-distance::distance(QObject *parent,QString longitude,QString latitude) : QObject(parent)
+distance::distance(QObject *parent,QString latitude,QString longitude) : QObject(parent)
 {
-    sendRequest(longitude,latitude);
+    sendRequest(latitude,longitude);
     loop.exec();
 }
 
@@ -35,41 +35,41 @@ distance::distance(QObject *parent,QString longitude,QString latitude) : QObject
  * @param latitude          : type QString
  * @param longitude         : type QString
  * @param modeDeTransport   : type QString
- * @example :   dist=new distance(qApp,"48.8977","2.3594000000000506","car");
- * Il faut utiliser "qApp" comme Parent pour que la QEventLoop fonctionne correctement
+ * @example 1 :   dist=new distance(qApp,"48.8977","2.3594000000000506","car");
+ *  "qApp" nécessairement Parent pour que la QEventLoop fonctionne correctement
  *
- *  @example (ces trois appels peuvent fonctionner à la suite; et il faut faire un objet pour chaque appel)
+ * @example 2 : (ces trois appels peuvent fonctionner à la suite. Il faut faire un objet pour chaque appel)
  *
  *    dist=new distance(qApp,"48.8977","2.3594000000000506","car");
  *    qDebug()<<"*** Distance car compte rendu objet ***";
- *    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
- *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
- *    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
- *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
- *    qDebug()<<"arrival :: "<<dist->getArrival();
+ *    qDebug()<<"Distance : : "<< dist->getDistanceInMeters();
+ *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<< dist->getTimetravel();
+ *    qDebug()<<"Retard prévu en seconde : : "<< dist->getDelay();
+ *    qDebug()<<"Temps avec traffic : : "<< dist->getTimetravelWithTraffic();
+ *    qDebug()<<"arrival :: "<< dist->getArrival();
  *    dist->~distance();
 
  *    dist=new distance(qApp,"48.8977","2.3594000000000506","pedestrian");
- *    qDebug()<<"*** Distance pedestrian compte rendu objet ***";
- *    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
- *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
- *    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
- *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
- *    qDebug()<<"arrival :: "<<dist->getArrival();
+ *    qDebug()<<"*** Distance piéton compte rendu objet ***";
+ *    qDebug()<<"Distance : : "<< dist->getDistanceInMeters();
+ *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<< dist->getTimetravel();
+ *    qDebug()<<"Retard prévu en seconde : : "<< dist->getDelay(); // sera toujours 0 seconde pour le trajet piéton
+ *    qDebug()<<"Temps avec traffic : : "<< dist->getTimetravelWithTraffic();
+ *    qDebug()<<"arrival :: "<< dist->getArrival();
  *    dist->~distance();
 
- *    dist=new distance(qApp,"48.8977","2.3594000000000506","bicycle");
- *    qDebug()<<"*** Distance bicycle compte rendu objet ***";
- *    qDebug()<<"Distance : : "<<dist->getDistanceInMeters();
- *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<<dist->getTimetravel();
- *    qDebug()<<"Retard prévu en seconde : : "<<dist->getDelay();
- *    qDebug()<<"Temps avec traffic : : "<<dist->getTimetravelWithTraffic();
- *    qDebug()<<"arrival :: "<<dist->getArrival();
+ *    dist=new distance(qApp,"48.8977","2.3594000000000506","bus");
+ *    qDebug()<<"*** Distance bus compte rendu objet ***";
+ *    qDebug()<<"Distance : : "<< dist->getDistanceInMeters();
+ *    qDebug()<<"noTrafficTravelTimeInSeconds : : "<< dist->getTimetravel();
+ *    qDebug()<<"Retard prévu en seconde : : "<< dist->getDelay();
+ *    qDebug()<<"Temps avec traffic : : "<< dist->getTimetravelWithTraffic();
+ *    qDebug()<<"arrival :: "<< dist->getArrival();
  *    dist->~distance();
  */
 distance::distance(QObject *parent, QString latitude, QString longitude, QString modeDeTransport): QObject(parent)
 {
-    sendRequest(longitude,latitude,modeDeTransport);
+    sendRequest(latitude,longitude,modeDeTransport);
     loop.exec();
 }
 
@@ -79,7 +79,7 @@ distance::distance(QObject *parent, QString latitude, QString longitude, QString
  * @param longitude     : type QString
  * @param latitude      : type QString
  */
-void distance::sendRequest(QString longitude, QString latitude)
+void distance::sendRequest(QString latitude, QString longitude)
 {
     networkManager = new QNetworkAccessManager(this);
     QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all");
@@ -96,7 +96,7 @@ void distance::sendRequest(QString longitude, QString latitude)
  * @param latitude      : type QString
  * @param ModeDeTransport   : type QString
  */
-void distance::sendRequest(QString longitude, QString latitude, QString ModeDeTransport)
+void distance::sendRequest(QString latitude, QString longitude, QString ModeDeTransport)
 {
     networkManager = new QNetworkAccessManager(this);
     QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=OeKOW9A0nmsjwQfqeo201YbNUKfQ50IA&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
@@ -115,8 +115,9 @@ void distance::sendRequest(QString longitude, QString latitude, QString ModeDeTr
 void distance::getDistanceReply(QNetworkReply *reply)
 {
     if (currentReply->error() != QNetworkReply::NoError){
-        qDebug()<<"erreur\n";
-        return;
+        qDebug()<<"erreur : : "<<currentReply->error();
+        qDebug()<<"\n";
+        //return;
     }
     QByteArray responseBit=reply->readAll();
     QJsonDocument document = QJsonDocument::fromJson(responseBit);
@@ -128,17 +129,51 @@ void distance::getDistanceReply(QNetworkReply *reply)
         QString arrival = summary["arrivalTime"].toString();
 
         //***remplisasge des propriété de l'objet***
-          this->setDistanceInMeters(summary["lengthInMeters"].toInt());
-          this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
-          this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
-          this->setDelay(summary["trafficDelayInSeconds"].toInt());
-          this->setArrival(arrival);
+        this->setDistanceInMeters(summary["lengthInMeters"].toInt());
+        this->setTimetravel(summary["noTrafficTravelTimeInSeconds"].toInt());
+        this->setTimetravelWithTraffic(summary["liveTrafficIncidentsTravelTimeInSeconds"].toInt());
+        this->setDelay(summary["trafficDelayInSeconds"].toInt());
+        this->setArrival(arrival);
     }
     loop.exit();
 }
 
-distance::~distance(){
-    delete networkManager;
+QString distance::kilometers_meters(int meters)
+{   QString stringDist;
+    int kilometers=meters/1000;
+    int meters2=meters%1000;
+    if(kilometers>=1){
+       stringDist=  QString::number(kilometers)+","+QString::number(meters2)+" km";
+    }else {
+       stringDist= QString::number(meters)+" m";
+    }
+    return stringDist;
+}
+
+QString distance::time_hours_minutes_seconds(int seconds)
+{
+    QString stringTime;
+    int hours=seconds/3600;
+    int minutes;
+    int seconds2;
+    if (hours>0){
+        int secondsAfterHours=seconds%3600;
+        minutes=secondsAfterHours/60;
+        seconds2=secondsAfterHours%60;
+        if (seconds2>0)
+            stringTime= QString::number(hours)+"h "+QString::number(minutes)+"min "+QString::number(seconds2)+"sec";
+        else
+            stringTime= QString::number(hours)+"h "+QString::number(minutes)+"min";
+    }else{
+        minutes=seconds/60;
+        if (minutes>0){
+            seconds2=seconds%60;
+            stringTime= QString::number(minutes)+"min "+QString::number(seconds2)+"sec";
+        }else{
+            stringTime= QString::number(seconds)+"sec";
+        }
+    }
+    return stringTime;
 }
 
 int distance::getTimetravel() const
@@ -189,6 +224,10 @@ int distance::getTimetravelWithTraffic() const
 void distance::setTimetravelWithTraffic(int value)
 {
     timetravelWithTraffic = value;
+}
+
+distance::~distance(){
+    delete networkManager;
 }
 
 

@@ -24,13 +24,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
+
     initButtons();
+
     l_lang = new Dialogtraduction(this);
     connect(l_lang,SIGNAL(received(QString)),this,SLOT(loadlanguage(QString)));
 
-
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -67,14 +67,15 @@ void MainWindow::initButtons()
     ButtonList << buttonTraduction;
     ui->horizontalLayout->addWidget(buttonTraduction);
     buttonTraduction->setCheckable(false);
-    buttonTraduction->setToolTip("Changer la Langue / Change Language");
+    buttonTraduction->setToolTip(tr("Traduction"));
     connect(buttonTraduction,SIGNAL(clicked()),this,SLOT(dialogtraduction()));
+
 
     ptr = new ApiMeteo;
     CustomButton *buttonMeteo = new CustomButton(ptr, this);
     ButtonList << buttonMeteo;
     ui->horizontalLayout->addWidget(buttonMeteo);
-    buttonMeteo->setToolTip("Météo");
+    buttonMeteo->setToolTip(tr("Météo"));
     buttonMeteo->setCheckable(false);
     connect(buttonMeteo, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(buttonMeteo, SIGNAL(clicked()), this, SLOT(dialog()));
@@ -84,7 +85,7 @@ void MainWindow::initButtons()
     CustomButton *buttonEv = new CustomButton(ptr, this);
     ButtonList << buttonEv;
     ui->horizontalLayout->addWidget(buttonEv);
-    buttonEv->setToolTip("Evénements");
+    buttonEv->setToolTip(tr("Evénements"));
     connect(buttonEv, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonEv, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -93,7 +94,7 @@ void MainWindow::initButtons()
     CustomButton *pharmButton = new CustomButton(ptr, this);
     ButtonList << pharmButton;
     ui->horizontalLayout->addWidget(pharmButton);
-    pharmButton->setToolTip("Pharmacies");
+    pharmButton->setToolTip(tr("Pharmacies"));
     connect(pharmButton, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(pharmButton, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -101,7 +102,7 @@ void MainWindow::initButtons()
     ptr = new ApiBornes_Elec;
     CustomButton *bornesElecBtn = new CustomButton(ptr, this);
     ButtonList << bornesElecBtn;
-    bornesElecBtn->setToolTip("Bornes Electriques");
+    bornesElecBtn->setToolTip(tr("Bornes Electriques"));
     ui->horizontalLayout->addWidget(bornesElecBtn);
     connect(bornesElecBtn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
@@ -111,7 +112,7 @@ void MainWindow::initButtons()
     CustomButton *QueFaire_btn = new CustomButton(ptr, this);
     ButtonList << QueFaire_btn;
     ui->horizontalLayout->addWidget(QueFaire_btn);
-    QueFaire_btn->setToolTip("Animations");
+    QueFaire_btn->setToolTip(tr("Animations"));
     connect(QueFaire_btn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(QueFaire_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -120,7 +121,7 @@ void MainWindow::initButtons()
     CustomButton *Kiosques_btn=new CustomButton(ptr, this);
     ButtonList << Kiosques_btn;
     ui->horizontalLayout->addWidget(Kiosques_btn);
-    Kiosques_btn->setToolTip("Kiosques");
+    Kiosques_btn->setToolTip(tr("Kiosques"));
     connect(Kiosques_btn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(Kiosques_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -129,7 +130,7 @@ void MainWindow::initButtons()
     CustomButton *fontaines_btn=new CustomButton(ptr, this);
     ButtonList << fontaines_btn;
     ui->horizontalLayout->addWidget(fontaines_btn);
-    fontaines_btn->setToolTip("Fontaines");
+    fontaines_btn->setToolTip(tr("Fontaines"));
     connect(fontaines_btn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(fontaines_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -138,7 +139,7 @@ void MainWindow::initButtons()
     CustomButton *terrassesBtn = new CustomButton(ptr, this);
     ButtonList << terrassesBtn;
     ui->horizontalLayout->addWidget(terrassesBtn);
-    terrassesBtn->setToolTip("Terrasses");
+    terrassesBtn->setToolTip(tr("Terrasses"));
     connect(terrassesBtn, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(terrassesBtn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -147,7 +148,7 @@ void MainWindow::initButtons()
     CustomButton *buttonToilette = new CustomButton(ptr, this);
     ButtonList << buttonToilette;
     ui->horizontalLayout->addWidget(buttonToilette);
-    buttonToilette->setToolTip("Toilettes");
+    buttonToilette->setToolTip(tr("Toilettes"));
     connect(buttonToilette, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index))); // 6
     connect(buttonToilette, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -156,22 +157,22 @@ void MainWindow::initButtons()
     CustomButton *buttonRatpGlobal = new CustomButton (ptr, this);
     ButtonList << buttonRatpGlobal;
     ui->horizontalLayout->addWidget(buttonRatpGlobal);
-    buttonRatpGlobal->setToolTip("Transports");
+    buttonRatpGlobal->setToolTip(tr("Transports"));
     connect(buttonRatpGlobal, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonRatpGlobal, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-//    ptr = new ApiRatp_Search;
-//    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
-//    ui->horizontalLayout->addWidget(buttonRatpSearch);
-//    buttonRatpSearch->setCheckable(false);
-//    connect(buttonRatpSearch, SIGNAL(clicked()), this, SLOT(ratpDialog()));
+    //    ptr = new ApiRatp_Search;
+    //    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
+    //    ui->horizontalLayout->addWidget(buttonRatpSearch);
+    //    buttonRatpSearch->setCheckable(false);
+    //    connect(buttonRatpSearch, SIGNAL(clicked()), this, SLOT(ratpDialog()));
 
     ptr = new ApiEspacesVerts;
     CustomButton *buttonEspacesVerts = new CustomButton (ptr, this);
     ButtonList << buttonEspacesVerts;
     ui->horizontalLayout->addWidget(buttonEspacesVerts);
-    buttonEspacesVerts->setToolTip("Parcs & Espaces Verts");
+    buttonEspacesVerts->setToolTip(tr("Parcs & Espaces Verts"));
     connect(buttonEspacesVerts, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonEspacesVerts, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -180,7 +181,7 @@ void MainWindow::initButtons()
     CustomButton *buttonWiFi = new CustomButton(ptr, this);
     ButtonList << buttonWiFi;
     ui->horizontalLayout->addWidget(buttonWiFi);
-    buttonWiFi->setToolTip("Bornes WiFi");
+    buttonWiFi->setToolTip(tr("Bornes WiFi"));
     connect(buttonWiFi, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonWiFi, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -189,16 +190,16 @@ void MainWindow::initButtons()
     CustomButton *buttonTheatre = new CustomButton (ptr, this);
     ButtonList << buttonTheatre;
     ui->horizontalLayout->addWidget(buttonTheatre);
-    buttonTheatre->setToolTip("Théâtres");
+    buttonTheatre->setToolTip(tr("Théâtres"));
     connect(buttonTheatre, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonTheatre, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-	ptr = new apiVelib;
+    ptr = new apiVelib;
     CustomButton *buttonVelib = new CustomButton(ptr, this);
     ButtonList << buttonVelib;
     ui->horizontalLayout->addWidget(buttonVelib);
-    buttonVelib->setToolTip("Bornes Vélib'");
+    buttonVelib->setToolTip(tr("Bornes Vélib'"));
     connect(buttonVelib, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonVelib, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -207,7 +208,7 @@ void MainWindow::initButtons()
     CustomButton *buttonParkingPublic = new CustomButton(ptr, this);
     ButtonList << buttonParkingPublic;
     ui->horizontalLayout->addWidget(buttonParkingPublic);
-    buttonParkingPublic->setToolTip("Parkings Publics");
+    buttonParkingPublic->setToolTip(tr("Parkings Publics"));
     connect(buttonParkingPublic, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonParkingPublic, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
@@ -216,10 +217,20 @@ void MainWindow::initButtons()
     CustomButton *buttonParkingPrive = new CustomButton(ptr, this);
     ButtonList << buttonParkingPrive;
     ui->horizontalLayout->addWidget(buttonParkingPrive);
-    buttonParkingPrive->setToolTip("Parkings Privés");
+    buttonParkingPrive->setToolTip(tr("Parkings Privés"));
     connect(buttonParkingPrive, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonParkingPrive, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
+
+    ptr = new apiVigiCrues;
+    CustomButton *buttonVigiCrues = new CustomButton(ptr, this);
+    ButtonList << buttonVigiCrues;
+    ui->horizontalLayout->addWidget(buttonVigiCrues);
+    buttonVigiCrues->setToolTip(tr("VigiCrues"));
+    connect(buttonVigiCrues, SIGNAL(clicked()), ptr, SLOT(getInfo()));
+    connect(buttonVigiCrues, SIGNAL(clicked()), this, SLOT(dialogvigicrues()));
+    connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
+
 
     // Bouton servant à réinitialiser la map et les boutons
     ptr = new resetButtons;
@@ -227,23 +238,26 @@ void MainWindow::initButtons()
     ButtonList << resetButtons;
     ui->horizontalLayout->addWidget(resetButtons);
     resetButtons->setCheckable(false);
-    resetButtons->setToolTip("Réinitialiser les Filtres");
+    resetButtons->setToolTip(tr("Réinitialiser les Filtres"));
     connect(resetButtons, SIGNAL(clicked()), this, SLOT(resetAllButtons()));
 
     ui->widget->setIconCount(ButtonList.count());
+
+
+
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
-   QMainWindow::resizeEvent(event);
+    QMainWindow::resizeEvent(event);
 
-   int btnNb = ButtonList.count();
-   int sizebtn = this->width() / btnNb - 10;
+    int btnNb = ButtonList.count();
+    int sizebtn = this->width() / btnNb - 10;
 
-   for ( auto val : ButtonList ) {
-       val->setIconSize(QSize(sizebtn,sizebtn));
-       val->setFixedSize(sizebtn,sizebtn);
-   }
+    for ( auto val : ButtonList ) {
+        val->setIconSize(QSize(sizebtn,sizebtn));
+        val->setFixedSize(sizebtn,sizebtn);
+    }
 }
 
 /* ##   FONCTION D'APPEL DE LA MAP : dataReceived(QList)  ##
@@ -265,6 +279,7 @@ void MainWindow::dialog()
     //fenetre.loadlanguage("en");
     fenetre.exec();
 
+
 }
 
 void MainWindow::dialogtraduction()
@@ -274,14 +289,20 @@ void MainWindow::dialogtraduction()
 
 void MainWindow::dialogInfo()
 {
-   dialoginfo fenetre;
-   fenetre.exec();
+    dialoginfo fenetre;
+    fenetre.exec();
+}
+
+void MainWindow::dialogvigicrues()
+{
+    DialogVigicrues fenetre;
+    fenetre.exec();
 }
 
 void MainWindow::GetInfo(Abstract_API *ptr)
 {
     for (auto button : ButtonList) {
-            button->setEnabled(false); }
+        button->setEnabled(false); }
 
     ptr->getInfo();
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(enableButtons()));
@@ -302,8 +323,8 @@ void MainWindow::RazSlot(Abstract_API::API_index button_ID)
 void MainWindow::resetAllButtons()
 {
     for (auto button : ButtonList) {
-            button->setChecked(false);
-            dataReceived(emptyList, button->buttonID);
+        button->setChecked(false);
+        dataReceived(emptyList, button->buttonID);
     }
 }
 

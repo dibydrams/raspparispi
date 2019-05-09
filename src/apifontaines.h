@@ -10,6 +10,7 @@
 #include "Abstract_API.h"
 #include "icon.h"
 #include "widgetmap.h"
+#include "distance.h"
 
 class apifontaines : public Abstract_API
 {
@@ -20,6 +21,7 @@ public:
     API_index getId()override;
     QPixmap getPixmap()override;
     QString statut;
+
 private slots:
     void API_call();
     void API_results(QNetworkReply *reply);
@@ -43,6 +45,9 @@ private:
     int drink;
     QString latCentre;
     QString lonCentre;
+    QString lat;
+    QString lon;
+    distance *dist;
 
     signals:
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);

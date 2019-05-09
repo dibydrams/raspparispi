@@ -42,6 +42,7 @@ SOURCES += \
     dialoginfo.cpp \
         dialogmeteo.cpp \
         dialogtraduction.cpp \
+    dialogvigicrues.cpp \
         indiceuv.cpp \
         meteo.cpp \
         pollution.cpp \
@@ -92,6 +93,7 @@ HEADERS += \
         dialoginfo.h \
         dialogmeteo.h \
         dialogtraduction.h \
+        dialogvigicrues.h \
         icon.h \
         indiceuv.h \
         mainwindow.h \
@@ -123,6 +125,7 @@ HEADERS += \
 FORMS += \
     dialoginfo.ui \
         dialogtraduction.ui \
+    dialogvigicrues.ui \
 	mainwindow.ui \
         uiratp.ui \
         dialogmeteo.ui \

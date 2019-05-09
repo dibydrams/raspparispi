@@ -58,7 +58,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         m_zoom = zoom; //15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
         m_compensationLargeurRayon = compensationLargeurRayon;//2.040087046;//2;
         flagConfigVide = 1;
-    }   
+    }
 
     QVariant tmp;
 
@@ -121,7 +121,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
-            "https://api.tomtom.com/map/1/staticimage?"
+            "http://api.tomtom.com/map/1/staticimage?"
             "key=8bUkGqzvXEZzyqvqFnbw0JoTfPk7BFQ8&"
             "format=png&"
             "layer=basic&style=main&view=Unified&"
@@ -251,10 +251,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
                             )
                     {
-                        /*Le qDebug ci-dessous permet lors du clic de la souris, d'afficher les informations*/
-
+                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
                         qDebug() << elem.info.values();
-                        //qDebug() << "l'API qui est cliqué" << cptAPI << "la longitude" << elem.longitude << "la latitude" << elem.latitude;
                     }
                 }
             }
