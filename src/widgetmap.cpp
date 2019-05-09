@@ -253,21 +253,21 @@ void WidgetMap::paintEvent(QPaintEvent *)
                 if( elem.pixmap.isNull()) p.drawPixmap(resultatPixelPointX,resultatPixelPointY,pix_PI);
                 else p.drawPixmap(pixelPointPixmapX,pixelPointPixmapY,elem.pixmap);
 
-//                if( m_flagClic)
-//                {
-//                    //qDebug() << " " << pixelPointPixmapX << " " << pixelPointPixmapX + elem.pixmap.width();
-//                    //qDebug() << " " << pixelPointPixmapY << " " << pixelPointPixmapY + elem.pixmap.height();
 
-//                    if( (m_pointClicSouris.x() >= pixelPointPixmapX) && (m_pointClicSouris.x() <= pixelPointPixmapX + elem.pixmap.width()) &&
-//                            (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
-//                            )
-//                    {
-//                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
-//                        qDebug() <<" paint event"<< elem.info.values();
-//                        listeInfoGeoObj << elem;
-//                        qDebug() <<listeInfoGeoObj.count();
-//                    }
-//                }
+                if( m_flagClic)
+                {
+                    //qDebug() << " " << pixelPointPixmapX << " " << pixelPointPixmapX + elem.pixmap.width();
+                    //qDebug() << " " << pixelPointPixmapY << " " << pixelPointPixmapY + elem.pixmap.height();
+
+                    if( (m_pointClicSouris.x() >= pixelPointPixmapX) && (m_pointClicSouris.x() <= pixelPointPixmapX + elem.pixmap.width()) &&
+                            (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
+                            )
+                    {
+                        /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
+                        qDebug() << elem.info.values();
+                        listeInfoGeoObj << elem;
+                    }
+                }
             }
         }
         cptAPI ++;
@@ -296,6 +296,7 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
 
         double longitude = (resultatPixelPointX / coefficient_X) + m_BBOXminLongitude;
         double latitude = (resultatPixelPointY / coefficient_Y) + m_BBOXminLatitude;
+
 
         m_pointClicSouris.setX(event->x());
         m_pointClicSouris.setY(event->y());
@@ -337,6 +338,7 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
 
                  }
              }
+
         fenetre.setData(longitude, latitude, listeInfoGeoObj);
         fenetre.exec();
     }

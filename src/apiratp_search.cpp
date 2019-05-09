@@ -29,11 +29,18 @@ void ApiRatp_Search::DoUniRequest(QString _transport, QString _station)
 void ApiRatp_Search::replyFinishedUni()
 {
     qDebug() << replyUni->error();
-    QJsonDocument doc = QJsonDocument::fromJson(replyUni->readAll());
+    if (replyUni->error())
+    {
+        emit ShowErrorUni(replyUni->errorString());
+    }
+    else
+    {
+        QJsonDocument doc = QJsonDocument::fromJson(replyUni->readAll());
 
-    QJsonArray arrayDoc = doc.array();
+        QJsonArray arrayDoc = doc.array();
 
-    emit ShowFinishedUni(arrayDoc);
+        emit ShowFinishedUni(arrayDoc);
+    }
 
 //    uiratp->showFinishedUni(arrayDoc);
 }

@@ -12,7 +12,8 @@ Uiratp::Uiratp(QWidget *parent) :
         ratpGlobal.FilledTransportLists();
     }
 
-    connect(&ratpSearch, SIGNAL(ShowFinishedUni(QJsonArray)), this, SLOT(showFinishedUni(QJsonArray)));
+    connect(&ratpSearch, SIGNAL(ShowErrorUni(QString)), this, SLOT(ShowErrorUni(QString)));
+    connect(&ratpSearch, SIGNAL(ShowFinishedUni(QJsonArray)), this, SLOT(ShowFinishedUni(QJsonArray)));
     connect(ui->BusRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->MetroRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->RailRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
@@ -186,8 +187,25 @@ void Uiratp::PrepareUniRequest()
     ratpSearch.DoUniRequest(transport, station);
 }
 
-void Uiratp::showFinishedUni(QJsonArray resultArray)
+void Uiratp::ShowErrorUni(QString error)
 {
+
+    ui->ScrollAreaContents->hide();
+    CleanView();
+
+        // Create Text Slot
+        QLabel *labelDest = new QLabel(ui->ScrollAreaContents);
+        labelDest->move(ui->ScrollAreaContents->geometry().left(), ui->ScrollAreaContents->geometry().center().y());
+
+        labelDest->setText(error);
+
+    ui->ScrollAreaContents->show();
+}
+
+void Uiratp::ShowFinishedUni(QJsonArray resultArray)
+{
+
+    ui->ScrollAreaContents->hide();
     CleanView();
 
     int span = 40;
@@ -222,16 +240,15 @@ void Uiratp::showFinishedUni(QJsonArray resultArray)
 
         if (resultArray[i].toObject().value("time").toString() == "")
         {
-            qDebug() << "Schedule" << resultArray[i].toObject().value("schedule").toString() << endl;
             labelTime->setText(resultArray[i].toObject().value("schedule").toString());
         }
         else
         {
-            qDebug() << "Time" << resultArray[i].toObject().value("time").toString() << endl;
             labelTime->setText(resultArray[i].toObject().value("time").toString());
         }
 
     }
+    ui->ScrollAreaContents->show();
 }
 
 
