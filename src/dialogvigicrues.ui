@@ -13,11 +13,33 @@
   <property name="windowTitle">
    <string>Vigilance crues</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QCustomPlot" name="widgetGraph" native="true"/>
-   </item>
-  </layout>
+  <widget class="QCustomPlot" name="widgetGraph" native="true">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>20</y>
+     <width>761</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <widget class="QPushButton" name="pushButtonClose">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>10</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="iconmeteo.qrc">
+      <normaloff>:/Icons_meteo/close_1-512.png</normaloff>:/Icons_meteo/close_1-512.png</iconset>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -27,6 +49,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="iconmeteo.qrc"/>
+ </resources>
  <connections/>
 </ui>

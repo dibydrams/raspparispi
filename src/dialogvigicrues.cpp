@@ -33,6 +33,8 @@ DialogVigicrues::DialogVigicrues(QWidget *parent) :
     d_debit = new VigiCruesDebit;
     connect(d_debit,SIGNAL(received()),this,SLOT(printHashDebit()));
 
+    connect(ui->pushButtonClose,SIGNAL(clicked()),this,SLOT(close()));
+
 }
 
 DialogVigicrues::~DialogVigicrues()
