@@ -87,7 +87,7 @@ public:
 
     QList<QList<Abstract_API::GeoObj>> m_listePI_API;
     QList<QList<QPoint>> m_listePixelPoint;
-    QList<Abstract_API::GeoObj> listeInfoGeoObj;
+    QList<Abstract_API::GeoObj> listeInfoGeoObj;/*reçoit la liste d'elem*/
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);

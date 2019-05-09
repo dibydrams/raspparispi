@@ -255,7 +255,6 @@ void WidgetMap::paintEvent(QPaintEvent *)
                         //qDebug() << elem.info.values();
                         listeInfoGeoObj << elem;
                     }
-
                 }
             }
         }
