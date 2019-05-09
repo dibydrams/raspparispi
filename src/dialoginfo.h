@@ -23,8 +23,10 @@ public:
     QTableWidget *tableWidgetDistance;
     QString longitude;
     QString latitude;
+
 //    QTableWidget QList<QTableWidget>;
     void setData(const double cliclong, const double cliclat, QList<Abstract_API::GeoObj> list);
+
     explicit dialoginfo(QWidget *parent = nullptr);
     ~dialoginfo();
 

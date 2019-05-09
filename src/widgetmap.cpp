@@ -198,9 +198,9 @@ void WidgetMap::paintEvent(QPaintEvent *)
     p.drawPixmap(0,0,carte);
 
     //// icone au centre de la carte
-    //QString fileName = ":/Icons/bonhomme.png";
-    //QPixmap pixmap(fileName);
-    //p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
+    QString fileName = ":/Icons/pin.png";
+    QPixmap pixmap(fileName);
+    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
 
     int resultatPixelPointX;
     int resultatPixelPointY;
