@@ -58,7 +58,7 @@ void apifontaines::API_results(QNetworkReply *reply)
         else statut="X";
         lon=QString::number(longitude, 'g', 13);
         lat=QString::number(latitude, 'g', 13);
-        dist=new distance(qApp,"lon","lat");
+        dist=new distance(qApp,lat,lon);
 
 
 
@@ -77,8 +77,8 @@ void apifontaines::API_results(QNetworkReply *reply)
         geo.info.insert("en_service",en_service);
         geo.info.insert("ouverture hiver", ouv_hiver);
         geo.info.insert("sdf",sdf);
-        //geo.info.insert("distance",(QString)dist->getDistance(lon, lat));
-
+        geo.info.insert("distance",(QString)dist->getDistanceInMeters());
+        qDebug<<"distance"<<(QString)dist->getDistanceInMeters();
 
 
         m_list<<geo;
