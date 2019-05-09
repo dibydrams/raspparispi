@@ -3,8 +3,8 @@
 
 apiParkingPublic::apiParkingPublic()
 {
-    firstCall();
-    loop.exec();
+//    firstCall();
+//    loop.exec();
 }
 
 apiParkingPublic::~apiParkingPublic()

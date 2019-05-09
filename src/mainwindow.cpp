@@ -270,6 +270,7 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::AP
 {
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
+
     this->update();
     QApplication::restoreOverrideCursor();
 }

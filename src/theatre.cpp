@@ -1,4 +1,6 @@
 #include "theatre.h"
+#include <iostream>
+using namespace std;
 
 /**
  * @brief theatre::theatre
@@ -40,14 +42,43 @@ void theatre::theatreAPI_Call(){
 }
 
 QString theatre::timetableFormat(QString timetable)
-{   QString l;
+{   QString Seances="";
     QRegExp rx("[;]");// match a comma or a space
     QStringList list = timetable.split(rx, QString::SkipEmptyParts);
     for (int i = 0; i < list.size(); ++i){
-            qDebug() << list.at(i).toLocal8Bit().constData() << endl;
+            //qDebug() << list.at(i).toLocal8Bit().constData() << endl;
+            QString Jour_heure_debut;
+            QString heure_fin;
+
+            QRegExp rx2("[ ]");// match a comma or a space
+            QStringList list2 = list.at(i).split(rx2,QString::SkipEmptyParts);
+           // qDebug ()<<"list2.size()"<<list2.size();
+            for (int j = 0; j < list2.size(); ++j){
+                //qDebug() << list2.at(i).toLocal8Bit().constData() << endl;
+                QString DateTimestr=list2.at(j);
+                DateTimestr=DateTimestr.replace("T"," ");
+               // qDebug()<<"DateTimestr : : "<<DateTimestr;
+                QString time_format = "yyyy-MM-dd HH:mm:ss";
+                //QString time_format = "'M'M'd'd'y'yy hh: mm: ss";
+
+                QDateTime b = QDateTime::fromString(DateTimestr,time_format);
+
+               // qDebug()<<b;
+                if(j==0)
+                     Jour_heure_debut  = b.toString("dddd dd MMMM yyyy")+" de "+b.toString("HH:mm");
+                if(j==1)
+                    heure_fin = b.toString("HH:mm");
+
+
+                //QDateTime b = QDateTime::fromString(as,time_format);
+            }
+           // qDebug()<<" Séance : "+Jour_heure_debut+" à "+heure_fin;
+            Seances+=" Séance : "+Jour_heure_debut+" à "+heure_fin+"\n";
     }
     //qDebug()<<list;
-    return l;
+   // qDebug()<<Seances;
+    //cout<<Seances.toStdString();
+    return Seances;
 }
 
 /**

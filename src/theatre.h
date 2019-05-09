@@ -23,6 +23,7 @@
 #include <QJsonObject>
 #include "Abstract_API.h"
 #include "icon.h"
+#include <QDateTime>
 
 /**
  * @brief The theatre class
