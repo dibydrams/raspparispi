@@ -37,20 +37,6 @@ void apiParkingPublic::copyGeoObj()
     emit callFinished(listGeoObj, PARKING_PUBLIC);
 }
 
-void apiParkingPublic::firstRequest()
-{
-    QSettings *save = new QSettings("raspparispi", "parking_public");
-    for(int i=0; i<listParkingPublic->size(); ++i){
-        save->setValue(QString::number(i)+"/rue", listParkingPublic->operator[](i).v.rue);
-        save->setValue(QString::number(i)+"/codePostal", listParkingPublic->operator[](i).v.codePostal);
-        save->setValue(QString::number(i)+"/tarif", listParkingPublic->operator[](i).tarif);
-        save->setValue(QString::number(i)+"/nb", listParkingPublic->operator[](i).nb);
-        save->setValue(QString::number(i)+"/latitude", listParkingPublic->operator[](i).latitude);
-        save->setValue(QString::number(i)+"/longitude", listParkingPublic->operator[](i).longitude);
-    }
-    loop.exit();
-}
-
 void apiParkingPublic::firstCall()
 {
     networkManager = new QNetworkAccessManager(this);
@@ -111,7 +97,7 @@ void apiParkingPublic::API_Results(QNetworkReply *reply)
             }
         }
     }
-    firstRequest();
+    loop.exit();
 }
 
 void apiParkingPublic::getInfo()
