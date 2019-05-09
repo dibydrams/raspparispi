@@ -29,5 +29,6 @@
         <file>Icons/iconvelibwork.png</file>
         <file>Icons/reseticon.png</file>
         <file>Icons/floodicon.png</file>
+        <file>Icons/pin.png</file>
     </qresource>
 </RCC>
