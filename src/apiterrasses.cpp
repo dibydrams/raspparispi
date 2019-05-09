@@ -11,6 +11,7 @@
 ApiTerrasses::ApiTerrasses()
 {
 
+
 }
 
 ApiTerrasses::~ApiTerrasses()
@@ -26,7 +27,7 @@ void ApiTerrasses::API_Call() // Gestion du call à l'API
     API_Access = new QNetworkAccessManager(this);
     //cache bedut
     QNetworkDiskCache *cache = new QNetworkDiskCache(API_Access);
-    cache->setCacheDirectory("/home/hedi/projet_raspparispi/raspparispi/cache");
+    cache->setCacheDirectory("cacheDir");
     //cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
     API_Access->setCache(cache);
     //cache fin
@@ -50,10 +51,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
 {
     qDebug() << reply->attribute(QNetworkRequest::SourceIsFromCacheAttribute).toBool();
     m_list.clear(); // Reset de la liste de GeoObj à chaque passage dans la fonction
-    if (currentReply->error() != QNetworkReply::NoError){
-        qDebug()<<"Erreur !! \n";
-        return;
-    }
+
     doc = QJsonDocument::fromJson(reply->readAll());
     obj = doc.object();
     arr = obj["records"].toArray();
@@ -101,6 +99,7 @@ void ApiTerrasses::API_Results(QNetworkReply *reply) // Gestion des résultats a
 
     emit callFinished(m_list, TERRASSES);  // Signal de fin de traitement de l'API
     reply->deleteLater();
+
 }
 //ajout debut
 /// Vérification de la connexion
@@ -115,6 +114,8 @@ void ApiTerrasses::slotError(QNetworkReply::NetworkError)
     msgBox.exec();
 
 }
+
+
 //ajout fin
 // Mon identifiant au sein de l'enumération (classe mère)
 ///

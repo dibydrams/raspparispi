@@ -42,6 +42,20 @@ void UiStation::DoStationRequest()
     connect(replyStation, &QNetworkReply::finished, this, &UiStation::replyFinishedStation);
 }
 
+void UiStation::DoStationRequest(QString _stationId)
+{
+    managerStation = new QNetworkAccessManager(this);
+    requestStation = new QNetworkRequest ();
+    requestStation->setRawHeader(QByteArray("Authorization"), QByteArray("Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz"));
+
+    QByteArray encodedCode = QUrl::toPercentEncoding(_stationId);
+    requestStation->setUrl(QUrl("https://api-lab-trone-stif.opendata.stif.info/service/tr-unitaire-stif/stop-monitoring?MonitoringRef="+encodedCode));
+
+    replyStation = managerStation->get(*requestStation);
+
+    connect(replyStation, &QNetworkReply::finished, this, &UiStation::replyFinishedStation);
+}
+
 void UiStation::replyFinishedStation()
 {
 //    qDebug() << replyStation->error();

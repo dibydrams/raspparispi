@@ -28,6 +28,10 @@ public:
     QNetworkReply *replyStation;
 
     void DoStationRequest();
+
+public slots:
+    void DoStationRequest(QString _stationId);
+
 private:
     Ui::UiStation *ui;
 

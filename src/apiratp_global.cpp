@@ -110,12 +110,18 @@ void ApiRatp_Global::GeoPoints(QNetworkReply * reply)
             {
                 geo.pixmap = Icon::iconMapOffStr(getPixmap(), "B", QColor(0, 170, 145));
             }
+            geo.info.insert("ID",stop.idZDE);
             geoList << geo;
         }
     }
 //    uistation.DoStationRequest();
     emit callFinished(geoList, RATP);
     reply->deleteLater();
+}
+
+void ApiRatp_Global::GotoStation()
+{
+    uistation.DoStationRequest(stationId);
 }
 
 void ApiRatp_Global::FilledTransportLists()

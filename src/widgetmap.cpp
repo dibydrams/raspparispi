@@ -13,6 +13,11 @@ double WidgetMap::rayonCentre = 0.007129412; //0.006;
 double WidgetMap::compensationLargeurRayon = 2.040087046;
 int WidgetMap::zoom = 15;
 
+double WidgetMap::BBOXminLongitude;
+double WidgetMap::BBOXminLatitude;
+double WidgetMap::BBOXmaxLongitude;
+double WidgetMap::BBOXmaxLatitude;
+
 
 // initialise les valeurs de .config/raspparispi/raspparispi.conf si elles n'existent pas
 // et les renvoient si elles existent
@@ -170,6 +175,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 //InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
                 //InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
                 //InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
+
+                BBOXminLongitude = m_BBOXminLongitude;
+                BBOXminLatitude = m_BBOXminLatitude;
+                BBOXmaxLongitude = m_BBOXmaxLongitude;
+                BBOXmaxLatitude = m_BBOXmaxLatitude;
+
             }
         }
         else qDebug() << "erreur api tomtom: " << reply->errorString();
@@ -253,6 +264,7 @@ void WidgetMap::paintEvent(QPaintEvent *)
                     {
                         /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
                         qDebug() << elem.info.values();
+                        listeInfoGeoObj << elem;
                     }
                 }
             }
@@ -268,30 +280,30 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
     {
         QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
         qDebug() << text;
-//        QPixmap carte(m_fichierCarte);
-//        int resultatPixelPointX = QVariant(QString::number(event->x())).toInt();
-//        int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();;
+        QPixmap carte(m_fichierCarte);
+        int resultatPixelPointX = QVariant(QString::number(event->x())).toInt();
+        int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();;
 
-//        resultatPixelPointY = carte.height() + resultatPixelPointY;
+        resultatPixelPointY = carte.height() + resultatPixelPointY;
 
-//        double distanceLongitude = std::fabs(m_BBOXmaxLongitude - m_BBOXminLongitude);
-//        double distanceLatitude = std::fabs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+        double distanceLongitude = std::fabs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+        double distanceLatitude = std::fabs(m_BBOXmaxLatitude - m_BBOXminLatitude);
 
-//        double coefficient_X = carte.width() / distanceLongitude;
-//        double coefficient_Y = carte.height() / distanceLatitude;
+        double coefficient_X = carte.width() / distanceLongitude;
+        double coefficient_Y = carte.height() / distanceLatitude;
 
-//        double longitude = (resultatPixelPointX / coefficient_X) + m_BBOXminLongitude;
-//        double latitude = (resultatPixelPointY / coefficient_Y) + m_BBOXminLatitude;
+        double longitude = (resultatPixelPointX / coefficient_X) + m_BBOXminLongitude;
+        double latitude = (resultatPixelPointY / coefficient_Y) + m_BBOXminLatitude;
 
-////        QString cliclong = QString::number(event->x());
-////        QString cliclat = QString::number(event->y());
-//        m_pointClicSouris.setX(event->x());
-//        m_pointClicSouris.setY(event->y());
-//        m_flagClic = 1;
-//        this->update();
-//        dialoginfo fenetre(this);
-//        fenetre.setData(longitude, latitude);
-//        fenetre.exec();
+//        QString cliclong = QString::number(event->x());
+//        QString cliclat = QString::number(event->y());
+        m_pointClicSouris.setX(event->x());
+        m_pointClicSouris.setY(event->y());
+        m_flagClic = 1;
+        this->update();
+        dialoginfo fenetre(this);
+        fenetre.setData(longitude, latitude, listeInfoGeoObj);
+        fenetre.exec();
     }
 }
 
