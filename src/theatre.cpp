@@ -41,8 +41,12 @@ void theatre::theatreAPI_Call(){
 
 QString theatre::timetableFormat(QString timetable)
 {   QString l;
-    QRegExp rx("[, ]");// match a comma or a space
+    QRegExp rx("[;]");// match a comma or a space
     QStringList list = timetable.split(rx, QString::SkipEmptyParts);
+    for (int i = 0; i < list.size(); ++i){
+            qDebug() << list.at(i).toLocal8Bit().constData() << endl;
+    }
+    //qDebug()<<list;
     return l;
 }
 
@@ -108,11 +112,13 @@ void theatre::readJsonTheatre(){
         geo.info.insert("Space_time_info",space_time_info);
         geo.info.insert("Adresse",adr);
         geo.info.insert("Pricing_info",pricing_info);
-       //içi parse and cie// "2019-05-26T14:45:00 2019-05-26T15:35:00;2019-05-26T17:00:00 2019-05-26T17:50:00"
-        geo.info.insert("timetable",timetable);
+        //içi parse and cie// "2019-05-26T14:45:00 2019-05-26T15:35:00;2019-05-26T17:00:00 2019-05-26T17:50:00"
+
+        //geo.info.insert("timetable",timetable);
         m_list << geo;
     }
     emit callFinished(m_list, THEATRE);
+    QString timeTable = theatre::timetableFormat("2019-05-26T14:45:00 2019-05-26T15:35:00;2019-05-26T17:00:00 2019-05-26T17:50:00");
 }
 
 /**

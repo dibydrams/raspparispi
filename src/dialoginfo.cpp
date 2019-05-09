@@ -20,7 +20,10 @@ void dialoginfo::setData(const QString cliclong, const QString cliclat)
 //    tableWidgetDistance->setItem(row, 2, new QTableWidgetItem((QVariant(WidgetMap::centreLongitude)).toString()));
     tableWidgetDistance->setItem(row, 2, new QTableWidgetItem(longitude));
     tableWidgetDistance->setItem(row, 3, new QTableWidgetItem(latitude));
-
+    qDebug()<<"longitude : :"<<longitude;
+    qDebug()<<"latitude : :"<<latitude;
+    dist=new distance(qApp,latitude,longitude,"pedestrian");
+    qDebug()<<"ditance : : "<<dist->getDistanceInMeters();
 }
 
 dialoginfo::dialoginfo(QWidget *parent) :

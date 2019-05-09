@@ -89,14 +89,14 @@ void sanisette::readJsonSani(){
         m_list << geo;
     }
     emit callFinished(m_list, TOILETTES);
-    qDebug()<<distance::kilometers_meters(2500);
-    qDebug()<<distance::kilometers_meters(755);
-    qDebug()<<distance::time_hours_minutes_seconds(40);
-    qDebug()<<distance::time_hours_minutes_seconds(70);
-    qDebug()<<distance::time_hours_minutes_seconds(60);
-    qDebug()<<distance::time_hours_minutes_seconds(120);
-    qDebug()<<distance::time_hours_minutes_seconds(125);
-    qDebug()<<distance::time_hours_minutes_seconds(3769);
+//    qDebug()<<distance::kilometers_meters(2500);
+//    qDebug()<<distance::kilometers_meters(755);
+//    qDebug()<<distance::time_hours_minutes_seconds(40);
+//    qDebug()<<distance::time_hours_minutes_seconds(70);
+//    qDebug()<<distance::time_hours_minutes_seconds(60);
+//    qDebug()<<distance::time_hours_minutes_seconds(120);
+//    qDebug()<<distance::time_hours_minutes_seconds(125);
+//    qDebug()<<distance::time_hours_minutes_seconds(3769);
 }
 
 /**

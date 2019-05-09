@@ -6,6 +6,7 @@
 #include <QTableWidget>
 #include <QScrollArea>
 #include <QList>
+#include "distance.h"
 
 namespace Ui {
 class dialoginfo;
@@ -22,6 +23,7 @@ public:
     QTableWidget *tableWidgetDistance;
     QString longitude;
     QString latitude;
+    distance* dist;
 //    QTableWidget QList<QTableWidget>;
     void setData(const QString cliclong, const QString cliclat);
     explicit dialoginfo(QWidget *parent = nullptr);
