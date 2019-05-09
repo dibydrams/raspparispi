@@ -61,7 +61,6 @@ void apifontaines::API_results(QNetworkReply *reply)
         //dist=new distance(qApp,lat,lon);
 
 
-
         GeoObj geo;
         geo.latitude=latitude;
         geo.longitude=longitude;
