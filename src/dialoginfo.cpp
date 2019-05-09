@@ -7,7 +7,7 @@
 #include <QHeaderView>
 #include <QDebug>
 
-void dialoginfo::setData(const double cliclong, const double cliclat)
+void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abstract_API::GeoObj> list)
 {
     QVariant longitude = cliclong;
     QVariant latitude = cliclat;
