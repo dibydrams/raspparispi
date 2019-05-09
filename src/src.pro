@@ -37,8 +37,8 @@ SOURCES += \
     apiparkingprive.cpp \
         apiparkingpublic.cpp \
         apivelib.cpp \
-    coordtoaddr.cpp \
         dialogmeteo.cpp \
+    dialogtraduction.cpp \
         indiceuv.cpp \
         meteo.cpp \
         pollution.cpp \
@@ -50,10 +50,12 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         pharmapi.cpp \
+    traduction.cpp \
         utilitaire.cpp \
         widgetmap.cpp \
     	stoppoint.cpp \
     	transport.cpp \
+    	apiratp_station.cpp \
     	uiratp.cpp \
         apiratp_global.cpp \
         apiterrasses.cpp \
@@ -62,7 +64,7 @@ SOURCES += \
         apiespacesverts.cpp \
         theatre.cpp \
         apifontaines.cpp \
-    uistation.cpp
+    distance.cpp
 
 
 
@@ -76,11 +78,12 @@ HEADERS += \
     apiparkingprive.h \
         apiparkingpublic.h \
         apiquefaire.h \
+        apiratp_station.h \
         apivelib.h \
-    coordtoaddr.h \
         custombutton.h \
         apikiosques.h \
         dialogmeteo.h \
+    dialogtraduction.h \
         icon.h \
         indiceuv.h \
         mainwindow.h \
@@ -89,7 +92,11 @@ HEADERS += \
         pollution.h \
         prevision.h \
         stoppoint.h \
+    traduction.h \
         transport.h \
+    ui_dialogmeteo.h \
+    ui_mainwindow.h \
+    ui_uiratp.h \
         uiratp.h \
         widgetmap.h \
         apiratp_global.h \
@@ -100,13 +107,13 @@ HEADERS += \
         apiespacesverts.h \
         apifontaines.h \
         utilitaire.h \
-    uistation.h
+    distance.h
 
 FORMS += \
+    dialogtraduction.ui \
 	mainwindow.ui \
         uiratp.ui \
-        dialogmeteo.ui \
-    uistation.ui
+        dialogmeteo.ui
 
 
 # Default rules for deployment.
@@ -117,3 +124,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
         iconmeteo.qrc \
         sources.qrc
+
+
+TRANSLATIONS += \
+             src_en.ts
+
+

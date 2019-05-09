@@ -73,7 +73,6 @@ Abstract_API::API_index ApiBornes_Elec::getId()
 void ApiBornes_Elec::getInfo()
 {
     API_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///
@@ -82,7 +81,7 @@ void ApiBornes_Elec::getInfo()
 ///
 QPixmap ApiBornes_Elec::getPixmap()
 {
-    return QPixmap(":/Icons/iconeleccar.png");
+    return QPixmap(":/Icons/iconelectric-car.png");
 }
 
 ///

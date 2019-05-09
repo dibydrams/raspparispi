@@ -68,5 +68,4 @@ void apiParkingPrive::getInfo()
     request.setUrl(url);
     currentReply = networkManager->get(request);
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

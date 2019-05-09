@@ -56,5 +56,4 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 void ApiEspacesVerts::getInfo()
 {
     API_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }

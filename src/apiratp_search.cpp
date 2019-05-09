@@ -5,17 +5,30 @@ ApiRatp_Search::ApiRatp_Search()
 
 }
 
-void ApiRatp_Search::DoUniRequest(QString _transport, QString _station)
+void ApiRatp_Search::DoUniRequest()
 {
-    managerUni = new QNetworkAccessManager(this) ;
     requestUni = new QNetworkRequest () ;
     requestUni->setRawHeader(QByteArray("Authorization"), QByteArray("Basic ZnJhbmNvaXNmbG9yaWFuNEBnbWFpbC5Db206ZmxvZmxvMTIz"));
 
     QByteArray encodedCodeline;
     QByteArray encodedIdZde;
 //    qDebug() << "code Transport" << indexTranspForUniReq << "code Station" << indexStationForUniReq;
-    encodedCodeline = QUrl::toPercentEncoding(_transport);
-    encodedIdZde = QUrl::toPercentEncoding(_station.replace(0,1,"s"));
+
+//    if (ui->radioBus->isChecked())
+//    {
+//        encodedCodeline = QUrl::toPercentEncoding(ratpGlobal->busList[ratpGlobal->indexTranspForUniReq].codeLine);
+//        encodedIdZde = QUrl::toPercentEncoding(ratpGlobal->busList[ratpGlobal->indexTranspForUniReq].mySPList[ratpGlobal->indexStationForUniReq].idZDE.replace(0,1,"s"));
+//    }
+//    else if (ui->radioMetro->isChecked())
+//    {
+//        encodedCodeline = QUrl::toPercentEncoding(ratpGlobal->metroList[ratpGlobal->indexTranspForUniReq].codeLine);
+//        encodedIdZde = QUrl::toPercentEncoding(ratpGlobal->metroList[ratpGlobal->indexTranspForUniReq].mySPList[ratpGlobal->indexStationForUniReq].idZDE.replace(0,1,"s"));
+//    }
+//    else
+//    {
+        encodedCodeline = QUrl::toPercentEncoding(ratpGlobal->railList[ratpGlobal->indexTranspForUniReq].codeLine);
+        encodedIdZde = QUrl::toPercentEncoding(ratpGlobal->railList[ratpGlobal->indexTranspForUniReq].mySPList[ratpGlobal->indexStationForUniReq].idZDE.replace(0,1,"s"));
+//    }
 
 //    qDebug() << encodedIdZde << encodedCodeline;
 
@@ -33,9 +46,7 @@ void ApiRatp_Search::replyFinishedUni()
 
     QJsonArray arrayDoc = doc.array();
 
-    emit ShowFinishedUni(arrayDoc);
-
-//    uiratp->showFinishedUni(arrayDoc);
+    uiratp->showFinishedUni(arrayDoc);
 }
 
 

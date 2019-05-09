@@ -20,6 +20,7 @@
 #include <QChartView>
 #include <QDialog>
 #include <QtCharts>
+#include <QTranslator>
 
 #include "ui_dialogmeteo.h"
 
@@ -57,6 +58,7 @@ private:
     QStandardItem *item5 = new QStandardItem;
     QStandardItem *item6 = new QStandardItem;
     QStandardItem *item7 = new QStandardItem;
+    QTranslator translator;
 
 
 

@@ -43,7 +43,7 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(182, 66, 244));
 
        m_list << geo;
     }
@@ -67,7 +67,6 @@ Abstract_API::API_index ApiQueFaire::getId()
 void ApiQueFaire::getInfo()
 {
     API_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 ///
@@ -76,5 +75,5 @@ void ApiQueFaire::getInfo()
 ///
 QPixmap ApiQueFaire::getPixmap()
 {
-    return QPixmap(":/Icons/icongroup.png"); // icône PNG préférable
+    return QPixmap(":/Icons/iconfireworks.png");
 }

@@ -6,9 +6,13 @@
 #include "ui_dialogmeteo.h"
 #include "apimeteo.h"
 #include "apiterrasses.h"
+#include "apiratp_station.h"
 #include "apiespacesverts.h"
 #include "apiratp_search.h"
 #include "apivelib.h"
+#include "traduction.h"
+#include "dialogtraduction.h"
+
 
 #include <QHBoxLayout>
 
@@ -51,6 +55,13 @@ void MainWindow::initButtons()
     // ##   INITIATION DE CHAQUE BOUTON CI-DESSOUS  ##
     /* Chaque type de data doit initier son bouton sur l'interface en se basant sur du bouton principal : ButtonEv (le premier de la liste)
      *  Ne pas changer le code du premier bouton */
+
+    ptr = new traduction;
+    CustomButton *buttonTraduction = new CustomButton(ptr,this);
+    ButtonList << buttonTraduction;
+    ui->horizontalLayout->addWidget(buttonTraduction);
+    buttonTraduction->setCheckable(false);
+    connect(buttonTraduction,SIGNAL(clicked()),this,SLOT(dialogtraduction()));
 
     ptr = new ApiMeteo;
     CustomButton *buttonMeteo = new CustomButton(ptr, this);
@@ -132,7 +143,6 @@ void MainWindow::initButtons()
     connect(buttonRatpGlobal, SIGNAL(Clicked(Abstract_API *)), this, SLOT(GetInfo(Abstract_API *)));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonRatpGlobal, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
-
 //    ptr = new ApiRatp_Search;
 //    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
 //    ui->horizontalLayout->addWidget(buttonRatpSearch);
@@ -210,10 +220,10 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex)
 {
-
         qDebug()<<"liste recue"<<list.count();
     for (auto l :ui->widget->m_listePI_API)
         qDebug()<<"nb list"<<l.count();
+
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
     this->update();
@@ -226,10 +236,17 @@ void MainWindow::dialog()
     fenetre.exec();
 }
 
+void MainWindow::dialogtraduction()
+{
+   Dialogtraduction fenetre;
+   fenetre.exec();
+
+}
+
 void MainWindow::GetInfo(Abstract_API *ptr)
 {
     for (auto button : ButtonList) {
-            button->setEnabled(false); }
+        button->setEnabled(false); }
 
     ptr->getInfo();
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(enableButtons()));
@@ -241,6 +258,7 @@ void MainWindow::enableButtons()
         button->setEnabled(true);
     }
 }
+
 
 void MainWindow::RazSlot(Abstract_API::API_index button_ID)
 {

@@ -26,5 +26,7 @@
         <file>Icons/eventarene.png</file>
         <file>Icons/iconparkingprive.png</file>
         <file>Icons/iconparkingpublic.svg</file>
+        <file>Icons/iconfireworks.png</file>
+        <file>Icons/iconelectric-car.png</file>
     </qresource>
 </RCC>

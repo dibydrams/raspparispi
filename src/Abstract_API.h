@@ -30,7 +30,6 @@
 #ifndef ABSTRACT_API_H
 #define ABSTRACT_API_H
 
-#include <QApplication>
 #include <QObject>
 #include <QPixmap>
 #include <QDebug>
@@ -47,7 +46,6 @@ public:
     /* Enumération servant d'identification
      * Vous pouvez modifier et/ou rajouter des identifiants si nécessaires, en majuscules
      * Ne pas supprimer d'identifiants utilisés */
-
     enum API_index {
         EVENEMENTS ,
         RATP ,
@@ -66,9 +64,8 @@ public:
         ANIMATIONS,
         THEATRE,
         FONTAINES,
+        TRADUCTION,
     };
-
-
 
     /* Structure permettant de formatter les résultats (coordonnées, icônes, ID)
      * Les longitudes et latitudes doivent IMPERATIVEMENT être exprimées en type Double

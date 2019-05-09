@@ -42,7 +42,7 @@ void sanisette::readJsonSani(){
             GeoObj geo;
             geo.longitude = longitude;
             geo.latitude = latitude;
-            geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(214, 171, 220));
+            geo.pixmap = QPixmap();
             m_list << geo;
         }
         emit callFinished(m_list, TOILETTES);
@@ -50,7 +50,6 @@ void sanisette::readJsonSani(){
 
 void sanisette::getInfo(){
     sanisetteAPI_Call();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 

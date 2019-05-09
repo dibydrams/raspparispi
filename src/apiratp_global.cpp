@@ -22,7 +22,7 @@ ApiRatp_Global::ApiRatp_Global()
             if (m_settings->value("Datas/Perimetre").isNull())
             {
                 QStringList splitList = m_settings->fileName().split("/");
-                m_settings->setValue("Datas/Perimetre", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/perimetre-tr-plateforme-stif.json");
+                m_settings->setValue("Datas/Perimetre", QDir().homePath() + "/" + splitList[3] + "/" + splitList[4] + "/referentiel-des-lignes-stif.json");
             }
             QString filename = m_settings->value("Datas/Perimetre").toString();
             perimetreStifJson =  LoadJson(filename);
@@ -49,6 +49,7 @@ void ApiRatp_Global::PeriStifJson()
         double coordX = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(0).toDouble();
         double coordY = perimetreStifJson.array().at(i).toObject()["geometry"].toObject()["coordinates"].toArray().at(1).toDouble();
         QPointF coordsZDE(coordX,coordY);
+
 
         pointList.append(coordsZDE);
         StopPoint newStopPoint(externalcodeLine, nomZDE, monoRefZDE, idZDE, coordsZDE, i);
@@ -94,8 +95,6 @@ void ApiRatp_Global::GeoPoints()
         if ((point.x() > widgetmap.m_BBOXminLongitude && point.x() < widgetmap.m_BBOXmaxLongitude) &&
              (point.y() > widgetmap.m_BBOXminLatitude && point.y() < widgetmap.m_BBOXmaxLatitude))
         {
-//        if (utilitaire::inMap(point.y(), point.x()))
-//        {
             GeoObj geo;
             geo.longitude = point.x();
             geo.latitude = point.y();
@@ -103,7 +102,6 @@ void ApiRatp_Global::GeoPoints()
             geoList << geo;
         }
     }
-    uistation.DoStationRequest();
     emit callFinished(geoList, RATP);
 }
 
@@ -128,7 +126,6 @@ Abstract_API::API_index ApiRatp_Global::getId()
 void ApiRatp_Global::getInfo()
 {
     GeoPoints();
-    QApplication::setOverrideCursor(Qt::WaitCursor);
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
