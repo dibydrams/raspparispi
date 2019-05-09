@@ -272,6 +272,8 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
         int resultatPixelPointX = QVariant(QString::number(event->x())).toInt();
         int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();;
 
+        resultatPixelPointY = carte.height() + resultatPixelPointY;
+
         double distanceLongitude = std::fabs(m_BBOXmaxLongitude - m_BBOXminLongitude);
         double distanceLatitude = std::fabs(m_BBOXmaxLatitude - m_BBOXminLatitude);
 
