@@ -252,8 +252,10 @@ void WidgetMap::paintEvent(QPaintEvent *)
                             )
                     {
                         /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
-                        qDebug() << elem.info.values();
+                        //qDebug() << elem.info.values();
+                        listeInfoGeoObj << elem;
                     }
+
                 }
             }
         }
