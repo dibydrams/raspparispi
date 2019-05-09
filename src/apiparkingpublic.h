@@ -11,6 +11,7 @@
 #include "icon.h"
 #include "coordtoaddr.h"
 #include "Abstract_API.h"
+#include <QEventLoop>
 
 typedef struct _voie{
     QString rue;
@@ -47,11 +48,13 @@ private:
     QString latCentre;
     QString lonCentre;
     QString rayon = "1000";
+    QEventLoop loop;
 
-    void copyGeoObj();
+    void firstCall();
 
 private slots:
     void API_Results(QNetworkReply *reply);
+    void copyGeoObj();
 
 public slots:
     void getInfo() override;

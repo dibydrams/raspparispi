@@ -1,6 +1,7 @@
 #ifndef DIALOGINFO_H
 #define DIALOGINFO_H
 
+#include <Abstract_API.h>
 #include <QDialog>
 #include <QVBoxLayout>
 #include <QTableWidget>
@@ -25,7 +26,7 @@ public:
     QString latitude;
     distance* dist;
 //    QTableWidget QList<QTableWidget>;
-    void setData(const double cliclong, const double cliclat);
+    void setData(const double cliclong, const double cliclat, QList<Abstract_API::GeoObj> list);
     explicit dialoginfo(QWidget *parent = nullptr);
     ~dialoginfo();
 

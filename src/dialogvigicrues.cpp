@@ -1,4 +1,4 @@
-#include "dialogvigicrues.h"
+﻿#include "dialogvigicrues.h"
 #include "ui_dialogvigicrues.h"
 
 DialogVigicrues::DialogVigicrues(QWidget *parent) :
@@ -18,8 +18,11 @@ DialogVigicrues::DialogVigicrues(QWidget *parent) :
     ui->widgetGraph->graph(1)->setPen(QPen(Qt::red));
 
     // Titre du Graph
+    QCPTextElement *title = new QCPTextElement(ui->widgetGraph);
+    title->setText("Hauteurs et débits des dernières 24h");
+    title->setFont(QFont("sans",12, QFont::Bold));
     ui->widgetGraph->plotLayout()->insertRow(0);
-    ui->widgetGraph->plotLayout()->addElement(0,0, new QCPTextElement(ui->widgetGraph, "Hauteurs et débits"));
+    ui->widgetGraph->plotLayout()->addElement(0,0, title);
 
     //Ajout date
     //ui->labelDate->setText((QDateTime::currentDateTime().toString("dddd dd MMMM yyyy")));

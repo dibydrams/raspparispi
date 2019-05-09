@@ -1,7 +1,10 @@
 #include "apiespacesverts.h"
+#include <QThread>
 
 ApiEspacesVerts::ApiEspacesVerts()
 {
+    firstCall();
+    loop.exec();
 }
 
 Abstract_API::API_index ApiEspacesVerts::getId()
@@ -14,16 +17,17 @@ QPixmap ApiEspacesVerts::getPixmap()
     return QPixmap(":/Icons/iconespacesverts.png");
 }
 
-void ApiEspacesVerts::API_Call()
-{
-    manApiEspacesVerts = new QNetworkAccessManager(this);
-    connect(manApiEspacesVerts, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
-    manApiEspacesVerts->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&sort=-nsq_espace_vert&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire")));
-}
+//void ApiEspacesVerts::API_Call()
+//{
+//    manApiEspacesVerts = new QNetworkAccessManager(this);
+//    connect(manApiEspacesVerts, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
+//    manApiEspacesVerts->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&sort=-nsq_espace_vert&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire")));
+//}
 
 void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 {
     m_list.clear();
+    espverts->clear();
 
     document = QJsonDocument::fromJson(reply->readAll());
     jsonObject = document.object();
@@ -38,7 +42,7 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
         GeoObj geo;
 
         geo.longitude = longit;
-        geo.latitude = lat;      
+        geo.latitude = lat;
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
 
         /*Ce sont les informations que je souhaite récupéré du JSON, pour l'API espaces verts.
@@ -55,13 +59,48 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 
         m_list << geo;
     }
+    loop.exit();
+    //    emit callFinished(m_list, ESPACES_VERTS);
+    //    reply->deleteLater();
+}
 
+void ApiEspacesVerts::copieGeoObj()
+{
+    GeoObj gObj;
+    for(espacesverts p : *espverts){
+        GeoObj geo;
+
+        geo.longitude = longit;
+        geo.latitude = lat;
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
+
+        m_list << geo;
+    }
     emit callFinished(m_list, ESPACES_VERTS);
-    reply->deleteLater();
+    currentReply->deleteLater();
 }
 
 void ApiEspacesVerts::getInfo()
 {
-    API_Call();
+    //API_Call();
+    networkManager = new QNetworkAccessManager(this);
+    QUrl url("");
+    QNetworkRequest request;
+    request.setUrl(url);
+    currentReply = networkManager->get(request);
+    connect(networkManager, SIGNAL(finished(QNetworkReply *)), this, SLOT(copieGeoObj()));
     QApplication::setOverrideCursor(Qt::WaitCursor);
+}
+
+void ApiEspacesVerts::firstCall()
+{
+    networkManager = new QNetworkAccessManager(this);
+    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
+    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
+    //qDebug() << url;
+    QNetworkRequest request;
+    request.setUrl(url);
+    currentReply = networkManager->get(request);
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
 }

@@ -10,8 +10,22 @@
 #include <QJsonValue>
 #include <QList>
 #include "icon.h"
+#include <QEventLoop>
+#include "widgetmap.h"
 
 #include "Abstract_API.h"
+
+typedef struct {
+    double longitude;
+    double latitude;
+    QString typeVoie;
+    QString nomVoie;
+    QString nomEV;
+    QString codePostal;
+    QString categorie;
+    QString presCloture;
+    QString ouvertFerme;
+}espacesverts;
 
 class ApiEspacesVerts : public Abstract_API
 {
@@ -23,15 +37,16 @@ public:
     QPixmap getPixmap() override;
 
 private slots:
-    void API_Call();
+    //void API_Call();
     void API_Results(QNetworkReply *reply);
+    void copieGeoObj();
 
 public slots:
     void getInfo() override;
 
 private:
-    QNetworkAccessManager *manApiEspacesVerts;
-    QNetworkReply *reply;
+    QNetworkAccessManager *networkManager;
+    QNetworkReply *currentReply;
     QJsonDocument document;
     QJsonObject jsonObject;
     QJsonArray jsonArray;
@@ -39,7 +54,14 @@ private:
     QJsonObject jsObj;
     QJsonArray geoloc;
     QList<GeoObj> m_list;
+    QList<espacesverts> *espverts = new QList<espacesverts>;
+    QEventLoop loop;
+    QString rayon = "1000";
 
+    QString latCentre;
+    QString lonCentre;
+
+    void firstCall();
     double longit;
     double lat;
 
