@@ -23,7 +23,7 @@ public:
     QString longitude;
     QString latitude;
 //    QTableWidget QList<QTableWidget>;
-    void setData(const QString cliclong, const QString cliclat);
+    void setData(const double cliclong, const double cliclat);
     explicit dialoginfo(QWidget *parent = nullptr);
     ~dialoginfo();
 
