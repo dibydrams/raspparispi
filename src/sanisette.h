@@ -2,13 +2,13 @@
 #define SANISETTE_H
 
 /**
-* \author Jean-Sébastien
-* \date 6 mai 2019
-* \version   1.0
+* \author   Jean-Sébastien
+* \date     6 mai 2019
+* \version  1.0
 *
-* \class sanisette
+* \class  sanisette
 * \brief  Class appelant l'API OpenDataSoft pour fournir les différents sanisettes  dans Paris.
-*   Elle dérive de la classe Abstract_API.
+*         Elle dérive de la classe Abstract_API.
 */
 #include <QNetworkAccessManager>
 #include <QNetworkReply>

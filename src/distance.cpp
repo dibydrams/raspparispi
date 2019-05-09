@@ -138,18 +138,32 @@ void distance::getDistanceReply(QNetworkReply *reply)
     loop.exit();
 }
 
+/**
+ * @brief distance::kilometers_meters
+ * @param meters type int
+ * @details Fonction statique qui prend une distance en mètre et la formate afin qu'elle soit facilement
+ * interprétable par l'utilisateur
+ * @return QString de distance formater (avec mètres et/ou kilomètres)
+ */
 QString distance::kilometers_meters(int meters)
 {   QString stringDist;
     int kilometers=meters/1000;
     int meters2=meters%1000;
     if(kilometers>=1){
-       stringDist=  QString::number(kilometers)+","+QString::number(meters2)+" km";
+        stringDist=  QString::number(kilometers)+","+QString::number(meters2)+" km";
     }else {
-       stringDist= QString::number(meters)+" m";
+        stringDist= QString::number(meters)+" m";
     }
     return stringDist;
 }
 
+/**
+ * @brief distance::time_hours_minutes_seconds
+ * @param seconds type int
+ * @details Fonction statique qui prend un temps en secondes et le formate
+ * afin qu'il soit facilement interprété par l'utilisateur
+ * @return QString du temps (avec heures et/ou minutes et/ou secondes)
+ */
 QString distance::time_hours_minutes_seconds(int seconds)
 {
     QString stringTime;
@@ -229,13 +243,3 @@ void distance::setTimetravelWithTraffic(int value)
 distance::~distance(){
     delete networkManager;
 }
-
-
-
-
-
-
-
-
-
-

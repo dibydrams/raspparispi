@@ -230,9 +230,6 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
         for ( auto elem : listePI_API )
         {
-            //qDebug() << "longitude " << elem.longitude;
-            //qDebug() << "latitude " << elem.latitude;
-
             resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
             resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
 
@@ -260,11 +257,10 @@ void WidgetMap::paintEvent(QPaintEvent *)
                     //qDebug() << " " << pixelPointPixmapY << " " << pixelPointPixmapY + elem.pixmap.height();
 
                     if( (m_pointClicSouris.x() >= pixelPointPixmapX) && (m_pointClicSouris.x() <= pixelPointPixmapX + elem.pixmap.width()) &&
-                            (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
-                            )
+                        (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height()) )
                     {
                         /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
-                        qDebug() << elem.info.values();
+                        //qDebug() <<"here papy !: :"<< elem.info.values();
                         listeInfoGeoObj << elem;
                     }
                 }
@@ -328,17 +324,13 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
                   {
 
                   if( (event->x() >= pixelPointPixmapX) && (event->x() <= pixelPointPixmapX + elem.pixmap.width()) &&
-                                          (event->y() >= pixelPointPixmapY) && (event->y() <= pixelPointPixmapY + elem.pixmap.height())
-                                           )
-                                  {
-
-                                      listeInfoGeoObj << elem;
-                                       qDebug() <<listeInfoGeoObj.count();
-                                 }
-
+                      (event->y() >= pixelPointPixmapY) && (event->y() <= pixelPointPixmapY + elem.pixmap.height()) )
+                      {
+                          listeInfoGeoObj << elem;
+                          //qDebug() <<"listeInfo "<<listeInfoGeoObj.count();
+                       }
                  }
              }
-
         fenetre.setData(longitude, latitude, listeInfoGeoObj);
         fenetre.exec();
     }

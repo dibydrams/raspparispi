@@ -2,19 +2,19 @@
 #define DISTANCE_H
 
 /**
-* \author Jean-Sébastien
-* \date 6 mai 2019
-* \version   1.0
+* \author   Jean-Sébastien
+* \date     6 mai 2019
+* \version  1.0
 *
-* \class distance
-* \brief  Class appelant l'API tomtom pour fournir la distance entre deux points géographiques
-* ainsi que d'autre informations complémentaires relatives aux trajets
-* \details Cette class a un constructeur surchargé permettant de faire appelle à l'API
-* avec des coordonnées de type string ou double.
-* Un QEventLoop est utilisé afin de rendre la requête et son retour synchrone
-* (ce qui permettra d'envoyer de multiples requêtes d'affilé ou d'émettre des requêtes dans une boucle)
-* Dans cette 1er version le point de départ sera toujours 6 rue Rougemont.
-* Un exemple complet d'utilisation de cette classe se trouve en commentaire dans sanisette.cpp->sanisette::readJsonSani()
+* \class    distance
+* \brief    Class appelant l'API tomtom pour fournir la distance entre deux points géographiques
+*           ainsi que d'autre informations complémentaires relatives aux trajets
+* \details  Cette class a un constructeur surchargé permettant de faire appelle à l'API
+*           avec des coordonnées de type string ou double.
+*           Un QEventLoop est utilisé afin de rendre la requête et son retour synchrone
+*           (ce qui permettra d'envoyer de multiples requêtes d'affilé ou d'émettre des requêtes dans une boucle)
+*           Dans cette 1er version le point de départ sera toujours 6 rue Rougemont.
+*           Un exemple complet d'utilisation de cette classe se trouve en commentaire dans sanisette.cpp->sanisette::readJsonSani()
 */
 
 #include <QCoreApplication>

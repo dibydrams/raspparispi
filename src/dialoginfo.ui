@@ -29,6 +29,9 @@
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinimumSize</enum>
+       </property>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout"/>
        </item>

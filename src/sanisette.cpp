@@ -11,13 +11,17 @@ sanisette::sanisette()
 
 /**
  * @brief sanisette::getId
- * @return
+ * @return int de l'index assigné à l'API
  */
 Abstract_API::API_index sanisette::getId()
 {
     return TOILETTES;
 }
 
+/**
+ * @brief sanisette::getPixmap
+ * @return Qpixmap représentant les Toilettes publiques
+ */
 QPixmap sanisette::getPixmap()
 {
     return QPixmap(":/Icons/toilette.png");
@@ -62,23 +66,6 @@ void sanisette::readJsonSani(){
         QString strLong = QString("%1").arg(longitude, 0, 'g', 17);
         QString strLat = QString("%1").arg(latitude, 0, 'g', 17);
 
-        //        qDebug()<<"strLong  "<< strLong;
-        //        qDebug()<<"strLat "<< strLat;
-        //        dist=new distance(qApp,strLat,strLong,"pedestrian");
-        //        int distance=dist->getDistanceInMeters();
-        //        qDebug()<<"distances : : "<<distance;
-        //        int timeTravelPedestrian=dist->getTimetravel();
-        //        qDebug()<<"timeTravelPedstr : : "<<timeTravelPedestrian;
-        //        dist->~distance();
-        //        dist=new class distance(qApp,strLat,strLong,"car");
-        //        int timeTravelCar=dist->getTimetravelWithTraffic();
-        //        qDebug()<<"timeTravelCarstr : : "<<timeTravelCar;
-        //        dist->~distance();
-        //        dist=new class distance(qApp,strLat,strLong,"bus");
-        //        int timeTravelBus=dist->getTimetravelWithTraffic();
-        //        qDebug()<<"timeTravelBusstr : : "<<timeTravelBus;
-        //        dist->~distance();
-
         //remplissage du GeoObj
         GeoObj geo;
         geo.longitude = longitude;
@@ -89,14 +76,6 @@ void sanisette::readJsonSani(){
         m_list << geo;
     }
     emit callFinished(m_list, TOILETTES);
-//    qDebug()<<distance::kilometers_meters(2500);
-//    qDebug()<<distance::kilometers_meters(755);
-//    qDebug()<<distance::time_hours_minutes_seconds(40);
-//    qDebug()<<distance::time_hours_minutes_seconds(70);
-//    qDebug()<<distance::time_hours_minutes_seconds(60);
-//    qDebug()<<distance::time_hours_minutes_seconds(120);
-//    qDebug()<<distance::time_hours_minutes_seconds(125);
-//    qDebug()<<distance::time_hours_minutes_seconds(3769);
 }
 
 /**
@@ -107,5 +86,3 @@ void sanisette::getInfo(){
     sanisetteAPI_Call();
     QApplication::setOverrideCursor(Qt::WaitCursor);
 }
-
-
