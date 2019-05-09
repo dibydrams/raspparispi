@@ -85,7 +85,7 @@ void ApiEvenementsMV::getInfo()
     API_Call();
     QApplication::setOverrideCursor(Qt::WaitCursor);
     //qDebug() << "acces settings carte centreLongitude: " << WidgetMap::centreLongitude;
-    //qDebug() << "acces settings carte centreLatitude: " << WidgetMap::centreLatitude;
+    //qDebug() << "acces settings carte centreLatitude: " << WidgetMap::BBOXmaxLongitude;
 }
 
 // Envoi de l'icône de mon bouton (utilisation des resources - pas de PATH en dur)
