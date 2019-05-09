@@ -30,13 +30,6 @@ public:
 
     UiStation uistation;
 
-    QNetworkAccessManager *API_Access;
-    QNetworkReply *currentReply;
-
-    QSettings *m_settings;
-
-    QList<GeoObj> geoList;
-    QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
     QList<Transport> transportList;
     QList<Transport> busList;
@@ -46,9 +39,20 @@ public:
     int indexTranspForUniReq;
     int indexStationForUniReq;
 
+    QString stationId;
+
     void FilledTransportLists();
 
 private:
+
+    QNetworkAccessManager *API_Access;
+    QNetworkReply *currentReply;
+
+    QList<GeoObj> geoList;
+    QList<QPointF> pointList;
+
+    QSettings *m_settings;
+
     QJsonDocument perimetreStifJson;
     QJsonDocument referentielStifJson;
 
@@ -58,6 +62,7 @@ private:
 public slots:
     void getInfo() override;
     void GeoPoints(QNetworkReply *);
+    void GotoStation();
 
 private slots:
     QJsonDocument LoadJson(QString fileName);
