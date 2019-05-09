@@ -1,7 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
-//#include "mainwindow.h"
+
 #include <QDialog>
 #include <QMainWindow>
 #include <QMainWindow>
@@ -32,10 +32,12 @@ class Dialog : public QDialog
     Q_OBJECT
 
 public:
+
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
     void setvignette();
     void loadlanguage(QString lang);
+
 
 private:
 
@@ -62,16 +64,16 @@ private:
 
 private slots:
 
-void printHashmeteo();
-void printHashprevision();
-QHash <QString, QVariant> printHashpollution();
-void printHashindice();
-void pollutionChart();
-void AQI();
-void Icon();
+    void printHashmeteo();
+    void printHashprevision();
+    QHash <QString, QVariant> printHashpollution();
+    void printHashindice();
+    void pollutionChart();
+    void AQI();
+    void Icon();
 
 
-//void updatedial();
+    //void updatedial();
 
 
 };

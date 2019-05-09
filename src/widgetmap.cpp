@@ -1,5 +1,6 @@
 #include "widgetmap.h"
 #include "dialoginfo.h"
+#include <cmath>
 #include <QPainter>
 #include <QSettings>
 #include <QDebug>
@@ -193,8 +194,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
     int resultatPixelPointX;
     int resultatPixelPointY;
 
-    double distanceLongitude = std::abs(m_BBOXmaxLongitude - m_BBOXminLongitude);
-    double distanceLatitude = std::abs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+    double distanceLongitude = std::fabs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+    double distanceLatitude = std::fabs(m_BBOXmaxLatitude - m_BBOXminLatitude);
 
     double coefficient_X = carte.width() / distanceLongitude;
     double coefficient_Y = carte.height() / distanceLatitude;
@@ -263,16 +264,18 @@ void WidgetMap::paintEvent(QPaintEvent *)
 
 void WidgetMap::mousePressEvent(QMouseEvent *event)
 {
-    //qDebug() << "clic mousePressEvent" << endl;
     if (event->button() == Qt::LeftButton)
     {
         QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
         qDebug() << text;
+        QString cliclong = QString::number(event->x());
+        QString cliclat = QString::number(event->y());
         m_pointClicSouris.setX(event->x());
         m_pointClicSouris.setY(event->y());
         m_flagClic = 1;
         this->update();
-        dialoginfo fenetre;
+        dialoginfo fenetre(this);
+        fenetre.setData(cliclong, cliclat);
         fenetre.exec();
     }
 }

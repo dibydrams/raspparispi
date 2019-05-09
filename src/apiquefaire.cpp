@@ -51,19 +51,36 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(182, 66, 244));
         geo.id = ANIMATIONS;
 
-        // Animations Type
+        // Animations Informations
         geo.info.insert("Titre", item.value("title").toString());
-        geo.info.insert("Adresse", item.value("adresse_street").toString());
+        geo.info.insert("Adresse", item.value("address_street").toString());
         geo.info.insert("Code Postal", item.value("address_zipcode").toString());
-        geo.info.insert("Description", item.value("lead_text").toString());
+        geo.info.insert("Brief", item.value("lead_text").toString());
+        geo.info.insert("Description", item.value("description").toString());
         geo.info.insert("Transport", item.value("transport").toString());
         geo.info.insert("Prix", item.value("price_detail").toString());
-        // Handicap
+
+        // Handicap - 1 if true
         geo.info.insert("Sourd", item.value("deaf").toString());
-        geo.info.insert("Mal voyant", item.value("blind").toString());
-        // Start
-        geo.info.insert("Date de début", item.value("Date de début").toString());
-        geo.info.insert("Date de fin", item.value("Date de fin").toString());
+        geo.info.insert("Malvoyant", item.value("blind").toString());
+
+        // Start & End
+        QString strDateStart = item.value("date_start").toString();
+        QStringRef subStrStart(&strDateStart, 0, 10);
+        geo.info.insert("Date de début", subStrStart.toString());
+
+        QString strDateEnd = item.value("date_end").toString();
+        QStringRef subStrEnd(&strDateEnd, 0, 10);
+        geo.info.insert("Date de fin", subStrEnd.toString());
+
+        // Image - Link to website
+        geo.info.insert("Image", item.value("cover_url").toString());
+
+        // Contact
+        geo.info.insert("Email", item.value("contact_email").toString());
+        geo.info.insert("Téléphone", item.value("contact_phone").toString());
+        geo.info.insert("Facebook", item.value("contact_facebook").toString());
+
 
        m_list << geo;
     }

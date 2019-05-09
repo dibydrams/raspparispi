@@ -39,6 +39,13 @@ void theatre::theatreAPI_Call(){
     connect(reply,SIGNAL(finished()),this,SLOT(readJsonTheatre()));
 }
 
+QString theatre::timetableFormat(QString timetable)
+{   QString l;
+    QRegExp rx("[, ]");// match a comma or a space
+    QStringList list = timetable.split(rx, QString::SkipEmptyParts);
+    return l;
+}
+
 /**
  * @brief theatre::readJsonTheatre
  * @details fonction qui va lire la réponse retournée par la requête envoyée précédement (theatreAPI_Call)
@@ -51,22 +58,58 @@ void theatre::readJsonTheatre(){
     QJsonObject replyObj = document.object();
     QJsonArray recordsJsonArray = replyObj["records"].toArray();
 
-    foreach (const QJsonValue & value, recordsJsonArray) {
+    for ( auto value :  recordsJsonArray) {
         QJsonObject obj = value.toObject();
         QJsonObject objectFields = obj["fields"].toObject();
+        QString adr=objectFields["address"].toString();
+        QString description=objectFields["description"].toString();
+        QString free_text=objectFields["free_text"].toString();
+        QString image=objectFields["image"].toString();
+        //QString image_thumb=objectFields["image_thumb"].toString();
+        QJsonArray latlon = objectFields["latlon"].toArray();
+        double latitude = latlon[0].toDouble();
+        double longitude = latlon[1].toDouble();
+        QString placename=objectFields["placename"].toString();
+        QString pricing_info=objectFields["pricing_info"].toString();
+        QString space_time_info=objectFields["space_time_info"].toString();
+        QString tags=objectFields["tags"].toString();
+        QString timetable=objectFields["timetable"].toString();
+        QString title=objectFields["title"].toString();
 
-        //coordinatedHelper
-        QString adr=objectFields["address"].toString()+" "+objectFields["department"].toString();
-        coordHelper=new addrToCoord(qApp,adr);
-        double longitude=coordHelper->getLongitude();
-        double latitude=coordHelper->getLatitude();
-        coordHelper->deleteLater();
+        //        qDebug()<<"";
+        //        qDebug()<<"";
+        //        qDebug()<<"";
+        //        qDebug()<<"######## INFORMATION ########";
+        //        qDebug()<<"######## INFORMATION ########";
+        //        qDebug()<<"######## INFORMATION ########";
+        //        qDebug()<<" placename : : "<< placename;
+        //        qDebug()<<" title : : "<< title;
+        //        qDebug()<<" description : : "<< description;
+        //        qDebug()<<" free_text : : "<< free_text;
+        //        qDebug()<<" tags : : "<< tags;
+        //        qDebug()<<" image : : "<< image;
+        //        qDebug()<<" space_time_info : : "<< space_time_info;
+        //        qDebug()<<" adresse : : "<< adr;
+        //        qDebug()<<" pricing_info : : "<< pricing_info;
 
-        // remplissage de geoObj
+        //qDebug()<<" timetable : : "<< timetable;
+
+        //remplissage de geoObj
         GeoObj geo;
         geo.longitude =longitude;
         geo.latitude = latitude;
         geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(247, 212, 120));
+        geo.info.insert("Lieu",placename);
+        geo.info.insert("Titre",title);
+        geo.info.insert("Description",description);
+        geo.info.insert("Synopsis",free_text);
+        geo.info.insert("Tags",tags);
+        geo.info.insert("Image",image);
+        geo.info.insert("Space_time_info",space_time_info);
+        geo.info.insert("Adresse",adr);
+        geo.info.insert("Pricing_info",pricing_info);
+       //içi parse and cie// "2019-05-26T14:45:00 2019-05-26T15:35:00;2019-05-26T17:00:00 2019-05-26T17:50:00"
+        geo.info.insert("timetable",timetable);
         m_list << geo;
     }
     emit callFinished(m_list, THEATRE);

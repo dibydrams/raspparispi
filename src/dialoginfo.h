@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QTableWidget>
 #include <QScrollArea>
+#include <QList>
 
 namespace Ui {
 class dialoginfo;
@@ -15,14 +16,14 @@ class dialoginfo : public QDialog
     Q_OBJECT
 
 public:
-public:
-    QVBoxLayout *verticalLayout_2;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
-    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QTableWidget *tableWidgetDistance;
-   // QTableWidget QList<QTableWidget>;
+    QString longitude;
+    QString latitude;
+    QTableWidget QList<QTableWidget>;
+    void setData(const QString cliclong, const QString cliclat);
     explicit dialoginfo(QWidget *parent = nullptr);
     ~dialoginfo();
 

@@ -18,6 +18,8 @@
 #include "apiparkingpublic.h"
 #include "apiparkingprive.h"
 #include "resetbuttons.h"
+#include "apivigicrues.h"
+#include "dialogvigicrues.h"
 #include "dialogtraduction.h"
 #include "dialogmeteo.h"
 
@@ -38,11 +40,13 @@ public:
     QList<Abstract_API::GeoObj> emptyList;
     void resizeEvent(QResizeEvent *event);
 
+
 private slots:
     void dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::API_index apiIndex);
     void dialog();
     void dialogInfo();
     void dialogtraduction();
+    void dialogvigicrues();
     void GetInfo(Abstract_API *ptr);
     void enableButtons();
     void RazSlot(Abstract_API::API_index);
@@ -56,6 +60,8 @@ public slots:
 private:
     Ui::MainWindow *ui;
     Dialogtraduction *l_lang;
+    //Dialog *meteo;
+
 signals:
     void open();
 

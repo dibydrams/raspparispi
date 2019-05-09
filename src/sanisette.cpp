@@ -46,7 +46,7 @@ void sanisette::readJsonSani(){
     QJsonObject replyObj = document.object();
     QJsonArray recordsJsonArray = replyObj["records"].toArray();
 
-    foreach (const QJsonValue & value, recordsJsonArray) {
+    for (auto value :  recordsJsonArray) {
         QJsonObject obj = value.toObject();
         QJsonObject objectFields = obj["fields"].toObject();
         QVariantHash objHasdh = obj.toVariantHash();
@@ -60,40 +60,43 @@ void sanisette::readJsonSani(){
         QString valueHO = objectFields["horaires_ouverture"].toString();
         QString adr=numero_voie+" "+nom_voie+ " Paris "+ strArrondissement;
         QString strLong = QString("%1").arg(longitude, 0, 'g', 17);
-        qDebug()<<"strLong  "<< strLong;
-
         QString strLat = QString("%1").arg(latitude, 0, 'g', 17);
-        qDebug()<<"strLat "<< strLat;
-        dist=new distance(qApp,strLat,strLong,"pedestrian");
-        int distance=dist->getDistanceInMeters();
-        //QString distancestr=QString(distance);//
-        qDebug()<<"distances : : "<<distance;
-       // int timeTravelPedestrian=dist->getTimetravel();
-        //QString timeTravelPedstr=QString(timeTravelPedestrian);//
-        //qDebug()<<"timeTravelPedstr : : "<<timeTravelPedestrian;
-       // dist->~distance();
-//        dist=new class distance(qApp,strLat,strLong,"car");
-//        int timeTravelCar=dist->getTimetravelWithTraffic();
-//        QString timeTravelCarstr=QString(timeTravelCar);
-//        qDebug()<<"timeTravelCarstr : : "<<timeTravelCarstr;
-//        dist->~distance();
-//        dist=new class distance(qApp,strLat,strLong,"bus");
-//        int timeTravelBus=dist->getTimetravelWithTraffic();
-//        QString timeTravelBusstr=QString(timeTravelBus);
-//        qDebug()<<"timeTravelBusstr : : "<<timeTravelBusstr;
-//        dist->~distance();
-        qDebug()<<" adr : : "<<adr;
-//        QMap<QString,QString> mapsanisette;
-//        mapsanisette["adrr"]=adr;
-//        mapsanisette["horaire"]=valueHO;
-        // remplissage de geoObj
+
+        //        qDebug()<<"strLong  "<< strLong;
+        //        qDebug()<<"strLat "<< strLat;
+        //        dist=new distance(qApp,strLat,strLong,"pedestrian");
+        //        int distance=dist->getDistanceInMeters();
+        //        qDebug()<<"distances : : "<<distance;
+        //        int timeTravelPedestrian=dist->getTimetravel();
+        //        qDebug()<<"timeTravelPedstr : : "<<timeTravelPedestrian;
+        //        dist->~distance();
+        //        dist=new class distance(qApp,strLat,strLong,"car");
+        //        int timeTravelCar=dist->getTimetravelWithTraffic();
+        //        qDebug()<<"timeTravelCarstr : : "<<timeTravelCar;
+        //        dist->~distance();
+        //        dist=new class distance(qApp,strLat,strLong,"bus");
+        //        int timeTravelBus=dist->getTimetravelWithTraffic();
+        //        qDebug()<<"timeTravelBusstr : : "<<timeTravelBus;
+        //        dist->~distance();
+
+        //remplissage du GeoObj
         GeoObj geo;
         geo.longitude = longitude;
         geo.latitude = latitude;
         geo.pixmap = Icon::iconMapOff(getPixmap(),QColor(42, 132, 255));//
+        geo.info.insert("adresse",adr);
+        geo.info.insert("horaires",valueHO);
         m_list << geo;
     }
     emit callFinished(m_list, TOILETTES);
+    qDebug()<<distance::kilometers_meters(2500);
+    qDebug()<<distance::kilometers_meters(755);
+    qDebug()<<distance::time_hours_minutes_seconds(40);
+    qDebug()<<distance::time_hours_minutes_seconds(70);
+    qDebug()<<distance::time_hours_minutes_seconds(60);
+    qDebug()<<distance::time_hours_minutes_seconds(120);
+    qDebug()<<distance::time_hours_minutes_seconds(125);
+    qDebug()<<distance::time_hours_minutes_seconds(3769);
 }
 
 /**

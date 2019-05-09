@@ -1,4 +1,5 @@
 #include "indiceuv.h"
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QDebug>
@@ -6,6 +7,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonValue>
+
 
 IndiceUV::IndiceUV()
 {

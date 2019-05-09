@@ -22,7 +22,6 @@
 #include <QVariantHash>
 #include <QJsonObject>
 #include "Abstract_API.h"
-#include "addrtocoord.h"
 #include "icon.h"
 
 /**
@@ -37,17 +36,17 @@ public:
     theatre();
     API_index getId() override;
     QPixmap getPixmap() override;
+    void theatreAPI_Call();
+    QString timetableFormat(QString timetable);
 
 public slots:
     void getInfo() override;
-    void theatreAPI_Call();
     void readJsonTheatre();
 
 private:
     QNetworkAccessManager * manager;
     QNetworkRequest request;
     QNetworkReply * reply;
-    addrToCoord *coordHelper;
     double longitude;
     double latitude;
     QList<GeoObj> m_list;
