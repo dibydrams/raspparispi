@@ -56,6 +56,7 @@ licence: GPLv3
 #include <QWidget>
 #include <Abstract_API.h>
 
+
 class WidgetMap : public QWidget
 {
 public:
