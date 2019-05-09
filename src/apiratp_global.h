@@ -30,13 +30,6 @@ public:
 
     UiStation uistation;
 
-    QNetworkAccessManager *API_Access;
-    QNetworkReply *currentReply;
-
-    QSettings *m_settings;
-
-    QList<GeoObj> geoList;
-    QList<QPointF> pointList;
     QList<StopPoint> stopPointList;
     QList<Transport> transportList;
     QList<Transport> busList;
@@ -51,6 +44,15 @@ public:
     void FilledTransportLists();
 
 private:
+
+    QNetworkAccessManager *API_Access;
+    QNetworkReply *currentReply;
+
+    QList<GeoObj> geoList;
+    QList<QPointF> pointList;
+
+    QSettings *m_settings;
+
     QJsonDocument perimetreStifJson;
     QJsonDocument referentielStifJson;
 
