@@ -64,7 +64,7 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
     }
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/dibydrams/pharmloc.db");
+    db.setDatabaseName(QDir().homePath() + "/raspparispi/src/pharmloc.db");
     db.open();
 
     if(db.open())

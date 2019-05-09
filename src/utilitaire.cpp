@@ -4,6 +4,6 @@ utilitaire::utilitaire(){}
 
 bool utilitaire::inMap(double lat, double lon)
 {
-    if(lat >= minLat && lat <= maxLat && lon >= minLon && lon <=maxLon) return true;
+    if(lat >= WidgetMap::BBOXminLatitude && lat <= WidgetMap::BBOXmaxLatitude && lon >= WidgetMap::BBOXminLongitude && lon <=WidgetMap::BBOXmaxLongitude) return true;
     return false;
 }
