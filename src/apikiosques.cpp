@@ -68,10 +68,6 @@ void apikiosques::API_results(QNetworkReply *reply)
 
         geo.info.insert("adresse",adresse);
         geo.info.insert("statut",statut);
-        geo.info.insert("distance",(QString)dist->getDistanceInMeters());
-        qDebug<<"distance"<<(QString)dist->getDistanceInMeters();
-
-
 
         m_list<<geo;
     }
