@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include "Abstract_API.h"
 #include "dialogmeteo.h"
 #include "dialoginfo.h"
@@ -14,7 +13,6 @@
 #include "dialogtraduction.h"
 #include "resetbuttons.h"
 #include "QString"
-
 #include <QHBoxLayout>
 
 
