@@ -51,7 +51,7 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
     tableInfo->setRowCount(4);
     tableInfo->horizontalHeader()->hide();
     tableInfo->verticalHeader()->hide();
-    //int verticalLayoutWidth=ui->verticalLayout->geometry().width();
+    ui->verticalLayout->geometry().setHeight(autoFillBackground());
     ui->verticalLayout->addWidget(tableInfo);
     QTableWidgetItem *distance = new QTableWidgetItem("distance");
     QTableWidgetItem *klm = new QTableWidgetItem(distanceInMeters);
