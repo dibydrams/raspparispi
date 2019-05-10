@@ -49,8 +49,8 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
          *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
          *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
 
-        geo.info.insert("Type de voie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
-        geo.info.insert("Nom de la rue",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
+        //geo.info.insert("Type de voie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
+        geo.info.insert("Nom de la rue/ de l'avenue",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
         geo.info.insert("Nom du lieu",jsObj["fields"].toObject()["nom_ev"].toString());
         geo.info.insert("Code postal",jsObj["fields"].toObject()["adresse_codepostal"].toString());
         geo.info.insert("Catégorie",jsObj["fields"].toObject()["categorie"].toString());
