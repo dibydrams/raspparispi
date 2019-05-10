@@ -1,4 +1,4 @@
-#include "customgraph.h"
+#include "grapicscene.h"
 
 GrapicScene::GrapicScene()
 {
@@ -19,8 +19,8 @@ void GrapicScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
         QMessageBox msgBox;
         msgBox.setWindowTitle("Sélectionner le point");
         msgBox.setText("Est ce que vous voulez valider la position ?");
-        QPushButton *validButton = msgBox.addButton(tr("Valider"), QMessageBox::ActionRole);
-        QPushButton *cancelButton = msgBox.addButton(QMessageBox::Cancel);
+//        QPushButton *validButton = msgBox.addButton(tr("Valider"), QMessageBox::ActionRole);
+//        QPushButton *cancelButton = msgBox.addButton(QMessageBox::Cancel);
 
         msgBox.exec();
 

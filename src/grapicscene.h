@@ -14,7 +14,7 @@ class GrapicScene : public QGraphicsScene
     void wMessage();
     QPixmap getPin();
 public:
-    CustomGraph();
+    GrapicScene();
     QPixmap getMap();
 protected:
     virtual void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

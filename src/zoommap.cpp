@@ -1,4 +1,4 @@
-#include "graphv.h"
+#include "zoommap.h"
 
 ZoomMap::ZoomMap(QGraphicsView* view)
   : QObject(view), _view(view)
