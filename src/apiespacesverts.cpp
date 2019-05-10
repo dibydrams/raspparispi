@@ -49,13 +49,13 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
          *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
          *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
 
-        geo.info.insert("typeVoie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
-        geo.info.insert("nomVoie",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
-        geo.info.insert("nomEV",jsObj["fields"].toObject()["nom_ev"].toString());
-        geo.info.insert("codePostal",jsObj["fields"].toObject()["adresse_codepostal"].toString());
-        geo.info.insert("categorie",jsObj["fields"].toObject()["categorie"].toString());
-        geo.info.insert("presCloture",jsObj["fields"].toObject()["presence_cloture"].toString());
-        geo.info.insert("ouvertFerme",jsObj["fields"].toObject()["ouvert_ferme"].toString());
+        geo.info.insert("Type de voie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
+        geo.info.insert("Nom de la rue",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
+        geo.info.insert("Nom du lieu",jsObj["fields"].toObject()["nom_ev"].toString());
+        geo.info.insert("Code postal",jsObj["fields"].toObject()["adresse_codepostal"].toString());
+        geo.info.insert("Catégorie",jsObj["fields"].toObject()["categorie"].toString());
+        geo.info.insert("Presence de clôture",jsObj["fields"].toObject()["presence_cloture"].toString());
+        geo.info.insert("Ouvert ou ferme",jsObj["fields"].toObject()["ouvert_ferme"].toString());
 
         m_list << geo;
     }
