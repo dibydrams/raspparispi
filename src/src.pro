@@ -11,7 +11,7 @@ QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
-TARGET = src
+TARGET = rasparispi
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
