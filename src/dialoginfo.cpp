@@ -53,7 +53,7 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
     tableInfo->verticalHeader()->hide();
     //int verticalLayoutWidth=ui->verticalLayout->geometry().width();
     ui->verticalLayout->addWidget(tableInfo);
-    QTableWidgetItem *distance = new QTableWidgetItem("distance");
+    QTableWidgetItem *distance = new QTableWidgetItem("Distance");
     QTableWidgetItem *klm = new QTableWidgetItem(distanceInMeters);
     tableInfo->setItem(-1,2,distance);
     tableInfo->setItem(-1,3,klm);
@@ -61,7 +61,7 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
     QTableWidgetItem *time = new QTableWidgetItem(timeTravel);
     tableInfo->setItem(0,2,timTravelped);
     tableInfo->setItem(0,3,time);
-    QTableWidgetItem *timeTravelgow = new QTableWidgetItem("Temps de trajet voiture");
+    QTableWidgetItem *timeTravelgow = new QTableWidgetItem("Temps de trajet en voiture");
     QTableWidgetItem *timeWidCar = new QTableWidgetItem(timeTravelCar);
     tableInfo->setItem(1,2,timeTravelgow);
     tableInfo->setItem(1,3,timeWidCar);
@@ -74,7 +74,9 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
     // si la list contient au moins 1 géoObj, on va chercher les informations contenu dans la Qmap de ce dernier
     if(!list.isEmpty()){
         for (int i = 0; i < list.size(); ++i){
+            QPixmap *icon = new QPixmap;
             tableInfo = new QTableWidget(this);
+            tableInfo->setShowGrid(false);
             tableInfo->setColumnCount(2);
             tableInfo->setRowCount(list.at(i).info.size());
             tableInfo->horizontalHeader()->hide();
