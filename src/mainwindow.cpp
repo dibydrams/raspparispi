@@ -117,7 +117,7 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(QueFaire_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-    ptr = new apikiosques; //bouton Kiosques
+    ptr = new apikiosques; //<bouton Kiosques
     CustomButton *Kiosques_btn=new CustomButton(ptr, this);
     ButtonList << Kiosques_btn;
     ui->horizontalLayout->addWidget(Kiosques_btn);
@@ -126,7 +126,7 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(Kiosques_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-    ptr = new apifontaines;
+    ptr = new apifontaines; //<bouton Fontaines
     CustomButton *fontaines_btn=new CustomButton(ptr, this);
     ButtonList << fontaines_btn;
     ui->horizontalLayout->addWidget(fontaines_btn);
