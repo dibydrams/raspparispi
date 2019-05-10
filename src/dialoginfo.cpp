@@ -30,8 +30,6 @@ dialoginfo::dialoginfo(QWidget *parent) :
  */
 void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abstract_API::GeoObj> list)
 {
-    QFont font;
-    font.setBold(true);
     QVariant longitude = cliclong;
     QVariant latitude = cliclat;
     dist=new distance(qApp,latitude.toString(),longitude.toString(),"pedestrian");
@@ -55,16 +53,15 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
     tableInfo->verticalHeader()->hide();
     //int verticalLayoutWidth=ui->verticalLayout->geometry().width();
     ui->verticalLayout->addWidget(tableInfo);
-    QTableWidgetItem *distance = new QTableWidgetItem("Distance");
+    QTableWidgetItem *distance = new QTableWidgetItem("distance");
     QTableWidgetItem *klm = new QTableWidgetItem(distanceInMeters);
     tableInfo->setItem(-1,2,distance);
-    tableInfo->item(2, 2)->setFont(font);
     tableInfo->setItem(-1,3,klm);
     QTableWidgetItem *timTravelped = new QTableWidgetItem("Temps de trajet à pied");
     QTableWidgetItem *time = new QTableWidgetItem(timeTravel);
     tableInfo->setItem(0,2,timTravelped);
     tableInfo->setItem(0,3,time);
-    QTableWidgetItem *timeTravelgow = new QTableWidgetItem("Temps de trajet en voiture");
+    QTableWidgetItem *timeTravelgow = new QTableWidgetItem("Temps de trajet voiture");
     QTableWidgetItem *timeWidCar = new QTableWidgetItem(timeTravelCar);
     tableInfo->setItem(1,2,timeTravelgow);
     tableInfo->setItem(1,3,timeWidCar);
