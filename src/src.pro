@@ -43,6 +43,7 @@ SOURCES += \
         dialogmeteo.cpp \
         dialogtraduction.cpp \
     dialogvigicrues.cpp \
+    grapicscene.cpp \
         indiceuv.cpp \
         meteo.cpp \
         pollution.cpp \
@@ -73,7 +74,8 @@ SOURCES += \
         apifontaines.cpp \
         uistation.cpp \
         dialogconnexion.cpp \
-        distance.cpp
+        distance.cpp \
+    zoommap.cpp
 
 HEADERS += \
         Abstract_API.h \
@@ -94,6 +96,7 @@ HEADERS += \
         dialogmeteo.h \
         dialogtraduction.h \
         dialogvigicrues.h \
+        grapicscene.h \
         icon.h \
         indiceuv.h \
         mainwindow.h \
@@ -120,7 +123,8 @@ HEADERS += \
         utilitaire.h \
         uistation.h \
         dialogconnexion.h \
-        distance.h
+        distance.h \
+        zoommap.h
 
 FORMS += \
     dialoginfo.ui \
