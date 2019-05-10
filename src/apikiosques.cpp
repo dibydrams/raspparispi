@@ -16,14 +16,15 @@ Abstract_API::API_index apikiosques::getId()
     return KIOSQUES;
 
 }
-
+/// Affichage de l'icone kiosques
 QPixmap apikiosques::getPixmap()
 {
-    return QPixmap(":/Icons/iconekiosques.png");
+    return QPixmap(":/Icons/iconekiosques.png"); // A rajouter dans Resources
 }
-
+ /// Fonction qui recupere les données des kiosques
 void apikiosques::API_call()
 {
+    // Acces reseaux internet
     API_access=new QNetworkAccessManager(this);
 
     //Acces aux setting de WidgetMap.h
@@ -32,17 +33,19 @@ void apikiosques::API_call()
 
     QString rayon = "1000";
     qDebug() << "latCentre: " << latCentre;
+    //Requette sur l'opendataparis avec l'adresse et le rayon de recherche , geofilter.distance dans l'API
     currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=liste_des_kiosques_presse_a_paris&rows=-1&facet=code_postal&facet=statut&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));
     connect(API_access, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_results(QNetworkReply*)));
 
 }
 
+/// Traitement des données recupéré avec la requette, en format json
 void apikiosques::API_results(QNetworkReply *reply)
 {
-    m_list.clear();
+    m_list.clear(); //<reset de la liste GeoObj
     doc=QJsonDocument::fromJson(reply->readAll());
     obj=doc.object();
-    arr=obj["records"].toArray();
+    arr=obj["records"].toArray(); //< Conversion du document json "records" en tableau
     for(auto val:arr){
         QJsonObject objn=val.toObject();
         latitude=objn["fields"].toObject().value("geo_point_2d").toArray()[0].toDouble();
@@ -75,10 +78,10 @@ void apikiosques::API_results(QNetworkReply *reply)
 
         m_list<<geo;
     }
-    emit callFinished(m_list, KIOSQUES);
+    emit callFinished(m_list, KIOSQUES); //<Signal de fin de traitement de l'API
     reply->deleteLater();
 }
-
+/// la premiere fonction appellé par la fenêtre principale
 void apikiosques::getInfo()
 {
    API_call();
