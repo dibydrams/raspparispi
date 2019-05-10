@@ -21,7 +21,7 @@ Abstract_API::API_index apiParkingPublic::getId()
 
 QPixmap apiParkingPublic::getPixmap()
 {
-    return QPixmap(":/Icons/iconparkingpublic.svg");
+    return QPixmap(":/Icons/iconparkingpublic.png");
 }
 
 void apiParkingPublic::copyGeoObj()
