@@ -10,7 +10,6 @@
 #include "Abstract_API.h"
 #include "icon.h"
 #include "widgetmap.h"
-#include "distance.h"
 
 class apifontaines : public Abstract_API
 {
@@ -47,8 +46,6 @@ private:
     QString lonCentre;
     QString lat;
     QString lon;
-    distance *dist;
-
     signals:
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 

@@ -49,12 +49,13 @@ void Dialogtraduction::flag()
 }
 
 
+
 void Dialogtraduction::loadfr()
 {
 
     QString lang;
     lang = "fr";
-    qDebug() << "fr";
+    //qDebug() << "fr";
     emit received(lang);
 
 }
@@ -63,7 +64,7 @@ void Dialogtraduction::loadar()
 {
     QString lang;
     lang = "ar";
-    qDebug() << "ar";
+    //qDebug() << "ar";
     emit received(lang);
 
 }
@@ -72,7 +73,7 @@ void Dialogtraduction::loaden()
 {
     QString lang;
     lang = "en";
-    qDebug() << "en";
+    //qDebug() << "en";
     emit received(lang);
 
 }

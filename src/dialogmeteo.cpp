@@ -23,6 +23,7 @@
 #include <QtCharts>
 #include <QStandardItem>
 #include <QPixmap>
+#include <QObject>
 
 
 Dialog::Dialog(QWidget *parent) :
@@ -36,6 +37,7 @@ Dialog::Dialog(QWidget *parent) :
     i_indice = new IndiceUV;
     pm_prevision=new Prevision;
 
+
     connect(m_meteo,SIGNAL(received()),this,SLOT(printHashmeteo()));
     connect(i_indice,SIGNAL(received()),this,SLOT(printHashindice()));
     connect(pm_prevision,SIGNAL(received()),this,SLOT(printHashprevision()));
@@ -45,6 +47,7 @@ Dialog::Dialog(QWidget *parent) :
     connect(p_pollution,SIGNAL(received()),this,SLOT(Icon()));
 
     connect(ui->pushButton_close,SIGNAL(clicked()),this,SLOT(close()));
+
 
 }
 
@@ -504,8 +507,11 @@ void Dialog::printHashprevision()                          //Affichage des prév
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
-    gridLayout = new QGridLayout(ui->widgetPrevision);
-    gridLayout->addWidget(chartView);
+
+    /*Gridlayout: grille contenant des cases où l'on peux y ajoute des widgets en entrant le numéro de ligne et de colonne*/
+    gridLayout = new QGridLayout(ui->widgetPrevision); //Ici on positionne la gridlayout sur la widgetPrevision
+    gridLayout->addWidget(chartView);                  //On y ajoute la chartview
+
 
     /*Option du graphique*/
     chart->setAnimationDuration(2000);
@@ -654,9 +660,7 @@ void Dialog::setvignette()                                          //Affichage 
 void Dialog::loadlanguage(QString lang)                 //Chargement de la langue de traduction
 {
 
-    qDebug() << "Météo";
 
-    qDebug() << lang;
     QTranslator translator;
 
     translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));

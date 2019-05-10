@@ -227,6 +227,7 @@ void MainWindow::initButtons()
     ButtonList << buttonVigiCrues;
     ui->horizontalLayout->addWidget(buttonVigiCrues);
     buttonVigiCrues->setToolTip(tr("VigiCrues"));
+    buttonVigiCrues->setCheckable(false);
     connect(buttonVigiCrues, SIGNAL(clicked()), ptr, SLOT(getInfo()));
     connect(buttonVigiCrues, SIGNAL(clicked()), this, SLOT(dialogvigicrues()));
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
@@ -260,6 +261,8 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     }
 }
 
+
+
 /* ##   FONCTION D'APPEL DE LA MAP : dataReceived(QList)  ##
  *
  * Explications : Cette fonction renvoie la liste complète de GeoObj afin de les afficher sur la map.
@@ -269,18 +272,22 @@ void MainWindow::dataReceived(QList<Abstract_API::GeoObj> list, Abstract_API::AP
 {
     ui->widget->m_listePI_API.removeAt(apiIndex);
     ui->widget->m_listePI_API.insert(apiIndex,list);
+
     this->update();
     QApplication::restoreOverrideCursor();
 }
 
+/*Affichage dialogue meteo*/
+
 void MainWindow::dialog()
 {
     Dialog fenetre(this);
-    //fenetre.loadlanguage("en");
+    fenetre.loadlanguage(setlang(l));
     fenetre.exec();
 
-
 }
+
+/*Affichage dialogue traduction*/
 
 void MainWindow::dialogtraduction()
 {
@@ -328,20 +335,31 @@ void MainWindow::resetAllButtons()
     }
 }
 
+/*Permet de charger la langue de traduction*/
+
 void MainWindow::loadlanguage(QString lang)
 {
-
-    qDebug() << "MainWindow";
-    qDebug() << lang;
+    //qDebug() << lang;
     QTranslator translator;
 
     translator.load((QString(":/Traduction/src_%1.qm").arg(lang)));
     qApp->installTranslator(&translator);
     ui->retranslateUi(this);
-
     l_lang->hide();
+    l = lang;
+    setlang(l);
 
 }
+
+
+/*Permet de renvoyer la langue de traduction*/
+
+QString MainWindow::setlang(QString lang)
+{
+    return lang;
+}
+
+
 
 //void MainWindow::ratpDialog()
 //{

@@ -13,6 +13,11 @@ double WidgetMap::rayonCentre = 0.007129412; //0.006;
 double WidgetMap::compensationLargeurRayon = 2.040087046;
 int WidgetMap::zoom = 15;
 
+double WidgetMap::BBOXminLongitude;
+double WidgetMap::BBOXminLatitude;
+double WidgetMap::BBOXmaxLongitude;
+double WidgetMap::BBOXmaxLatitude;
+
 
 // initialise les valeurs de .config/raspparispi/raspparispi.conf si elles n'existent pas
 // et les renvoient si elles existent
@@ -32,10 +37,10 @@ void WidgetMap::setIconCount(int count)
 {
     m_iconCount=count;
     // Remplissage de la iste vide m_listePI_API
-            QList<Abstract_API::GeoObj> emptyL;
-            for (int i = 0; i<m_iconCount; i++ ) {
-                m_listePI_API << emptyL;
-            }
+    QList<Abstract_API::GeoObj> emptyL;
+    for (int i = 0; i<m_iconCount; i++ ) {
+        m_listePI_API << emptyL;
+    }
 }
 
 WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
@@ -121,19 +126,19 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         connect(&mgr, SIGNAL(finished(QNetworkReply *)), &eventLoop, SLOT(quit()));
 
         QString urlText(
-            "http://api.tomtom.com/map/1/staticimage?"
-            "key=8bUkGqzvXEZzyqvqFnbw0JoTfPk7BFQ8&"
-            "format=png&"
-            "layer=basic&style=main&view=Unified&"
-            "zoom=" + QString::number(m_zoom) + "&"
+                    "http://api.tomtom.com/map/1/staticimage?"
+                    "key=8bUkGqzvXEZzyqvqFnbw0JoTfPk7BFQ8&"
+                    "format=png&"
+                    "layer=basic&style=main&view=Unified&"
+                    "zoom=" + QString::number(m_zoom) + "&"
 
-            "bbox=" + QString::number(m_BBOXminLongitude,'f',13) + ","
+                                                        "bbox=" + QString::number(m_BBOXminLongitude,'f',13) + ","
                     + QString::number(m_BBOXminLatitude,'f',13)  + ","
                     + QString::number(m_BBOXmaxLongitude,'f',13) + ","
                     + QString::number(m_BBOXmaxLatitude,'f',13)
-                );
+                    );
 
-       // qDebug()<<"url carte tomtom: " << urlText;
+        // qDebug()<<"url carte tomtom: " << urlText;
         QNetworkRequest req( (QUrl( urlText )) );
 
         QNetworkReply *reply = mgr.get(req);
@@ -170,6 +175,12 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                 //InitSetting(m_settings,"Coordonnees/BBOXmaxLatitude", QString::number(m_BBOXmaxLatitude,'f',13), tmp);
                 //InitSetting(m_settings,"Image/largeur", QString::number(m_largeurImage), tmp);
                 //InitSetting(m_settings,"Image/hauteur", QString::number(m_hauteurImage), tmp);
+
+                BBOXminLongitude = m_BBOXminLongitude;
+                BBOXminLatitude = m_BBOXminLatitude;
+                BBOXmaxLongitude = m_BBOXmaxLongitude;
+                BBOXmaxLatitude = m_BBOXmaxLatitude;
+
             }
         }
         else qDebug() << "erreur api tomtom: " << reply->errorString();
@@ -187,9 +198,9 @@ void WidgetMap::paintEvent(QPaintEvent *)
     p.drawPixmap(0,0,carte);
 
     //// icone au centre de la carte
-    //QString fileName = ":/Icons/bonhomme.png";
-    //QPixmap pixmap(fileName);
-    //p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
+    QString fileName = ":/Icons/pin.png";
+    QPixmap pixmap(fileName);
+    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
 
     int resultatPixelPointX;
     int resultatPixelPointY;
@@ -248,11 +259,12 @@ void WidgetMap::paintEvent(QPaintEvent *)
                     //qDebug() << " " << pixelPointPixmapY << " " << pixelPointPixmapY + elem.pixmap.height();
 
                     if( (m_pointClicSouris.x() >= pixelPointPixmapX) && (m_pointClicSouris.x() <= pixelPointPixmapX + elem.pixmap.width()) &&
-                            (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height())
-                            )
+                            (m_pointClicSouris.y() >= pixelPointPixmapY) && (m_pointClicSouris.y() <= pixelPointPixmapY + elem.pixmap.height()) )
                     {
                         /*Le qDebug ci dessous permet lors du clic de la souris, d'afficher les informations*/
-                        qDebug() << elem.info.values();
+                        //qDebug() <<" paint event"<< elem.info.values();
+                        listeInfoGeoObj << elem;
+                        //qDebug() <<listeInfoGeoObj.count();
                     }
                 }
             }
@@ -266,16 +278,63 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
+        // listeInfoGeoObj.clear();
         QString text = "Dernier clic : Position : (" + QString::number(event->x()) + ";" + QString::number(event->y()) + ")";
-        qDebug() << text;
-        QString cliclong = QString::number(event->x());
-        QString cliclat = QString::number(event->y());
+        //qDebug() << text;
+        QPixmap carte(m_fichierCarte);
+        int resultatPixelPointX = QVariant(QString::number(event->x())).toInt();
+        int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();;
+
+        resultatPixelPointY = carte.height() + resultatPixelPointY;
+
+        double distanceLongitude = std::fabs(m_BBOXmaxLongitude - m_BBOXminLongitude);
+        double distanceLatitude = std::fabs(m_BBOXmaxLatitude - m_BBOXminLatitude);
+
+        double coefficient_X = carte.width() / distanceLongitude;
+        double coefficient_Y = carte.height() / distanceLatitude;
+
+        double longitude = (resultatPixelPointX / coefficient_X) + m_BBOXminLongitude;
+        double latitude = (resultatPixelPointY / coefficient_Y) + m_BBOXminLatitude;
+
         m_pointClicSouris.setX(event->x());
         m_pointClicSouris.setY(event->y());
         m_flagClic = 1;
         this->update();
         dialoginfo fenetre(this);
-        fenetre.setData(cliclong, cliclat);
+
+        int decalagePixmapX = 0, decalagePixmapY = 0;
+        int pixelPointPixmapX, pixelPointPixmapY;
+        listeInfoGeoObj .clear();
+        for (auto listePI_API : m_listePI_API)
+            for (auto elem : listePI_API )
+            {
+                decalagePixmapX = listePI_API.first().pixmap.width()/2;
+                decalagePixmapY = listePI_API.first().pixmap.height();
+                resultatPixelPointX = static_cast<int> ((elem.longitude - m_BBOXminLongitude) * coefficient_X);
+                resultatPixelPointY = static_cast<int> ((elem.latitude - m_BBOXminLatitude) * coefficient_Y);
+
+                // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
+                resultatPixelPointY = carte.height() - resultatPixelPointY;
+
+                // prise en compte du hotspot du pixmap
+                pixelPointPixmapX = resultatPixelPointX - decalagePixmapX;
+                pixelPointPixmapY = resultatPixelPointY - decalagePixmapY;
+
+                if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
+                        && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
+                {
+
+                    if( (event->x() >= pixelPointPixmapX) && (event->x() <= pixelPointPixmapX + elem.pixmap.width()) &&
+                            (event->y() >= pixelPointPixmapY) && (event->y() <= pixelPointPixmapY + elem.pixmap.height()) )
+                    {
+
+                        listeInfoGeoObj << elem;
+                        //qDebug() <<listeInfoGeoObj.count();
+                    }
+
+                }
+            }
+        fenetre.setData(longitude, latitude, listeInfoGeoObj);
         fenetre.exec();
     }
 }

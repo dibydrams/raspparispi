@@ -39,6 +39,8 @@ public:
     QList <CustomButton *> ButtonList;
     QList<Abstract_API::GeoObj> emptyList;
     void resizeEvent(QResizeEvent *event);
+    QString setlang(QString lang);
+    QString l;
 
 
 private slots:
@@ -54,13 +56,15 @@ private slots:
 //  void ratpDialog();
 
 
+
 public slots:
     void loadlanguage(QString lang);
 
 private:
     Ui::MainWindow *ui;
     Dialogtraduction *l_lang;
-    //Dialog *meteo;
+    Dialog *meteo;
+
 
 signals:
     void open();

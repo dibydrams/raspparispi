@@ -56,6 +56,7 @@ licence: GPLv3
 #include <QWidget>
 #include <Abstract_API.h>
 
+
 class WidgetMap : public QWidget
 {
 public:
@@ -82,11 +83,16 @@ public:
     static double rayonCentre;
     static double compensationLargeurRayon;
     static int zoom;
+    static double BBOXminLongitude;
+    static double BBOXminLatitude;
+    static double BBOXmaxLongitude;
+    static double BBOXmaxLatitude;
 
     void setIconCount( int count);
 
     QList<QList<Abstract_API::GeoObj>> m_listePI_API;
     QList<QList<QPoint>> m_listePixelPoint;
+    QList<Abstract_API::GeoObj> listeInfoGeoObj;/*reçoit la liste d'elem*/
 
     explicit WidgetMap(QWidget *parent = nullptr);
     int InitSetting(QSettings *settings, const QString key, const QString value, QVariant &var);

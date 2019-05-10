@@ -32,6 +32,7 @@ private:
     void replyFinishedUni();
 
 signals:
+    void ShowErrorUni(QString);
     void ShowFinishedUni(QJsonArray);
 };
 

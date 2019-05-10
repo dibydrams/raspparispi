@@ -23,6 +23,8 @@
 #include "dialogtraduction.h"
 #include "ui_dialogmeteo.h"
 
+
+
 namespace Ui {
 class Dialog;
 }
@@ -36,7 +38,7 @@ public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
     void setvignette();
-    void loadlanguage(QString lang);
+    void loadlanguage(QString);
 
 
 private:
@@ -59,7 +61,7 @@ private:
     QStandardItem *item5 = new QStandardItem;
     QStandardItem *item6 = new QStandardItem;
     QStandardItem *item7 = new QStandardItem;
-
+    Dialogtraduction *l_lang;
 
 
 private slots:
