@@ -244,107 +244,107 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;SO2 (غاز ثاني أكسيد الكبريت): &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;الغاز الذي يهيج الأغشية المخاطية للجلد والجهاز التنفسي العلوي.&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="202"/>
+        <location filename="dialogmeteo.cpp" line="205"/>
         <source>Taux Actuel</source>
         <translation>المعدل الحالي</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="203"/>
+        <location filename="dialogmeteo.cpp" line="206"/>
         <source>Objectifs de Qualité</source>
         <translation>أهداف الجودة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="204"/>
+        <location filename="dialogmeteo.cpp" line="207"/>
         <source>Valeurs Limites</source>
         <translation>حدود القيم</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="232"/>
+        <location filename="dialogmeteo.cpp" line="235"/>
         <source>Pollution par polluant</source>
         <translation>تلوث الهواء</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="256"/>
+        <location filename="dialogmeteo.cpp" line="259"/>
         <source>Concentration (µg/m³)</source>
         <translation>كثافة (µg/m3)</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="454"/>
+        <location filename="dialogmeteo.cpp" line="457"/>
         <source>Précipitation en mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="532"/>
+        <location filename="dialogmeteo.cpp" line="538"/>
         <source>Indice Qualité Air </source>
         <translation>مؤشر جودة الهواء</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="536"/>
+        <location filename="dialogmeteo.cpp" line="542"/>
         <source>Bon: </source>
         <translation>جيد</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="544"/>
+        <location filename="dialogmeteo.cpp" line="550"/>
         <source>Modéré: </source>
         <translation>معتدل</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="552"/>
+        <location filename="dialogmeteo.cpp" line="558"/>
         <source>Malsain pour sensible: </source>
         <translation>غير صحية للحساسية</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="560"/>
+        <location filename="dialogmeteo.cpp" line="566"/>
         <source>Malsain: </source>
         <translation>غير صحي</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="568"/>
+        <location filename="dialogmeteo.cpp" line="574"/>
         <source>Très Malsain!: </source>
         <translation>غير صحي للغاية!</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="576"/>
+        <location filename="dialogmeteo.cpp" line="582"/>
         <source>Risqué!!: </source>
         <translation>محفوف بالمخاطر!!</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="76"/>
+        <location filename="dialogmeteo.cpp" line="79"/>
         <source>Température max (°C)</source>
         <translation>(°C) درجة الحرارة القصوى</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="78"/>
+        <location filename="dialogmeteo.cpp" line="81"/>
         <source>Température min (°C)</source>
         <translation>(°C) درجة الحرارة الدنيا</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="80"/>
+        <location filename="dialogmeteo.cpp" line="83"/>
         <source>Ciel </source>
         <translation>السماء</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="82"/>
+        <location filename="dialogmeteo.cpp" line="85"/>
         <source>Humidité (%)</source>
         <translation>(%) رطوبة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="84"/>
+        <location filename="dialogmeteo.cpp" line="87"/>
         <source>Vitesse du vent (km/h)</source>
         <translation>(km/h) سرعة الرياح</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="86"/>
+        <location filename="dialogmeteo.cpp" line="89"/>
         <source>Direction du vent (°)</source>
         <translation>(°) اتجاه الرياح</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="88"/>
+        <location filename="dialogmeteo.cpp" line="91"/>
         <source>Pression (hPa)</source>
         <translation>(hPa) الضغط</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="433"/>
+        <location filename="dialogmeteo.cpp" line="436"/>
         <source>Précipitation</source>
         <translation>مطر</translation>
     </message>
@@ -353,47 +353,47 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">مطر (mm)</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="485"/>
+        <location filename="dialogmeteo.cpp" line="488"/>
         <source>Température en °C</source>
         <translation>درجة الحرارة (C°)</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="498"/>
+        <location filename="dialogmeteo.cpp" line="501"/>
         <source>Heure</source>
         <translation>ساعة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="514"/>
+        <location filename="dialogmeteo.cpp" line="520"/>
         <source>Prévision météo pour les prochaines 24h</source>
         <translation>توقعات الطقس لل 24 ساعة القادمة</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="136"/>
+        <location filename="dialogmeteo.cpp" line="139"/>
         <source>Indice UV </source>
         <translation>مؤشر UV</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="142"/>
+        <location filename="dialogmeteo.cpp" line="145"/>
         <source>Faible: </source>
         <translation>منخفض:</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="150"/>
+        <location filename="dialogmeteo.cpp" line="153"/>
         <source>Moyen: </source>
         <translation>متوسط:</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="157"/>
+        <location filename="dialogmeteo.cpp" line="160"/>
         <source>Élevé!: </source>
         <translation>مرتفع! :</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="164"/>
+        <location filename="dialogmeteo.cpp" line="167"/>
         <source>Très Élevé!!: </source>
         <translation>مرتفع جدا!! :</translation>
     </message>
     <message>
-        <location filename="dialogmeteo.cpp" line="171"/>
+        <location filename="dialogmeteo.cpp" line="174"/>
         <source>Extreme!!!: </source>
         <translation>قصى!!! :</translation>
     </message>
@@ -413,18 +413,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DialogVigicrues</name>
     <message>
-        <location filename="dialogvigicrues.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">ترجمة</translation>
+        <translation type="obsolete">ترجمة</translation>
     </message>
     <message>
-        <location filename="dialogvigicrues.ui" line="20"/>
-        <source>Graph</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialogvigicrues.ui" line="45"/>
-        <source>TextLabel</source>
+        <location filename="dialogvigicrues.ui" line="14"/>
+        <source>Vigilance crues</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -448,97 +442,97 @@ p, li { white-space: pre-wrap; }
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="26"/>
-        <source>Carte - Autours de Moi</source>
-        <oldsource>Around Me - Map</oldsource>
+        <source>Carte - Autour de Moi</source>
+        <oldsource>Carte - Autours de Moi</oldsource>
         <translation>خريطة - حولي</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="70"/>
+        <location filename="mainwindow.cpp" line="68"/>
         <source>Traduction</source>
         <translation type="unfinished">ترجمة</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="78"/>
+        <location filename="mainwindow.cpp" line="76"/>
         <source>Météo</source>
         <translation type="unfinished">طقس</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="88"/>
+        <location filename="mainwindow.cpp" line="86"/>
         <source>Evénements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="97"/>
+        <location filename="mainwindow.cpp" line="95"/>
         <source>Pharmacies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="105"/>
+        <location filename="mainwindow.cpp" line="103"/>
         <source>Bornes Electriques</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="115"/>
+        <location filename="mainwindow.cpp" line="113"/>
         <source>Animations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="124"/>
+        <location filename="mainwindow.cpp" line="122"/>
         <source>Kiosques</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="133"/>
+        <location filename="mainwindow.cpp" line="131"/>
         <source>Fontaines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="142"/>
+        <location filename="mainwindow.cpp" line="140"/>
         <source>Terrasses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="151"/>
+        <location filename="mainwindow.cpp" line="149"/>
         <source>Toilettes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="160"/>
+        <location filename="mainwindow.cpp" line="158"/>
         <source>Transports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="175"/>
+        <location filename="mainwindow.cpp" line="174"/>
         <source>Parcs &amp; Espaces Verts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="184"/>
+        <location filename="mainwindow.cpp" line="183"/>
         <source>Bornes WiFi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="193"/>
+        <location filename="mainwindow.cpp" line="192"/>
         <source>Théâtres</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="202"/>
+        <location filename="mainwindow.cpp" line="201"/>
         <source>Bornes Vélib&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="211"/>
+        <location filename="mainwindow.cpp" line="210"/>
         <source>Parkings Publics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="220"/>
+        <location filename="mainwindow.cpp" line="219"/>
         <source>Parkings Privés</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="229"/>
+        <location filename="mainwindow.cpp" line="228"/>
         <source>VigiCrues</source>
         <translation type="unfinished"></translation>
     </message>
@@ -556,12 +550,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">ترجمة</translation>
     </message>
     <message>
-        <location filename="uistation.ui" line="28"/>
+        <location filename="uistation.ui" line="30"/>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="uistation.ui" line="43"/>
         <source>Station Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uistation.ui" line="48"/>
+        <location filename="uistation.ui" line="82"/>
         <source>Next Page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -574,37 +573,37 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">ترجمة</translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="30"/>
-        <source>Search Page</source>
+        <location filename="uiratp.ui" line="32"/>
+        <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="48"/>
+        <location filename="uiratp.ui" line="66"/>
         <source>&amp;Bus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="61"/>
+        <location filename="uiratp.ui" line="79"/>
         <source>&amp;Metro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="74"/>
+        <location filename="uiratp.ui" line="92"/>
         <source>&amp;Rail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="87"/>
+        <location filename="uiratp.ui" line="105"/>
         <source>&amp;Transport :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="111"/>
+        <location filename="uiratp.ui" line="129"/>
         <source>&amp;Station :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiratp.ui" line="135"/>
+        <location filename="uiratp.ui" line="153"/>
         <source>Send Request</source>
         <translation type="unfinished"></translation>
     </message>
