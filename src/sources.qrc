@@ -30,5 +30,6 @@
         <file>Icons/floodicon.png</file>
         <file>Icons/pin.png</file>
         <file>Icons/iconparkingpublic.png</file>
+        <file>Icons/Iconanimations.png</file>
     </qresource>
 </RCC>

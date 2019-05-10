@@ -48,7 +48,8 @@ void ApiQueFaire::API_Results(QNetworkReply *reply)
 
         geo.longitude = longitude;
         geo.latitude = latitude;
-        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(182, 66, 244));
+//        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(182, 66, 244));
+        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(216, 60, 60));
         geo.id = ANIMATIONS;
 
         // Animations Informations
@@ -113,5 +114,6 @@ void ApiQueFaire::getInfo()
 ///
 QPixmap ApiQueFaire::getPixmap()
 {
-    return QPixmap(":/Icons/iconfireworks.png");
+//    return QPixmap(":/Icons/iconfireworks.png");
+    return QPixmap(":/Icons/Iconanimations.png");
 }
