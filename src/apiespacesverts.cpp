@@ -52,7 +52,7 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
         //geo.info.insert("Type de voie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
         geo.info.insert("Nom de la rue/ de l'avenue",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
         geo.info.insert("Nom du lieu",jsObj["fields"].toObject()["nom_ev"].toString());
-        geo.info.insert("Code postal",jsObj["fields"].toObject()["adresse_codepostal"].toString());
+        geo.info.insert("Arrondissement de Paris",jsObj["fields"].toObject()["adresse_codepostal"].toString());
         geo.info.insert("Catégorie",jsObj["fields"].toObject()["categorie"].toString());
         geo.info.insert("Presence de clôture",jsObj["fields"].toObject()["presence_cloture"].toString());
         geo.info.insert("Ouvert ou ferme",jsObj["fields"].toObject()["ouvert_ferme"].toString());
