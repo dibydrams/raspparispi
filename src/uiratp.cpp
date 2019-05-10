@@ -7,13 +7,18 @@ Uiratp::Uiratp(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Search Page");
+
     if (ratpGlobal.transportList.count() <= 0)
     {
         ratpGlobal.FilledTransportLists();
     }
 
+    connect(ui->CloseButton, SIGNAL(clicked()), this, SLOT(hide()));
+
     connect(&ratpSearch, SIGNAL(ShowErrorUni(QString)), this, SLOT(ShowErrorUni(QString)));
     connect(&ratpSearch, SIGNAL(ShowFinishedUni(QJsonArray)), this, SLOT(ShowFinishedUni(QJsonArray)));
+
     connect(ui->BusRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->MetroRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));
     connect(ui->RailRadio, SIGNAL(clicked()), this, SLOT(ShowTransports()));

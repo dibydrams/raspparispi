@@ -7,6 +7,10 @@ UiStation::UiStation(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Station Page");
+
+    connect(ui->CloseButton, SIGNAL(clicked()), this, SLOT(hide()));
+
     connect(ui->ButtonNextPage, SIGNAL(clicked()), this, SLOT(ChangePage()));
 }
 
@@ -81,7 +85,14 @@ void UiStation::showFinishedStation(QJsonArray resultArray)
 
     ui->StackedView->hide();
 
-    for (int i = 0; i < resultArray.count(); ++i)
+    int maxCount = 10;
+
+    if (resultArray.count() < maxCount)
+    {
+        maxCount = resultArray.count();
+    }
+
+    for (int i = 0; i < maxCount; ++i)
     {
         bool isWidgetCreated = false;
         int widgetIndex = i;
