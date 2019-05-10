@@ -23,12 +23,12 @@
         <file>Icons/pharmloc-pointer.svg</file>
         <file>Icons/eventarene.png</file>
         <file>Icons/iconparkingprive.png</file>
-        <file>Icons/iconparkingpublic.svg</file>
         <file>Icons/iconelectric-car.png</file>
         <file>Icons/iconfireworks.png</file>
         <file>Icons/iconvelibwork.png</file>
         <file>Icons/reseticon.png</file>
         <file>Icons/floodicon.png</file>
         <file>Icons/pin.png</file>
+        <file>Icons/iconparkingpublic.png</file>
     </qresource>
 </RCC>
