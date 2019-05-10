@@ -57,8 +57,9 @@ void pharmapi::API_Results(QNetworkReply *reply) // Gestion des résultats au fo
          *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
          *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
 
-        geo.info.insert("nom",objn["fields"].toObject()["rs"].toString());
-        geo.info.insert("telephone",objn["fields"].toObject()["telephone"].toVariant().toString());
+        geo.info.insert("Nom",objn["fields"].toObject()["rs"].toString());
+
+        geo.info.insert("Téléphone","0"+objn["fields"].toObject()["telephone"].toVariant().toString());
 
        m_list << geo;
     }
