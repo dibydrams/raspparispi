@@ -53,7 +53,7 @@ private slots:
     void enableButtons();
     void RazSlot(Abstract_API::API_index);
     void resetAllButtons();
-//  void ratpDialog();
+    void ratpDialog();
 
 
 

@@ -115,7 +115,7 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(QueFaire_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-    ptr = new apikiosques; //bouton Kiosques
+    ptr = new apikiosques; //<bouton Kiosques
     CustomButton *Kiosques_btn=new CustomButton(ptr, this);
     ButtonList << Kiosques_btn;
     ui->horizontalLayout->addWidget(Kiosques_btn);
@@ -124,7 +124,7 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(Kiosques_btn, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-    ptr = new apifontaines;
+    ptr = new apifontaines; //<bouton Fontaines
     CustomButton *fontaines_btn=new CustomButton(ptr, this);
     ButtonList << fontaines_btn;
     ui->horizontalLayout->addWidget(fontaines_btn);
@@ -160,11 +160,12 @@ void MainWindow::initButtons()
     connect(ptr, SIGNAL(callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index)), this, SLOT(dataReceived(QList<Abstract_API::GeoObj>, Abstract_API::API_index)));
     connect(buttonRatpGlobal, SIGNAL(RazSig(Abstract_API::API_index)), this, SLOT(RazSlot(Abstract_API::API_index)));
 
-    //    ptr = new ApiRatp_Search;
-    //    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
-    //    ui->horizontalLayout->addWidget(buttonRatpSearch);
-    //    buttonRatpSearch->setCheckable(false);
-    //    connect(buttonRatpSearch, SIGNAL(clicked()), this, SLOT(ratpDialog()));
+    ptr = new ApiRatp_Search;
+    CustomButton *buttonRatpSearch = new CustomButton(ptr, this);
+    ButtonList << buttonRatpSearch;
+    ui->horizontalLayout->addWidget(buttonRatpSearch);
+    buttonRatpSearch->setCheckable(false);
+    connect(buttonRatpSearch, SIGNAL(clicked()), this, SLOT(ratpDialog()));
 
     ptr = new ApiEspacesVerts;
     CustomButton *buttonEspacesVerts = new CustomButton (ptr, this);
@@ -359,8 +360,8 @@ QString MainWindow::setlang(QString lang)
 
 
 
-//void MainWindow::ratpDialog()
-//{
-//    Uiratp window;
-//    window.exec();
-//}
+void MainWindow::ratpDialog()
+{
+    Uiratp window;
+    window.exec();
+}

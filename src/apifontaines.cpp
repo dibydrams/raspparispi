@@ -16,14 +16,15 @@ Abstract_API::API_index apifontaines::getId()
     return FONTAINES;
 
 }
-
+ /// Affichage de l'icone fontaines
 QPixmap apifontaines::getPixmap()
 {
-     return QPixmap(":/Icons/iconefontaines.png");  // a rajouter dans sources:
+     return QPixmap(":/Icons/iconefontaines.png");  // a rajouter dans Resources:
 }
-
+ /// Fonction qui recupere les données des fontaines
 void apifontaines::API_call()
 {
+    //Acces reseaux internet
     API_access=new QNetworkAccessManager(this);
 
     //Acces aux setting de WidgetMap.h
@@ -32,18 +33,19 @@ void apifontaines::API_call()
 
     QString rayon = "1000";
     qDebug() << "latCentre: " << latCentre;
+    //Requette sur l'opendataparis avec l'adresse et le rayon de recherche , geofilter.distance dans l'API
     currentReply=API_access->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=fontaines-a-boire&facet=arro&facet=modele&rows=-1&facet=a_boire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon)));
     connect(API_access, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_results(QNetworkReply*)));
 
 
 }
-
+/// Traitement des données recupéré avec la requette, en format json
 void apifontaines::API_results(QNetworkReply *reply)
 {
-    m_list.clear();
+    m_list.clear();//<reset de la liste GeoObj
     doc=QJsonDocument::fromJson(reply->readAll());
     obj=doc.object();
-    arr=obj["records"].toArray();
+    arr=obj["records"].toArray(); //< Conversion du document json "records" en tableau
     for(auto val:arr){
         QJsonObject objn=val.toObject();
         latitude=objn["fields"].toObject().value("geo_point_2d").toArray()[0].toDouble();
@@ -82,11 +84,11 @@ void apifontaines::API_results(QNetworkReply *reply)
 
         m_list<<geo;
     }
-    emit callFinished(m_list, FONTAINES);
+    emit callFinished(m_list, FONTAINES);//<signal de fin de traitement de l'API
     reply->deleteLater();
 
 }
-
+/// la premiere fonction appellé par la fenêtre principale
 void apifontaines::getInfo()
 {
     API_call();
