@@ -77,6 +77,7 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
             QPixmap *icon = new QPixmap;
             tableInfo = new QTableWidget(this);
             tableInfo->setShowGrid(false);
+            tableInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
             tableInfo->setColumnCount(2);
             tableInfo->setRowCount(list.at(i).info.size());
             tableInfo->horizontalHeader()->hide();
