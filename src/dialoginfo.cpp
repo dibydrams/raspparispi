@@ -45,6 +45,8 @@ void dialoginfo::setData(const double cliclong, const double cliclat, QList<Abst
     //QScrollArea scrollarea = QScrollArea(this)
     //ui->verticalLayout->set
     tableInfo = new QTableWidget(this);
+    tableInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    tableInfo->setShowGrid(false);
     tableInfo->setColumnCount(2);
     tableInfo->setRowCount(4);
     tableInfo->horizontalHeader()->hide();
