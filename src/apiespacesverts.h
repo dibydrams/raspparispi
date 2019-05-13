@@ -40,6 +40,7 @@ private slots:
     //void API_Call();
     void API_Results(QNetworkReply *reply);
     void copieGeoObj();
+//    void slotErrorConnexion(QNetworkReply::NetworkError);
 
 public slots:
     void getInfo() override;

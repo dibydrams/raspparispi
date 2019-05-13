@@ -1,5 +1,7 @@
 #include "apiespacesverts.h"
 #include <QThread>
+#include <QMessageBox>
+#include <QNetworkDiskCache>
 
 ApiEspacesVerts::ApiEspacesVerts()
 {
@@ -26,6 +28,7 @@ QPixmap ApiEspacesVerts::getPixmap()
 
 void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 {
+//    qDebug() << reply->attribute(QNetworkRequest::SourceIsFromCacheAttribute).toBool();
     m_list.clear();
     espverts->clear();
 
@@ -80,6 +83,15 @@ void ApiEspacesVerts::copieGeoObj()
     currentReply->deleteLater();
 }
 
+//void ApiEspacesVerts::slotErrorConnexion(QNetworkReply::NetworkError)
+//{
+//    qDebug()<<"Pas de connection";
+//    //DialogConnexion::afficherConnexion();
+//    QMessageBox msgBox;
+//    msgBox.setText("Veuillez verifier la connexion");
+//    msgBox.exec();
+//}
+
 void ApiEspacesVerts::getInfo()
 {
     //API_Call();
@@ -95,6 +107,14 @@ void ApiEspacesVerts::getInfo()
 void ApiEspacesVerts::firstCall()
 {
     networkManager = new QNetworkAccessManager(this);
+
+//    //cache bedut
+//    QNetworkDiskCache *cache = new QNetworkDiskCache(networkManager);
+//    cache->setCacheDirectory("cacheDir");
+//    //cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
+//    networkManager->setCache(cache);
+//    //cache fin
+
     latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
     lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
@@ -103,4 +123,9 @@ void ApiEspacesVerts::firstCall()
     request.setUrl(url);
     currentReply = networkManager->get(request);
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
+
+//    //cache debut
+//    request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
+//    //cache fin
+//    connect(currentReply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotErrorConnexion(QNetworkReply::NetworkError)));
 }
