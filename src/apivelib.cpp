@@ -33,16 +33,19 @@ void apiVelib::API_Results(QNetworkReply *reply)
         velib velo;
         GeoObj gObj;
         QJsonObject jsob = jsval.toObject();
-        velo.name = jsob["fields"].toObject()["station_name"].toString();
-        QString status = jsob["fields"].toObject()["station_state"].toString();
-        velo.emplacementsVides = jsob["fields"].toObject()["nbfreeedock"].toInt();
+        gObj.info["Nom de station"] = jsob["fields"].toObject()["station_name"].toString();
         velo.velosDisponibles = jsob["fields"].toObject()["nbebike"].toInt();
+        gObj.info["Velib disponibles"] = QString::number(velo.velosDisponibles);
+        gObj.info["Emplacements disponibles"] = QString::number(jsob["fields"].toObject()["nbfreeedock"].toInt());
+
         velo.latitude = jsob["fields"].toObject()["geo"].toArray()[0].toDouble();
         velo.longitude = jsob["fields"].toObject()["geo"].toArray()[1].toDouble();
 
+        QString status = jsob["fields"].toObject()["station_state"].toString();
         if(status == "Operative") status = "Opérationnelle";
         else if(status == "Close") status = "Fermée";
         else status = "En travaux";
+        gObj.info["Status"] = status;
 
         velo.status = status;
         if(utilitaire::inMap(velo.latitude, velo.longitude)){
