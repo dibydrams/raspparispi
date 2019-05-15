@@ -32,17 +32,17 @@ void apiParkingPrive::API_Results(QNetworkReply *reply)
         parkingPrive parking;
         GeoObj gObj;
         QJsonObject jsob = jsval.toObject();
-        parking.name = jsob["fields"].toObject()["nom_parc"].toString();
-        parking.address = jsob["fields"].toObject()["adress_geo"].toString();
-        parking.tarif1h = jsob["fields"].toObject()["tf_1h_e"].toString();
-        parking.horaire = jsob["fields"].toObject()["horaire_na"].toString();
-        parking.plPMR = jsob["fields"].toObject()["nb_pl_pmr"].toInt();
-        parking.plMoto = jsob["fields"].toObject()["nb_pl_moto"].toInt();
-        parking.tarif1hMoto = jsob["fields"].toObject()["tmoto_1ehe"].toString();
-        parking.velo = jsob["fields"].toObject()["acces_velo"].toString();
-        parking.vElec = jsob["fields"].toObject()["v_elec_ch"].toString();
-        parking.autopartage = jsob["fields"].toObject()["autopart"].toString();
-        parking.hauteur = jsob["fields"].toObject()["h_parc_cm"].toInt();
+        gObj.info["Nom du parking"] = jsob["fields"].toObject()["nom_parc"].toString();
+        gObj.info["Adresse"] = jsob["fields"].toObject()["adress_geo"].toString() + " " +QString::number(jsob["fields"].toObject()["arrdt"].toInt()+75000) + " PARIS";
+        gObj.info["Tarif 1h"] = jsob["fields"].toObject()["tf_1h_e"].toString();
+        gObj.info["Horaire"] = jsob["fields"].toObject()["horaire_na"].toString();
+        gObj.info["Places personne à mobilité réduite"] = QString::number(jsob["fields"].toObject()["nb_pl_pmr"].toInt());
+        gObj.info["Places Moto"] = QString::number(jsob["fields"].toObject()["nb_pl_moto"].toInt());
+        gObj.info["Tarif 1h Moto"] = jsob["fields"].toObject()["tmoto_1ehe"].toString();
+        gObj.info["Acces vélo"] = jsob["fields"].toObject()["acces_velo"].toString();
+        gObj.info["Acces véhicule électrique"] = jsob["fields"].toObject()["v_elec_ch"].toString();
+        gObj.info["Acces Autopartage"] = jsob["fields"].toObject()["autopart"].toString();
+        gObj.info["Hauteur en cm"] = QString::number(jsob["fields"].toObject()["h_parc_cm"].toInt());
         parking.latitude = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[1].toDouble();
         parking.longitude = jsob["fields"].toObject()["geo_shape"].toObject()["coordinates"].toArray()[0].toDouble();
 
