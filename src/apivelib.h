@@ -16,7 +16,8 @@ typedef struct{
     QString name;
     QString status;
     int emplacementsVides;
-    int velosDisponibles;
+    int velosElectriqueDisponibles;
+    int velosMecaniqueDisponibles;
     double latitude;
     double longitude;
 }velib;

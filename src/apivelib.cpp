@@ -34,8 +34,10 @@ void apiVelib::API_Results(QNetworkReply *reply)
         GeoObj gObj;
         QJsonObject jsob = jsval.toObject();
         gObj.info["Nom de station"] = jsob["fields"].toObject()["station_name"].toString();
-        velo.velosDisponibles = jsob["fields"].toObject()["nbebike"].toInt();
-        gObj.info["Velib disponibles"] = QString::number(velo.velosDisponibles);
+        velo.velosElectriqueDisponibles = jsob["fields"].toObject()["nbebike"].toInt();
+        velo.velosMecaniqueDisponibles = jsob["fields"].toObject()["nbbike"].toInt();
+        gObj.info["Velos électriques disponibles"] = QString::number(velo.velosElectriqueDisponibles);
+        gObj.info["Velos mécaniques disponibles"] = QString::number(velo.velosMecaniqueDisponibles);
         gObj.info["Emplacements disponibles"] = QString::number(jsob["fields"].toObject()["nbfreeedock"].toInt());
 
         velo.latitude = jsob["fields"].toObject()["geo"].toArray()[0].toDouble();
@@ -54,11 +56,11 @@ void apiVelib::API_Results(QNetworkReply *reply)
             gObj.latitude = velo.latitude;
             gObj.longitude =velo.longitude;
             if(status == "Opérationnelle")
-                gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosDisponibles), QColor(214, 171, 220));
+                gObj.pixmap = Icon::iconMapOffStr(getPixmap(), QString::number(velo.velosElectriqueDisponibles+velo.velosMecaniqueDisponibles), QColor(214, 171, 220));
             else if(status == "Fermée")
                 gObj.pixmap = Icon::iconMapOffClose(getPixmap(), QColor(214, 171, 220));
             else
-                gObj.pixmap = Icon::iconMapOffStr(QPixmap(":/Icons/iconvelibwork.png"), QString::number(velo.velosDisponibles), QColor(214, 171, 220));
+                gObj.pixmap = Icon::iconMapOffStr(QPixmap(":/Icons/iconvelibwork.png"), QString::number(velo.velosElectriqueDisponibles+velo.velosMecaniqueDisponibles), QColor(214, 171, 220));
 
             listGeoObj << gObj;
         }
