@@ -61,9 +61,10 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         m_centreLatitude = centreLatitude; //48.8699;//48.8716;
         m_rayonCentre = rayonCentre; //0.007129412;//0.006;
         m_zoom = zoom; //15; // zoom inférieur à 18 sinon l'api tomtom retourne une erreur: carte trop grande
-        m_compensationLargeurRayon = compensationLargeurRayon;//2.040087046;//2;
         flagConfigVide = 1;
     }
+
+    m_compensationLargeurRayon = compensationLargeurRayon;//2.040087046;//2;
 
     QVariant tmp;
 
@@ -73,8 +74,8 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
         if(!flagConfigVide) m_centreLatitude = centreLatitude = tmp.toDouble();
     if(InitSetting(m_settings,"Coordonnees/rayonCentre", QString::number(m_rayonCentre,'f',13), tmp))
         if(!flagConfigVide) m_rayonCentre = rayonCentre = tmp.toDouble();
-    if(InitSetting(m_settings,"Coordonnees/compensationLargeurRayon", QString::number(m_compensationLargeurRayon,'f',13), tmp))
-        if(!flagConfigVide) m_compensationLargeurRayon = compensationLargeurRayon = tmp.toDouble();
+    //if(InitSetting(m_settings,"Coordonnees/compensationLargeurRayon", QString::number(m_compensationLargeurRayon,'f',13), tmp))
+        //if(!flagConfigVide) m_compensationLargeurRayon = compensationLargeurRayon = tmp.toDouble();
     //if(InitSetting(m_settings,"Image/largeur", "", tmp)) m_largeurImage = tmp.toInt();
     //if(InitSetting(m_settings,"Image/hauteur", "", tmp)) m_hauteurImage = tmp.toInt();
     if(InitSetting(m_settings,"Coordonnees/zoom", QString::number(m_zoom), tmp) ) {
@@ -132,7 +133,7 @@ WidgetMap::WidgetMap(QWidget *parent) : QWidget(parent)
                     "layer=basic&style=main&view=Unified&"
                     "zoom=" + QString::number(m_zoom) + "&"
 
-                                                        "bbox=" + QString::number(m_BBOXminLongitude,'f',13) + ","
+            "bbox=" + QString::number(m_BBOXminLongitude,'f',13) + ","
                     + QString::number(m_BBOXminLatitude,'f',13)  + ","
                     + QString::number(m_BBOXmaxLongitude,'f',13) + ","
                     + QString::number(m_BBOXmaxLatitude,'f',13)
@@ -197,10 +198,18 @@ void WidgetMap::paintEvent(QPaintEvent *)
     QPixmap carte(m_fichierCarte);
     p.drawPixmap(0,0,carte);
 
-    //// icone au centre de la carte
+    // icone au centre de la carte
     QString fileName = ":/Icons/pin.png";
-    QPixmap pixmap(fileName);
-    p.drawPixmap(carte.width()/2,carte.height()/2,pixmap);
+    QPixmap pixmapCentre(fileName);
+
+    int decalagePointChaud_PinCentre_X, decalagePointChaud_PinCentre_Y;
+
+    decalagePointChaud_PinCentre_X = pixmapCentre.width()/2;
+    decalagePointChaud_PinCentre_Y = pixmapCentre.height();
+
+    p.drawPixmap((carte.width()/2) - decalagePointChaud_PinCentre_X,
+                 (carte.height()/2) - decalagePointChaud_PinCentre_Y,
+                 pixmapCentre);
 
     int resultatPixelPointX;
     int resultatPixelPointY;
@@ -285,7 +294,9 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
         int resultatPixelPointX = QVariant(QString::number(event->x())).toInt();
         int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();;
 
-        resultatPixelPointY = carte.height() + resultatPixelPointY;
+        // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
+        //resultatPixelPointY = carte.height() + resultatPixelPointY;
+        resultatPixelPointY = carte.height() - resultatPixelPointY;
 
         double distanceLongitude = std::fabs(m_BBOXmaxLongitude - m_BBOXminLongitude);
         double distanceLatitude = std::fabs(m_BBOXmaxLatitude - m_BBOXminLatitude);
@@ -323,7 +334,6 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
                 if(resultatPixelPointX>=0 && resultatPixelPointX<m_largeurImage
                         && resultatPixelPointY>=0 && resultatPixelPointY<m_hauteurImage)
                 {
-
                     if( (event->x() >= pixelPointPixmapX) && (event->x() <= pixelPointPixmapX + elem.pixmap.width()) &&
                             (event->y() >= pixelPointPixmapY) && (event->y() <= pixelPointPixmapY + elem.pixmap.height()) )
                     {

@@ -1,4 +1,5 @@
 #include "distance.h"
+#include "widgetmap.h"
 
 /**
  * @brief distance::distance (constructor)
@@ -82,7 +83,8 @@ distance::distance(QObject *parent, QString latitude, QString longitude, QString
 void distance::sendRequest(QString latitude, QString longitude)
 {
     networkManager = new QNetworkAccessManager(this);
-    QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=NCWallOQKXc5bHkNpL6av4toT58GMwcj&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all");
+    //QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=NCWallOQKXc5bHkNpL6av4toT58GMwcj&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all");
+    QUrl url("https://api.tomtom.com/routing/1/calculateRoute/"+QString::number(WidgetMap::centreLatitude,'f',13)+","+QString::number(WidgetMap::centreLongitude,'f',13)+":"+latitude+","+longitude+"/json?key=NCWallOQKXc5bHkNpL6av4toT58GMwcj&&travelMode=pedestrian&language=fr-FR&computeTravelTimeFor=all");
     QNetworkRequest request;
     request.setUrl(url);
     currentReply = networkManager->get(request);
@@ -99,7 +101,8 @@ void distance::sendRequest(QString latitude, QString longitude)
 void distance::sendRequest(QString latitude, QString longitude, QString ModeDeTransport)
 {
     networkManager = new QNetworkAccessManager(this);
-    QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=NCWallOQKXc5bHkNpL6av4toT58GMwcj&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
+    //QUrl url("https://api.tomtom.com/routing/1/calculateRoute/48.8716,2.345990000000029:"+latitude+","+longitude+"/json?key=NCWallOQKXc5bHkNpL6av4toT58GMwcj&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
+    QUrl url("https://api.tomtom.com/routing/1/calculateRoute/"+QString::number(WidgetMap::centreLatitude,'f',13)+","+QString::number(WidgetMap::centreLongitude,'f',13)+":"+latitude+","+longitude+"/json?key=NCWallOQKXc5bHkNpL6av4toT58GMwcj&&travelMode="+ModeDeTransport+"&language=fr-FR&computeTravelTimeFor=all");
     QNetworkRequest request;
     request.setUrl(url);
     currentReply = networkManager->get(request);
