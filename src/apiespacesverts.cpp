@@ -19,16 +19,8 @@ QPixmap ApiEspacesVerts::getPixmap()
     return QPixmap(":/Icons/iconespacesverts.png");
 }
 
-//void ApiEspacesVerts::API_Call()
-//{
-//    manApiEspacesVerts = new QNetworkAccessManager(this);
-//    connect(manApiEspacesVerts, SIGNAL(finished(QNetworkReply *)), this, SLOT(API_Results(QNetworkReply *)));
-//    manApiEspacesVerts->get(QNetworkRequest(QUrl("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&sort=-nsq_espace_vert&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire")));
-//}
-
 void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 {
-//    qDebug() << reply->attribute(QNetworkRequest::SourceIsFromCacheAttribute).toBool();
     m_list.clear();
     espverts->clear();
 
@@ -52,7 +44,6 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
          *Comme une "QMap <QString,QString> info" à été ajouté dans la classe Abstract_API.h,
          *celà nous permet de sélectionner les infos que nous souhaitons afficher, lors du clic.*/
 
-        //geo.info.insert("Type de voie",jsObj["fields"].toObject()["adresse_typevoie"].toString());
         geo.info.insert("Nom de la rue/ de l'avenue",jsObj["fields"].toObject()["adresse_libellevoie"].toString());
         geo.info.insert("Nom du lieu",jsObj["fields"].toObject()["nom_ev"].toString());
         geo.info.insert("Arrondissement de Paris",jsObj["fields"].toObject()["adresse_codepostal"].toString());
@@ -63,8 +54,6 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
         m_list << geo;
     }
     loop.exit();
-    //    emit callFinished(m_list, ESPACES_VERTS);
-    //    reply->deleteLater();
 }
 
 void ApiEspacesVerts::copieGeoObj()
@@ -83,15 +72,6 @@ void ApiEspacesVerts::copieGeoObj()
     currentReply->deleteLater();
 }
 
-//void ApiEspacesVerts::slotErrorConnexion(QNetworkReply::NetworkError)
-//{
-//    qDebug()<<"Pas de connection";
-//    //DialogConnexion::afficherConnexion();
-//    QMessageBox msgBox;
-//    msgBox.setText("Veuillez verifier la connexion");
-//    msgBox.exec();
-//}
-
 void ApiEspacesVerts::getInfo()
 {
     //API_Call();
@@ -108,13 +88,6 @@ void ApiEspacesVerts::firstCall()
 {
     networkManager = new QNetworkAccessManager(this);
 
-//    //cache bedut
-//    QNetworkDiskCache *cache = new QNetworkDiskCache(networkManager);
-//    cache->setCacheDirectory("cacheDir");
-//    //cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
-//    networkManager->setCache(cache);
-//    //cache fin
-
     latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
     lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
@@ -123,9 +96,4 @@ void ApiEspacesVerts::firstCall()
     request.setUrl(url);
     currentReply = networkManager->get(request);
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
-
-//    //cache debut
-//    request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
-//    //cache fin
-//    connect(currentReply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotErrorConnexion(QNetworkReply::NetworkError)));
 }
