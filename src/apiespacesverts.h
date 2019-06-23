@@ -12,8 +12,9 @@
 #include "icon.h"
 #include <QEventLoop>
 #include "widgetmap.h"
-
 #include "Abstract_API.h"
+
+/*Api traité par Thomas LY*/
 
 typedef struct {
     double longitude;

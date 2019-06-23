@@ -283,6 +283,8 @@ void WidgetMap::paintEvent(QPaintEvent *)
     m_flagClic = 0;
 }
 
+/*mousePressEvent traité par Thomas LY*/
+
 void WidgetMap::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)

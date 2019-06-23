@@ -11,11 +11,13 @@ ApiEspacesVerts::ApiEspacesVerts()
 
 Abstract_API::API_index ApiEspacesVerts::getId()
 {
+    /*comme indiqué ci-dessus, cf classe : Abstract_API*/
     return ESPACES_VERTS;
 }
 
 QPixmap ApiEspacesVerts::getPixmap()
 {
+    /*récupère l'icône placé en ressources*/
     return QPixmap(":/Icons/iconespacesverts.png");
 }
 
