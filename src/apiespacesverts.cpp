@@ -3,6 +3,8 @@
 #include <QMessageBox>
 #include <QNetworkDiskCache>
 
+/*Api traité par Thomas LY*/
+
 ApiEspacesVerts::ApiEspacesVerts()
 {
     firstCall();
