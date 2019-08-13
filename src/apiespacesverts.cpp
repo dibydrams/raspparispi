@@ -94,6 +94,9 @@ void ApiEspacesVerts::firstCall()
 
     latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
     lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
+    //problème de connexion à rectifier dû à la mise à jour
+    // De nouveaux enregistrements sont actuellement en cours d'ajout sur ce jeu de données. Pendant la durée du traitement, les visualisations peuvent afficher des données incomplètes. N’hésitez pas à rafraîchir votre page régulièrement !
+
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=id_division&facet=adresse_codepostal&facet=ouvert_ferme&facet=id_atelier_horticole&facet=competence&facet=categorie&facet=presence_cloture&facet=proprietaire&facet=gestionnnaire&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
     //qDebug() << url;
     QNetworkRequest request;
