@@ -19,6 +19,8 @@ void ApiEvenementsMV::API_Call() // Gestion du call à l'API
     QString lat = QString::number(conf_latitude);
     QString lon = QString::number(conf_longitude);
 
+    // message d'erreur suivant : No API key found in request - tly
+
     QUrl url("https://api.predicthq.com/v1/events/?country=FR&active.gte=2019-05-10&active.lte=2019-05-10&within=1km@" + lat + "," + lon +"&category=expos, sports, community, concerts, conferences, festivals");
     QNetworkRequest request;
     request.setUrl(url);

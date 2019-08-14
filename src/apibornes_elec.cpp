@@ -15,6 +15,8 @@ void ApiBornes_Elec::API_Call()
     lat = QString::number(static_cast<double>(WidgetMap::centreLatitude));
     lon = QString::number(static_cast<double>(WidgetMap::centreLongitude));
 
+    // message d'erreur suivant : Internal error - tly
+
     QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=bornes-de-recharge-pour-vehicules-electriques&rows=-1&geofilter.distance=" + lat + "," + lon + ",4000");
     QNetworkRequest request;
     request.setUrl(url);
