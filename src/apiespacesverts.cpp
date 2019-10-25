@@ -95,9 +95,9 @@ void ApiEspacesVerts::firstCall()
     latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
     lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
 
-    //En attente, car mise à jour de la nouvelle URL - 2019/08/19 - tly
-    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=categorie&facet=adresse_codepostal&facet=presence_cloture&facet=ouvert_ferme&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
+    //En attente, car mise à jour de la nouvelle URL - 2019/10/25 - tly
     //QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=categorie&facet=adresse_codepostal&facet=presence_cloture&facet=ouvert_ferme&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=-1&facet=type_ev&facet=categorie&facet=adresse_codepostal&facet=presence_cloture&facet=ouvert_ferme&geofilter.distance="+latCentre+"%2C"+lonCentre+"%2C"+rayon);
 
     //qDebug() << url;
     QNetworkRequest request;
