@@ -36,6 +36,7 @@ public:
     ApiEspacesVerts();
     API_index getId() override;
     QPixmap getPixmap() override;
+//    ~ApiEspacesVerts() override;
 
 private slots:
     //void API_Call();

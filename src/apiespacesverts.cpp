@@ -11,6 +11,11 @@ ApiEspacesVerts::ApiEspacesVerts()
     loop.exec();
 }
 
+//ApiEspacesVerts::~ApiEspacesVerts()
+//{
+
+//}
+
 Abstract_API::API_index ApiEspacesVerts::getId()
 {
     /*comme indiqué ci-dessus, cf classe : Abstract_API*/
@@ -32,7 +37,8 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 
     jsonObject = document.object();
     jsonArray = jsonObject["records"].toArray();
-    for(QJsonValue val:jsonArray){
+    for(QJsonValue val:jsonArray)
+    {
         jsObj = val.toObject();
 
         geoloc = jsObj["fields"].toObject()["geom_x_y"].toArray();
@@ -64,14 +70,13 @@ void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 void ApiEspacesVerts::copieGeoObj()
 {
     GeoObj gObj;
-    for(espacesverts p : *espverts){
-        GeoObj geo;
+    for(espacesverts p : *espverts)
+    {
+        gObj.longitude = longit;
+        gObj.latitude = lat;
+        gObj.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
 
-        geo.longitude = longit;
-        geo.latitude = lat;
-        geo.pixmap = Icon::iconMapOff(getPixmap(), QColor(126, 170, 44));
-
-        m_list << geo;
+        m_list << gObj;
     }
     emit callFinished(m_list, ESPACES_VERTS);
     currentReply->deleteLater();
