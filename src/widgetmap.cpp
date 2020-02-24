@@ -294,7 +294,7 @@ void WidgetMap::mousePressEvent(QMouseEvent *event)
         //qDebug() << text;
         QPixmap carte(m_fichierCarte);
         int resultatPixelPointX = QVariant(QString::number(event->x())).toInt();
-        int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();;
+        int resultatPixelPointY = QVariant(QString::number(event->y())).toInt();
 
         // inversion de l'axe verticale pixel par rapport au sens de l'axe latitude
         //resultatPixelPointY = carte.height() + resultatPixelPointY;
