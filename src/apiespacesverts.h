@@ -34,9 +34,10 @@ class ApiEspacesVerts : public Abstract_API
 
 public:
     ApiEspacesVerts();
+    ~ApiEspacesVerts() override;
     API_index getId() override;
     QPixmap getPixmap() override;
-//    ~ApiEspacesVerts() override;
+
 
 private slots:
     //void API_Call();
@@ -46,13 +47,12 @@ private slots:
 public slots:
     void getInfo() override;
 
-
 private:
     QNetworkAccessManager *networkManager;
     QNetworkReply *currentReply;
     QJsonDocument document;
-    QJsonObject jsonObject;
-    QJsonArray jsonArray;
+    QJsonObject obj;
+    QJsonArray arr;
     QJsonValue val;
     QJsonObject jsObj;
     QJsonArray geoloc;
