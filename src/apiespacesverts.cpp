@@ -28,20 +28,20 @@ QPixmap ApiEspacesVerts::getPixmap()
     return QPixmap(":/Icons/iconespacesverts.png");
 }
 
-//void ApiEspacesVerts::API_Call()
-//{
-//    networkManager = new QNetworkAccessManager(this);
+void ApiEspacesVerts::API_Call()
+{
+    networkManager = new QNetworkAccessManager(this);
 
-//    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
-//    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
+    latCentre = QString::number(WidgetMap::centreLatitude, 'g', 13);
+    lonCentre = QString::number(WidgetMap::centreLongitude, 'g', 13);
 
-//    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=1000&facet=type_ev&facet=categorie&facet=adresse_codepostal&facet=presence_cloture&facet=ouvert_ferme"+latCentre+"%2C"+lonCentre+"%2C"+rayon);
-//    QNetworkRequest request;
-//    request.setUrl(url);
-//    currentReply = networkManager->get(request);
+    QUrl url("https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&rows=1000&facet=type_ev&facet=categorie&facet=adresse_codepostal&facet=presence_cloture&facet=ouvert_ferme"+latCentre+"%2C"+lonCentre+"%2C"+rayon);
+    QNetworkRequest request;
+    request.setUrl(url);
+    currentReply = networkManager->get(request);
 
-//    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
-//}
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(API_Results(QNetworkReply*)));
+}
 
 void ApiEspacesVerts::API_Results(QNetworkReply *reply)
 {

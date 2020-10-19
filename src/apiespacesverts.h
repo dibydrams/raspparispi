@@ -40,7 +40,7 @@ public:
 
 
 private slots:
-    //void API_Call();
+    void API_Call();
     void API_Results(QNetworkReply *reply);
     void copieGeoObj();
 
@@ -68,7 +68,7 @@ private:
     double longit;
     double lat;
 
-signals:
+signals:   
     void callFinished(QList<Abstract_API::GeoObj>, Abstract_API::API_index);
 };
 
